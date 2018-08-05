@@ -50,7 +50,10 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( y &lt; 32 - vspeed &amp;&amp; vspeed &lt; 0 ) {
+if( x + sprite_width / 2 + hspeed &gt; 800 - 32 &amp;&amp; hspeed &gt; 0 || x - sprite_width / 2 + hspeed &lt; 32 &amp;&amp; hspeed &lt; 0 ) {
+    hspeed *= -1;
+}
+if( y - sprite_height / 2 + vspeed &lt; 32 &amp;&amp; vspeed &lt; 0 ) {
     vspeed *= -1;
 }
 if( image_alpha &lt; 1 ) {
