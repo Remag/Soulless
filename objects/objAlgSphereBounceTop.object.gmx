@@ -50,14 +50,11 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( x &gt; 800 - 32 - hspeed &amp;&amp; hspeed &gt; 0 || x &lt; 32 - hspeed &amp;&amp; hspeed &lt; 0 ) {
-    hspeed *= -1;
-}
-if( y &gt; 608 - 32 - vspeed &amp;&amp; vspeed &gt; 0 || y &lt; 32 - vspeed &amp;&amp; vspeed &lt; 0 ) {
+if( y &lt; 32 - vspeed &amp;&amp; vspeed &lt; 0 ) {
     vspeed *= -1;
 }
 if( image_alpha &lt; 1 ) {
-    image_alpha += 0.02;
+    image_alpha += 0.04;
 }
 </string>
           </argument>
