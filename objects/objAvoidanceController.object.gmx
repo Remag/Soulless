@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
-t = 1165;
 
 segment = 1; //Номер сегмента (для дебага)
 
