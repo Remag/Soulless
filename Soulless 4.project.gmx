@@ -140,8 +140,6 @@
       <sprite>sprites\sprArchBullet6</sprite>
     </sprites>
     <sprites name="Algeran">
-      <sprite>sprites\sprAlgKunai</sprite>
-      <sprite>sprites\sprAlgSphere</sprite>
       <sprite>sprites\sprAlgSphereColored</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
     </sprites>
@@ -338,16 +336,11 @@
     </objects>
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
+      <object>objects\objAlgShaderDrawer</object>
+      <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
+      <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgKunai</object>
-      <object>objects\objAlgLineSphere</object>
-      <object>objects\objAlgSphereColored</object>
-      <object>objects\objAlgSphereTrail</object>
-      <object>objects\objAlgKunaiColored</object>
-      <object>objects\objAlgSphereDespawn</object>
-      <object>objects\objAlgSphereSource</object>
-      <object>objects\objAlgSphereLoop</object>
-      <object>objects\objAlgArchSphereDrawer</object>
     </objects>
     <object>objects\objSelect</object>
     <object>objects\objSelectArrow</object>

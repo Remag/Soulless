@@ -1,1 +1,7 @@
-Configs/Default/AmazonFire/.*
+Configs/Default/AmazonFire/
+Configs/Default/Android/
+Configs/Default/AndroidTV/
+Configs/Default/HTML5/
+Configs/Default/iOS/
+Configs/Default/Mac/
+Configs/Default/WinPhone/
