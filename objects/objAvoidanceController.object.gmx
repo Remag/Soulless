@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
+t = 4240;
+
 segment = 1; //Номер сегмента (для дебага)
 
 angle = 0;
@@ -37,6 +39,34 @@ shake = 0;
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug
+if( global.debugMode ) {
+    if( keyboard_check(vk_enter) ) {
+        room_speed = 1000;
+    } else {
+        room_speed = 50;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -248,9 +278,76 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 6 (1:25 - 1:40) Chorus 1
+            <string>///Arch. Segment 6 (1:25 - 1:40) Chorus 1
 if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 6;
+    
+    if( t &gt;= 4241 &amp;&amp; t &lt; 4337 ) {
+        repeat(2) {
+            a = instance_create(128+random(16), 128+random(16), objArchBullet1);
+            a.tag = 1;
+            a.direction = random(360);
+            a.speed = random_range(4,12);
+        }
+        with(objArchBullet1) {
+            if( tag == 1 ) {
+                direction += 7;
+            }
+        }
+    }
+    if( t &gt;= 4433 &amp;&amp; t &lt; 4528 ) {
+        if( t % 3 == 0 ) {
+            a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
+            a.tag = 2;
+            a.direction = random(360);
+            a.speed = random_range(7,14);
+        }
+        with(objArchBullet1) {
+            if( tag == 2 ) {
+                direction -= 7;
+            }
+        }
+    }
+    if( t == 4528 ) {
+        with(objArchBullet1) {
+            if( tag == 2 ) {
+                speed *= 0.75;
+            }
+        }
+    }
+    if( t == 4528 || t == 4552 || t == 4577 || t == 4600 ) {
+        with(objArchBullet1) {
+            if( tag == 2 ) {
+                a = instance_create(x, y, objArchBullet1);
+                a.tag = 2;
+                a.direction = direction + 110;
+                a.speed = speed;
+                a.image_xscale = image_xscale - 1/8;
+                a.image_yscale = image_yscale - 1/8;
+                a = instance_create(x, y, objArchBullet1);
+                a.tag = 2;
+                a.direction = direction - 110;
+                a.speed = speed;
+                a.image_xscale = image_xscale - 1/8;
+                a.image_yscale = image_yscale - 1/8;
+            }
+            instance_destroy();
+        }
+    }
+    if( t &gt;= 4624 &amp;&amp; t &lt; 4816 ) {
+        repeat(2) {
+            a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
+            a.direction = random(360);
+            a.speed = random_range(5,10);
+            a.tag = 3;
+        }
+    }
+    if( t &gt;= 4816 &amp;&amp; t &lt; 5000 ) {
+        a = instance_create(128+random(16), 128+random(16), objArchBullet1);
+        a.direction = random(360);
+        a.speed = random_range(7,13);
+        a.tag = 3;
+    }
 }
 </string>
           </argument>
@@ -1592,7 +1689,7 @@ if( instance_exists(objPlayer) ) {
             <kind>1</kind>
             <string>///Коррекции и увеличение таймера
 if( instance_exists(objPlayer) ) {
-    if( abs( audio_sound_get_track_position(global.currentMusic) * 50 - t ) &gt; 5 ) {
+    if( abs( audio_sound_get_track_position(global.currentMusic) * 50 - t ) &gt; 10 ) {
         audio_sound_set_track_position(global.currentMusic, t/50);
     }
     t++;

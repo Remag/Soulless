@@ -320,12 +320,7 @@
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
     <objects name="Arch">
-      <object>objects\objArchBulletSpawner1</object>
-      <object>objects\objArchBulletSpawner2</object>
-      <object>objects\objArchSmallBullet1</object>
-      <object>objects\objArchBulletSpawner3</object>
-      <object>objects\objArchBulletSpawner4</object>
-      <object>objects\objArchBulletFader</object>
+      <object>objects\objArchBullet1</object>
     </objects>
     <objects name="Redire">
       <object>objects\objRedireBeatSpawner</object>
