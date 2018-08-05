@@ -1496,7 +1496,7 @@ if( instance_exists(objPlayer) ) {
           <argument>
             <kind>1</kind>
             <string>///Warnings
-
+/*
 if( instance_exists(objPlayer) ) {
     if( t == 2396 ) {
         a = instance_create(32, 32, objWarning);
@@ -1603,7 +1603,7 @@ if( shake ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*draw_set_font(fDefault12);
+            <string>draw_set_font(fDefault12);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 scrDrawTextOutline(40, 40, "Segment: " + string(segment), c_white, c_black);
