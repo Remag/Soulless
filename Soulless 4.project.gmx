@@ -334,9 +334,12 @@
       <object>objects\objAlgShaderDrawer</object>
       <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
+      <object>objects\objAlgSpawner</object>
+      <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgKunai</object>
+      <object>objects\objAlgKunaiAppearing</object>
     </objects>
     <object>objects\objSelect</object>
     <object>objects\objSelectArrow</object>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 4240;
+//t = 2705;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -164,12 +164,13 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
     }
 
     if( ( t - 1165 ) % 24 == 0 ) {
+        var nerf = 0.85;
         if( seg2Counter % 2 == 0 ) {
             repeat( 9 ) {
                 var obj = instance_create( random_range( 50, 750 ), 304, objAlgSphereBounceTop );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
-                obj.vspeed = -random_range( 7, 13 );
-                obj.hspeed = random_range( -4, 4 )
+                obj.vspeed = -random_range( 7, 13 ) * nerf;
+                obj.hspeed = random_range( -4, 4 ) * nerf;
             }
         } else {
             var wallDir = random_range( 80, 100 );
@@ -177,9 +178,9 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
             for( var i = 0; i &lt; 10; i++ ) {
                 var obj = instance_create( lerp( 0, 800, i / 9 ), 304, objAlgSphereBounceTop );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
-                obj.speed = wallSpeed;
+                obj.speed = wallSpeed * nerf;
                 obj.direction = wallDir;
-                obj.hspeed += random_range( -0.5, 0.5 );
+                obj.hspeed += random_range( -0.5, 0.5 ) * nerf;
             }
         }
         seg2Counter++;
@@ -230,8 +231,31 @@ if( t &gt;= 1930 &amp;&amp; t &lt; 2705 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 4 (0:54 - 1:09) Ascent
+            <string>///Alg Segment 4 (0:54 - 1:09) Ascent
 if( t &gt;= 2705 &amp;&amp; t &lt; 3470 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( t &lt; 3364 &amp;&amp; t % 25 == 5 ) {
+    
+        var spawnX = choose( 0, 800 );
+        var spawnY = random_range( 0, 400 );
+        var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
+        obj.direction = point_direction( spawnX, spawnY, 800 - spawnX, random_range( 0, 400 - spawnY ) );
+        obj.speed = 8;
+    }
+    
+    if( t == 2800 || t == 2895 || t == 2990 || t == 3085
+     || t == 3180 || t == 3275 || t == 3370 || t == 3465 )
+    {
+        with( objAlgKunaiAppearing ) {
+            speed = random_range( 5, 7 );
+            friction = 0;
+            curve = 0;
+        }
+    }
+    
     segment = 4;
 }
 </string>
