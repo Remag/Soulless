@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-//t = 2705;
+//t = 5005;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -393,8 +393,136 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 7 (1:40 - 1:55) Synthetic Verse A &amp; B
+            <string>///Alg Segment 7 (1:40 - 1:55) Synthetic Verse A &amp; B
 if( t &gt;= 5005 &amp;&amp; t &lt; 5775 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( t == 5005 ) {
+        repeat( 100 ) {
+            var obj = instance_create( 400, 200, objAlgSphereCurve );
+            obj.direction = random( 360 );
+            obj.speed = random_range( 2, 3 ) * random_range( 2, 3 );
+            obj.curveSpeed = random_range( 5, 10 );
+            obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+        }
+    } else if( t &gt;= 5050 &amp;&amp; t &lt; 5150 ) {
+        var count = 1;
+        with( objAlgSphereCurve ) {
+            if( curveSpeed != 0 &amp;&amp; count &gt; 0 ) {
+                curveSpeed = 0;
+                gravity = 0.15;
+                count--;
+            }
+        }
+    } else if( t == 5150 ) {
+        with( objAlgSphereCurve ) {
+            curveSpeed = 0;
+            gravity = 0.15;
+        }
+    } 
+    if( t &gt;= 5100 &amp;&amp; t &lt; 5155 ) {
+        if( t % 5 == 0 ) {
+            var obj = instance_create( 0, 0, objAlgKunai );
+            obj.direction = lerp( 270, 360, ( t - 5100 ) / 55 );
+            obj.image_angle = obj.direction
+            obj.speed = random_range( 4, 5 );
+            obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            
+            obj = instance_create( 800, 0, objAlgKunai );
+            obj.direction = lerp( 180, 270, ( t - 5100 ) / 55 );
+            obj.image_angle = obj.direction
+            obj.speed = random_range( 4, 5 );
+            obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+        }
+    } else if( t &gt;= 5160 &amp;&amp; t &lt; 5380 ) {
+        var radius = lerp( 100, 0, ( t - 5160 ) / 220 );
+        var speedMin = lerp( 3, 16, ( t - 5160 ) / 220 );
+        var speedMax = lerp( 8, 16, ( t - 5160 ) / 220 );
+        var arc = lerp( 90, 20, ( t - 5160 ) / 220 );
+        var obj = instance_create( 400 + random_range( -radius, radius ), 50, objAlgKunai );
+        obj.direction = random_range( 225 - arc, 315 + arc );
+        obj.image_angle = obj.direction
+        obj.speed = random_range( speedMin, speedMax );
+        obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+    } else if( t == 5380 ) {
+        with( objAlgKunai ) {
+            instance_change( objAlgKunaiDisappearing, true );
+        }
+    }
+    
+    if( t == 5395 ) {
+        repeat( 70 ) {
+            var obj = instance_create( 600, 200, objAlgSphereCurve );
+            obj.direction = random( 360 );
+            obj.speed = random_range( 2, 3 ) * random_range( 2, 3 );
+            obj.curveSpeed = random_range( 5, 10 );
+            obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.image_xscale = 0.6;
+            obj.image_yscale = 0.6;
+            
+            obj = instance_create( 200, 200, objAlgSphereCurve );
+            obj.direction = random( 360 );
+            obj.speed = random_range( 2, 3 ) * random_range( 2, 3 );
+            obj.curveSpeed = random_range( 5, 10 );
+            obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.image_xscale = 0.6;
+            obj.image_yscale = 0.6;
+        }
+    } else if( t &gt;= 5440 &amp;&amp; t &lt; 5540 ) {
+        var count = 1;
+        with( objAlgSphereCurve ) {
+            if( curveSpeed != 0 &amp;&amp; count &gt; 0 ) {
+                curveSpeed = 0;
+                gravity = 0.15;
+                count--;
+            }
+        }
+    } else if( t == 5540 ) {
+        with( objAlgSphereCurve ) {
+            curveSpeed = 0;
+            gravity = 0.15;
+        }
+    } 
+    
+    if( t &gt;= 5495 &amp;&amp; t &lt; 5545 ) {
+        if( t % 5 == 0 ) {
+            var obj = instance_create( 200, 0, objAlgKunai );
+            obj.direction = lerp( 180, 360, ( t - 5495 ) / 55 );
+            obj.image_angle = obj.direction
+            obj.speed = random_range( 4, 5 );
+            obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+            
+            obj = instance_create( 600, 0, objAlgKunai );
+            obj.direction = lerp( 360, 180, ( t - 5495 ) / 55 );
+            obj.image_angle = obj.direction
+            obj.speed = random_range( 4, 5 );
+            obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+        }
+    } else if( t == 5674 ) {
+        with( objAlgKunai ) {
+            instance_change( objAlgKunaiDisappearing, true );
+        }
+    } else if( t == 5724 ) {
+        with( objAlgKunai ) {
+            instance_change( objAlgKunaiDisappearing, true );
+        }
+    } else if( t &gt;= 5550 &amp;&amp; t &lt; 5774 ) {
+        var speedMin = lerp( 3, 20, ( t - 5550 ) / 174 );
+        var speedMax = lerp( 8, 20, ( t - 5550 ) / 174 );
+        var arc = lerp( 90, 20, ( t - 5550 ) / 224 );
+        var obj = instance_create( 400, 0, objAlgKunai );
+        obj.direction = random_range( 225 - arc, 315 + arc );
+        obj.image_angle = obj.direction
+        obj.speed = random_range( speedMin, speedMax );
+        obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+    } else if( t == 5774 ) {
+        with( objAlgKunai ) {
+            instance_change( objAlgKunaiDisappearing, true );
+        }
+    }
+
     segment = 7;
 }
 </string>
