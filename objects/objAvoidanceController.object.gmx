@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-//t = 1930;
+//t = 4240;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -309,8 +309,59 @@ if( t &gt;= 2705 &amp;&amp; t &lt; 3470 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 5 (1:09 - 1:25) Bitchin Bach
+            <string>///Alg Segment 5 (1:09 - 1:25) Bitchin Bach
 if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( ( t - 3470 ) % 11 == 0 ) {
+        var initialAngle = random_range( 70, 110 );
+        var spawnX = random_range( 50, 750 );
+        var colorHsv = random( 255 );
+        var spawnCount = 10;
+        if( t &gt;= 3856 ) {
+            spawnCount = 6;
+        }
+        repeat( spawnCount ) {
+            var obj = instance_create( spawnX, 608, objAlgA5Sphere );
+            obj.speed = random_range( 10, 16 );
+            obj.gravity = 0.15;
+            obj.direction = initialAngle + random_range( -10, 10 );
+            var color = ( colorHsv + random_range( -10, 10 ) ) % 255;
+            if( color &lt; 0 ) {
+                color += 255;
+            }
+            obj.image_blend = make_colour_hsv( color, 255, 255 );
+            obj.shouldKill = false;
+            obj.image_alpha = 0.1;
+        }
+    }
+    
+    if( t &gt;= 3856 &amp;&amp; ( t - 3856 ) % 25 == 0 ) {
+        var spawnCenter = lerp( 150, 650, scrGetPlayerX() / 800 );
+        var spawnX = spawnCenter + random_range( -150, 150 );
+        var spawnY = random_range( 50, 150 );
+        var spawnAngle = scrTargetPlayer( spawnX, spawnY );
+        scrMakeCircle( spawnX, spawnY, spawnAngle, 10, 12, objAlgA5Kunai );
+    }
+    
+    if( t == 4239 ) {
+        with( objAlgA5Sphere ) {
+            instance_change( objAlgSphere, false );
+            image_alpha = 1;
+            shouldKill = false;
+            if( x &lt; scrGetPlayerX() ) {
+                hspeed = -10;
+            } else {
+                hspeed = 10;
+            }
+        }
+        with( objAlgA5Kunai ) {
+            direction = scrTargetPlayer( x, y ) + 180;
+        }
+    }
+    
     segment = 5;
 }
 </string>
@@ -338,7 +389,11 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
     segment = 6;
     
     if( t &gt;= 4241 &amp;&amp; t &lt; 4337 ) {
-        repeat(2) {
+        var count = 2;
+        if( t % 5 == 0 ) {
+            count = 1;
+        }
+        repeat(count) {
             a = instance_create(128+random(16), 128+random(16), objArchBullet1);
             a.tag = 1;
             a.direction = random(360);
@@ -351,7 +406,7 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     if( t &gt;= 4433 &amp;&amp; t &lt; 4528 ) {
-        if( t % 3 == 0 ) {
+        if( t % 4 == 0 ) {
             a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
             a.tag = 2;
             a.direction = random(360);
@@ -376,28 +431,32 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction + 110;
-                a.speed = speed;
-                a.image_xscale = image_xscale - 1/8;
-                a.image_yscale = image_yscale - 1/8;
+                a.speed = speed * 0.98;
+                a.image_xscale = image_xscale - 1/7;
+                a.image_yscale = image_yscale - 1/7;
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction - 110;
-                a.speed = speed;
-                a.image_xscale = image_xscale - 1/8;
-                a.image_yscale = image_yscale - 1/8;
+                a.speed = speed * 0.98;
+                a.image_xscale = image_xscale - 1/7;
+                a.image_yscale = image_yscale - 1/7;
             }
             instance_destroy();
         }
     }
     if( t &gt;= 4624 &amp;&amp; t &lt; 4816 ) {
-        repeat(2) {
+        var count = 2;
+        if( t % 10 == 0 ) {
+            count = 1;
+        }
+        repeat(count) {
             a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
             a.direction = random(360);
             a.speed = random_range(5,10);
             a.tag = 3;
         }
     }
-    if( t &gt;= 4816 &amp;&amp; t &lt; 5000 ) {
+    if( t &gt;= 4816 &amp;&amp; t &lt; 5000 &amp;&amp; t % 10 != 0 ) {
         a = instance_create(128+random(16), 128+random(16), objArchBullet1);
         a.direction = random(360);
         a.speed = random_range(7,13);

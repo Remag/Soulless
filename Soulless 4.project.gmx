@@ -194,6 +194,7 @@
       <script>scripts\scrMakeCircle.gml</script>
       <script>scripts\scrZorgoMakeShape.gml</script>
       <script>scripts\scrTargetPlayer.gml</script>
+      <script>scripts\scrGetPlayerX.gml</script>
     </scripts>
     <script>scripts\scrKennySnekAddBodyPart.gml</script>
     <scripts name="Redire">
@@ -338,12 +339,15 @@
       <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
       <object>objects\objAlgSphereCurve</object>
+      <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgKunai</object>
+      <object>objects\objAlgKunaiTrail</object>
       <object>objects\objAlgKunaiAppearing</object>
+      <object>objects\objAlgA5Kunai</object>
       <object>objects\objAlgKunaiDisappearing</object>
     </objects>
     <object>objects\objSelect</object>

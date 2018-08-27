@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objAlgKunai</parentName>
+  <parentName>objAlg</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,11 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-image_alpha = 0;
 shouldKill = false;
-minSpeed = 1;
-friction = 0.2;
-curve = random_range( -10, 10 );
 </string>
           </argument>
         </arguments>
@@ -54,15 +50,9 @@ curve = random_range( -10, 10 );
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( speed &lt; minSpeed ) {
-    speed = minSpeed;
-    curve = 0;
-}
-direction += curve;
-if( image_alpha &lt; 1 ) {
-    image_alpha += 0.04;
-} else {
-    shouldKill = true;
+image_alpha -= 0.2;
+if( image_alpha &lt;= 0 ) {
+    instance_destroy();
 }
 </string>
           </argument>
