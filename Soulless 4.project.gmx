@@ -37,11 +37,6 @@
     </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="Redire">
-      <sprite>sprites\sprRedireBeat</sprite>
-      <sprite>sprites\sprRedireFireBullet</sprite>
-      <sprite>sprites\sprRedireFrostBullet</sprite>
-    </sprites>
     <sprites name="world">
       <sprite>sprites\sprCamera</sprite>
       <sprite>sprites\sprPlayMusic</sprite>
@@ -143,6 +138,11 @@
       <sprite>sprites\sprAlgSphereColored</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
     </sprites>
+    <sprites name="Redire">
+      <sprite>sprites\sprRedireFrostBullet</sprite>
+      <sprite>sprites\sprRedireArrow</sprite>
+      <sprite>sprites\sprRedireBall</sprite>
+    </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\sprite135</sprite>
@@ -195,10 +195,10 @@
       <script>scripts\scrZorgoMakeShape.gml</script>
       <script>scripts\scrTargetPlayer.gml</script>
     </scripts>
-    <script>scripts\scrRedireAvoidanceControl.gml</script>
-    <script>scripts\scrRedireSpawnBeat.gml</script>
-    <script>scripts\scrRedireSpawnBullet.gml</script>
     <script>scripts\scrKennySnekAddBodyPart.gml</script>
+    <scripts name="Redire">
+      <script>scripts\scrRedireS3CreateCircle.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
@@ -323,11 +323,14 @@
       <object>objects\objArchBullet1</object>
     </objects>
     <objects name="Redire">
-      <object>objects\objRedireBeatSpawner</object>
-      <object>objects\objRedireFireBullet</object>
-      <object>objects\objRedireFrostBullet</object>
-      <object>objects\objRedireBeat</object>
-      <object>objects\objRedireBeatButNotKiller</object>
+      <objects name="Segment3">
+        <object>objects\oRedireS3CircleBullet</object>
+        <object>objects\oRedireS3Arrow</object>
+        <object>objects\oRedireS3ArrowSpawner</object>
+      </objects>
+      <object>objects\oRedireProjectile</object>
+      <object>objects\oRedireBoundProjectile</object>
+      <object>objects\oRedireSpawner</object>
     </objects>
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>

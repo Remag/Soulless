@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-//t = 5005;
+//t = 1930;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -61,6 +61,10 @@ if( global.debugMode ) {
         room_speed = 1000;
     } else {
         room_speed = 50;
+    }
+    
+    if( keyboard_check_pressed( vk_space ) ) {
+        show_debug_message( string( t ) );
     }
 }
 </string>
@@ -207,9 +211,36 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 3 (0:39 - 0:54) Tradeoff
+            <string>///Red Segment 3 (0:39 - 0:54) Tradeoff
 if( t &gt;= 1930 &amp;&amp; t &lt; 2705 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 3;
+    // Left corner circles.
+    if( t == 1945 || t == 2040 || t == 2135 || t == 2230 ) {
+        scrRedireS3CreateCircle( 0, 0 );
+    }
+    // Right corner circles.
+    if( t == 1990 || t == 2085 || t == 2180 || t == 2275 ) {
+        scrRedireS3CreateCircle( 800, 1 );
+    }
+    
+    // Ceiling arrows.
+    if( t == 1930 ) {
+        instance_create( 0, 0, oRedireS3ArrowSpawner );
+    }
+    
+    // Density increase before the slowdown.
+    if( t == 2220 ) {
+        with( oRedireS3ArrowSpawner ) {
+            spawnPeriod = 0.6;
+        }
+    }
+ 
+    // Slow down.
+    if( t == 2330 ) {
+        with( oRedireS3CircleBullet ) { speed = 1.3; }
+        with( oRedireS3Arrow ) { speed = 1.3; }
+        with( oRedireS3ArrowSpawner ) { instance_destroy(); }
+    }
 }
 </string>
           </argument>
