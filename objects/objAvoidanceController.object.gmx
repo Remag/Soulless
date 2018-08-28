@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-//t = 4240;
+t = 7695;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -709,6 +709,43 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>///Segment 11 (2:34 - 2:49) Throwback C
 if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t%48 == 15 ) {
+        var a_xx = random_range(128, 256);
+        var a_yy = random_range(64, 192);
+        var a_image_index = irandom(2);
+        
+        var a_rng = point_direction(a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        for( i = 0; i &lt; 360; i+=45 ) {
+            for( j = 0; j &lt; 45; j+=3 ) {
+                a = instance_create(a_xx, a_yy, objArchBullet2);
+                a.direction = i + j + a_rng;
+                a.speed = 6;
+                a.alarm[0] = 10;
+                a.image_index = a_image_index;
+                if( j &gt;= 22 ) {
+                    a.alarm[1] = 24;
+                } else {
+                    a.alarm[2] = 24;
+                }
+            }
+        }
+        
+        var a_rng = point_direction(800-a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        for( i = 0; i &lt; 360; i+=45 ) {
+            for( j = 0; j &lt; 45; j+=3 ) {
+                a = instance_create(800-a_xx, a_yy, objArchBullet2);
+                a.direction = i + j + a_rng;
+                a.speed = 6;
+                a.alarm[0] = 10;
+                a.image_index = a_image_index;
+                if( j &gt;= 22 ) {
+                    a.alarm[1] = 24;
+                } else {
+                    a.alarm[2] = 24;
+                }
+            }
+        }
+    }
     segment = 11;
 }
 </string>

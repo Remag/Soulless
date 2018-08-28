@@ -133,6 +133,7 @@
       <sprite>sprites\sprArchBullet4</sprite>
       <sprite>sprites\sprArchBullet5</sprite>
       <sprite>sprites\sprArchBullet6</sprite>
+      <sprite>sprites\sprArchBullet7</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgSphereColored</sprite>
@@ -322,6 +323,7 @@
     <object>objects\objAvatar</object>
     <objects name="Arch">
       <object>objects\objArchBullet1</object>
+      <object>objects\objArchBullet2</object>
     </objects>
     <objects name="Redire">
       <objects name="Segment3">
