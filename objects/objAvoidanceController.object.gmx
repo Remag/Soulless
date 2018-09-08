@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 0;
+t = 9230;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -159,10 +159,10 @@ if( t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
             <kind>1</kind>
             <string>///Alg Segment 2 (0:23 - 0:39) Descent To Madness
 if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) {
-
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
+    
     if( t == 1165 ) {
         seg2Counter = 0;
     }
@@ -822,7 +822,7 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 11 (2:34 - 2:49) Throwback C
+            <string>/// Arch. Segment 11 (2:34 - 2:49) Throwback C
 if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) {
     if( t%48 == 15 ) {
         var a_xx = random_range(128, 256);
@@ -907,8 +907,24 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9230 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 13 (3:05 - 3:12) Fatalism A
-if( t &gt;= 9230 &amp;&amp; t &lt; 9615 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Alg Segment 13 (3:05 - 3:12) Fatalism A
+if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( ( t - 9230 ) % 48 &lt; 24 ) {
+        repeat( 2 ) {
+            var scale = random_range( 0.4, 1 );
+            var obj = instance_create( random( 800 ), 0, objAlgSphereSlowing );
+            obj.speed = 0.1;
+            obj.direction = point_direction( obj.x, obj.y, random_range( -600, 1400 ), 608 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    }
+
     segment = 13;
 }
 </string>
@@ -932,7 +948,7 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9615 &amp;&amp; instance_exists(objPlayer) ) 
           <argument>
             <kind>1</kind>
             <string>///Segment 14 (3:12 - 3:20) Fatalism B
-if( t &gt;= 9615 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 14;
 }
 </string>
