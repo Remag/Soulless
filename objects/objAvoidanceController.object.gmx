@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 5005;
+t = 0;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -319,7 +319,7 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
         var initialAngle = random_range( 70, 110 );
         var spawnX = random_range( 50, 750 );
         var colorHsv = random( 255 );
-        var spawnCount = 10;
+        var spawnCount = 9;
         if( t &gt;= 3856 ) {
             spawnCount = 6;
         }
@@ -638,7 +638,7 @@ if( t &gt;= 5005 &amp;&amp; t &lt; 5775 &amp;&amp; instance_exists(objPlayer) ) 
           <argument>
             <kind>1</kind>
             <string>///Alg Segment 8 (1:55 - 2:11) Chorus 2
-if( t &gt;= 5775 &amp;&amp; t &lt; 6535 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
@@ -707,11 +707,17 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6535 &amp;&amp; instance_exists(objPlayer) ) 
             obj.storedSpeed = random_range( 4, 8 );
             obj.gravity_direction = random_range( 260, 280 );
         }
-    } else if( t &lt; 6535 ) {
+    } else if( t &lt; 6534 ) {
         with( objAlgWave ) {
             speed = storedSpeed;
             friction = 0.3;
             gravity = 0.3;
+        }
+    } else if( t == 6534 ) {
+        with( objAlgWave ) {
+            speed = storedSpeed;
+            friction = 0;
+            gravity = 0;
         }
     }
     segment = 8;
@@ -736,8 +742,40 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6535 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 9 (2:11 - 2:19) Throwback A
-if( t &gt;= 6535 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Alg Segment 9 (2:11 - 2:19) Throwback A
+if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( t == 6545 ) {
+        segment9Angle = random( 360 );
+        scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgSphereCurve );
+        with( objAlgSphereCurve ) {
+            curveSpeed = 3;
+            image_blend = make_color_rgb( 255, 255, 0 );
+        }
+    }
+    
+    if( t % 5 == 0 ) {
+        with( objAlgSphereCurve ) {
+            var obj = instance_create( x, y, objAlgSphere );
+            obj.image_blend = image_blend;
+            obj.direction = direction + other.segment9Angle;
+            obj.speed = 0.1;
+            obj.friction = -0.19;
+        }
+        segment9Angle += random_range( 10, 15 );
+    }
+    
+    with( objAlgSphereCurve ) {
+        x -= 1.5;
+    }
+    if( t == 6920 ) {
+        with( objAlgSphereCurve ) {
+            instance_destroy();
+        }
+    }
     segment = 9;
 }
 </string>
