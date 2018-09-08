@@ -138,6 +138,7 @@
     <sprites name="Algeran">
       <sprite>sprites\sprAlgSphereColored</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
+      <sprite>sprites\sprAlgWaveColored</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireFrostBullet</sprite>
@@ -346,6 +347,7 @@
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereBounceTop</object>
+      <object>objects\objAlgWave</object>
       <object>objects\objAlgKunai</object>
       <object>objects\objAlgKunaiTrail</object>
       <object>objects\objAlgKunaiAppearing</object>
