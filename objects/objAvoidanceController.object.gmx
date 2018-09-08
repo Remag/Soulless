@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 9230;
+t = 8465;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -885,6 +885,56 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>///Segment 12 (2:49 - 3:05) Robotic Bridge
 if( t &gt;= 8465 &amp;&amp; t &lt; 9230 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t &lt; 9100 ) {
+        arch_spd = random_range(5,15);
+        arch_xx = 800-32;
+        arch_rpt = choose(1,2);
+        if( (t &gt; 8673 &amp;&amp; t &lt; 8858) || ( t &gt; 9050 &amp;&amp; t &lt; 9230 ) ) {
+            arch_spd *= 0.5;
+            arch_rpt = 1;
+            if( t &lt; 8858 ) {
+                arch_xx = lerp(800-32, 32, (t - 8673)/(8858-8673));
+            }
+        }
+        if( t &gt;= 8858 ) {
+            arch_xx = 32;
+        }
+        if( t == 8673 || t == 9050 ) {
+            with(objArchBullet1) {
+                speed *= 0.5;
+            }
+        }
+        if( t == 8858 ) {
+            with(objArchBullet1) {
+                speed *= 2;
+            }
+        }
+        repeat(arch_rpt) {
+            a = instance_create(arch_xx, 32, objArchBullet1);
+            a.direction = random_range(180, 360);
+            a.speed = arch_spd;
+            a.image_xscale = random_range(0.25,1);
+            a.image_yscale = a.image_xscale;
+            a.image_index = irandom(2);
+        }
+    }
+    if(t == 9147 ||
+       t == 9173 ||
+       t == 9194 ||
+       t == 9201 ||
+       t == 9207 ||
+       t == 9214 ||
+       t == 9220 ) {
+        arch_xx = random_range(32,800-32);
+        repeat(15) {
+            a = instance_create(arch_xx, 32, objArchBullet1);
+            a.direction = random_range(180, 360);
+            a.speed = random_range(5,14);
+            a.image_xscale = random_range(0.25,1);
+            a.image_yscale = a.image_xscale;
+            a.image_index = irandom(2);
+        }
+    }
     segment = 12;
 }
 </string>
