@@ -353,6 +353,7 @@
       <object>objects\objAlgKunaiTrail</object>
       <object>objects\objAlgKunaiAppearing</object>
       <object>objects\objAlgA5Kunai</object>
+      <object>objects\objAlgA14Kunai</object>
       <object>objects\objAlgKunaiDisappearing</object>
     </objects>
     <object>objects\objSelect</object>

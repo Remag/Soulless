@@ -947,8 +947,41 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 14 (3:12 - 3:20) Fatalism B
+            <string>///Alg Segment 14 (3:12 - 3:20) Fatalism B
 if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( t == 9613 ) {
+        seg14CircleCount = 10;
+        seg14CircleAngle = random( 360 );
+    }
+    
+    var tPhase = ( t - 9615 ) % 96;
+    if( t &lt; 9999 &amp;&amp; tPhase &lt; 25 ) {
+        var scale = random_range( 0.4, 1 );
+        var obj = instance_create( random( 800 ), 0, objAlgSphereSlowing );
+        obj.speed = 0.1;
+        obj.direction = 270;
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    }
+    
+    if( tPhase &gt;= 48 &amp;&amp; tPhase % 3 == 0 ) {
+        scrMakeCircle( 400, 100, seg14CircleAngle, seg14CircleCount, 10, objAlgA14Kunai ); 
+        if( tPhase % 12 == 9 ) {
+            seg14CircleCount += 10;
+            seg14CircleAngle = random( 360 );
+        }
+    }
+    
+    if( tPhase == 0 ) {
+        seg14CircleAngle = random( 360 );
+        seg14CircleCount = 10;
+    }
+
     segment = 14;
 }
 </string>
