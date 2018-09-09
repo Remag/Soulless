@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 8465;
+t = 9230;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -883,7 +883,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 12 (2:49 - 3:05) Robotic Bridge
+            <string>///Arch. Segment 12 (2:49 - 3:05) Robotic Bridge
 if( t &gt;= 8465 &amp;&amp; t &lt; 9230 &amp;&amp; instance_exists(objPlayer) ) {
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
@@ -1054,8 +1054,42 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 15 (3:20 - 3:28) Fatalism C
+            <string>///Alg Segment 15 (3:20 - 3:28) Fatalism C
 if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    if( t == 10000 ) {
+        seg15SpawnOffset = choose( 0, 50 );
+    }
+    
+    var tPhase = ( t - 10000 ) % 96;
+    if( tPhase == 0 ) {
+        seg15SpawnOffset = abs( seg15SpawnOffset - 50 );
+    }
+    if( t &lt; 10380 &amp;&amp; tPhase &lt; 25 &amp;&amp; tPhase % 2 == 0 ) {
+        for( var i = 0; i &lt; 9; i++ ) {
+            var scale = random_range( 0.4, 1 );
+            var spawnX = i * 100 + seg15SpawnOffset;
+            var obj = instance_create( spawnX, 0, objAlgSphereSlowing );
+            obj.speed = 0.1;
+            obj.direction = 270 + random_range( -1, 1 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    }
+    
+    if( tPhase &gt;= 48 &amp;&amp; tPhase % 3 == 0 ) {
+        repeat( 3 ) {
+            var obj = instance_create( random( 800 ), 0, objAlgWave );
+            obj.speed = random_range( 6, 10 );
+            obj.direction = random_range( 180, 360 );
+            obj.image_blend = make_colour_hsv( 100, 255, 255 );
+        }
+    }
+    
     segment = 15;
 }
 </string>
