@@ -1264,8 +1264,44 @@ if( t &gt;= 11530 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 20 (4:06 - 4:13) Machinations B
+            <string>///Alg Segment 20 (4:06 - 4:13) Machinations B
 if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var tPhase = ( t - 12290 ) % 96;
+    if( t &lt; 12578 ) {
+        if( tPhase == 0 ) {
+            var offset = random_range( -20, 0 );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 35, objAlgA20Sphere );
+            var lineSpeed = random_range( 10, 20 );
+            if( t == 12290 ) {
+                lineSpeed = 10;
+            }
+            with( objAlgA20Sphere ) {
+                if( frame == 0 ) {
+                    speed = lineSpeed;
+                    direction = 270;
+                }
+            }
+        }
+    } else if( t &lt; 12670 ) {
+        if( tPhase == 0 || tPhase == 31 || tPhase == 62 ) {
+            var offset = random_range( -20, 0 );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 30, objAlgA20Sphere );
+            var lineSpeed = lerp( 35, 20, tPhase / 62 );
+            with( objAlgA20Sphere ) {
+                if( frame == 0 ) {
+                    speed = lineSpeed;
+                    direction = 270;
+                    framePoint1 = 10;
+                    framePoint2 = 31;
+                }
+            }
+        }
+    }
+    
     segment = 20;
 }
 </string>
@@ -1288,8 +1324,51 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 21 (4:13 - 4:21) Machinations B
+            <string>///Alg Segment 21 (4:13 - 4:21) Machinations B
 if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var tPhase = ( t - 12675 ) % 96;
+    if( t &lt; 12963 ) {
+        if( tPhase == 0 ) {
+            var offset = random_range( -20, 0 );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 25, objAlgA20Sphere );
+            var lineSpeed = random_range( 10, 20 );
+            if( t == 12675 ) {
+                lineSpeed = 10;
+            }
+            
+            with( objAlgA20Sphere ) {
+                if( frame == 0 ) {
+                    speed = lineSpeed;
+                    direction = 270;
+                }
+            }
+        }
+    } else if( t &lt; 13059 ) {
+        if( tPhase == 0 || tPhase == 31 || tPhase == 62 ) {
+            var offset = random_range( -20, 0 );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 25, objAlgA20Sphere );
+            var lineSpeed = lerp( 35, 20, tPhase / 62 );
+            with( objAlgA20Sphere ) {
+                if( frame == 0 ) {
+                    speed = lineSpeed;
+                    direction = 270;
+                    framePoint1 = 10;
+                    framePoint2 = 31;
+                }
+            }
+        }
+    }
+    
+    if( ( t - 12675 ) % 2 == 0 ) {
+        var obj = instance_create( 400, 0, objAlgWave );
+        obj.vspeed = random_range( 9, 10 );
+        obj.direction = random_range( 180, 360 );
+        obj.image_blend = make_colour_rgb( 128, 128, 256 );
+    }
     segment = 21;
 }
 </string>

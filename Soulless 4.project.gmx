@@ -344,6 +344,7 @@
       <object>objects\objAlgSphereCurve</object>
       <object>objects\objAlgSphereSlowing</object>
       <object>objects\objAlgA5Sphere</object>
+      <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgSphereBounce</object>
