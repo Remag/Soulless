@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 11530;
+t = 17775;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1559,8 +1559,68 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 29 (5:55 - 6:11) Malevolence
+            <string>///Alg Segment 29 (5:55 - 6:11) Malevolence
 if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    if( t == 17775 ) {
+        seg29Speed = random_range( 0.5, 19 );
+    }
+    var scale = 0.85;
+    seg29Speed = ( seg29Speed + random_range( 3, 15 ) ) % 19 + 0.5;
+    if( t &lt; 17967 ) {
+        if( t % 3 != 0 ) {
+            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            obj.dirInc = 2;
+            obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    } else if( t &lt; 18159 ) {
+        if( t % 3 != 0 ) {
+            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            obj.dirInc = -2;
+            obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    } else if( t &lt; 18351 ) {
+        if( t % 3 != 0 ) {
+            var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            if( obj.x &gt; 400 ) {
+                obj.dirInc = 2;
+                obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            } else {
+                obj.dirInc = -2;
+                obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            }
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    } else {
+        if( t % 3 != 0 ) {
+            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            if( obj.x &gt; 400 ) {
+                obj.dirInc = 2;
+                obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            } else {
+                obj.dirInc = -2;
+                obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            }
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        }
+    }
+
     segment = 29;
 }
 </string>

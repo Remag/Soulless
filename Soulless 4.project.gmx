@@ -350,6 +350,7 @@
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgWave</object>
+      <object>objects\objAlgA29Wave</object>
       <object>objects\objAlgKunai</object>
       <object>objects\objAlgKunaiTrail</object>
       <object>objects\objAlgKunaiAppearing</object>
