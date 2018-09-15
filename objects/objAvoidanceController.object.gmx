@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 17775;
+t = 6925;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -798,8 +798,37 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 10 (2:19 - 2:34) Throwback B
+            <string>///Arch. Segment 10 (2:19 - 2:34) Throwback B
 if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) {
+    if(t == 6925 ||
+       t == 6979 ||
+       t == 7027 ||
+       t == 7122 ||
+       t == 7173 ||
+       t == 7221 ||
+       t == 7317 ||
+       t == 7366 ||
+       t == 7415 ||
+       t == 7509 ||
+       t == 7556 ||
+       t == 7604 ) {
+        a = instance_create(objPlayer.x, objPlayer.y, objArchBullet3);
+        a.vspeed = -random_range(30,45);
+        a.gravity = -a.vspeed/25;
+    }
+    if( t == 7082 || t == 7468 || t == 7661 ) {
+        a = instance_create(0,0,objArchEventWall1);
+        a.hspeed = 20;
+    }
+    if( t == 7276 || t == 7661 ) {
+        a = instance_create(832,0,objArchEventWall1);
+        a.hspeed = -20;
+    }
+    if( t == 7681 ) {
+        with(objArchEventWall1) {
+            instance_destroy();
+        }
+    }
     segment = 10;
 }
 </string>
@@ -824,16 +853,17 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>/// Arch. Segment 11 (2:34 - 2:49) Throwback C
 if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) {
-    if( t%48 == 15 ) {
+    if( t%48 == 15 &amp;&amp; t &lt; 8440 ) {
         var a_xx = random_range(128, 256);
         var a_yy = random_range(64, 192);
         var a_image_index = irandom(2);
         
-        var a_rng = point_direction(a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        var a_rng = random_range(-4,4);
+        var a_dir = point_direction(a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25 + a_rng;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
                 a = instance_create(a_xx, a_yy, objArchBullet2);
-                a.direction = i + j + a_rng;
+                a.direction = i + j + a_dir;
                 a.speed = 6;
                 a.alarm[0] = 10;
                 a.image_index = a_image_index;
@@ -845,11 +875,11 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         
-        var a_rng = point_direction(800-a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        var a_dir = point_direction(800-a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25 - a_rng;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
                 a = instance_create(800-a_xx, a_yy, objArchBullet2);
-                a.direction = i + j + a_rng;
+                a.direction = i + j + a_dir;
                 a.speed = 6;
                 a.alarm[0] = 10;
                 a.image_index = a_image_index;

@@ -325,6 +325,8 @@
     <objects name="Arch">
       <object>objects\objArchBullet1</object>
       <object>objects\objArchBullet2</object>
+      <object>objects\objArchBullet3</object>
+      <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
       <objects name="Segment3">
