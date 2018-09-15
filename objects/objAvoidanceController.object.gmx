@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 6925;
+t = 29680;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1595,60 +1595,52 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     if( t == 17775 ) {
-        seg29Speed = random_range( 0.5, 19 );
+        seg29Speed = random_range( 0.5, 24 );
     }
     var scale = 0.85;
-    seg29Speed = ( seg29Speed + random_range( 3, 15 ) ) % 19 + 0.5;
+    seg29Speed = ( seg29Speed + random_range( 3, 20 ) ) % 24 + 0.5;
     if( t &lt; 17967 ) {
-        if( t % 3 != 0 ) {
-            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
+        var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        obj.dirInc = 2;
+        obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    } else if( t &lt; 18159 ) {
+        var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        obj.dirInc = -2;
+        obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    } else if( t &lt; 18351 ) {
+        var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        if( obj.x &gt; 400 ) {
             obj.dirInc = 2;
             obj.image_blend = make_colour_hsv( 192, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-        }
-    } else if( t &lt; 18159 ) {
-        if( t % 3 != 0 ) {
-            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
+        } else {
             obj.dirInc = -2;
             obj.image_blend = make_colour_hsv( 135, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
         }
-    } else if( t &lt; 18351 ) {
-        if( t % 3 != 0 ) {
-            var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
-            if( obj.x &gt; 400 ) {
-                obj.dirInc = 2;
-                obj.image_blend = make_colour_hsv( 192, 255, 255 );
-            } else {
-                obj.dirInc = -2;
-                obj.image_blend = make_colour_hsv( 135, 255, 255 );
-            }
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-        }
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
     } else {
-        if( t % 3 != 0 ) {
-            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
-            if( obj.x &gt; 400 ) {
-                obj.dirInc = 2;
-                obj.image_blend = make_colour_hsv( 192, 255, 255 );
-            } else {
-                obj.dirInc = -2;
-                obj.image_blend = make_colour_hsv( 135, 255, 255 );
-            }
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
+        var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        if( obj.x &gt; 400 ) {
+            obj.dirInc = 2;
+            obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        } else {
+            obj.dirInc = -2;
+            obj.image_blend = make_colour_hsv( 135, 255, 255 );
         }
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
     }
 
     segment = 29;
@@ -2081,8 +2073,38 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 47 (9:54 - 10:09) Dark Solo A
+            <string>///Alg Segment 47 (9:54 - 10:09) Dark Solo A
 if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var obj = instance_create( random_range( 350, 450 ), 0, objAlgA47Wave );
+    obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+    obj.phase = random( 2 * pi );
+    obj.image_alpha = 0;
+    
+    if( t - 29680 &lt; 192 ) {
+        obj.direction = random_range( 180, 360 );
+        obj.speed = random_range( 8, 10 );
+    } else if( t - 29680 &lt; 192 * 2 ) {
+        obj.minAlpha = 0;
+        obj.maxAlpha = 0.75;
+        obj.direction = random_range( 195, 345 );
+        obj.speed = random_range( 7, 9 );
+    } else if( t - 29680 &lt; 192 * 3 ) {
+        obj.minAlpha = 0;
+        obj.maxAlpha = 0.5;
+        obj.direction = random_range( 205, 335 );
+        obj.speed = random_range( 6, 8 );
+    } else {
+        obj.minAlpha = 0;
+        obj.maxAlpha = 0.25;
+        obj.direction = random_range( 215, 325 );
+        obj.speed = random_range( 5, 7 );
+    }
+    
+    
     segment = 47;
 }
 </string>
