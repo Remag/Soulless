@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 29680;
+t = 27375;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1955,6 +1955,78 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Segment 42 (9:08 - 9:15) Breaker Solo
 if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var tPhase = t - 27375;
+    var seg42UpperBound = 608;
+    var seg42LowerBound = 128;
+    
+    if( tPhase == 0 ) {
+        seg42MaxY = 0;
+        seg42H = random( 255 );
+        scrMakeLine( 0, 0, 800, 0, 50, objAlgA42Line );
+    }
+    
+    var seg42PrevMaxY = seg42MaxY;
+    
+    if( tPhase &lt; 50 ) {
+        seg42MaxY = lerp( 0, 1, tPhase / 50 );
+    } else if( tPhase &lt; 90 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 50 ) / 40 );
+    } else if( tPhase &lt; 150 ) {
+        seg42MaxY = lerp( 0, 1, ( tPhase - 90 ) / 60 );
+    } else if( tPhase &lt; 190 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 150 ) / 40 );
+    } else if( tPhase &lt; 250 ) {
+        seg42MaxY = lerp( 0, 1, ( tPhase - 190 ) / 60 );
+    } else if( tPhase &lt; 290 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 250 ) / 40 );
+    } else if( tPhase &lt; 350 ) {
+        seg42MaxY = lerp( 0, 1, ( tPhase - 290 ) / 60 );
+    }
+    
+    if( tPhase &lt; 50 ) {
+        seg42MaxY = ( 1 - cos( pi * seg42MaxY ) ) / 2 * seg42UpperBound;
+    } else {
+        seg42MaxY = seg42LowerBound + ( 1 - cos( pi * seg42MaxY ) ) / 2 * ( seg42UpperBound - seg42LowerBound);
+    }
+    
+    if( tPhase &lt; 300 &amp;&amp; tPhase % 2 == 0 &amp;&amp; seg42MaxY &gt; 48 ) {
+        repeat( 2 ) {
+            var obj = instance_create( random( 800 ), random_range( 48, min( seg42MaxY, 110 ) ), objAlgA42Bounce );
+            obj.direction = random( 360 );
+            obj.speed = 2.5;
+        }
+    }
+    
+    seg42H += lerp( 15, 1, seg42MaxY / seg42UpperBound );
+    var seg42Blend = make_color_hsv( seg42H, 255, 255 );
+    with( objAlgA42Line ) {
+        y = other.seg42MaxY;
+        image_blend = seg42Blend;
+    }
+    
+    with( objAlgA42Bounce ) {
+        if( other.seg42MaxY &lt; 608 ) {
+            y = ( y - 32 ) / seg42PrevMaxY * other.seg42MaxY + 32;
+        }
+        image_blend = seg42Blend;
+        if( y &gt; other.seg42MaxY ) {
+            y = other.seg42MaxY;
+        }
+    }
+    
+    if( tPhase == 300 ) {
+        with( objAlgA42Line ) {
+            instance_change( objAlgSphereDisappearing, true );
+        }
+        
+        with( objAlgA42Bounce ) {
+            instance_change( objAlgSphereDisappearing, true );
+        } 
+    }
     segment = 42;
 }
 </string>
