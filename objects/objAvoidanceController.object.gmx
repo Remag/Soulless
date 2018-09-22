@@ -1953,7 +1953,7 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 42 (9:08 - 9:15) Breaker Solo
+            <string>///Alg Segment 42 (9:08 - 9:15) Breaker Solo
 if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1973,18 +1973,18 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
     
     if( tPhase &lt; 50 ) {
         seg42MaxY = lerp( 0, 1, tPhase / 50 );
-    } else if( tPhase &lt; 90 ) {
-        seg42MaxY = lerp( 1, 0, ( tPhase - 50 ) / 40 );
+    } else if( tPhase &lt; 80 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 50 ) / 30 );
     } else if( tPhase &lt; 150 ) {
-        seg42MaxY = lerp( 0, 1, ( tPhase - 90 ) / 60 );
-    } else if( tPhase &lt; 190 ) {
-        seg42MaxY = lerp( 1, 0, ( tPhase - 150 ) / 40 );
+        seg42MaxY = lerp( 0, 1, ( tPhase - 80 ) / 70 );
+    } else if( tPhase &lt; 180 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 150 ) / 30 );
     } else if( tPhase &lt; 250 ) {
-        seg42MaxY = lerp( 0, 1, ( tPhase - 190 ) / 60 );
-    } else if( tPhase &lt; 290 ) {
-        seg42MaxY = lerp( 1, 0, ( tPhase - 250 ) / 40 );
+        seg42MaxY = lerp( 0, 1, ( tPhase - 180 ) / 70 );
+    } else if( tPhase &lt; 280 ) {
+        seg42MaxY = lerp( 1, 0, ( tPhase - 250 ) / 30 );
     } else if( tPhase &lt; 350 ) {
-        seg42MaxY = lerp( 0, 1, ( tPhase - 290 ) / 60 );
+        seg42MaxY = lerp( 0, 1, ( tPhase - 280 ) / 70 );
     }
     
     if( tPhase &lt; 50 ) {
@@ -2049,8 +2049,52 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 43 (9:15 - 9:23) Enlightened Solo A
+            <string>///Alg Segment 43 (9:15 - 9:23) Enlightened Solo A
 if( t &gt;= 27760 &amp;&amp; t &lt; 28145 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    var tPhase = t - 27760;
+    if( tPhase = 0 ) {
+        var color = random( 255 );
+        seg43Color1 = make_color_hsv( color, 255, 255 );
+        seg43Color2 = make_color_hsv( (color + 255 / 3 ) % 255, 255, 255 );
+        seg43Color3 = make_color_hsv( (color + 255 * 2 / 3 ) % 255, 255, 255 );
+    }
+    
+    if( tPhase == 0 ) {
+        seg43X = 400;
+    } else if( tPhase == 96 ) {
+        seg43X = 32;
+    } else if( tPhase == 96 * 2 ) {
+        seg43X = 800 - 32;
+    } else if( tPhase == 96 * 3 ) {
+        seg43X = 400;
+    }
+    
+    repeat( 4 ) {
+        var obj = instance_create( seg43X, 32, objAlgA43Sphere );
+        if( tPhase &lt; 96 ) {
+            obj.speed = 12;
+        } else if( tPhase &lt; 96 * 3 ) {
+            obj.speed = 15;
+        } else {
+            obj.speed = 12;
+        }
+        obj.direction = random( 360 );
+        obj.disFrame = choose( 10, 15, 60 );
+        if( obj.disFrame == 10 ) {
+            obj.image_blend = seg43Color1;
+        } else if( obj.disFrame == 15 ) {
+            obj.image_blend = seg43Color2;
+        } else {
+            obj.image_blend = seg43Color3;
+        }
+        if( tPhase &gt;= 96 * 3 ) {
+            obj.rotationSpeed = choose( -0.75, 0.75 );
+        }
+    }
+    
     segment = 43;
 }
 </string>
