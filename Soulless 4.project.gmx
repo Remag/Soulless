@@ -345,9 +345,13 @@
       <object>objects\objAlgSphere</object>
       <object>objects\objAlgSphereCurve</object>
       <object>objects\objAlgSphereSlowing</object>
+      <object>objects\objAlgSphereTrail</object>
       <object>objects\objAlgSphereDisappearing</object>
       <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgA43Sphere</object>
+      <object>objects\objAlgA35Sphere</object>
+      <object>objects\objAlgA35Sphere2</object>
+      <object>objects\objAlgA35Sphere3</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA42Line</object>
       <object>objects\objAlgA42Bounce</object>
@@ -364,6 +368,7 @@
       <object>objects\objAlgA5Kunai</object>
       <object>objects\objAlgA14Kunai</object>
       <object>objects\objAlgA19Kunai</object>
+      <object>objects\objAlgA35Kunai</object>
       <object>objects\objAlgKunaiDisappearing</object>
     </objects>
     <object>objects\objSelect</object>
