@@ -144,6 +144,7 @@
       <sprite>sprites\sprRedireFrostBullet</sprite>
       <sprite>sprites\sprRedireArrow</sprite>
       <sprite>sprites\sprRedireBall</sprite>
+      <sprite>sprites\sprRedireWideArrow</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -201,6 +202,7 @@
     <script>scripts\scrKennySnekAddBodyPart.gml</script>
     <scripts name="Redire">
       <script>scripts\scrRedireS3CreateCircle.gml</script>
+      <script>scripts\scrRedireS18CreateFuzzyCircle.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -333,6 +335,19 @@
         <object>objects\oRedireS3CircleBullet</object>
         <object>objects\oRedireS3Arrow</object>
         <object>objects\oRedireS3ArrowSpawner</object>
+      </objects>
+      <objects name="Segment16">
+        <object>objects\oRedireS16TopSpawner</object>
+        <object>objects\oRedireS16SideSpawner</object>
+        <object>objects\oRedireS16Arrow</object>
+        <object>objects\oRedireS16Ball</object>
+      </objects>
+      <objects name="Segment17">
+        <object>objects\oRedireS17SideSpawner</object>
+        <object>objects\oRedireS17TopSpawner</object>
+      </objects>
+      <objects name="Segment18">
+        <object>objects\oRedireS18CircleBullet</object>
       </objects>
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
