@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 10000;
+t = 6545;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -390,7 +390,7 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( t &gt;= 4241 &amp;&amp; t &lt; 4337 ) {
         var count = 2;
-        if( t % 5 == 0 ) {
+        if( t % 3 == 0 ) {
             count = 1;
         }
         repeat(count) {
@@ -398,6 +398,8 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
             a.tag = 1;
             a.direction = random(360);
             a.speed = random_range(4,12);
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
         }
         with(objArchBullet1) {
             if( tag == 1 ) {
@@ -406,7 +408,7 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     if( t &gt;= 4433 &amp;&amp; t &lt; 4528 ) {
-        if( t % 4 == 0 ) {
+        if( t % 5 == 0 ) {
             a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
             a.tag = 2;
             a.direction = random(360);
@@ -426,18 +428,24 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     if( t == 4528 || t == 4552 || t == 4577 || t == 4600 ) {
+        var speedRangeMin = 0.98;
+        var splitY = 2000;
+        if( t == 4600 ) {
+            speedRangeMin = 0.50;
+            splitY = 608;
+        }
         with(objArchBullet1) {
-            if( tag == 2 ) {
+            if( tag == 2 &amp;&amp; y &lt; splitY ) {
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction + 110;
-                a.speed = speed * 0.98;
+                a.speed = speed * random_range( speedRangeMin, 0.98 );
                 a.image_xscale = image_xscale - 1/7;
                 a.image_yscale = image_yscale - 1/7;
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction - 110;
-                a.speed = speed * 0.98;
+                a.speed = speed * random_range( speedRangeMin, 0.98 );
                 a.image_xscale = image_xscale - 1/7;
                 a.image_yscale = image_yscale - 1/7;
             }
@@ -446,13 +454,15 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
     }
     if( t &gt;= 4624 &amp;&amp; t &lt; 4816 ) {
         var count = 2;
-        if( t % 10 == 0 ) {
+        if( t % 3 == 0 ) {
             count = 1;
         }
         repeat(count) {
             a = instance_create(800-128-random(16), 128+random(16), objArchBullet1);
             a.direction = random(360);
             a.speed = random_range(5,10);
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
             a.tag = 3;
         }
     }
@@ -460,6 +470,8 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         a = instance_create(128+random(16), 128+random(16), objArchBullet1);
         a.direction = random(360);
         a.speed = random_range(7,13);
+        a.image_xscale = 0.9;
+        a.image_yscale = 0.9;
         a.tag = 3;
     }
 }
@@ -749,7 +761,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     if( t == 6545 ) {
-        segment9Angle = random( 360 );
+        segment9Angle = 0;
         scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgSphereCurve );
         with( objAlgSphereCurve ) {
             curveSpeed = 3;
@@ -765,7 +777,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             obj.speed = 0.1;
             obj.friction = -0.19;
         }
-        segment9Angle += random_range( 10, 15 );
+        segment9Angle += random_range( 12, 13 );
     }
     
     with( objAlgSphereCurve ) {
@@ -918,7 +930,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9230 &amp;&amp; instance_exists(objPlayer) ) 
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
         arch_xx = 800-32;
-        arch_rpt = choose(1,2);
+        arch_rpt = 1;
         if( (t &gt; 8673 &amp;&amp; t &lt; 8858) || ( t &gt; 9050 &amp;&amp; t &lt; 9230 ) ) {
             arch_spd *= 0.5;
             arch_rpt = 1;
@@ -956,10 +968,10 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9230 &amp;&amp; instance_exists(objPlayer) ) 
        t == 9214 ||
        t == 9220 ) {
         arch_xx = random_range(32,800-32);
-        repeat(15) {
+        repeat(12) {
             a = instance_create(arch_xx, 32, objArchBullet1);
             a.direction = random_range(180, 360);
-            a.speed = random_range(5,14);
+            a.speed = random_range(5,13);
             a.image_xscale = random_range(0.25,1);
             a.image_yscale = a.image_xscale;
             a.image_index = irandom(2);
@@ -993,8 +1005,8 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    if( ( t - 9230 ) % 48 &lt; 24 ) {
-        repeat( 2 ) {
+    if( ( t - 9230 ) % 48 &lt; 24 &amp;&amp; ( t - 9230 ) % 2 == 0 ) {
+        repeat( 3 ) {
             var scale = random_range( 0.4, 1 );
             var obj = instance_create( random( 800 ), 0, objAlgSphereSlowing );
             obj.speed = 0.1;
@@ -1115,7 +1127,7 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
         repeat( 3 ) {
             var obj = instance_create( random( 800 ), 0, objAlgWave );
             obj.speed = random_range( 6, 10 );
-            obj.direction = random_range( 180, 360 );
+            obj.direction = random_range( 185, 365 );
             obj.image_blend = make_colour_hsv( 100, 255, 255 );
         }
     }

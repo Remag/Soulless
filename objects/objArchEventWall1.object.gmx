@@ -74,8 +74,10 @@
           <argument>
             <kind>1</kind>
             <string>with(other) {
-    hspeed += hspeed/16;
-    vspeed = -5;
+    if( y &lt; 608 - 32 ) {
+        hspeed += hspeed/16;
+        vspeed = -5;
+    }
 }
 </string>
           </argument>
