@@ -57,6 +57,7 @@ if( frame % 4 == 0 ) {
     obj.image_angle = obj.direction;
     obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
     obj.speed = random_range( 5, 6 );
+    obj.image_blend = image_blend;
 }
 
 </string>

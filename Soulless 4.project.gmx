@@ -362,6 +362,7 @@
       <object>objects\objAlgSphereSlowing</object>
       <object>objects\objAlgSphereTrail</object>
       <object>objects\objAlgSphereDisappearing</object>
+      <object>objects\objAlgA1SphereEffect</object>
       <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgA43Sphere</object>
       <object>objects\objAlgA35Sphere</object>
