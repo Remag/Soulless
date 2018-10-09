@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 17775;
+t = 23925;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -392,7 +392,9 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
             <string>///Arch. Segment 6 (1:25 - 1:40) Chorus 1
 if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 6;
-    
+    if( t == 4240 ) {
+        seg6Angle = random(360);
+    }
     if( t &gt;= 4241 &amp;&amp; t &lt; 4337 ) {
         var count = 2;
         if( t % 4 == 0 ) {
@@ -401,10 +403,11 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         repeat(count) {
             a = instance_create(128+random(16), 128+random(16), objArchBullet1);
             a.tag = 1;
-            a.direction = random(360);
+            a.direction = seg6Angle;
             a.speed = random_range(3,12);
-            a.image_xscale = 0.88;
-            a.image_yscale = 0.88;
+            a.image_xscale = 0.8;
+            a.image_yscale = 0.8;
+            seg6Angle += random_range( 40, 90 );
         }
         with(objArchBullet1) {
             if( tag == 1 ) {
@@ -468,7 +471,7 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
     if( t &gt;= 4816 &amp;&amp; t &lt; 5000 &amp;&amp; t % 10 != 0 ) {
         a = instance_create(128+random(16), 128+random(16), objArchBullet1);
         a.direction = random(360);
-        a.speed = random_range(6,12);
+        a.speed = random_range(7,12);
         a.image_xscale = 0.88;
         a.image_yscale = 0.88;
         a.tag = 3;
@@ -2080,8 +2083,159 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 37 (7:59 - 8:14) Remembrance C
+            <string>///Alg Segment 37 (7:59 - 8:14) Remembrance C
 if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) ) {
+if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var tPhase = t - 23925;
+    if( tPhase == 0 ) { 
+        seg37Angle = random( 360 );
+        seg37Rotation = 17;
+        var color = make_colour_hsv( random( 255 ), 255, 255 );        
+        var obj = instance_create( 800, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = - 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0.5 );
+        obj.image_blend = color;
+        
+    } else if( tPhase == 24 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );
+        var obj = instance_create( 0, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0.5 );
+        obj.image_blend = color;
+        
+    } else if( tPhase &gt;= 48 &amp;&amp; tPhase &lt; 96 ) { 
+        var counted = 3;
+        with( objAlgA37Sphere ) {
+            if( counted &gt; 0 &amp;&amp; !isMarked ) {
+                instance_change( objAlgA35Sphere2, false );
+                friction = -0.2;
+                direction = other.seg37Angle;
+                speed = 0.1;
+                isMarked = true;
+                counted--;
+                other.seg37Angle += other.seg37Rotation;
+            }
+        }
+    } else if( tPhase == 96 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );
+        var obj = instance_create( 0, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = 800 / 20;
+        obj.vspeed = random_range( -20, -10 );
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0.5 );
+        obj.image_blend = color;
+        
+    } else if( tPhase == 96 + 24 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );
+    
+        var obj = instance_create( 800, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = - 800 / 20;
+        obj.vspeed = random_range( -20, -10 );
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0.5 );
+        obj.image_blend = color;
+        
+    } else if( tPhase &gt;= 96 + 48 &amp;&amp; tPhase &lt; 96 + 96 ) { 
+        var counted = 3;
+        with( objAlgA37Sphere ) {
+            if( counted &gt; 0 &amp;&amp; !isMarked ) {
+                instance_change( objAlgA35Sphere2, false );
+                friction = -0.3;
+                direction = other.seg37Angle;
+                speed = 0.1;
+                isMarked = true;
+                counted--;
+                other.seg37Angle += other.seg37Rotation;
+            }
+        }
+    } else if( tPhase &gt;= 192 &amp;&amp; tPhase &lt; 364 ) { 
+        if( tPhase % 2 == 0 ) {
+            var obj = instance_create( random( 800 ), 0, objAlgA37Sphere2 );
+            obj.hspeed = random_range( -2, 2 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        }
+    }
+    
+    if( tPhase &gt;= 364 &amp;&amp; tPhase % 10 == 0 ) { 
+        var obj = instance_create( random( 800 ), 0, objAlgA37Sphere2 );
+        obj.hspeed = random_range( -2, 2 );
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+    }
+    
+    if( tPhase == 384 ) { 
+        seg37Angle = random( 360 );
+        seg37Rotation = 25;
+        var color = make_colour_hsv( random( 255 ), 255, 255 );        
+        var obj = instance_create( 800, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = - 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0 );
+        obj.image_blend = color;
+        obj.randomOffset = 15;
+        
+    } else if( tPhase == 384 + 24 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );        
+        var obj = instance_create( 0, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0 );
+        obj.image_blend = color;
+        obj.randomOffset = 15;
+        
+    } else if( tPhase &gt;= 384 + 48 &amp;&amp; tPhase &lt; 384 + 96 ) { 
+        var counted = 3;
+        with( objAlgA37Sphere ) {
+            if( counted &gt; 0 &amp;&amp; !isMarked ) {
+                instance_change( objAlgA35Sphere2, false );
+                friction = -0.2;
+                direction = other.seg37Angle;
+                speed = random_range( 0.1, 2 );
+                isMarked = true;
+                counted--;
+                other.seg37Angle += other.seg37Rotation;
+            }
+        }
+    } else if( tPhase == 384 + 96 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );        
+        var obj = instance_create( 0, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0 );
+        obj.image_blend = color;
+        obj.randomOffset = 15;
+        
+    } else if( tPhase == 480 + 24 ) { 
+        var color = make_colour_hsv( random( 255 ), 255, 255 );        
+        var obj = instance_create( 800, random_range( 204, 304 ), objAlgA37Spawner );
+        obj.hspeed = - 800 / 20;
+        obj.vspeed = -20;
+        obj.gravity = -obj.vspeed / 10 + random_range( -1, 0 );
+        obj.image_blend = color;
+        obj.randomOffset = 15;
+        
+    } else if( tPhase &gt;= 480 + 48 &amp;&amp; tPhase &lt; 480 + 96 ) { 
+        var counted = 3;
+        with( objAlgA37Sphere ) {
+            if( counted &gt; 0 &amp;&amp; !isMarked ) {
+                instance_change( objAlgA35Sphere2, false );
+                friction = -0.3;
+                direction = other.seg37Angle;
+                speed = random_range( 0.1, 2 );
+                isMarked = true;
+                counted--;
+                other.seg37Angle += other.seg37Rotation;
+            }
+        }
+    } else if( tPhase &gt;= 576 &amp;&amp; tPhase &lt; 768 ) { 
+        if( tPhase % 2 == 0 ) {
+            var obj = instance_create( random_range( -10, 810 ), 0, objAlgA37Sphere2 );
+            obj.hspeed = random_range( -2, 2 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        }
+    }
     segment = 37;
 }
 </string>

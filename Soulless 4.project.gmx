@@ -364,15 +364,18 @@
       <object>objects\objAlgSphereDisappearing</object>
       <object>objects\objAlgA1SphereEffect</object>
       <object>objects\objAlgA5Sphere</object>
-      <object>objects\objAlgA43Sphere</object>
+      <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA35Sphere</object>
       <object>objects\objAlgA35Sphere2</object>
       <object>objects\objAlgA35Sphere3</object>
-      <object>objects\objAlgA20Sphere</object>
+      <object>objects\objAlgA37Sphere</object>
+      <object>objects\objAlgA37Sphere2</object>
       <object>objects\objAlgA42Line</object>
       <object>objects\objAlgA42Bounce</object>
+      <object>objects\objAlgA43Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA6Spawner</object>
+      <object>objects\objAlgA37Spawner</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgWave</object>
