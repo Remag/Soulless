@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 23925;
+t = 0;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2231,7 +2231,12 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
         }
     } else if( tPhase &gt;= 576 &amp;&amp; tPhase &lt; 768 ) { 
         if( tPhase % 2 == 0 ) {
-            var obj = instance_create( random_range( -10, 810 ), 0, objAlgA37Sphere2 );
+            var obj = instance_create( random( 800 ), 0, objAlgA37Sphere2 );
+            obj.hspeed = random_range( -2, 2 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        }
+        if( tPhase % 10 == 5 ) { 
+            var obj = instance_create( random( 800 ), 0, objAlgA37Sphere2 );
             obj.hspeed = random_range( -2, 2 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
