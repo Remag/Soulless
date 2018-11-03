@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 16240;
+t = 17775;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1687,12 +1687,12 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
     segment = 27;
     
     if( t % 96 == 16 &amp;&amp; t &lt; 16910 ) {
-        a = instance_create(400, 128, objArchBullet5);
+        a = instance_create(400, 228, objArchBullet5);
         a.direction = 0;
-        a.speed = 20;
-        a = instance_create(400, 128, objArchBullet5);
+        a.speed = 23;
+        a = instance_create(400, 228, objArchBullet5);
         a.direction = 180;
-        a.speed = 20;
+        a.speed = 23;
     }
 }
 </string>
@@ -1718,13 +1718,19 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
             <string>///Arch. Segment 28 (5:40 - 5:55) Mercy
 if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 28;
-    if( t &lt; 17401 ) {
-        a = instance_create(400, 304, objArchBullet4);
-        a.image_index = 1;
-        a.rspd = random_range(2,8);
-    } else {
-        a = instance_create(400, 304, objArchBullet4);
-        a.rspd = 4;
+    if( t % 10 != 0 ) {
+        if( t &lt; 17401 ) {
+            a = instance_create(400, 304, objArchBullet4);
+            a.image_index = 1;
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
+            a.rspd = random_range(2,8);
+        } else {
+            a = instance_create(400, 304, objArchBullet4);
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
+            a.rspd = 4;
+        }
     }
 }
 </string>
@@ -1753,10 +1759,10 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     if( t == 17775 ) {
-        seg29Speed = random_range( 0.5, 26 );
+        seg29Speed = random_range( 0.5, 29 );
     }
     var scale = 0.85;
-    seg29Speed = ( seg29Speed + random_range( 3, 22 ) ) % 26 + 0.5;
+    seg29Speed = ( seg29Speed + random_range( 3, 22 ) ) % 29 + 0.5;
     if( t &lt; 17967 ) {
         var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
         obj.speed = seg29Speed;
