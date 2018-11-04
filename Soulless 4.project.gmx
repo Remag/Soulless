@@ -353,6 +353,10 @@
       <objects name="Segment18">
         <object>objects\oRedireS18CircleBullet</object>
       </objects>
+      <objects name="Segment23">
+        <object>objects\oRedireS23Ball</object>
+        <object>objects\oRedireS23BallSpawner</object>
+      </objects>
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
       <object>objects\oRedireSpawner</object>

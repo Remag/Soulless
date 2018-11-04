@@ -25,5 +25,6 @@
     <frame index="2">images\sprRedireBall_2.png</frame>
     <frame index="3">images\sprRedireBall_3.png</frame>
     <frame index="4">images\sprRedireBall_4.png</frame>
+    <frame index="5">images\sprRedireBall_5.png</frame>
   </frames>
 </sprite>
