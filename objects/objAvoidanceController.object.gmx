@@ -3039,9 +3039,9 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
         if( t % 3 == 1 ) {
             var xDiff = lerp( 0, 24, ( phaseT % 24 ) / 24 );
             var color = make_colour_hsv( random( 255 ), 255, 255 );
-            var obj = instance_create( seg56PlayerX + xDiff, 608 - 16, objAlgA56Sphere );
+            var obj = instance_create( seg56PlayerX + xDiff, 608 - 16, objAlgA54Sphere );
             obj.image_blend = color;
-            obj = instance_create( seg56PlayerX - xDiff, 608 - 16, objAlgA56Sphere );
+            obj = instance_create( seg56PlayerX - xDiff, 608 - 16, objAlgA54Sphere );
             obj.image_blend = color;
         }
     }
