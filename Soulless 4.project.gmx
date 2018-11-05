@@ -370,7 +370,9 @@
       <object>objects\objAlgSphereSlowing</object>
       <object>objects\objAlgSphereTrail</object>
       <object>objects\objAlgSphereDisappearing</object>
+      <object>objects\objAlgSphereDisappearing2</object>
       <object>objects\objAlgSphereBounce</object>
+      <object>objects\objAlgSphereWrap</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgA1SphereEffect</object>
       <object>objects\objAlgA5Sphere</object>
@@ -384,6 +386,7 @@
       <object>objects\objAlgA42Line</object>
       <object>objects\objAlgA42Bounce</object>
       <object>objects\objAlgA43Sphere</object>
+      <object>objects\objAlgA56Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgA37Spawner</object>
