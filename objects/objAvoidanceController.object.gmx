@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 33525;
+t = 0;
 //t = 13075;
 
 segment = 1; //Номер сегмента (для дебага)
@@ -1639,6 +1639,7 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
             <string>///Red Segment 24 (4:45 - 4:54) Reminiscence D
 if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 24;
+    t = 16240;
 }
 </string>
           </argument>
@@ -1875,6 +1876,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 30 (6:11 - 6:57) Sickness A &amp; B &amp; C
 if( t &gt;= 18545 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 30;
+    t = 22380;
 }
 </string>
           </argument>
@@ -2176,6 +2178,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 36 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 36;
+    t = 23925;
 }
 </string>
           </argument>
@@ -2380,6 +2383,7 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
             <string>///Segment 38 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 38;
+    t = 27375;
 }
 </string>
           </argument>
@@ -2642,6 +2646,7 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 44 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 44;
+    t = 29680;
 }
 </string>
           </argument>
@@ -2768,6 +2773,7 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 48 (10:09 - 10:24) Dark Solo B
 if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 48;
+    t = 33525;
 }
 </string>
           </argument>
