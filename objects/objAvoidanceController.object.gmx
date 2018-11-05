@@ -1556,6 +1556,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         with( objAlgA22Sphere ) {
             shouldBounce = false;
             direction = scrTargetPlayer( x, y ) + 180;
+            gravity = -0.10;
         }
         
         with( objAlgWave ) {
@@ -1586,7 +1587,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 23 (4:37 - 4:45) Reminiscence C
+            <string>///Red Segment 23 (4:37 - 4:45) Reminiscence C
 if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 23;
     
@@ -1635,7 +1636,7 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 24 (4:45 - 4:54) Reminiscence D
+            <string>///Red Segment 24 (4:45 - 4:54) Reminiscence D
 if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 24;
 }
@@ -1743,14 +1744,29 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
             <string>///Arch. Segment 28 (5:40 - 5:55) Mercy
 if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 28;
-    if( t % 10 != 0 ) {
-        if( t &lt; 17401 ) {
+    if( t &lt; 17401 ) {
+        if( t % 2 == 0 ) {
             a = instance_create(400, 304, objArchBullet4);
             a.image_index = 1;
             a.image_xscale = 0.9;
             a.image_yscale = 0.9;
             a.rspd = random_range(2,8);
-        } else {
+        }
+        if( t &gt; 17205 &amp;&amp; t % 10 != 0 ) {
+            a = instance_create(400, 304, objArchBullet4);
+            a.image_index = 1;
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
+            a.rspd = random_range(2,8);
+        }
+    } else {
+        if( t % 2 == 0 ) {
+            a = instance_create(400, 304, objArchBullet4);
+            a.image_xscale = 0.9;
+            a.image_yscale = 0.9;
+            a.rspd = 4;
+        }
+        if( t &gt; 17588 &amp;&amp; t % 5 != 0 ) {
             a = instance_create(400, 304, objArchBullet4);
             a.image_xscale = 0.9;
             a.image_yscale = 0.9;
@@ -1787,49 +1803,51 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         seg29Speed = random_range( 0.5, 29 );
     }
     var scale = 0.85;
-    seg29Speed = ( seg29Speed + random_range( 3, 22 ) ) % 29 + 0.5;
-    if( t &lt; 17967 ) {
-        var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
-        obj.speed = seg29Speed;
-        obj.direction = 90;
-        obj.dirInc = 2;
-        obj.image_blend = make_colour_hsv( 192, 255, 255 );
-        obj.image_xscale = scale;
-        obj.image_yscale = scale;
-    } else if( t &lt; 18159 ) {
-        var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
-        obj.speed = seg29Speed;
-        obj.direction = 90;
-        obj.dirInc = -2;
-        obj.image_blend = make_colour_hsv( 135, 255, 255 );
-        obj.image_xscale = scale;
-        obj.image_yscale = scale;
-    } else if( t &lt; 18351 ) {
-        var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
-        obj.speed = seg29Speed;
-        obj.direction = 90;
-        if( obj.x &gt; 400 ) {
+    seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
+    if( t % 10 != 0 ) {
+        if( t &lt; 17967 ) {
+            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
             obj.dirInc = 2;
             obj.image_blend = make_colour_hsv( 192, 255, 255 );
-        } else {
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        } else if( t &lt; 18159 ) {
+            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
             obj.dirInc = -2;
             obj.image_blend = make_colour_hsv( 135, 255, 255 );
-        }
-        obj.image_xscale = scale;
-        obj.image_yscale = scale;
-    } else {
-        var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
-        obj.speed = seg29Speed;
-        obj.direction = 90;
-        if( obj.x &gt; 400 ) {
-            obj.dirInc = 2;
-            obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+        } else if( t &lt; 18351 ) {
+            var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            if( obj.x &gt; 400 ) {
+                obj.dirInc = 2;
+                obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            } else {
+                obj.dirInc = -2;
+                obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            }
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
         } else {
-            obj.dirInc = -2;
-            obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
+            obj.speed = seg29Speed;
+            obj.direction = 90;
+            if( obj.x &gt; 400 ) {
+                obj.dirInc = 2;
+                obj.image_blend = make_colour_hsv( 192, 255, 255 );
+            } else {
+                obj.dirInc = -2;
+                obj.image_blend = make_colour_hsv( 135, 255, 255 );
+            }
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
         }
-        obj.image_xscale = scale;
-        obj.image_yscale = scale;
     }
 
     segment = 29;
