@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 13075;
+t = 15800;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1685,9 +1685,28 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 26 (5:17 - 5:25) Victory Verse O
+            <string>///Arch. Segment 26 (5:17 - 5:25) Victory Verse O
 if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 26;
+    
+    if(t == 15864 ||
+       t == 15962 ||
+       t == 16058 ||
+       t == 16151 ) {
+        a = instance_create(400, 200, objArchBullet6);
+        a.direction = point_direction(objPlayer.x, objPlayer.y, 400, 304);
+        a.speed = 3;
+        a.hspeed = -a.hspeed;
+    }
+    if( t == 16239 ) {
+        with(objArchBullet6) {
+            instance_destroy();
+        }
+        with(objArchBullet1) {
+            direction = point_direction(objPlayer.x, objPlayer.y, x, y);
+            speed = 10;
+        }
+    }
 }
 </string>
           </argument>
@@ -1720,6 +1739,15 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
         a = instance_create(400, 228, objArchBullet5);
         a.direction = 180;
         a.speed = 23;
+    }
+    
+    if( t &gt; 16917 &amp;&amp; t &lt; 16974 &amp;&amp; t%6 == 0 ) {
+        repeat(2) {
+            a = instance_create(random_range(100, 700), random_range(32,256), objArchBullet5_2);
+            a.direction = 270 + random_range(-40, 40);
+            a.speed = random_range(1,3);
+            a.special = 1;
+        }
     }
 }
 </string>
