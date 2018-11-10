@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 0;
+t = 4240;
 //t = 13075;
 
 segment = 1; //Номер сегмента (для дебага)
@@ -449,10 +449,8 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     if( t == 4528 || t == 4552 || t == 4577 || t == 4600 ) {
-        var speedRangeMin = 0.98;
         var splitY = 2000;
         if( t == 4600 ) {
-            speedRangeMin = 0.50;
             splitY = 608;
         }
         with(objArchBullet1) {
@@ -460,13 +458,23 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) 
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction + 110;
-                a.speed = speed * random_range( speedRangeMin, 0.98 );
+                if( other.t == 4600 ) {
+                    var modifier = lerp( 0.5, 1, point_distance( x, y, 800, 0 ) / 800 );
+                    a.speed = speed * modifier;
+                } else {
+                    a.speed = speed * 0.98;
+                }
                 a.image_xscale = image_xscale - 1/7;
                 a.image_yscale = image_yscale - 1/7;
                 a = instance_create(x, y, objArchBullet1);
                 a.tag = 2;
                 a.direction = direction - 110;
-                a.speed = speed * random_range( speedRangeMin, 0.98 );
+                if( other.t == 4600 ) {
+                    var modifier = lerp( 0.5, 1, point_distance( x, y, 800, 0 ) / 800 );
+                    a.speed = speed * modifier;
+                } else {
+                    a.speed = speed * 0.98;
+                }
                 a.image_xscale = image_xscale - 1/7;
                 a.image_yscale = image_yscale - 1/7;
             }
@@ -946,22 +954,22 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
         arch_spd = random_range(5,15);
         arch_xx = 800-32;
         arch_rpt = 1;
-        if( (t &gt; 8673 &amp;&amp; t &lt; 8858) || ( t &gt; 9050 &amp;&amp; t &lt; 9230 ) ) {
+        if( (t &gt; 8657 &amp;&amp; t &lt; 8849) || ( t &gt; 9041 &amp;&amp; t &lt; 9230 ) ) {
             arch_spd *= 0.5;
             arch_rpt = 1;
-            if( t &lt; 8858 ) {
+            if( t &lt; 8849 ) {
                 arch_xx = lerp(800-32, 32, (t - 8673)/(8858-8673));
             }
         }
-        if( t &gt;= 8858 ) {
+        if( t &gt;= 8849 ) {
             arch_xx = 32;
         }
-        if( t == 8673 || t == 9050 ) {
+        if( t == 8657 || t == 9041 ) {
             with(objArchBullet1) {
                 speed *= 0.5;
             }
         }
-        if( t == 8858 ) {
+        if( t == 8849 ) {
             with(objArchBullet1) {
                 speed *= 2;
             }
@@ -975,13 +983,13 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             a.image_index = irandom(2);
         }
     }
-    if(t == 9147 ||
-       t == 9173 ||
-       t == 9194 ||
-       t == 9201 ||
-       t == 9207 ||
-       t == 9214 ||
-       t == 9220 ) {
+    if(t == 9137 ||
+       t == 9163 ||
+       t == 9184 ||
+       t == 9191 ||
+       t == 9197 ||
+       t == 9204 ||
+       t == 9210 ) {
         arch_xx = random_range(32,800-32);
         repeat(20) {
             a = instance_create(arch_xx, 32, objArchBullet1);
