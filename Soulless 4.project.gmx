@@ -198,6 +198,7 @@
       <script>scripts\scrZorgoMakeShape.gml</script>
       <script>scripts\scrTargetPlayer.gml</script>
       <script>scripts\scrGetPlayerX.gml</script>
+      <script>scripts\scrGetPlayerY.gml</script>
     </scripts>
     <script>scripts\scrKennySnekAddBodyPart.gml</script>
     <scripts name="Redire">
@@ -376,9 +377,11 @@
       <object>objects\objAlgSphereWrap</object>
       <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgA1SphereEffect</object>
+      <object>objects\objAlgA2Spawn</object>
       <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA22Sphere</object>
+      <object>objects\objAlgA25Sphere</object>
       <object>objects\objAlgA35Sphere</object>
       <object>objects\objAlgA35Sphere2</object>
       <object>objects\objAlgA35Sphere3</object>
@@ -389,6 +392,7 @@
       <object>objects\objAlgA43Sphere</object>
       <object>objects\objAlgA54Sphere</object>
       <object>objects\objAlgSpawner</object>
+      <object>objects\objAlgA2Spawner</object>
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgA37Spawner</object>
       <object>objects\objAlgWave</object>
