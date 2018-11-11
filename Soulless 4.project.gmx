@@ -359,6 +359,12 @@
         <object>objects\oRedireS23Ball</object>
         <object>objects\oRedireS23BallSpawner</object>
       </objects>
+      <objects name="Segment24">
+        <object>objects\oRedireS24Spawner</object>
+        <object>objects\oRedireS24Bullet</object>
+        <object>objects\oRedireS24ExplosionTrigger</object>
+        <object>objects\oRedireS24FountainBullet</object>
+      </objects>
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
       <object>objects\oRedireSpawner</object>
