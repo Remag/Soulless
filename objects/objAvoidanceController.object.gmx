@@ -2070,26 +2070,26 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         if( scrGetPlayerX() &lt; 400 ) {
             seg30Side = 800;
         }
+        seg30Dir = point_direction( seg30Side, 0, scrGetPlayerX(), scrGetPlayerY() );
     }
     if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 36 ) {
-        var dir = point_direction( seg30Side, 0, scrGetPlayerX(), scrGetPlayerY() );
         var obj = instance_create( seg30Side, 0, objAlgKunai );
         obj.image_blend = seg30Color;
-        obj.direction = dir;
+        obj.direction = seg30Dir;
         obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
         obj.image_xscale = 2;
         obj.image_yscale = 2;
         
         obj = instance_create( seg30Side, 0, objAlgKunai );
         obj.image_blend = seg30Color;
-        obj.direction = dir + 25;
+        obj.direction = seg30Dir + 25;
         obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
         obj.image_xscale = 2;
         obj.image_yscale = 2;
         
         obj = instance_create( seg30Side, 0, objAlgKunai );
         obj.image_blend = seg30Color;
-        obj.direction = dir - 25;
+        obj.direction = seg30Dir - 25;
         obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
         obj.image_xscale = 2;
         obj.image_yscale = 2;
