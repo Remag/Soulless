@@ -134,6 +134,7 @@
       <sprite>sprites\sprArchBullet5</sprite>
       <sprite>sprites\sprArchBullet6</sprite>
       <sprite>sprites\sprArchBullet7</sprite>
+      <sprite>sprites\sprArchBullet8</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgSphereColored</sprite>
@@ -334,6 +335,10 @@
       <object>objects\objArchBullet5_2</object>
       <object>objects\objArchBullet5_3</object>
       <object>objects\objArchBullet6</object>
+      <object>objects\objArchBullet7</object>
+      <object>objects\objArchBullet7_2</object>
+      <object>objects\objArchBullet8</object>
+      <object>objects\objArchBullet8_2</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
