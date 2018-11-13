@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 19697;
+t = 0;
+t = 18545;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2029,10 +2030,79 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 30 (6:11 - 6:34) Sickness A
+            <string>///Alg Segment 30 (6:11 - 6:34) Sickness A
 if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    var phaseT = t - 18545;
+    if( phaseT % 48 == 0 ) {
+        with( objAlgSphere ) {
+            speed += friction * 48;
+        }
+        if( phaseT == 48 * 15 ) {
+            with( objAlgSphere ) {
+                friction *= 1.9;
+            }
+        }
+        if( phaseT != 48 * 7 ) {
+            var color = make_color_hsv( random( 255 ), 255, 255 );
+            var spawnX = random_range( 150, 650 );
+            var spawnY = random( 150 );
+            repeat( 90 ) {
+                var obj = instance_create( spawnX, spawnY, objAlgSphere );
+                obj.image_blend = color;
+                obj.direction = random( 360 );
+                if( phaseT &lt; 48 * 15 ) {
+                    obj.speed = random_range( 3, 12 );
+                    obj.friction = obj.speed / 96;
+                } else {
+                    obj.speed = random_range( 5, 16 );
+                    obj.friction = obj.speed / 96;
+                    obj.friction *= 1.9;
+                }
+            }
+        }
+    }
+    if( phaseT == 48 * 7 ) {
+        seg30Color = make_color_hsv( random( 255 ), 255, 255 );
+        seg30Side = 0;
+        if( scrGetPlayerX() &lt; 400 ) {
+            seg30Side = 800;
+        }
+    }
+    if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 36 ) {
+        var dir = point_direction( seg30Side, 0, scrGetPlayerX(), scrGetPlayerY() );
+        var obj = instance_create( seg30Side, 0, objAlgKunai );
+        obj.image_blend = seg30Color;
+        obj.direction = dir;
+        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        
+        obj = instance_create( seg30Side, 0, objAlgKunai );
+        obj.image_blend = seg30Color;
+        obj.direction = dir + 25;
+        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        
+        obj = instance_create( seg30Side, 0, objAlgKunai );
+        obj.image_blend = seg30Color;
+        obj.direction = dir - 25;
+        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    }
+    
+    if( t == 19696 ) {
+        with( objAlgSphere ) {
+            friction = -0.2;
+            direction = point_direction( x, y, scrGetPlayerX(), scrGetPlayerY() ) + choose( -90, 90 );
+        }
+    }
+    
     segment = 30;
-    //t = 20850;
 }
 </string>
           </argument>
