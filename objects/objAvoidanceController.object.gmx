@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 4240;
-t = 20850;
+t = 19697;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2030,10 +2029,10 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 30 (6:11 - 6:57) Sickness A &amp; B &amp; C
-if( t &gt;= 18545 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 30 (6:11 - 6:34) Sickness A
+if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 30;
-    //t = 22380;
+    //t = 20850;
 }
 </string>
           </argument>
@@ -2055,9 +2054,57 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 31 (6:57 - 7:05) Savagery Of Angels
-if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 31 (6:34 - 6:49) Sickness B
+if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 31;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Segment 32 (6:49 - 6:57) Sickness C
+if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 32;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arch. Segment 33 (6:57 - 7:05) Savagery Of Angels
+if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 33;
     
     if( t % 24 == 0 ) {
         xx = objPlayer.x + random_range(-50, 50);
@@ -2093,56 +2140,8 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 32 (7:05 - 7:12) Savagery Of Angels
+            <string>///Segment 34 (7:05 - 7:12) Savagery Of Angels
 if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 32;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 33 (7:12 - 7:20) Memories Of A Machine
-if( t &gt;= 21615 &amp;&amp; t &lt; 22000 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 33;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 34 (7:20 - 7:28) Memories Of A Machine
-if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 34;
 }
 </string>
@@ -2165,7 +2164,55 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 35 (7:28 - 7:43) Remembrance A
+            <string>///Segment 35 (7:12 - 7:20) Memories Of A Machine
+if( t &gt;= 21615 &amp;&amp; t &lt; 22000 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 35;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Segment 36 (7:20 - 7:28) Memories Of A Machine
+if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 36;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alg Segment 37 (7:28 - 7:43) Remembrance A
 if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2324,7 +2371,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    segment = 35;
+    segment = 37;
 }
 </string>
           </argument>
@@ -2346,9 +2393,9 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 36 (7:43 - 7:59) Remembrance B
+            <string>///Segment 38 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 36;
+    segment = 38;
     t = 23925;
 }
 </string>
@@ -2371,7 +2418,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 37 (7:59 - 8:14) Remembrance C
+            <string>///Alg Segment 39 (7:59 - 8:14) Remembrance C
 if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) ) {
 if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2529,55 +2576,6 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
     }
-    segment = 37;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 38 (8:14 - 8:29) Remembrance D
-if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 38;
-    t = 27375;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 39 (8:29 - 8:45) The Calm Before The Storm
-if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 39;
 }
 </string>
@@ -2600,9 +2598,10 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 40 (8:45 - 8:52) Xyphos
-if( t &gt;= 26225 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 40 (8:14 - 8:29) Remembrance D
+if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 40;
+    t = 27375;
 }
 </string>
           </argument>
@@ -2624,8 +2623,8 @@ if( t &gt;= 26225 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 41 (8:52 - 9:08) Stepping Solo A &amp; B
-if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 41 (8:29 - 8:45) The Calm Before The Storm
+if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 41;
 }
 </string>
@@ -2648,7 +2647,55 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 42 (9:08 - 9:15) Breaker Solo
+            <string>///Segment 42 (8:45 - 8:52) Xyphos
+if( t &gt;= 26225 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 42;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Segment 43 (8:52 - 9:08) Stepping Solo A &amp; B
+if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 43;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alg Segment 44 (9:08 - 9:15) Breaker Solo
 if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2722,7 +2769,7 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
             instance_change( objAlgSphereDisappearing, true );
         } 
     }
-    segment = 42;
+    segment = 44;
 }
 </string>
           </argument>
@@ -2744,7 +2791,7 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 43 (9:15 - 9:23) Enlightened Solo A
+            <string>///Alg Segment 45 (9:15 - 9:23) Enlightened Solo A
 if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2792,55 +2839,6 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    segment = 43;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 44 (9:23 - 9:30) Enlightened Solo B
-if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 44;
-    t = 29680;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 45 (9:30 - 9:46) Solo Of A Robot A &amp; B
-if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 45;
 }
 </string>
@@ -2863,9 +2861,10 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 46 (9:46 - 9:54) Mosh Solo
-if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 46 (9:23 - 9:30) Enlightened Solo B
+if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 46;
+    t = 29680;
 }
 </string>
           </argument>
@@ -2887,7 +2886,55 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 47 (9:54 - 10:09) Dark Solo A
+            <string>///Segment 47 (9:30 - 9:46) Solo Of A Robot A &amp; B
+if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 47;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Segment 48 (9:46 - 9:54) Mosh Solo
+if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 48;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alg Segment 49 (9:54 - 10:09) Dark Solo A
 if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2919,55 +2966,6 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
     }
     
     
-    segment = 47;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 48 (10:09 - 10:24) Dark Solo B
-if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 48;
-    t = 33525;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Segment 49 (10:24 - 10:40) Q Solo
-if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 49;
 }
 </string>
@@ -2990,9 +2988,10 @@ if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 50 (10:40 - 10:55) Mourning Solo
-if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 50 (10:09 - 10:24) Dark Solo B
+if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 50;
+    t = 33525;
 }
 </string>
           </argument>
@@ -3014,8 +3013,8 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 51 (10:55 - 11:11) Murderous Solo A &amp; B
-if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Segment 51 (10:24 - 10:40) Q Solo
+if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 51;
 }
 </string>
@@ -3038,7 +3037,55 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 52 (11:11 - 11:33) Outro A &amp; B &amp; C
+            <string>///Segment 52 (10:40 - 10:55) Mourning Solo
+if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 52;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Segment 53 (10:55 - 11:11) Murderous Solo A &amp; B
+if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 53;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alg Segment 54 (11:11 - 11:33) Outro A &amp; B &amp; C
 if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3072,7 +3119,7 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         obj.image_alpha = 1;
         obj.friction = 5 / 400;
     }
-    segment = 52;
+    segment = 54;
 }
 </string>
           </argument>
@@ -3094,7 +3141,7 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 53 (11:33 - 11:57) Outro D &amp; E
+            <string>///Alg Segment 55 (11:33 - 11:57) Outro D &amp; E
 if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3155,7 +3202,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     }
-    segment = 53;
+    segment = 55;
 }
 </string>
           </argument>
@@ -3177,7 +3224,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 54 (11:57 - 12:19) Outro F
+            <string>///Alg Segment 56 (11:57 - 12:19) Outro F
 if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3229,7 +3276,7 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
             friction = -0.25;
         }
     }
-    segment = 54;
+    segment = 56;
 }
 </string>
           </argument>
@@ -3265,7 +3312,7 @@ if( t &gt;= 37075 ) {
         global.pb_segment = segment;
         scrSaveGame(false);
     }
-    segment = 55;
+    segment = 57;
 }
 </string>
           </argument>
