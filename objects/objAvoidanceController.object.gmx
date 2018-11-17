@@ -1992,8 +1992,8 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
             }
             obj.image_xscale = scale;
             obj.image_yscale = scale;
-        } else {
-            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 194 ), objAlgA29Wave );
+        } else if( t &lt; 18500 ) {
+            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 150 ), objAlgA29Wave );
             obj.speed = seg29Speed;
             obj.direction = 90;
             if( obj.x &gt; 400 ) {
@@ -2124,8 +2124,79 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 31 (6:34 - 6:49) Sickness B
+            <string>///Alg Segment 31 (6:34 - 6:49) Sickness B
 if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    if( t == 19697 ) {
+        seg31Angle = random( 360 );
+    }
+    var phaseT = t - 19697;
+    if( phaseT &lt; 96 ) {
+        repeat( 3 ) {
+            var obj = instance_create( 800, 404, objAlgA31Sphere );
+            obj.image_blend = make_color_hsv( 66, 255, 255 );
+            obj.direction = seg31Angle;
+            obj.speed = lerp( 3, 21, ( phaseT % 96 ) / 95 );
+            obj.image_xscale = 0.66;
+            obj.image_yscale = 0.66;
+            
+            seg31Angle += random_range( 60, 90 );
+        }
+    } else if( phaseT == 96 ) {
+        with( objAlgA31Sphere ) {
+            speed = 0.001;
+        }
+    } else if( phaseT &lt; 96 * 2 ) {
+        repeat( 3 ) {
+            var obj = instance_create( 100, 0, objAlgA31Sphere );
+            obj.image_blend = make_color_hsv( 127, 255, 255 );;
+            obj.direction = seg31Angle;
+            obj.speed = lerp( 3, 22, ( phaseT % 96 ) / 95 );
+            obj.image_xscale = 0.66;
+            obj.image_yscale = 0.66;
+            
+            seg31Angle += random_range( 60, 90 );
+        }
+    } else if( phaseT == 96 * 2 ) {
+        with( objAlgA31Sphere ) {
+            speed = 2;
+        }
+    } else if( phaseT &gt;= 96 * 4 &amp;&amp; phaseT &lt; 96 * 5 ) {
+        repeat( 2 ) {
+            var obj = instance_create( 700, 0, objAlgA31Sphere );
+            obj.image_blend = make_color_hsv( 166, 255, 255 );;
+            obj.direction = seg31Angle;
+            obj.speed = lerp( 3, 23, ( phaseT % 96 ) / 95 );
+            obj.image_xscale = 0.66;
+            obj.image_yscale = 0.66;
+            obj.angularVelocity = -0.1;
+            
+            seg31Angle += random_range( 60, 90 );
+        }
+    } else if( phaseT == 96 * 5 ) {
+        with( objAlgA31Sphere ) {
+            speed = 0.001;
+        }
+    } else if( phaseT &gt; 96 * 5 &amp;&amp; phaseT &lt; 96 * 6 ) {
+        repeat( 2 ) {
+            var obj = instance_create( 0, 504, objAlgA31Sphere );
+            obj.image_blend = make_color_hsv( 230, 255, 255 );;
+            obj.direction = seg31Angle;
+            obj.speed = lerp( 3, 20, ( phaseT % 96 ) / 95 );
+            obj.image_xscale = 0.66;
+            obj.image_yscale = 0.66;
+            obj.angularVelocity = -0.1;
+            
+            seg31Angle += random_range( 60, 90 );
+        }
+    } else if( phaseT == 96 * 6 ) {
+        with( objAlgA31Sphere ) {
+            speed = 2;
+        }
+    }
+    
     segment = 31;
 }
 </string>
@@ -2148,8 +2219,38 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 32 (6:49 - 6:57) Sickness C
+            <string>///Alg Segment 32 (6:49 - 6:57) Sickness C
 if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    if( t == 20465 ) {
+        seg32Color = random( 255 );
+    }
+    var phaseT = t - 20465;
+    var left = lerp( 0, 250, phaseT / 385 );
+    var right = lerp( 800, 550, phaseT / 385 );
+    
+    if( phaseT % 24 == 0 &amp;&amp; phaseT &lt; 384 ) {
+        var circle = scrMakeCircle( random_range( left, right ), 150, random( 360 ), 11, choose( 0.5, 1.5, 2.5, 3.5 ), objAlgSphere );
+        var color = random( 255 );
+        for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+            circle[i].image_blend = make_color_hsv( color, 255, 255 );
+            circle[i].gravity = 0.15;
+        }
+    }
+    
+    var obj = instance_create( left, 0, objAlgSphere );
+    obj.speed = 14;
+    obj.direction = random_range( 268, 272 );
+    obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
+    
+    obj = instance_create( right, 0, objAlgSphere );
+    obj.speed = 14;
+    obj.direction = random_range( 268, 272 );
+    obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
+    
+    seg32Color = ( seg32Color + 256 / 4 ) % 256
     segment = 32;
 }
 </string>
