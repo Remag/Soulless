@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 18545;
+t = 30450;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2567,7 +2567,6 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 38 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 38;
-    t = 23925;
 }
 </string>
           </argument>
@@ -2772,7 +2771,6 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
             <string>///Segment 40 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 40;
-    t = 27375;
 }
 </string>
           </argument>
@@ -2795,7 +2793,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Segment 41 (8:29 - 8:45) The Calm Before The Storm
-if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 41;
 }
 </string>
@@ -2819,7 +2817,7 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Segment 42 (8:45 - 8:52) Xyphos
-if( t &gt;= 26225 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
     segment = 42;
 }
 </string>
@@ -3035,7 +3033,6 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 46 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 46;
-    t = 29680;
 }
 </string>
           </argument>
@@ -3136,6 +3133,11 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         obj.speed = random_range( 5, 7 );
     }
     
+    if( t == 30449 ) {
+        with( objAlgA47Wave ) {
+            instance_change( objAlgWaveDisappearing, true );
+        }
+    }
     
     segment = 49;
 }
@@ -3159,10 +3161,62 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 50 (10:09 - 10:24) Dark Solo B
+            <string>///Alg Segment 50 (10:09 - 10:24) Dark Solo B
 if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 30450;
+    if( phaseT &lt; 48 * 3 ) {
+        if( phaseT % 24 == 0 ) {
+            if( phaseT == 0 ) {
+                segment50Variant = choose( 3, 4 );
+                segment50Color = 30;
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            } else {
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 1, color ); 
+                segment50Color = ( segment50Color + 256 / 3 ) % 256;
+                color = make_colour_hsv( segment50Color, 255, 255 );
+                
+                segment50Variant = ( 4 - segment50Variant ) + 3;
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            }
+        }
+    } else if( phaseT &gt;= 48 * 4 &amp;&amp; phaseT &lt; 48 * 7
+        || phaseT &gt;= 48 * 8 &amp;&amp; phaseT &lt; 48 * 11
+        || phaseT &gt;= 48 * 12 ) 
+    {
+        if( phaseT % 24 == 0 ) {
+            if( phaseT % 192 == 0 ) {
+                segment50Variant = irandom( 3 ) + 1;
+                segment50Variant2 = 0;
+                segment50Color = 30;
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            } else {
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 1, color ); 
+                
+                segment50Color = ( segment50Color + 256 / 3 ) % 256;
+                color = make_colour_hsv( segment50Color, 255, 255 );
+                var newVar = irandom( 4 );
+                while( newVar == segment50Variant 
+                    || newVar == segment50Variant2
+                    || ( newVar == 0 &amp;&amp; phaseT &lt; 384 ) ) 
+                {
+                    newVar = irandom( 4 );
+                }
+                segment50Variant2 = segment50Variant;
+                segment50Variant = newVar;
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            }
+        }
+    }
+    
     segment = 50;
-    t = 33525;
 }
 </string>
           </argument>
