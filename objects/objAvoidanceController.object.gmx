@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 30450;
+t = 23150;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2564,8 +2564,116 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 38 (7:43 - 7:59) Remembrance B
+            <string>///Arch. Segment 38 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t &gt; 23150 &amp;&amp; t &lt; 23333 ) {
+        if( t % 48 == 0 ) {
+            repeat(20) {
+                a = instance_create(0, 0, objArchBullet10);
+                a.direction = irandom_range(270, 360);
+                a.speed = random_range(4,12);
+            }
+        }
+        if( t % 48 == 24 ) {
+            repeat(20) {
+                a = instance_create(800, 0, objArchBullet10);
+                a.direction = irandom_range(180, 270);
+                a.speed = random_range(4,12);
+            }
+        }
+    }
+    if( t == 23350 ) {
+        with(objArchBullet10) {
+            if( y &lt; 608 - 32 ) {
+                image_alpha = 0.4;
+                speed = 0;
+            }
+        }
+    }
+    if( t &gt; 23350 &amp;&amp; t &lt; 23542 ) {
+        tt = (t - 23350)/(23542-23350);
+        var s38_dir = 40 * sin(tt*2*pi*6) + 360 * tt;
+        for( i = 0; i &lt; 360; i+=90 ) {
+            if( t%2 == (i%180)/90) {
+                a = instance_create(400, 200, objArchBullet11);
+                a.direction = s38_dir + i;
+                a.speed = 8;
+            }
+        }
+    }
+    if( t == 23542 ) {
+        /*with(objArchBullet11) {
+            instance_destroy();
+        }*/
+        with(objArchBullet10) {
+            image_alpha = 1;
+            direction = point_direction(x, y, xstart, ystart);
+            speed = point_distance(x, y, xstart, ystart)/24;
+            //wrap = true;
+        }
+    }
+    if( t == 23614 || t == 23662 || t == 23710 ) {
+        with(objArchBullet10) {
+            speed = 0;
+        }
+    }
+    if( t &gt; 23542 &amp;&amp; t &lt; 23734 ) {
+        if( t &gt; 23614 || t%2 == 0 ) {
+            a = instance_create(0, 0, objArchBullet10);
+            a.direction = irandom_range(270, 360);
+            a.speed = random_range(10,15);
+            
+            a = instance_create(800, 0, objArchBullet10);
+            a.direction = irandom_range(180, 270);
+            a.speed = random_range(10,15);
+        }
+    }
+    if( t == 23734 ) {
+        with(objArchBullet10) {
+            image_alpha = 0.4;
+            speed = 0;
+        }
+    }
+    if( t &gt; 23734 &amp;&amp; t &lt; 23924 ) {
+        tt = (t - 23734)/(23924-23734);
+        repeat(5) {
+            a = instance_create(400, 0, objArchBullet11);
+            a.direction = 270 + 90 * sin(tt * 2 * pi * 8) + random_range(-15,15);
+            a.speed = random_range(6,12);
+        }
+    }
+    if( t == 23924 ) {
+        with(objArchBullet11) {
+            alarm[0] = 0;
+            alarm[1] = 0;
+            move_towards_point(objPlayer.x, objPlayer.y, -20);
+        }
+        with(objArchBullet10) {
+            move_towards_point(objPlayer.x, objPlayer.y, -20);
+        }
+    }
+    //if( t &gt; 23542 &amp;&amp; t &lt; 23736 ) {
+    //}
+    /*if( t == 23150 ) {
+        var xs; xs[0] = 128;
+        xs[1] = 672;
+        var ys; ys[0] = 128;
+        ys[1] = 480;
+        for( i = 0; i &lt; 360; i += 360 / 8 ) {
+            for( j = 0; j &lt; 2; j++ ) {
+                for( k = 0; k &lt; 2; k++ ) {
+                    a = instance_create(xs[j], ys[k], objArchBullet9);
+                    a.x = xs[j] + dcos(i);
+                    a.y = ys[k] - dsin(i);
+                    a.dirspd = 1;
+                    a = instance_create(xs[j], ys[k], objArchBullet9);
+                    a.x = xs[j] + dcos(i);
+                    a.y = ys[k] - dsin(i);
+                    a.dirspd = -1;
+                }
+            }
+        }
+    }*/
     segment = 38;
 }
 </string>
