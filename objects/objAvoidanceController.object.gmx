@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 23150;
+t = 32750;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2311,8 +2311,18 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 34 (7:05 - 7:12) Savagery Of Angels
+            <string>///Arch. Segment 34 (7:05 - 7:12) Savagery Of Angels
 if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t%12 == 0 &amp;&amp; t &lt; 21519 ) {
+        for( i = 0; i &lt; 360; i += 60) {
+            a = instance_create(random_range(128, 800-128), 128, objArchBullet12);
+            a.direction = point_direction(a.x, a.y, objPlayer.x, objPlayer.y) + random_range(-20,20) + i;
+            a.speed = 5;
+        }
+    }
+    if( t%24 == 0 ) {
+        scrMakeCircle(400, 160, point_direction(400,160,objPlayer.x, objPlayer.y), 14, 8, objArchBullet8);
+    }
     segment = 34;
 }
 </string>
@@ -3394,8 +3404,40 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 53 (10:55 - 11:11) Murderous Solo A &amp; B
+            <string>///Arch. Segment 53 (10:55 - 11:11) Murderous Solo A &amp; B
 if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t == 32750 ) {
+        a = instance_create(400, 128, objArchBullet13);
+        a = instance_create(400, 128, objArchBullet13);
+        a.t = 48;
+    }
+    if( t%48 == 14 &amp;&amp; t &lt; 33134 ) {
+        var s53_xx = 32 + t%336;
+        a = instance_create(s53_xx, 128, objArchBullet14);
+        a.vspeed = 18;
+        //a.gravity = 0.2;
+        a = instance_create(800-s53_xx, 128, objArchBullet14);
+        a.vspeed = 18;
+        //a.gravity = 0.2;
+    }
+    if( t &gt;= 33134 &amp;&amp; t &lt; 33422 &amp;&amp; t%18 == 0 ) {
+        for( i = 0; i &lt; 360; i += 30 ) {
+            a = instance_create(400, 304, objArchBullet13_3);
+            a.direction = i;
+            a.speed = 5;
+            a.dirspd = sin(t/192*pi);
+        }
+    }
+    if( t == 33433 ) {
+        with(objArchBullet13) {
+            type = 1;
+        }
+    }
+    if( t == 33524 ) {
+        with(objArchBullet13) {
+            instance_destroy();
+        }
+    }
     segment = 53;
 }
 </string>
