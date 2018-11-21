@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-angularVelocity = 0;
+frame = 0;
 </string>
           </argument>
         </arguments>
@@ -50,17 +50,17 @@ angularVelocity = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+frame++;
+if( frame == 48 ) {
+    instance_destroy();
+}
+if( frame &lt; 10 &amp;&amp; ( x &lt; -sprite_width / 2 || x &gt; 800 + sprite_width / 2 || y &lt; -sprite_height / 2 || y &gt; 608 + sprite_height / 2 ) ) {
+    instance_destroy();
+}
 
-direction += speed * angularVelocity;
-
-if( x - sprite_width &gt; 950 ) {
-    instance_destroy();
-} else if( x + sprite_width &lt; -150 ) {
-    instance_destroy();
-} else if( y - sprite_height &gt; 758 ) {
-    instance_destroy();
-} else if( y + sprite_height &lt; -150 ) {
-    instance_destroy();
+if( frame % 3 == 0 ) {
+    var obj = instance_create( x, y, objAlgSphereTrail );
+    obj.image_blend = image_blend;
 }
 </string>
           </argument>

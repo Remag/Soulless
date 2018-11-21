@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 18545;
+t = 23150;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2564,10 +2564,117 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 38 (7:43 - 7:59) Remembrance B
+            <string>///Arch. Segment 38 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t &gt; 23150 &amp;&amp; t &lt; 23333 ) {
+        if( t % 48 == 0 ) {
+            repeat(20) {
+                a = instance_create(0, 0, objArchBullet10);
+                a.direction = irandom_range(270, 360);
+                a.speed = random_range(4,12);
+            }
+        }
+        if( t % 48 == 24 ) {
+            repeat(20) {
+                a = instance_create(800, 0, objArchBullet10);
+                a.direction = irandom_range(180, 270);
+                a.speed = random_range(4,12);
+            }
+        }
+    }
+    if( t == 23350 ) {
+        with(objArchBullet10) {
+            if( y &lt; 608 - 32 ) {
+                image_alpha = 0.4;
+                speed = 0;
+            }
+        }
+    }
+    if( t &gt; 23350 &amp;&amp; t &lt; 23542 ) {
+        tt = (t - 23350)/(23542-23350);
+        var s38_dir = 40 * sin(tt*2*pi*6) + 360 * tt;
+        for( i = 0; i &lt; 360; i+=90 ) {
+            if( t%2 == (i%180)/90) {
+                a = instance_create(400, 200, objArchBullet11);
+                a.direction = s38_dir + i;
+                a.speed = 8;
+            }
+        }
+    }
+    if( t == 23542 ) {
+        /*with(objArchBullet11) {
+            instance_destroy();
+        }*/
+        with(objArchBullet10) {
+            image_alpha = 1;
+            direction = point_direction(x, y, xstart, ystart);
+            speed = point_distance(x, y, xstart, ystart)/24;
+            //wrap = true;
+        }
+    }
+    if( t == 23614 || t == 23662 || t == 23710 ) {
+        with(objArchBullet10) {
+            speed = 0;
+        }
+    }
+    if( t &gt; 23542 &amp;&amp; t &lt; 23734 ) {
+        if( t &gt; 23614 || t%2 == 0 ) {
+            a = instance_create(0, 0, objArchBullet10);
+            a.direction = irandom_range(270, 360);
+            a.speed = random_range(10,15);
+            
+            a = instance_create(800, 0, objArchBullet10);
+            a.direction = irandom_range(180, 270);
+            a.speed = random_range(10,15);
+        }
+    }
+    if( t == 23734 ) {
+        with(objArchBullet10) {
+            image_alpha = 0.4;
+            speed = 0;
+        }
+    }
+    if( t &gt; 23734 &amp;&amp; t &lt; 23924 ) {
+        tt = (t - 23734)/(23924-23734);
+        repeat(5) {
+            a = instance_create(400, 0, objArchBullet11);
+            a.direction = 270 + 90 * sin(tt * 2 * pi * 8) + random_range(-15,15);
+            a.speed = random_range(6,12);
+        }
+    }
+    if( t == 23924 ) {
+        with(objArchBullet11) {
+            alarm[0] = 0;
+            alarm[1] = 0;
+            move_towards_point(objPlayer.x, objPlayer.y, -20);
+        }
+        with(objArchBullet10) {
+            move_towards_point(objPlayer.x, objPlayer.y, -20);
+        }
+    }
+    //if( t &gt; 23542 &amp;&amp; t &lt; 23736 ) {
+    //}
+    /*if( t == 23150 ) {
+        var xs; xs[0] = 128;
+        xs[1] = 672;
+        var ys; ys[0] = 128;
+        ys[1] = 480;
+        for( i = 0; i &lt; 360; i += 360 / 8 ) {
+            for( j = 0; j &lt; 2; j++ ) {
+                for( k = 0; k &lt; 2; k++ ) {
+                    a = instance_create(xs[j], ys[k], objArchBullet9);
+                    a.x = xs[j] + dcos(i);
+                    a.y = ys[k] - dsin(i);
+                    a.dirspd = 1;
+                    a = instance_create(xs[j], ys[k], objArchBullet9);
+                    a.x = xs[j] + dcos(i);
+                    a.y = ys[k] - dsin(i);
+                    a.dirspd = -1;
+                }
+            }
+        }
+    }*/
     segment = 38;
-    t = 23925;
 }
 </string>
           </argument>
@@ -2772,7 +2879,6 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
             <string>///Segment 40 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 40;
-    t = 27375;
 }
 </string>
           </argument>
@@ -2795,7 +2901,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Segment 41 (8:29 - 8:45) The Calm Before The Storm
-if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 41;
 }
 </string>
@@ -2819,7 +2925,7 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26225 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Segment 42 (8:45 - 8:52) Xyphos
-if( t &gt;= 26225 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
     segment = 42;
 }
 </string>
@@ -3035,7 +3141,6 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 46 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 46;
-    t = 29680;
 }
 </string>
           </argument>
@@ -3136,6 +3241,11 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         obj.speed = random_range( 5, 7 );
     }
     
+    if( t == 30449 ) {
+        with( objAlgA47Wave ) {
+            instance_change( objAlgWaveDisappearing, true );
+        }
+    }
     
     segment = 49;
 }
@@ -3159,10 +3269,62 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 50 (10:09 - 10:24) Dark Solo B
+            <string>///Alg Segment 50 (10:09 - 10:24) Dark Solo B
 if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 30450;
+    if( phaseT &lt; 48 * 3 ) {
+        if( phaseT % 24 == 0 ) {
+            if( phaseT == 0 ) {
+                segment50Variant = choose( 3, 4 );
+                segment50Color = 30;
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            } else {
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 1, color ); 
+                segment50Color = ( segment50Color + 256 / 3 ) % 256;
+                color = make_colour_hsv( segment50Color, 255, 255 );
+                
+                segment50Variant = ( 4 - segment50Variant ) + 3;
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            }
+        }
+    } else if( phaseT &gt;= 48 * 4 &amp;&amp; phaseT &lt; 48 * 7
+        || phaseT &gt;= 48 * 8 &amp;&amp; phaseT &lt; 48 * 11
+        || phaseT &gt;= 48 * 12 ) 
+    {
+        if( phaseT % 24 == 0 ) {
+            if( phaseT % 192 == 0 ) {
+                segment50Variant = irandom( 3 ) + 1;
+                segment50Variant2 = 0;
+                segment50Color = 30;
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            } else {
+                var color = make_colour_hsv( segment50Color, 255, 255 );
+                scrA50Spawn( segment50Variant, 24, 1, color ); 
+                
+                segment50Color = ( segment50Color + 256 / 3 ) % 256;
+                color = make_colour_hsv( segment50Color, 255, 255 );
+                var newVar = irandom( 4 );
+                while( newVar == segment50Variant 
+                    || newVar == segment50Variant2
+                    || ( newVar == 0 &amp;&amp; phaseT &lt; 384 ) ) 
+                {
+                    newVar = irandom( 4 );
+                }
+                segment50Variant2 = segment50Variant;
+                segment50Variant = newVar;
+                scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            }
+        }
+    }
+    
     segment = 50;
-    t = 33525;
 }
 </string>
           </argument>
