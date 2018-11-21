@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 23150;
+t = 29680;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3267,6 +3267,7 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
     if( t == 30449 ) {
         with( objAlgA47Wave ) {
             instance_change( objAlgWaveDisappearing, true );
+            alphaStep = 0.01;
         }
     }
     
