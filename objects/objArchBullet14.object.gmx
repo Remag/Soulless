@@ -60,11 +60,11 @@ if( type == 0 &amp;&amp; y &gt;= 576 ) {
     type = 1;
     gravity = 0;
     speed = 0;
-    hspeed = 20;
+    hspeed = 10;
     a = instance_create(x, y, objArchBullet14);
     a.image_single = image_single;
     a.type = 1;
-    a.hspeed = -20;
+    a.hspeed = -10;
 }
 </string>
           </argument>

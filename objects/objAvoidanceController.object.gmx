@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 29680;
+t = 32750;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3425,13 +3425,13 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
         a = instance_create(400, 128, objArchBullet13);
         a.t = 48;
     }
-    if( t%48 == 14 &amp;&amp; t &lt; 33134 ) {
-        var s53_xx = 32 + t%336;
+    if( t%24 == 0 &amp;&amp; t &lt; 33086 ) {
+        var s53_xx = random_range( 32, 768 );
         a = instance_create(s53_xx, 128, objArchBullet14);
-        a.vspeed = 18;
+        a.vspeed = 6;
         //a.gravity = 0.2;
-        a = instance_create(800-s53_xx, 128, objArchBullet14);
-        a.vspeed = 18;
+       // a = instance_create(800-s53_xx, 128, objArchBullet14);
+        //a.vspeed = 18;
         //a.gravity = 0.2;
     }
     if( t &gt;= 33134 &amp;&amp; t &lt; 33422 &amp;&amp; t%18 == 0 ) {

@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprPlayerStart</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -48,10 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( oPlayerData.targetEntranceId == entranceId ) {
+            <string>if( oPlayerData.targetEntranceId == entranceId &amp;&amp; !instance_exists( objPlayer ) ) {
     oPlayerData.targetEntranceId = -1;
     var flipScale = sign( image_xscale );
-    var newPlayer = instance_create( x + 17 * flipScale, y + 23 * flipScale, objPlayer );
+    var newPlayer = instance_create( x + 17 * flipScale, y + 23, objPlayer );
     newPlayer.xScale = flipScale;
 }
 </string>
