@@ -27,8 +27,13 @@
             <kind>1</kind>
             <string>//make sure we never have more than one world object
 
-if (instance_number(object_index) &gt; 1)
+if( instance_number(object_index) &gt; 1 ) {
     instance_destroy();
+}
+
+instance_create( 0, 0, oPlayerData );
+    
+    
 </string>
           </argument>
         </arguments>

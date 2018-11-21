@@ -150,6 +150,9 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\sprite135</sprite>
+    <sprites name="PortalRooms">
+      <sprite>sprites\sBlockTileV</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -424,6 +427,12 @@
     <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
+    <objects name="PortalRooms">
+      <object>objects\oEntranceWarp</object>
+      <object>objects\oPlayerData</object>
+      <object>objects\oPlayerEntrance</object>
+      <object>objects\oFadeBlock</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
@@ -435,7 +444,8 @@
     </rooms>
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTemplate</room>
-    <room>rooms\rBeforeAvoidance</room>
+    <room>rooms\rPortalRoom</room>
+    <room>rooms\rPracticeRoom</room>
     <room>rooms\rAvoidanceMainRoom</room>
     <room>rooms\rGG</room>
   </rooms>
