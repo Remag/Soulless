@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 32750;
+t = 20850;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2277,18 +2277,25 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
 if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 33;
     
-    if( t % 24 == 0 ) {
-        xx = objPlayer.x + random_range(-50, 50);
-        yy = random_range(256, 384);
-        repeat(5) {
-            a = instance_create(xx, yy, objArchBullet7);
+    if( t &lt; 21138 ) {
+        if( t % 24 == 0 ) {
+            xx = objPlayer.x + random_range(-50, 50);
+            yy = random_range(256, 384);
+            repeat(5) {
+                a = instance_create(xx, yy, objArchBullet7);
+            }
         }
-    }
-    if( t % 4 == 0 ) {
-        a = instance_create(800, irandom(608), objArchBullet8);
-        a.direction = 180 + random_range(-5, 5);
-        //a.direction = 180;
-        a.speed = random_range(4,8);
+        
+        if( t % 4 == 0 ) {
+            a = instance_create(800, irandom(608), objArchBullet8);
+            a.direction = 180 + random_range(-5, 5);
+            //a.direction = 180;
+            a.speed = random_range(4,8);
+        }
+    } else if( t == 21138 ) {
+        with( objArchBullet8 ) {
+            friction = -0.1;
+        }
     }
 }
 </string>
@@ -2313,14 +2320,14 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Arch. Segment 34 (7:05 - 7:12) Savagery Of Angels
 if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) ) {
-    if( t%12 == 0 &amp;&amp; t &lt; 21519 ) {
-        for( i = 0; i &lt; 360; i += 60) {
+    if( t % 24 == 0 &amp;&amp; t &lt; 21519 ) {
+        for( i = 0; i &lt; 360; i += 40 ) {
             a = instance_create(random_range(128, 800-128), 128, objArchBullet12);
             a.direction = point_direction(a.x, a.y, objPlayer.x, objPlayer.y) + random_range(-20,20) + i;
             a.speed = 5;
         }
     }
-    if( t%24 == 0 ) {
+    if( t % 24 == 12 ) {
         scrMakeCircle(400, 160, point_direction(400,160,objPlayer.x, objPlayer.y), 14, 8, objArchBullet8);
     }
     segment = 34;
