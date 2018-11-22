@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>shouldUseShader = true;
 shouldKill = true;
+blendMode = bm_add;
 </string>
           </argument>
         </arguments>

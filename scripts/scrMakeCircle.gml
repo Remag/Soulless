@@ -21,6 +21,7 @@ for (var i = 0; i < spawnNum; i += 1)
     result[i] = instance_create(spawnX,spawnY,spawnObj);
     result[i].speed = spawnSpeed;
     result[i].direction = spawnAngle + i * (360 / spawnNum);
+    result[i].image_angle = result[i].direction;
 }
 
 return result;

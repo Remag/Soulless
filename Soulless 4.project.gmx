@@ -144,6 +144,15 @@
       <sprite>sprites\sprAlgSphereColored</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
       <sprite>sprites\sprAlgWaveColored</sprite>
+      <sprite>sprites\sprAlgComet</sprite>
+      <sprite>sprites\sprAlgFrag</sprite>
+      <sprite>sprites\sprAlgButterfly</sprite>
+      <sprite>sprites\sprAlgFlower</sprite>
+      <sprite>sprites\sprAlgCircleSphere</sprite>
+      <sprite>sprites\sprAlgStar</sprite>
+      <sprite>sprites\sprAlgBullet</sprite>
+      <sprite>sprites\sprAlgKnife</sprite>
+      <sprite>sprites\sprAlgRice</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireFrostBullet</sprite>
@@ -401,10 +410,12 @@
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
       <object>objects\objAlgShaderDrawer</object>
+      <object>objects\objAlgStar</object>
+      <object>objects\objAlgStarSlowing</object>
+      <object>objects\objAlgA25Star</object>
       <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
       <object>objects\objAlgSphereCurve</object>
-      <object>objects\objAlgSphereSlowing</object>
       <object>objects\objAlgSphereTrail</object>
       <object>objects\objAlgSphereDisappearing</object>
       <object>objects\objAlgSphereDisappearing2</object>
@@ -415,8 +426,6 @@
       <object>objects\objAlgA2Spawn</object>
       <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgA20Sphere</object>
-      <object>objects\objAlgA22Sphere</object>
-      <object>objects\objAlgA25Sphere</object>
       <object>objects\objAlgA31Sphere</object>
       <object>objects\objAlgA35Sphere</object>
       <object>objects\objAlgA35Sphere2</object>
@@ -430,19 +439,26 @@
       <object>objects\objAlgA54Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA2Spawner</object>
-      <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgA37Spawner</object>
+      <object>objects\objAlgComet</object>
+      <object>objects\objAlgA22Sphere</object>
+      <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgWave</object>
       <object>objects\objAlgWaveDisappearing</object>
       <object>objects\objAlgA29Wave</object>
       <object>objects\objAlgA47Wave</object>
       <object>objects\objAlgKunai</object>
+      <object>objects\objAlgRice</object>
       <object>objects\objAlgKunaiTrail</object>
-      <object>objects\objAlgKunaiAppearing</object>
       <object>objects\objAlgA5Kunai</object>
-      <object>objects\objAlgA14Kunai</object>
-      <object>objects\objAlgA19Kunai</object>
       <object>objects\objAlgKunaiDisappearing</object>
+      <object>objects\objAlgKnife</object>
+      <object>objects\objAlgA19Knife</object>
+      <object>objects\objAlgFragAppearing</object>
+      <object>objects\objAlgBullet</object>
+      <object>objects\objAlgA14Bullet</object>
+      <object>objects\objAlgFlower</object>
+      <object>objects\objAlgButterfly</object>
     </objects>
     <object>objects\objSelect</object>
     <object>objects\objSelectArrow</object>

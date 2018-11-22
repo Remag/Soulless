@@ -54,9 +54,9 @@ drawObjectsIndex = 0
 if( drawObjectsLength &gt; 0 ) {
     if( shader_is_compiled( hsvShader ) ) {
         shader_set(hsvShader);
-        draw_set_blend_mode(bm_add);
         for( var i = 0; i &lt; drawObjectsLength; i++ ) {
             with( drawObjects[i] ) {
+                draw_set_blend_mode(blendMode);
                 draw_self();
             }
         }
