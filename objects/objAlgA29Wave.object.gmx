@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 dirInc = 0;
+spawnFrame = irandom( 20 );
 </string>
           </argument>
         </arguments>
@@ -53,6 +54,20 @@ dirInc = 0;
 direction += dirInc;
 if( direction &gt; 270 &amp;&amp; dirInc &gt; 0 || direction &gt; 200 &amp;&amp; direction &lt; 270 &amp;&amp; dirInc &lt; 0 ) {
     direction = 270;
+}
+
+if( spawnFrame == 20 ) {
+    var obj = instance_create( x, y, objAlgSphereDisappearing );
+    obj.alphaStep = 0.02;
+    obj.vspeed = -6;
+    obj.hspeed = random_range( -1, 1 );
+    obj.image_alpha = 0.5;
+    obj.image_blend = image_blend;
+    obj.image_xscale = 0.5;
+    obj.image_yscale = 0.5;
+    spawnFrame = 0;
+} else {
+    spawnFrame++;
 }
 </string>
           </argument>

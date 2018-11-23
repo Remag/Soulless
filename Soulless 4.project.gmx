@@ -225,6 +225,7 @@
     <scripts name="Algeran">
       <script>scripts\scrTargetCircle.gml</script>
       <script>scripts\scrTargetLine.gml</script>
+      <script>scripts\scrA25Spawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
   </scripts>
@@ -413,6 +414,8 @@
       <object>objects\objAlgStar</object>
       <object>objects\objAlgStarSlowing</object>
       <object>objects\objAlgA25Star</object>
+      <object>objects\objAlgEffect</object>
+      <object>objects\objAlgBackEffect</object>
       <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
       <object>objects\objAlgSphereCurve</object>
@@ -421,10 +424,12 @@
       <object>objects\objAlgSphereDisappearing2</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereWrap</object>
-      <object>objects\objAlgSphereBounceTop</object>
       <object>objects\objAlgA1SphereEffect</object>
+      <object>objects\objAlgA2SphereEffect</object>
+      <object>objects\objAlgA2Sphere</object>
       <object>objects\objAlgA2Spawn</object>
       <object>objects\objAlgA5Sphere</object>
+      <object>objects\objAlgA7Sphere</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA31Sphere</object>
       <object>objects\objAlgA35Sphere</object>
@@ -445,16 +450,16 @@
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgWave</object>
       <object>objects\objAlgWaveDisappearing</object>
-      <object>objects\objAlgA29Wave</object>
       <object>objects\objAlgA47Wave</object>
-      <object>objects\objAlgKunai</object>
       <object>objects\objAlgRice</object>
+      <object>objects\objAlgKunai</object>
       <object>objects\objAlgKunaiTrail</object>
       <object>objects\objAlgA5Kunai</object>
       <object>objects\objAlgKunaiDisappearing</object>
       <object>objects\objAlgKnife</object>
       <object>objects\objAlgA19Knife</object>
       <object>objects\objAlgFragAppearing</object>
+      <object>objects\objAlgA29Wave</object>
       <object>objects\objAlgBullet</object>
       <object>objects\objAlgA14Bullet</object>
       <object>objects\objAlgFlower</object>

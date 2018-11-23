@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 18545;
+t = 14700;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -168,16 +168,17 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    if( t == 1165 ) {
+    var phaseT = t - 1165;
+    if( phaseT == 0 ) {
         seg2Counter = 0;
         seg2SpawnLeft = true;
     }
 
-    if( ( t - 1165 ) % 24 == 0 ) {
+    if( phaseT % 24 == 0 ) {
         var nerf = 0.85;
         if( seg2Counter % 2 == 0 ) {
             repeat( 9 ) {
-                var obj = instance_create( random_range( 50, 750 ), 304, objAlgSphereBounceTop );
+                var obj = instance_create( random_range( 50, 750 ), 304, objAlgA2Sphere );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
                 obj.vspeed = -random_range( 7, 13 ) * nerf;
                 obj.hspeed = random_range( -4, 4 ) * nerf;
@@ -186,7 +187,7 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
             var wallDir = random_range( 80, 100 );
             var wallSpeed = random_range( 12, 13 );
             for( var i = 0; i &lt; 10; i++ ) {
-                var obj = instance_create( lerp( 0, 800, i / 9 ), 304, objAlgSphereBounceTop );
+                var obj = instance_create( lerp( 0, 800, i / 9 ), 304, objAlgA2Sphere );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
                 obj.speed = wallSpeed * nerf;
                 obj.direction = wallDir;
@@ -195,7 +196,7 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
         }
         seg2Counter++;
     } 
-    if( ( t - 1165 ) &gt;= 4 * 96 &amp;&amp; ( 1930 - t ) &gt;= 96 &amp;&amp; ( t - 1165 ) % 48 == 0 ) {
+    if( phaseT &gt;= 4 * 96 &amp;&amp; ( 765 - phaseT ) &gt;= 96 &amp;&amp; phaseT % 48 == 0 ) {
         var obj;
         if( seg2SpawnLeft ) {
             obj = instance_create( 32, 0, objAlgA2Spawner );
@@ -205,6 +206,16 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
         obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
         obj.vspeed = 6;
         seg2SpawnLeft = !seg2SpawnLeft;
+    }
+    
+    if( phaseT % 2 == 0 ) {
+        var obj = instance_create( random( 800 ), random( 608 ), objAlgBackEffect );
+        obj.alphaStep = 0.02;
+        obj.speed = random_range( 2, 3 );
+        obj.direction = random_range( 0, 360 );
+        obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 );
+        obj.image_xscale = 0.5;
+        obj.image_yscale = 0.5;
     }
     segment = 2;
 }
@@ -287,7 +298,7 @@ if( t &gt;= 2705 &amp;&amp; t &lt; 3470 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( t &lt; 3364 &amp;&amp; t % 25 == 5 ) {
     
-        var spawnX = choose( 0, 800 );
+        var spawnX = choose( -27, 827 );
         var spawnY = random_range( 0, 400 );
         var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
         obj.direction = point_direction( spawnX, spawnY, 800 - spawnX, random_range( 0, 400 - spawnY ) );
@@ -785,29 +796,29 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( t == 6545 ) {
         segment9Angle = 0;
-        scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgSphereCurve );
-        with( objAlgSphereCurve ) {
+        scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgA7Sphere );
+        with( objAlgA7Sphere ) {
             curveSpeed = 3;
             image_blend = make_color_rgb( 255, 255, 0 );
         }
     }
     
     if( t % 5 == 0 ) {
-        with( objAlgSphereCurve ) {
+        with( objAlgA7Sphere ) {
             var obj = instance_create( x, y, objAlgSphere );
             obj.image_blend = image_blend;
             obj.direction = direction + other.segment9Angle;
             obj.speed = 0.1;
             obj.friction = -0.19;
         }
-        segment9Angle += random_range( 12, 13 );
+        segment9Angle += 12.5;
     }
     
-    with( objAlgSphereCurve ) {
+    with( objAlgA7Sphere ) {
         x -= 1.5;
     }
     if( t == 6920 ) {
-        with( objAlgSphereCurve ) {
+        with( objAlgA7Sphere ) {
             instance_destroy();
         }
     }
@@ -1759,56 +1770,18 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
     var phaseT = t - 14700;
     
     if( phaseT % 48 == 0 ) {
-        var spawnDir = 270;
-        var spawnRadius = random_range( 50, 80 );
-        var spawnRotationSpeed = random_range( 2, 3 ) * choose( -1, 1 );
-        var spawnCount = 3;
         if( phaseT &gt;= 96 * 8 ) {
-            spawnCount = 5;
-            spawnRadius = random_range( 70, 120 );
-            spawnRotationSpeed = random_range( 1.5, 2.25 ) * choose( -1, 1 );
+            scrA25Spawn( 5, 608 - random( 32 ), -1 );
+            scrA25Spawn( 3, 408 - random( 32 ), 1 );
+            scrA25Spawn( 4, 208 - random( 32 ), -1 );
         } else if( phaseT &gt;= 96 * 4 ) {
-            spawnCount = 4;
-            spawnRadius = random_range( 60, 100 );
-            spawnRotationSpeed = random_range( 1.75, 2.5 ) * choose( -1, 1 );
-        }
-        var spawnCircleY = 608 - random( 32 ) - spawnRadius;
-        var color = make_colour_hsv( random( 255 ), 255, 255 );
-        var circle = scrMakeCircle( 800, 608, random( 360 ), spawnCount, 1, objAlgA25Star );
-        for( var i = 0; i &lt; spawnCount; i++ ) {
-            circle[i].image_blend = color;
-            circle[i].circleSpeed = -6;
-            circle[i].circleRadius = spawnRadius
-            circle[i].circleY = spawnCircleY;
-            circle[i].circleAngle = circle[i].direction;
-            circle[i].circleRotationSpeed = spawnRotationSpeed;
-            circle[i].speed = 0;
-        }
-        
-        spawnCircleY = 408 - random( 32 ) - spawnRadius;
-        color = make_colour_hsv( random( 255 ), 255, 255 );
-        circle = scrMakeCircle( 800, 608, random( 360 ), spawnCount, 1, objAlgA25Star );
-        for( var i = 0; i &lt; spawnCount; i++ ) {
-            circle[i].image_blend = color;
-            circle[i].circleSpeed = -6;
-            circle[i].circleRadius = spawnRadius
-            circle[i].circleY = spawnCircleY;
-            circle[i].circleAngle = circle[i].direction;
-            circle[i].circleRotationSpeed = spawnRotationSpeed;
-            circle[i].speed = 0;
-        }
-        
-        spawnCircleY = 208 - random( 32 ) - spawnRadius;
-        color = make_colour_hsv( random( 255 ), 255, 255 );
-        circle = scrMakeCircle( 800, 608, random( 360 ), spawnCount, 1, objAlgA25Star );
-        for( var i = 0; i &lt; spawnCount; i++ ) {
-            circle[i].image_blend = color;
-            circle[i].circleSpeed = -6;
-            circle[i].circleRadius = spawnRadius
-            circle[i].circleY = spawnCircleY;
-            circle[i].circleAngle = circle[i].direction;
-            circle[i].circleRotationSpeed = spawnRotationSpeed;
-            circle[i].speed = 0;
+            scrA25Spawn( 4, 608 - random( 32 ), -1 );
+            scrA25Spawn( 5, 408 - random( 32 ), 1 );
+            scrA25Spawn( 3, 208 - random( 32 ), -1 );
+        } else {
+            scrA25Spawn( 3, 608 - random( 32 ), -1 );
+            scrA25Spawn( 4, 408 - random( 32 ), 1 );
+            scrA25Spawn( 5, 208 - random( 32 ), -1 );
         }
     }
     segment = 25;
