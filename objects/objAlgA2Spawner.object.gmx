@@ -59,15 +59,15 @@ if( y &gt; 608 - 32 ) {
     vspeed = 0;
 }
 
-if( startAngle % 2 == 0 ) {
-    var circle = scrMakeCircle( x, y, startAngle, 5, 3.5, objAlgA2Spawn );
-    for( var i = 0; i &lt; 5; i++ ) {
-        circle[i].image_blend = image_blend;
-        circle[i].hspeed += hspeed;
-        circle[i].vspeed += vspeed;
-    }
+var circle = scrMakeCircle( x, y, startAngle, 5, 3.5, objAlgA2Spawn );
+for( var i = 0; i &lt; 5; i++ ) {
+    circle[i].image_blend = image_blend;
+    circle[i].x += circle[i].hspeed * 2;
+    circle[i].y += circle[i].vspeed * 2;
+    circle[i].hspeed += hspeed;
+    circle[i].vspeed += vspeed;
 }
-startAngle += 1;
+startAngle += 3;
 
 </string>
           </argument>

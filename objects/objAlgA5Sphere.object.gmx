@@ -8,30 +8,6 @@
   <parentName>objAlg</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited();
-lastVSpeed = -1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -50,14 +26,6 @@ lastVSpeed = -1;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( sign( lastVSpeed ) != sign( vspeed ) ) {
-    var circle = scrMakeCircle( x, y, random( 360 ), 5, 3, objAlgA1SphereEffect );
-    for( var i = 0; i &lt; 5; i++ ) {
-        circle[i].speed = random_range( 3, 6 );
-        circle[i].image_blend = image_blend;
-    }
-}
-lastVSpeed = vspeed;
 if( vspeed &gt; 0 ) {
     if( image_alpha &lt; 1 ) {
         image_alpha += 0.1;

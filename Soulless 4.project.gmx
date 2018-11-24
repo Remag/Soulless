@@ -349,6 +349,7 @@
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
     <objects name="Arch">
+      <object>objects\objArchEffect1</object>
       <object>objects\objArchBullet1</object>
       <object>objects\objArchBullet2</object>
       <object>objects\objArchBullet3</object>
@@ -430,6 +431,7 @@
       <object>objects\objAlgA2Spawn</object>
       <object>objects\objAlgA5Sphere</object>
       <object>objects\objAlgA7Sphere</object>
+      <object>objects\objAlgA8Effect</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA31Sphere</object>
       <object>objects\objAlgA35Sphere</object>
