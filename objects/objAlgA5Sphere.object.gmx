@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-lastVSpeed = -1;
+maxSpeed = 0;
 </string>
           </argument>
         </arguments>
@@ -50,25 +50,15 @@ lastVSpeed = -1;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( sign( lastVSpeed ) != sign( vspeed ) ) {
-    var circle = scrMakeCircle( x, y, random( 360 ), 5, 3, objAlgA1SphereEffect );
-    for( var i = 0; i &lt; 5; i++ ) {
-        circle[i].speed = random_range( 3, 6 );
-        circle[i].image_blend = image_blend;
-    }
-}
-lastVSpeed = vspeed;
-if( vspeed &gt; 0 ) {
+if( vspeed &lt; 0 ) {
+    image_alpha = lerp( 1, 0, -vspeed / maxSpeed );
+} else if( vspeed &gt; 0 ) {
     if( image_alpha &lt; 1 ) {
         image_alpha += 0.1;
     } else {
         image_alpha = 1;
         shouldKill = true;
     }
-}
-
-if( image_alpha &lt; 0.2 ) {
-    image_alpha += 0.001;
 }
 </string>
           </argument>

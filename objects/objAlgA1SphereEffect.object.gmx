@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objAlg</parentName>
+  <parentName>objAlgEffect</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,12 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-shouldKill = false;
 image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
-var scale = random_range( 0.4, 0.8 );
-image_xscale = scale;
-image_yscale = scale;
-
 
 </string>
           </argument>
@@ -56,6 +51,8 @@ image_yscale = scale;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+image_xscale += 0.2;
+image_yscale += 0.2;
 if( image_alpha &lt;= 0 ) {
     instance_destroy();
 } else {

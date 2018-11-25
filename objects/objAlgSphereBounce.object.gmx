@@ -52,9 +52,11 @@ image_alpha = 0;
             <string>event_inherited();
 if( x + sprite_width / 2 + hspeed &gt; 800 - 32 &amp;&amp; hspeed &gt; 0 || x - sprite_width / 2 + hspeed &lt; 32 &amp;&amp; hspeed &lt; 0 ) {
     hspeed *= -1;
+    instance_create( x, y, objAlgA1SphereEffect );
 }
 if( y + sprite_height / 2 + vspeed &gt; 608 - 32 &amp;&amp; vspeed &gt; 0 || y - sprite_height / 2 + vspeed &lt; 32 &amp;&amp; vspeed &lt; 0 ) {
     vspeed *= -1;
+    instance_create( x, y, objAlgA1SphereEffect );
 }
 if( image_alpha &lt; 1 ) {
     image_alpha += 0.02;
