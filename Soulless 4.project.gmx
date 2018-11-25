@@ -165,6 +165,7 @@
     <sprite>sprites\sprite135</sprite>
     <sprites name="PortalRooms">
       <sprite>sprites\sBlockTileV</sprite>
+      <sprite>sprites\sprCoin</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -228,14 +229,29 @@
       <script>scripts\scrA25Spawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
+    <scripts name="PortalRoom">
+      <script>scripts\scrFindCurrencyDelta.gml</script>
+      <script>scripts\scrShowCurrency.gml</script>
+      <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
+      <script>scripts\scrRestartAttempt.gml</script>
+      <script>scripts\scrChangeRoom.gml</script>
+      <script>scripts\scrGetSegmentGate.gml</script>
+    </scripts>
+    <scripts name="Practice">
+      <script>scripts\scrTrySetSegment.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
+    <font>fonts\fPracticeTitle</font>
     <font>fonts\fDefault24</font>
+    <font>fonts\fNotifications</font>
     <font>fonts\fDefault18</font>
+    <font>fonts\fAttackNumber</font>
+    <font>fonts\fPracticeHint</font>
     <font>fonts\fDefault12</font>
   </fonts>
   <objects name="objects">
@@ -258,6 +274,7 @@
       <object>objects\objBloodEmitter</object>
       <object>objects\objBlood</object>
       <object>objects\objGameOver</object>
+      <object>objects\objBasePlayer</object>
     </objects>
     <objects name="blocks">
       <object>objects\objBlock</object>
@@ -471,11 +488,21 @@
     <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
-    <objects name="PortalRooms">
+    <objects name="PortalRoom">
       <object>objects\oEntranceWarp</object>
       <object>objects\oPlayerData</object>
       <object>objects\oPlayerEntrance</object>
       <object>objects\oFadeBlock</object>
+      <object>objects\oCurrencyDisplayController</object>
+      <object>objects\oCurrencyDisplayView</object>
+      <object>objects\oBlackFadeIn</object>
+    </objects>
+    <objects name="PracticeRoom">
+      <object>objects\oPracticeTitle</object>
+      <object>objects\oPracticePriceView</object>
+      <object>objects\oPracticeControlTooltip</object>
+      <object>objects\oPracticeAttackSelector</object>
+      <object>objects\oPracticeViewKid</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -489,7 +516,8 @@
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTemplate</room>
     <room>rooms\rPortalRoom</room>
-    <room>rooms\rPracticeRoom</room>
+    <room>rooms\rPracticeChoiceRoom</room>
+    <room>rooms\rPracticeActiveRoom</room>
     <room>rooms\rAvoidanceMainRoom</room>
     <room>rooms\rGG</room>
   </rooms>

@@ -30,34 +30,8 @@ if (loadFile)
         global.death = ds_map_find_value(saveMap,"death");
         global.time = ds_map_find_value(saveMap,"time");
         global.timeMicro = ds_map_find_value(saveMap,"timeMicro");
-        
-        global.difficulty = ds_map_find_value(saveMap,"difficulty");
-        global.saveRoom = ds_map_find_value(saveMap,"saveRoom");
-        global.savePlayerX = ds_map_find_value(saveMap,"savePlayerX");
-        global.savePlayerY = ds_map_find_value(saveMap,"savePlayerY");
-        global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
-        
-        if (is_string(global.saveRoom))   //check if the saved room loaded properly
-        {
-            if (!room_exists(asset_get_index(global.saveRoom)))  //check if the room index in the save is valid
-                saveValid = false;
-        }
-        else
-        {
-            saveValid = false;
-        }
-        
-        for (var i = 0; i < global.secretItemTotal; i++)
-        {
-            global.saveSecretItem[i] = ds_map_find_value(saveMap,"saveSecretItem["+string(i)+"]");
-        }
-        
-        for (var i = 0; i < global.bossItemTotal; i++)
-        {
-            global.saveBossItem[i] = ds_map_find_value(saveMap,"saveBossItem["+string(i)+"]");
-        }
-        
-        global.saveGameClear = ds_map_find_value(saveMap,"saveGameClear");
+
+        global.gameClear = ds_map_find_value(saveMap,"saveGameClear");
         
         //load md5 string from the save map
         var mapMd5 = ds_map_find_value(saveMap,"mapMd5");
@@ -75,6 +49,8 @@ if (loadFile)
             
         global.pb = ds_map_find_value(saveMap,"pb");
         global.pb_segment = ds_map_find_value(saveMap,"pb_segment");
+        oPlayerData.currencyCount = ds_map_find_value(saveMap,"currencyCount");
+        oCurrencyDisplayController.displayedCurrency = oPlayerData.currencyCount;
         
         //destroy the map
         ds_map_destroy(saveMap);
@@ -99,27 +75,10 @@ if (loadFile)
 
 //set game variables and set the player's position
 
-with (objPlayer) //destroy player if it exists
-    instance_destroy();
-
 global.gameStarted = true;  //sets game in progress (enables saving, restarting, etc.)
 global.noPause = false;     //disable no pause mode
 global.autosave = false;    //disable autosaving since we're loading the game
+global.grav = 1;
+oPlayerData.targetEntranceId = 0;
 
-global.grav = global.saveGrav;
-
-for (var i = 0; i < global.secretItemTotal; i++)
-{
-    global.secretItem[i] = global.saveSecretItem[i];
-}
-
-for (var i = 0; i < global.bossItemTotal; i++)
-{
-    global.bossItem[i] = global.saveBossItem[i];
-}
-
-global.gameClear = global.saveGameClear;
-
-instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
-
-room_goto(asset_get_index(global.saveRoom));
+room_goto( rPortalRoom );

@@ -25,11 +25,20 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
             instance_destroy();
         }
         
+        if( room == rAvoidanceMainRoom ) {
+            // Reward the player and set pbs.
+            scrRewardPlayerGlobalProgress();
+            if( global.pb < objAvoidanceController.t ) {
+                global.pb = objAvoidanceController.t;
+                global.pb_segment = objAvoidanceController.segment;
+            }
+        }
+        
         instance_create(0,0,objGameOver);
         
         global.death += 1; //increment deaths
             
-        scrSaveGame(false); //save death/time
+        scrSaveGame(); //save death/time
     }
     else    //death in the difficulty select room, restart the room
     {

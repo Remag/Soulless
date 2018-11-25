@@ -32,7 +32,7 @@ roomTo = rTemplate;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="objPlayer">
+    <event eventtype="4" ename="objBasePlayer">
       <action>
         <libid>1</libid>
         <id>603</id>

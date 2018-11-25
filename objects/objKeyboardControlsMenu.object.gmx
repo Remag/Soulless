@@ -42,7 +42,7 @@ strSelect[4] = "Jump Button";
 strSelect[5] = "Shoot Button";
 strSelect[6] = "Restart Button";
 strSelect[7] = "Skip Button";
-strSelect[8] = "Suicide Button";
+strSelect[8] = "Portal Room Button";
 strSelect[9] = "Pause Button";
 strSelect[10] = "Reset Controls";
 
@@ -55,7 +55,7 @@ strKey[4] = scrGetKeybind(global.jumpButton[0]);
 strKey[5] = scrGetKeybind(global.shootButton[0]);
 strKey[6] = scrGetKeybind(global.restartButton[0]);
 strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
+strKey[8] = scrGetKeybind(global.portalButton[0]);
 strKey[9] = scrGetKeybind(global.pauseButton[0]);
 strKey[10] = "";
 
@@ -147,7 +147,7 @@ if (!settingKey)
             global.shootButton[0] = ord("Z");
             global.restartButton[0] = ord("R");
             global.skipButton[0] = ord("S");
-            global.suicideButton[0] = ord("Q");
+            global.portalButton[0] = ord("Q");
             global.pauseButton[0] = ord("P");
             
             resetPrompt = true;
@@ -174,7 +174,7 @@ else
         else if (select == 5) {global.shootButton[0] = keyChange;}
         else if (select == 6) {global.restartButton[0] = keyChange;}
         else if (select == 7) {global.skipButton[0] = keyChange;}
-        else if (select == 8) {global.suicideButton[0] = keyChange;}
+        else if (select == 8) {global.portalButton[0] = keyChange;}
         else if (select == 9) {global.pauseButton[0] = keyChange;}
         
         settingKey = false;
@@ -194,7 +194,7 @@ strKey[4] = scrGetKeybind(global.jumpButton[0]);
 strKey[5] = scrGetKeybind(global.shootButton[0]);
 strKey[6] = scrGetKeybind(global.restartButton[0]);
 strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
+strKey[8] = scrGetKeybind(global.portalButton[0]);
 strKey[9] = scrGetKeybind(global.pauseButton[0]);
 strKey[10] = "";
 </string>

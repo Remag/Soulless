@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 14700;
+//t = 14700;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3691,7 +3691,7 @@ if( t &gt;= 37075 ) {
         
         global.pb = t;
         global.pb_segment = segment;
-        scrSaveGame(false);
+        scrSaveGame();
     }
     segment = 57;
 }
@@ -3767,14 +3767,6 @@ if( instance_exists(objPlayer) ) {
     global.playeralive = true;
 } else {
     global.playeralive = false;
-    if( global.segment == 0 &amp;&amp; t &gt; global.pb &amp;&amp; segment != 13 ) {
-        global.pb = t;
-        scrSaveGame(false);
-    }
-    if( global.segment == 0 &amp;&amp; segment &gt; global.pb_segment &amp;&amp; segment != 13 ) {
-        global.pb_segment = segment;
-        scrSaveGame(false);
-    }
 }
 </string>
           </argument>

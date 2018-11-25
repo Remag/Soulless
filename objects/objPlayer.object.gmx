@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-10</depth>
-  <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <persistent>0</persistent>
+  <parentName>objBasePlayer</parentName>
   <maskName>sprPlayerMask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -44,11 +44,6 @@ scrSetPlayerMask(); //set the player's hitbox
 if (global.difficulty == 0 &amp;&amp; global.gameStarted)   //create the player's bow
     instance_create(x,y,objBow);
 
-if (global.autosave) //save the game if currently set to autosave
-{
-    scrSaveGame(true);
-    global.autosave = false;
-}
 </string>
           </argument>
         </arguments>
@@ -266,8 +261,6 @@ if (!frozen)    //check if frozen before doing anything
         scrPlayerJump();
     if (scrButtonCheckReleased(global.jumpButton))
         scrPlayerVJump();
-    if (scrButtonCheckPressed(global.suicideButton))
-        scrKillPlayer();
 }
 
 if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&amp; !frozen)  // A/D align

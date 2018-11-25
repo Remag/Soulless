@@ -20,7 +20,7 @@ ini_write_real("Controls","Jump",global.jumpButton[0]);
 ini_write_real("Controls","Shoot",global.shootButton[0]);
 ini_write_real("Controls","Restart",global.restartButton[0]);
 ini_write_real("Controls","Skip",global.skipButton[0]);
-ini_write_real("Controls","Suicide",global.suicideButton[0]);
+ini_write_real("Controls","PortalRoom",global.portalButton[0]);
 ini_write_real("Controls","Pause",global.pauseButton[0]);
 ini_write_real("Controls","Align_left",global.alignLeftButton[0]);
 ini_write_real("Controls","Align_right",global.alignRightButton[0]);
@@ -37,7 +37,7 @@ if (global.controllerEnabled)
     ini_write_real("Controller","Shoot",global.shootButton[1]);
     ini_write_real("Controller","Restart",global.restartButton[1]);
     ini_write_real("Controller","Skip",global.skipButton[1]);
-    ini_write_real("Controller","Suicide",global.suicideButton[1]);
+    ini_write_real("Controller","PortalRoom",global.portalButton[1]);
     ini_write_real("Controller","Pause",global.pauseButton[1]);
     ini_write_real("Controller","Align_left",global.alignLeftButton[1]);
     ini_write_real("Controller","Align_right",global.alignRightButton[1]);
