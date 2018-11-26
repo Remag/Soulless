@@ -241,6 +241,7 @@
       <script>scripts\scrGetSegmentGate.gml</script>
       <script>scripts\scrGetSegmentOffset.gml</script>
       <script>scripts\scrApplyMusicCorrection.gml</script>
+      <script>scripts\scrStartFromHere.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
