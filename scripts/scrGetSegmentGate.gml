@@ -1,21 +1,11 @@
 var segment = argument0;
 
-if( segment <= 8 ) {
-    return 1;
+for( var i = 1; i <= 6; i++ ) {
+    var count = scrGetGateSegmentCount( i );
+    if( segment <= count ) {
+        return i;
+    }
+    segment -= count;
 }
 
-if( segment <= 21 ) {
-    return 2;
-}
-
-if( segment <= 29 ) {
-    return 3;
-}
-
-if( segment <= 42 ) {
-    return 4;
-}
-
-if( segment <= 56 ) {
-    return 5;
-}
+return -1;

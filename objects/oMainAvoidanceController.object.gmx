@@ -2,10 +2,10 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <persistent>0</persistent>
+  <parentName>objAvoidanceController</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,11 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currencyCount = 0;
-targetEntranceId = 0;
-lastPracticeSegment = 0;
-lastPracticeGate = 1;
+            <string>event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
 
+if( instance_exists(objPlayer) ) {
+    scrApplyMusicCorrection( global.currentMusic );
+    t++;
+} else {
+    scrStopMusic();
+}
 </string>
           </argument>
         </arguments>

@@ -10,11 +10,7 @@ switch (room)                       //determines which song to play
         roomSong = -1;
         break;                      //make sure to always put a break after setting the song
     case rAvoidanceMainRoom:
-        if( global.track_ver == 0 ) {
-            roomSong = global.musAvoidance;
-        } else {
-            roomSong = global.musAvoidance2;
-        }
+        roomSong = global.musAvoidance;
         break;
     default:                        //default option in case the room does not have a song set
         roomSong = -1;

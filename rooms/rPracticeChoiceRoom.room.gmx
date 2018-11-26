@@ -66,6 +66,7 @@
     <instance objName="oPracticeControlTooltip" x="167" y="512" name="inst_4B37E859" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticeAttackSelector" x="208" y="128" name="inst_D40AE529" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPlayerEntrance" x="64" y="544" name="inst_D265ACEB" locked="0" code="kidObject = oPracticeViewKid;&#xA;entranceId = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oPracticeDummyKid" x="400" y="544" name="inst_7A9DB9B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="0" y="576" w="32" h="32" xo="0" yo="0" id="10002824" name="inst_44CA963D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

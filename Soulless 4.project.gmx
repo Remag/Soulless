@@ -163,9 +163,10 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\sprite135</sprite>
-    <sprites name="PortalRooms">
+    <sprites name="General">
       <sprite>sprites\sBlockTileV</sprite>
       <sprite>sprites\sprCoin</sprite>
+      <sprite>sprites\sprUiArrow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -229,16 +230,23 @@
       <script>scripts\scrA25Spawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
-    <scripts name="PortalRoom">
+    <scripts name="General">
       <script>scripts\scrFindCurrencyDelta.gml</script>
       <script>scripts\scrShowCurrency.gml</script>
       <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
+      <script>scripts\scrGetGateSegmentCount.gml</script>
+      <script>scripts\scrFindGlobalSegment.gml</script>
       <script>scripts\scrGetSegmentGate.gml</script>
+      <script>scripts\scrGetSegmentOffset.gml</script>
+      <script>scripts\scrApplyMusicCorrection.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
+      <script>scripts\scrTrySetGate.gml</script>
+      <script>scripts\scrSelectSegment.gml</script>
+      <script>scripts\scrClearSegment.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -362,6 +370,25 @@
       <object>objects\objBossItem</object>
       <object>objects\objBossIndicator</object>
       <object>objects\objGameClear</object>
+    </objects>
+    <objects name="General">
+      <object>objects\oEntranceWarp</object>
+      <object>objects\oPlayerData</object>
+      <object>objects\oPlayerEntrance</object>
+      <object>objects\oFadeBlock</object>
+      <object>objects\oCurrencyDisplayController</object>
+      <object>objects\oCurrencyDisplayView</object>
+      <object>objects\oBlackFadeIn</object>
+      <object>objects\oMainAvoidanceController</object>
+      <object>objects\oPracticeAvoidanceController</object>
+    </objects>
+    <objects name="PracticeRoom">
+      <object>objects\oPracticeTitle</object>
+      <object>objects\oPracticePriceView</object>
+      <object>objects\oPracticeControlTooltip</object>
+      <object>objects\oPracticeAttackSelector</object>
+      <object>objects\oPracticeViewKid</object>
+      <object>objects\oPracticeDummyKid</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
@@ -491,22 +518,6 @@
     <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
-    <objects name="PortalRoom">
-      <object>objects\oEntranceWarp</object>
-      <object>objects\oPlayerData</object>
-      <object>objects\oPlayerEntrance</object>
-      <object>objects\oFadeBlock</object>
-      <object>objects\oCurrencyDisplayController</object>
-      <object>objects\oCurrencyDisplayView</object>
-      <object>objects\oBlackFadeIn</object>
-    </objects>
-    <objects name="PracticeRoom">
-      <object>objects\oPracticeTitle</object>
-      <object>objects\oPracticePriceView</object>
-      <object>objects\oPracticeControlTooltip</object>
-      <object>objects\oPracticeAttackSelector</object>
-      <object>objects\oPracticeViewKid</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
