@@ -83,13 +83,11 @@ event_inherited();
     scrApplyMusicCorrection( practiceMusicId );
     t++;
     
-    // Mark new objects as owned by this controller.
+    // Lower the alpha of existing dynamic objects.
     with( all ) {
-        var ownerId = variable_instance_get( id, "ownerAvoidanceControllerId" );
-        if( is_undefined( ownerId ) ) {
-            ownerAvoidanceControllerId = other.id;
-        }
-        if( ownerAvoidanceControllerId == other.id ) {
+        var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
+        if( is_undefined( ownerId ) ) 
+        {
             image_alpha = min( image_alpha, 0.25 );
         }
     }
@@ -105,15 +103,16 @@ event_inherited();
     // Fade and eventually destroy all owned objects.
     avoidanceDestructionStep++;
     with( all ) {
-        if( variable_instance_get( id, "ownerAvoidanceControllerId" ) == other.id ) 
+        var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
+        if( is_undefined( ownerId ) ) 
         {
             image_alpha = min( image_alpha, 0.25 - other.avoidanceDestructionStep * 0.05 );
         }
     }
-    if( avoidanceDestructionStep &gt; 20 ) {
+    if( avoidanceDestructionStep &gt; 10 ) {
         with( all ) {
-            if( variable_instance_get( id, "ownerAvoidanceControllerId" ) == other.id )
-            {
+            var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
+            if( is_undefined( ownerId ) ) {
                 instance_destroy();
             }
         }
