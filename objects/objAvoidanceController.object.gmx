@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 20465;
+//t = 26230;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3395,8 +3395,59 @@ if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 43 (8:52 - 9:08) Stepping Solo A &amp; B
+            <string>///Alg Segment 43 (8:52 - 9:08) Stepping Solo A &amp; B
 if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) ) {
+
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 26605;
+    if( phaseT = 0 ) {
+        seg43SpawnDir = random( 360 );
+        seg43FinalRadius = 400;
+        seg43FinalCount = 80;
+    }
+    if( phaseT % 12 == 0 ) {
+        var count = 7;
+        var speedMin = 4;
+        var speedMax = 10;
+        if( phaseT &gt;= 96 * 6 ) {
+            count = 14;
+            speedMin = 6;
+            speedMax = 10;
+        }
+        repeat( count ) {
+            var scale = random_range( 0.5, 1 );
+            var obj = instance_create( random( 800 ), random( 150 ), objAlgA43Sphere );
+            obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
+            obj.image_xscale = scale;
+            obj.image_yscale = scale;
+            obj.speed = random_range( speedMin, speedMax );
+            obj.direction = seg43SpawnDir;
+            seg43SpawnDir += 360 / 24;
+        }
+    }
+    if( phaseT % 96 * 2 == 0 &amp;&amp; phaseT &lt; 96 * 6 ) {
+        var offset = choose( 25, 50, 75, 85 ) * choose( -1, 1 );
+        var playerX = scrGetPlayerX();
+        if( playerX + offset &gt; 50 &amp;&amp; playerX + offset &lt; 750 ) {
+            playerX += offset;
+        } else {
+            playerX -= offset;
+        }
+        var radius = random_range( 55, 75 );
+        if( phaseT == 0 ) {
+            radius = 100;
+        }
+        var count = ceil( radius / 2 );
+        scrA43CircleSpawn( playerX, 608 - choose( 32, 64, 96, 128 ), radius, 24, count );
+    } else if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 7 + 24 &amp;&amp; phaseT % 24 == 0 ) {
+    
+        scrA43CircleSpawn( 400, 608 - 32, seg43FinalRadius, 24, seg43FinalCount );
+        seg43FinalRadius -= 75;
+        seg43FinalCount -= 14;
+    }
     segment = 43;
 }
 </string>

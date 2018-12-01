@@ -229,6 +229,7 @@
       <script>scripts\scrTargetCircle.gml</script>
       <script>scripts\scrTargetLine.gml</script>
       <script>scripts\scrA25Spawn.gml</script>
+      <script>scripts\scrA43CircleSpawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
     <scripts name="General">
@@ -488,6 +489,9 @@
       <object>objects\objAlgA39Sphere2</object>
       <object>objects\objAlgA42Sphere</object>
       <object>objects\objAlgA42Sphere2</object>
+      <object>objects\objAlgA43Sphere</object>
+      <object>objects\objAlgA43Circle</object>
+      <object>objects\objAlgA43Circle2</object>
       <object>objects\objAlgA44Line</object>
       <object>objects\objAlgA44Bounce</object>
       <object>objects\objAlgA45Sphere</object>
