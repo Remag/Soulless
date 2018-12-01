@@ -153,6 +153,7 @@
       <sprite>sprites\sprAlgBullet</sprite>
       <sprite>sprites\sprAlgKnife</sprite>
       <sprite>sprites\sprAlgRice</sprite>
+      <sprite>sprites\sprAlgSphereGrad</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireFrostBullet</sprite>
@@ -485,6 +486,8 @@
       <object>objects\objAlgA35Sphere3</object>
       <object>objects\objAlgA37Sphere</object>
       <object>objects\objAlgA37Sphere2</object>
+      <object>objects\objAlgA40Sphere</object>
+      <object>objects\objAlgA40Sphere2</object>
       <object>objects\objAlgA42Line</object>
       <object>objects\objAlgA42Bounce</object>
       <object>objects\objAlgA43Sphere</object>

@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 3470;
+//t = 26230;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -125,6 +125,10 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
         obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
         obj.speed = random_range( 3, 4 );
         obj.direction = random_range( 70, 110 );
+        
+        var effectObj = instance_create( obj.x, obj.y, objAlgA1SphereEffect );
+        effectObj.speed = obj.speed;
+        effectObj.direction = obj.direction;
     } else if( phaseT % 24 == 12 ) {
         var spawnXLeft = lerp( 64, 500, scrGetPlayerX() / 800 );
         var spawnXRight = lerp( 300, 800 - 64, scrGetPlayerX() / 800 );
@@ -132,6 +136,10 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
         obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
         obj.speed = random_range( 3, 4 );
         obj.direction = random_range( 70, 110 );
+        
+        var effectObj = instance_create( obj.x, obj.y, objAlgA1SphereEffect );
+        effectObj.speed = obj.speed;
+        effectObj.direction = obj.direction;
     }
     
     if( phaseT &gt;= 96 * 4 &amp;&amp; phaseT % 192 == 0 ) {
@@ -140,7 +148,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
             var obj = instance_create( x, y, objAlgA1SphereEffect );
             obj.speed = speed;
             obj.direction = direction;
-            obj.image_alpha = image_alpha;
+            obj.image_alpha = image_alpha / 2;
         }
     }
     if( t == 1164 ) {
@@ -187,7 +195,7 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
     if( phaseT % 24 == 0 ) {
         var nerf = 0.85;
         if( seg2Counter % 2 == 0 ) {
-            repeat( 9 ) {
+            repeat( 8 ) {
                 var obj = instance_create( random_range( 50, 750 ), 304, objAlgA2Sphere );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
                 obj.vspeed = -random_range( 7, 13 ) * nerf;
@@ -196,8 +204,8 @@ if( t &gt;= 1165 &amp;&amp; t &lt; 1930 &amp;&amp; instance_exists(objPlayer) ) 
         } else {
             var wallDir = random_range( 80, 100 );
             var wallSpeed = random_range( 12, 13 );
-            for( var i = 0; i &lt; 10; i++ ) {
-                var obj = instance_create( lerp( 0, 800, i / 9 ), 304, objAlgA2Sphere );
+            for( var i = 0; i &lt; 9; i++ ) {
+                var obj = instance_create( lerp( 0, 800, i / 8 ), 304, objAlgA2Sphere );
                 obj.image_blend = make_colour_hsv( random_range( 140, 160 ), 255, 255 ); 
                 obj.speed = wallSpeed * nerf;
                 obj.direction = wallDir;
@@ -497,7 +505,7 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
           <argument>
             <kind>1</kind>
             <string>///Arch. Segment 6 (1:25 - 1:40) Chorus 1
-if( t &gt;= 4240 &amp;&amp; t &lt; 5005 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 4240 &amp;&amp; t &lt; 5003 &amp;&amp; instance_exists(objPlayer) ) {
     if( t == 4240 ) {
         seg6Angle = random(360);
     }
@@ -2819,6 +2827,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             with( objAlgA35Sphere ) {
                 if( counted &gt; 0 &amp;&amp; !isMarked ) {
                     instance_change( objAlgA35Sphere2, false );
+                    image_alpha = 1;
                     friction = -0.2;
                     direction = other.seg35Angle;
                     speed = 0.1;
@@ -2852,6 +2861,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             with( objAlgA35Sphere ) {
                 if( counted &gt; 0 &amp;&amp; !isMarked ) {
                     instance_change( objAlgA35Sphere2, false );
+                    image_alpha = 1;
                     friction = -0.3;
                     direction = other.seg35Angle;
                     speed = 0.1;
@@ -2898,6 +2908,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             with( objAlgA35Sphere ) {
                 if( counted &gt; 0 &amp;&amp; !isMarked ) {
                     instance_change( objAlgA35Sphere2, false );
+                    image_alpha = 1;
                     friction = -0.2;
                     direction = other.seg35Angle;
                     speed = 0.1;
@@ -2931,6 +2942,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             with( objAlgA35Sphere ) {
                 if( counted &gt; 0 &amp;&amp; !isMarked ) {
                     instance_change( objAlgA35Sphere2, false );
+                    image_alpha = 1;
                     friction = -0.3;
                     direction = other.seg35Angle;
                     speed = 0.1;
@@ -3136,6 +3148,7 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
         with( objAlgA37Sphere ) {
             if( counted &gt; 0 &amp;&amp; !isMarked ) {
                 instance_change( objAlgA35Sphere2, false );
+                image_alpha = 1;
                 friction = -0.2;
                 direction = other.seg37Angle;
                 speed = 0.1;
@@ -3166,6 +3179,7 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
         with( objAlgA37Sphere ) {
             if( counted &gt; 0 &amp;&amp; !isMarked ) {
                 instance_change( objAlgA35Sphere2, false );
+                image_alpha = 1;
                 friction = -0.3;
                 direction = other.seg37Angle;
                 speed = 0.1;
@@ -3213,6 +3227,7 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
         with( objAlgA37Sphere ) {
             if( counted &gt; 0 &amp;&amp; !isMarked ) {
                 instance_change( objAlgA35Sphere2, false );
+                image_alpha = 1;
                 friction = -0.2;
                 direction = other.seg37Angle;
                 speed = random_range( 0.1, 2 );
@@ -3244,6 +3259,7 @@ if( !instance_exists( objAlgShaderDrawer ) ) {
         with( objAlgA37Sphere ) {
             if( counted &gt; 0 &amp;&amp; !isMarked ) {
                 instance_change( objAlgA35Sphere2, false );
+                image_alpha = 1;
                 friction = -0.3;
                 direction = other.seg37Angle;
                 speed = random_range( 0.1, 2 );
@@ -3334,8 +3350,29 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 42 (8:45 - 8:52) Xyphos
+            <string>///Alg Segment 42 (8:45 - 8:52) Xyphos
 if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 26230;
+    if( phaseT == 0 ) {
+        seg42Count = 2;
+    }
+    if( phaseT % 12 == 0 &amp;&amp; phaseT &lt; 96 + 48 ) {
+        var color = make_colour_hsv( random( 255 ), 255, 255 ); 
+        for( var i = 0; i &lt; seg42Count; i++ ) {
+            var segmentLength = 800 / seg42Count;
+            var obj = instance_create( random_range( i * segmentLength, ( i + 1 ) * segmentLength ), 0, objAlgA40Sphere );
+            obj.image_blend = color;
+            obj.speed = lerp( 15, 22, phaseT / ( 96 + 48 ) );
+            obj.direction = random_range( 225, 315 );
+        }
+        if( phaseT % 24 == 12 ) {
+            seg42Count++
+        }
+    }
     segment = 42;
 }
 </string>
