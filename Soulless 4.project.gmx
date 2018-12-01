@@ -481,27 +481,27 @@
       <object>objects\objAlgA8Effect</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA31Sphere</object>
-      <object>objects\objAlgA35Sphere</object>
-      <object>objects\objAlgA35Sphere2</object>
-      <object>objects\objAlgA35Sphere3</object>
       <object>objects\objAlgA37Sphere</object>
       <object>objects\objAlgA37Sphere2</object>
-      <object>objects\objAlgA40Sphere</object>
-      <object>objects\objAlgA40Sphere2</object>
-      <object>objects\objAlgA42Line</object>
-      <object>objects\objAlgA42Bounce</object>
-      <object>objects\objAlgA43Sphere</object>
+      <object>objects\objAlgA37Sphere3</object>
+      <object>objects\objAlgA39Sphere</object>
+      <object>objects\objAlgA39Sphere2</object>
+      <object>objects\objAlgA42Sphere</object>
+      <object>objects\objAlgA42Sphere2</object>
+      <object>objects\objAlgA44Line</object>
+      <object>objects\objAlgA44Bounce</object>
+      <object>objects\objAlgA45Sphere</object>
       <object>objects\objAlgA50Sphere</object>
-      <object>objects\objAlgA54Sphere</object>
+      <object>objects\objAlgA56Sphere</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA2Spawner</object>
-      <object>objects\objAlgA37Spawner</object>
+      <object>objects\objAlgA39Spawner</object>
       <object>objects\objAlgComet</object>
       <object>objects\objAlgA22Sphere</object>
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgWave</object>
       <object>objects\objAlgWaveDisappearing</object>
-      <object>objects\objAlgA47Wave</object>
+      <object>objects\objAlgA49Wave</object>
       <object>objects\objAlgRice</object>
       <object>objects\objAlgKunai</object>
       <object>objects\objAlgKunaiTrail</object>

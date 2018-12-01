@@ -28,7 +28,6 @@
             <string>event_inherited();
 rotationSpeed = 0;
 image_alpha = 0.5;
-isMarked = false;
 </string>
           </argument>
         </arguments>

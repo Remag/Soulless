@@ -52,7 +52,7 @@ shouldKill = false;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-var obj = instance_create( x, y, objAlgA40Sphere2 );
+var obj = instance_create( x, y, objAlgA42Sphere2 );
 obj.image_blend = image_blend;
 
 direction += angularSpeed;
