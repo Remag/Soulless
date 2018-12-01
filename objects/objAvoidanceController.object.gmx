@@ -3120,7 +3120,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Alg Segment 39 (7:59 - 8:14) Remembrance C
 if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) ) {
-if( !instance_exists( objAlgShaderDrawer ) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
@@ -3326,8 +3326,29 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 41 (8:29 - 8:45) The Calm Before The Storm
+            <string>///Alg Segment 41 (8:29 - 8:45) The Calm Before The Storm
 if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 25460;
+    if( phaseT % 24 == 0 ) {
+        if( phaseT &lt; 96 * 2 ) {
+            scrA41SpawnLine( irandom( 2 ), 0, 1 );
+        } else if( phaseT &lt; 96 * 4 ) {
+            scrA41SpawnLine( irandom( 2 ), 800, 1 );
+        } else if( phaseT &lt; 96 * 6 ) {
+            var centerX = 0;
+            if( phaseT % 48 == 24 ) {
+                centerX = 800;
+            }
+            scrA41SpawnLine( irandom( 2 ), centerX, 1 );
+        } else if( phaseT &lt; 96 * 8 ) {
+            scrA41SpawnLine( irandom( 2 ), 0, 0.5 );
+            scrA41SpawnLine( irandom( 2 ), 800, 0.5 );
+        }
+    }
     segment = 41;
 }
 </string>
@@ -3358,19 +3379,19 @@ if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
     
     var phaseT = t - 26230;
     if( phaseT == 0 ) {
-        seg42Count = 2;
+        seg42Count = 3;
     }
-    if( phaseT % 12 == 0 &amp;&amp; phaseT &lt; 96 + 48 ) {
+    if( phaseT % 12 == 0 &amp;&amp; phaseT &lt; 96 + 48 &amp;&amp; phaseT &gt;= 36 ) {
         var color = make_colour_hsv( random( 255 ), 255, 255 ); 
         for( var i = 0; i &lt; seg42Count; i++ ) {
             var segmentLength = 800 / seg42Count;
             var obj = instance_create( random_range( i * segmentLength, ( i + 1 ) * segmentLength ), 0, objAlgA42Sphere );
             obj.image_blend = color;
-            obj.speed = lerp( 15, 22, phaseT / ( 96 + 48 ) );
+            obj.speed = lerp( 10, 15, phaseT / ( 96 + 48 ) );
             obj.direction = random_range( 225, 315 );
         }
-        if( phaseT % 24 == 12 ) {
-            seg42Count++
+        if( phaseT % 36 == 12 ) {
+            seg42Count++;
         }
     }
     segment = 42;
