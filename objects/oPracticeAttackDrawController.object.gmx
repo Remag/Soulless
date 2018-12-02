@@ -118,7 +118,7 @@ finalizer = instance_create( 0, 0, oPracticeAttackDrawFinalizer );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( instance_exists( oPracticeAvoidanceController ) ) {
+            <string>if( instance_exists( oPreviewAvoidanceController ) ) {
     if( !surface_exists( drawSurface ) ) {
         drawSurface = surface_create( 800, 608 );
     }

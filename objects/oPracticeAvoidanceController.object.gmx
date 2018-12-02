@@ -27,34 +27,11 @@
             <kind>1</kind>
             <string>event_inherited();
 
-performTotalCleanup = false;
-avoidanceDestructionStep = 0;
-ownerAvoidanceControllerId = id;
-surfaceDrawAlpha = 0.60;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_stop_sound( practiceMusicId );
-event_inherited();
+startT = scrGetSegmentOffset( oPlayerData.practiceStartSegment );
+endT = scrGetSegmentOffset( oPlayerData.practiceEndSegment );
+
+t = startT;
+startSegment = oPlayerData.practiceStartSegment;
 </string>
           </argument>
         </arguments>
@@ -77,80 +54,24 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( !performTotalCleanup ) {
-    // Usual avoidance advance.
-    event_inherited();
-    scrApplyMusicCorrection( practiceMusicId );
-    t++;
-  
-    // Check for loops.
-    var nextSegmentPos = scrGetSegmentOffset( segment + 1 );
-    if( t == nextSegmentPos - 20 ) {
-        audio_sound_gain( practiceMusicId, 0, 500 );
-        performTotalCleanup = true;
-        blockBulletSpawn = true;
-    }    
-} else {
-    // Fade and eventually destroy all owned objects.
-    avoidanceDestructionStep++;
-    surfaceDrawAlpha -= 0.06;
-    if( avoidanceDestructionStep &gt; 10 ) {
-        with( all ) {
-            var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
-            if( is_undefined( ownerId ) ) {
-                instance_destroy();
-            }
-        }
-    }
+            <string>if( t == endT - 25 ) {
+    audio_sound_gain( global.currentMusic, 0, 500 );
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_stop_sound( practiceMusicId );
-event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_stop_sound( practiceMusicId );
-event_inherited();
+
+if( t &lt; endT ) {
+    event_inherited();
+
+    if( instance_exists( objPlayer ) ) {
+        scrApplyMusicCorrection( global.currentMusic );
+        t++;
+    } else {
+        scrStopMusic();
+    }
+} else if( !instance_exists( oPracticeEndTitle ) ) {
+    instance_create( 400, 300, oPracticeEndTitle );
+}
+
+
 </string>
           </argument>
         </arguments>

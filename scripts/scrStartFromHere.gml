@@ -1,1 +1,1 @@
-return room != rAvoidanceMainRoom;
+return objAvoidanceController.startSegment == objAvoidanceController.segment;

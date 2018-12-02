@@ -40,6 +40,8 @@ if( global.unlockEntirePractice ) {
 }
 
 childrenMap = ds_map_create();
+selectChangeDelay = 0;
+unfreezeDelay = 10;
 </string>
           </argument>
         </arguments>
@@ -85,15 +87,12 @@ childrenMap = ds_map_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var isLeft = scrButtonCheckPressed( global.leftButton );
-var isTop = scrButtonCheckPressed( global.upButton );
-var isRight = scrButtonCheckPressed( global.rightButton );
-var isBottom = scrButtonCheckPressed( global.downButton );
+            <string>selectChangeDelay++;
+var isLeft = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.leftButton );
+var isTop = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.upButton );
+var isRight = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.rightButton );
+var isBottom = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.downButton );
 var isSelect = scrButtonCheckPressed( global.shootButton );
-
-if( isSelect ) {
-    exit;
-}
 
 if( isLeft ) {
     if( currentSegment == -1 ) {
@@ -122,7 +121,7 @@ if( isRight ) {
 }
 if( isBottom ) {
     if( currentSegment == -1 ) {
-        currentSegment = 0;
+        scrSelectSegment( 0 );
     } else if ( !scrTrySetSegment( currentSegment + 4 ) ) {
         if( floor( pbSegment / 4 ) == floor( currentSegment / 4 ) ) {
             scrTryFocusGateSelection();
@@ -132,9 +131,20 @@ if( isBottom ) {
     }
 }
 
-if( !instance_exists( oPracticeAvoidanceController ) &amp;&amp; currentSegment != -1 ) {    
+if( isSelect &amp;&amp; currentSegment != -1 ) {
+    var price = oPracticePriceView.currentPrice;
+    if( oPlayerData.currencyCount &gt;= price ) {
+        oPlayerData.currencyCount -= price;
+        oPlayerData.practiceStartSegment = scrFindGlobalSegment( currentGate, currentSegment );
+        oPlayerData.practiceEndSegment = global.pb_segment + 1;
+        oPlayerData.targetEntranceId = 0;
+        room_goto( rPracticeActiveRoom );
+    }
+}
+
+if( !instance_exists( oPreviewAvoidanceController ) &amp;&amp; currentSegment != -1 ) {    
     var globalSegment = scrFindGlobalSegment( currentGate, currentSegment );
-    var segmentController = instance_create( 0, 0, oPracticeAvoidanceController );
+    var segmentController = instance_create( 0, 0, oPreviewAvoidanceController );
     segmentController.t = scrGetSegmentOffset( globalSegment );
     var musicId = audio_play_sound( global.musAvoidance, 0, false );
 
@@ -195,9 +205,9 @@ with( all ) {
 
 // Initialize the first segment.
 if( maxGate &lt;= 1 &amp;&amp; oPlayerData.lastPracticeSegment == -1 ) {
-    currentSegment = 0;
+    scrSelectSegment( 0 );
 } else {
-    currentSegment = oPlayerData.lastPracticeSegment;
+    scrSelectSegment( oPlayerData.lastPracticeSegment );
 }
 </string>
           </argument>
@@ -282,7 +292,11 @@ for( var i = 0; i &lt; segmentCount; i++ ) {
     }
     draw_text( segmentX + 48, segmentY + 48, string( i + 1 ) );
     if( currentSegment == i ) {
+        if( selectChangeDelay &lt; unfreezeDelay ) {
+            draw_set_alpha( selectChangeDelay / unfreezeDelay );
+        }
         draw_rectangle( segmentX + 16, segmentY + 16, segmentX + 78, segmentY + 78, true );
+        draw_set_alpha( 1 );
     }
 }
 

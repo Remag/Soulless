@@ -36,6 +36,8 @@ angle = 0;
 shake = 0;
 
 blockBulletSpawn = false;
+
+startSegment = 0;
 </string>
           </argument>
         </arguments>

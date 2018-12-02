@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>var surface = oPracticeAttackDrawController.drawSurface;
-if( instance_exists( oPracticeAvoidanceController ) &amp;&amp; surface_exists( surface ) ) {
+if( instance_exists( oPreviewAvoidanceController ) &amp;&amp; surface_exists( surface ) ) {
     surface_reset_target();
-    draw_surface_ext( surface, 0, 0, 1, 1, 0, c_white, oPracticeAvoidanceController.surfaceDrawAlpha );
+    draw_surface_ext( surface, 0, 0, 1, 1, 0, c_white, oPreviewAvoidanceController.surfaceDrawAlpha );
 }
 </string>
           </argument>

@@ -252,6 +252,8 @@
       <script>scripts\scrTrySetGate.gml</script>
       <script>scripts\scrClearSegment.gml</script>
       <script>scripts\scrTryFocusGateSelection.gml</script>
+      <script>scripts\scrGetSegmentPrice.gml</script>
+      <script>scripts\scrSelectSegment.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -395,8 +397,10 @@
       <object>objects\oPracticeDummyKid</object>
       <object>objects\oPracticeAttackDrawController</object>
       <object>objects\oPracticeAttackDrawFinalizer</object>
-      <object>objects\oPracticeAvoidanceController</object>
+      <object>objects\oPreviewAvoidanceController</object>
       <object>objects\oPracticeBackdrop</object>
+      <object>objects\oPracticeAvoidanceController</object>
+      <object>objects\oPracticeEndTitle</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>

@@ -3,8 +3,8 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>1</vsnap>
-  <hsnap>1</hsnap>
+  <vsnap>32</vsnap>
+  <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -53,18 +53,14 @@
   <instances>
     <instance objName="objBlock" x="0" y="576" name="inst_8FE07D61" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="32" y="0" name="inst_C185D96E" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="0" y="0" name="inst_38A20927" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="0" name="inst_38A20927" locked="0" code="" scaleX="1" scaleY="18" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="768" y="0" name="inst_272AD52D" locked="0" code="" scaleX="1" scaleY="18" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="-64" y="448" name="inst_3803180C" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
-    <instance objName="oEntranceWarp" x="-32" y="480" name="inst_5D64A227" locked="0" code="roomTo = rPortalRoom;&#xA;entranceTo = 1;&#xA;" scaleX="0.75" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="-32" y="448" name="inst_9F430C64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="-32" y="576" name="inst_8F5138C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oPlayerEntrance" x="-14" y="544" name="inst_EDAAD694" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oPlayerEntrance" x="384" y="544" name="inst_EDAAD694" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCurrencyDisplayView" x="3" y="580" name="inst_770A8355" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oPracticeAvoidanceController" x="32" y="32" name="inst_846238D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="0" y="576" w="32" h="32" xo="0" yo="0" id="10002824" name="inst_44CA963D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgAvoidTiles" x="0" y="448" w="32" h="32" xo="0" yo="0" id="10002825" name="inst_35EDE82F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgAvoidTiles" x="768" y="576" w="32" h="32" xo="0" yo="0" id="10002827" name="inst_E57A2B0B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgAvoidTiles" x="768" y="0" w="32" h="32" xo="0" yo="0" id="10002828" name="inst_C23F7744" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgAvoidTiles" x="0" y="0" w="32" h="32" xo="0" yo="0" id="10002829" name="inst_C22A735F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -144,6 +140,10 @@
     <tile bgName="bgAvoidTiles" x="768" y="480" w="32" h="32" xo="0" yo="32" id="10002964" name="inst_1A9B658F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgAvoidTiles" x="768" y="512" w="32" h="32" xo="0" yo="32" id="10002965" name="inst_49BC4F29" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgAvoidTiles" x="768" y="544" w="32" h="32" xo="0" yo="32" id="10002966" name="inst_27B42052" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgAvoidTiles" x="0" y="544" w="32" h="32" xo="0" yo="32" id="10002980" name="inst_1B6F6A57" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgAvoidTiles" x="0" y="512" w="32" h="32" xo="0" yo="32" id="10002981" name="inst_4B62EB20" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgAvoidTiles" x="0" y="480" w="32" h="32" xo="0" yo="32" id="10002982" name="inst_E97E6487" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgAvoidTiles" x="0" y="448" w="32" h="32" xo="0" yo="32" id="10002983" name="inst_EA39DD54" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
