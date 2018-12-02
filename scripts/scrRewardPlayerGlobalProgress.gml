@@ -27,5 +27,8 @@ if( gate > pbGate ) {
 
 oPlayerData.currencyCount += payoutCount;
 
-
-
+// Set new pb segments.
+if( global.pb < objAvoidanceController.t ) {
+    global.pb = objAvoidanceController.t;
+    global.pb_segment = objAvoidanceController.segment;
+}

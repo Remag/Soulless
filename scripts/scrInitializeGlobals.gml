@@ -77,5 +77,6 @@ global.playeralive = 0;
 
 global.pb = 0;
 global.pb_segment = 1;
+global.unlockEntirePractice = false;
 
 randomize();    //make sure the game starts with a random seed for RNG

@@ -28,10 +28,6 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
         if( room == rAvoidanceMainRoom ) {
             // Reward the player and set pbs.
             scrRewardPlayerGlobalProgress();
-            if( global.pb < objAvoidanceController.t ) {
-                global.pb = objAvoidanceController.t;
-                global.pb_segment = objAvoidanceController.segment;
-            }
         }
         
         instance_create(0,0,objGameOver);

@@ -2,13 +2,13 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
-  <persistent>-1</persistent>
+  <visible>-1</visible>
+  <depth>-1000001</depth>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currencyCount = 0;
-targetEntranceId = 0;
-lastPracticeSegment = -1;
-lastPracticeGate = 1;
+            <string>draw_set_color( c_black );
 
+draw_rectangle( x, y, x + 128, y + 96, false );
+
+draw_set_color( c_white );
 </string>
           </argument>
         </arguments>

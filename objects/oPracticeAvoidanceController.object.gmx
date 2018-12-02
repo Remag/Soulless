@@ -30,7 +30,7 @@
 performTotalCleanup = false;
 avoidanceDestructionStep = 0;
 ownerAvoidanceControllerId = id;
-
+surfaceDrawAlpha = 0.60;
 </string>
           </argument>
         </arguments>
@@ -82,16 +82,7 @@ event_inherited();
     event_inherited();
     scrApplyMusicCorrection( practiceMusicId );
     t++;
-    
-    // Lower the alpha of existing dynamic objects.
-    with( all ) {
-        var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
-        if( is_undefined( ownerId ) ) 
-        {
-            image_alpha = min( image_alpha, 0.25 );
-        }
-    }
-    
+  
     // Check for loops.
     var nextSegmentPos = scrGetSegmentOffset( segment + 1 );
     if( t == nextSegmentPos - 20 ) {
@@ -102,13 +93,7 @@ event_inherited();
 } else {
     // Fade and eventually destroy all owned objects.
     avoidanceDestructionStep++;
-    with( all ) {
-        var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );
-        if( is_undefined( ownerId ) ) 
-        {
-            image_alpha = min( image_alpha, 0.25 - other.avoidanceDestructionStep * 0.05 );
-        }
-    }
+    surfaceDrawAlpha -= 0.06;
     if( avoidanceDestructionStep &gt; 10 ) {
         with( all ) {
             var ownerId = ds_map_find_value( oPracticeAttackSelector.childrenMap, id );

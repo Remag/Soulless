@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1000001</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>maxGate = 5;
-segmentCount = scrGetGateSegmentCount( oPlayerData.lastPracticeGate );
-pbSegment = scrGetGateSegmentCount( oPlayerData.lastPracticeGate ) - 1;
+            <string>currentGate = oPlayerData.lastPracticeGate;
+segmentCount = scrGetGateSegmentCount( currentGate );
+if( global.unlockEntirePractice ) {
+    maxGate = 5;
+    pbSegment = segmentCount - 1;
+} else {
+    maxGate = scrGetSegmentGate( global.pb_segment );
+    if( maxGate == currentGate ) {
+        pbSegment = scrFindLocalSegment( global.pb_segment );
+    } else {
+        pbSegment = segmentCount - 1;
+    }
+}
 
-currentGate = oPlayerData.lastPracticeGate;
 childrenMap = ds_map_create();
 </string>
           </argument>
@@ -97,10 +106,11 @@ if( isLeft ) {
 }
 if( isTop ) {
     if( currentSegment != -1 ) {
-        if( !scrTrySetSegment( currentSegment - 4 ) &amp;&amp; maxGate &gt; 1 ) {
-            scrClearSegment();
-            currentSegment = -1;
+        if( !scrTrySetSegment( currentSegment - 4 ) ) {
+            scrTryFocusGateSelection();
         }
+    } else {
+        scrTrySetSegment( pbSegment );
     }
 }
 if( isRight ) {
@@ -111,10 +121,14 @@ if( isRight ) {
     }
 }
 if( isBottom ) {
-    if( currentSegment != -1 ) {
-        scrTrySetSegment( currentSegment + 4 );
-    } else {
-        scrSelectSegment( 0 );
+    if( currentSegment == -1 ) {
+        currentSegment = 0;
+    } else if ( !scrTrySetSegment( currentSegment + 4 ) ) {
+        if( floor( pbSegment / 4 ) == floor( currentSegment / 4 ) ) {
+            scrTryFocusGateSelection();
+        } else if( currentSegment != pbSegment ) {
+            scrTrySetSegment( pbSegment );        
+        }
     }
 }
 
@@ -180,7 +194,11 @@ with( all ) {
 }
 
 // Initialize the first segment.
-scrSelectSegment( oPlayerData.lastPracticeSegment );
+if( maxGate &lt;= 1 &amp;&amp; oPlayerData.lastPracticeSegment == -1 ) {
+    currentSegment = 0;
+} else {
+    currentSegment = oPlayerData.lastPracticeSegment;
+}
 </string>
           </argument>
         </arguments>

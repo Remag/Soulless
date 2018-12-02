@@ -2,7 +2,7 @@ var segmentId = argument0;
 
 if( segmentId >= 0 && segmentId <= pbSegment ) {
     scrClearSegment( currentSegment );
-    scrSelectSegment( segmentId );
+    currentSegment = segmentId;
     oPlayerData.lastPracticeSegment = segmentId;
     return true;
 } else {

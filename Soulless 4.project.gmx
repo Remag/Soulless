@@ -239,6 +239,7 @@
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
       <script>scripts\scrGetGateSegmentCount.gml</script>
+      <script>scripts\scrFindLocalSegment.gml</script>
       <script>scripts\scrFindGlobalSegment.gml</script>
       <script>scripts\scrGetSegmentGate.gml</script>
       <script>scripts\scrGetSegmentOffset.gml</script>
@@ -248,8 +249,8 @@
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
       <script>scripts\scrTrySetGate.gml</script>
-      <script>scripts\scrSelectSegment.gml</script>
       <script>scripts\scrClearSegment.gml</script>
+      <script>scripts\scrTryFocusGateSelection.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -383,7 +384,6 @@
       <object>objects\oCurrencyDisplayView</object>
       <object>objects\oBlackFadeIn</object>
       <object>objects\oMainAvoidanceController</object>
-      <object>objects\oPracticeAvoidanceController</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>
@@ -392,6 +392,10 @@
       <object>objects\oPracticeAttackSelector</object>
       <object>objects\oPracticeViewKid</object>
       <object>objects\oPracticeDummyKid</object>
+      <object>objects\oPracticeAttackDrawController</object>
+      <object>objects\oPracticeAttackDrawFinalizer</object>
+      <object>objects\oPracticeAvoidanceController</object>
+      <object>objects\oPracticeBackdrop</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>

@@ -3,7 +3,11 @@ var gateId = argument0;
 if( gateId >= 1 && gateId <= maxGate ) {
     currentGate = gateId;
     segmentCount = scrGetGateSegmentCount( gateId );
-    pbSegment = segmentCount - 1;
+    if( maxGate == currentGate && !global.unlockEntirePractice ) {
+        pbSegment = scrFindLocalSegment( global.pb_segment );
+    } else {
+        pbSegment = segmentCount - 1;
+    }
     oPlayerData.lastPracticeGate = gateId;
     return true;
 } else {
