@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 image_alpha = 0;
-angularSpeed = random_range( -4, 4 );
+angularSpeed = random_range( -3, 3 );
 shouldKill = false;
 </string>
           </argument>
@@ -56,8 +56,11 @@ var obj = instance_create( x, y, objAlgA42Sphere2 );
 obj.image_blend = image_blend;
 
 direction += angularSpeed;
-angularSpeed += random_range( -1, 1 );
-angularSpeed = max( min( angularSpeed, 4 ), -4 );
+direction = max( min( direction, 355 ), 185 );
+if( y &lt; 500 ) {
+    angularSpeed += random_range( -0.75, 0.75 );
+    angularSpeed = max( min( angularSpeed, 4 ), -4 );
+}
 </string>
           </argument>
         </arguments>

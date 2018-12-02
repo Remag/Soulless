@@ -229,6 +229,7 @@
       <script>scripts\scrTargetCircle.gml</script>
       <script>scripts\scrTargetLine.gml</script>
       <script>scripts\scrA25Spawn.gml</script>
+      <script>scripts\scrA41SpawnLine.gml</script>
       <script>scripts\scrA43CircleSpawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
@@ -474,6 +475,7 @@
       <object>objects\objAlgSphereTrail</object>
       <object>objects\objAlgSphereDisappearing</object>
       <object>objects\objAlgSphereDisappearing2</object>
+      <object>objects\objAlgSphereDisappearing3</object>
       <object>objects\objAlgSphereBounce</object>
       <object>objects\objAlgSphereWrap</object>
       <object>objects\objAlgA1SphereEffect</object>
@@ -491,6 +493,7 @@
       <object>objects\objAlgA37Sphere3</object>
       <object>objects\objAlgA39Sphere</object>
       <object>objects\objAlgA39Sphere2</object>
+      <object>objects\objAlgA41Sphere</object>
       <object>objects\objAlgA42Sphere</object>
       <object>objects\objAlgA42Sphere2</object>
       <object>objects\objAlgA43Sphere</object>

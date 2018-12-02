@@ -1,7 +1,4 @@
 ///scrA43CircleSpawn(x,y,radius,startDelay,count)
-///argument0 - spawnCount
-///argument1 - spawnCircleY
-///argument2 - spawnDir
 
 var spawnX = argument0;
 var spawnY = argument1;
