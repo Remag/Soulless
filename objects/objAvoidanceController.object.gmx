@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 21615;
+//t = 26605;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3535,14 +3535,16 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         var count = 7;
         var speedMin = 4;
         var speedMax = 10;
+        var yMax = 150;
         if( phaseT &gt;= 96 * 6 ) {
             count = 14;
-            speedMin = 6;
-            speedMax = 10;
+            speedMin = 9;
+            speedMax = 12;
+            yMax = 50;
         }
         repeat( count ) {
             var scale = random_range( 0.5, 1 );
-            var obj = instance_create( random( 800 ), random( 150 ), objAlgA43Sphere );
+            var obj = instance_create( random( 800 ), random( yMax ), objAlgA43Sphere );
             obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
             obj.image_xscale = scale;
             obj.image_yscale = scale;
