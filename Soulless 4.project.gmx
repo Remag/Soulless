@@ -139,6 +139,9 @@
       <sprite>sprites\sprArchBullet10</sprite>
       <sprite>sprites\sprArchBullet11</sprite>
       <sprite>sprites\sprArchBullet12</sprite>
+      <sprite>sprites\sprArchBullet13</sprite>
+      <sprite>sprites\sprArchBullet14</sprite>
+      <sprite>sprites\sprArchBullet15</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgSphereColored</sprite>
@@ -168,6 +171,7 @@
       <sprite>sprites\sBlockTileV</sprite>
       <sprite>sprites\sprCoin</sprite>
       <sprite>sprites\sprUiArrow</sprite>
+      <sprite>sprites\sprBigWarp</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -387,6 +391,7 @@
       <object>objects\oCurrencyDisplayView</object>
       <object>objects\oBlackFadeIn</object>
       <object>objects\oMainAvoidanceController</object>
+      <object>objects\objBigWarp</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>
@@ -430,6 +435,13 @@
       <object>objects\objArchBullet13_3</object>
       <object>objects\objArchBullet13_3_2</object>
       <object>objects\objArchBullet14</object>
+      <object>objects\objArchBullet15</object>
+      <object>objects\objArchBullet15_2</object>
+      <object>objects\objArchBullet15_3</object>
+      <object>objects\objArchBullet16</object>
+      <object>objects\objArchBullet17Holder</object>
+      <object>objects\objArchBullet17</object>
+      <object>objects\objArchBullet18Spawner</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
