@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 24690;
+//t = 6545;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -120,6 +120,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
     if( t == 19 ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
+    
     
     var phaseT = t - 19;
     if( phaseT % 24 == 0 ) {
@@ -1199,6 +1200,10 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
+    if( !instance_exists( objAlgShaderBackground ) ) {
+        instance_create( 700, 100, objAlgShaderBackground );
+    }
+    
     if( t == 6545 ) {
         segment9Angle = 0;
         scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgA7Sphere );
@@ -1206,6 +1211,9 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             curveSpeed = 3;
             image_blend = make_color_rgb( 255, 255, 0 );
         }
+        scrBackgroundMoveTo( 700, 100, 0 );
+        scrBackgroundSetColorTo( make_color_rgb( 255, 255, 0 ) );
+        scrBackgroundShaderSpeed( 2.0 );
     }
     
     if( t % 5 == 0 ) {
@@ -1220,6 +1228,9 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     with( objAlgA7Sphere ) {
+        x -= 1.5;
+    }
+    with( objAlgShaderBackground ) {
         x -= 1.5;
     }
     if( t == 6920 ) {
@@ -1251,6 +1262,10 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>///Arch. Segment 10 (2:19 - 2:34) Throwback B
 if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t == 6925 ) {
+        scrBackgroundMoveTo( 400, 0, 50 );
+        scrBackgroundShaderSpeed( 2.0 );
+    }
     if(t == 6925 ||
        t == 6979 ||
        t == 7027 ||
@@ -1266,6 +1281,17 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
         a = instance_create(objPlayer.x, objPlayer.y, objArchBullet3);
         a.vspeed = -random_range(30,45);
         a.gravity = -a.vspeed/25;
+        switch( a.image_index ) {
+            case 0:
+                scrBackgroundSetColorTo( make_color_rgb( 255, 150, 150 ) );
+                break;
+            case 1:
+                scrBackgroundSetColorTo( make_color_rgb( 150, 255, 150 ) );
+                break;
+            case 2:
+                scrBackgroundSetColorTo( make_color_rgb( 150, 150, 255 ) );
+                break;
+        }
     }
     if( t == 7082 || t == 7468 || t == 7661 ) {
         a = instance_create(0,0,objArchEventWall1);
@@ -1304,6 +1330,10 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>/// Arch. Segment 11 (2:34 - 2:49) Throwback C
 if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t == 7695 ) {
+        scrBackgroundMoveTo( 400, 304, 50 );
+        scrBackgroundShaderSpeed( 1.0 );
+    }
     if( t%48 == 15 &amp;&amp; t &lt; 8440 ) {
         var a_xx = random_range(128, 256);
         var a_yy = random_range(64, 192);
@@ -1341,6 +1371,18 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                 }
             }
         }
+        
+        switch( a_image_index ) {
+            case 0:
+                scrBackgroundSetColorTo( make_color_rgb( 255, 150, 150 ) );
+                break;
+            case 1:
+                scrBackgroundSetColorTo( make_color_rgb( 150, 255, 150 ) );
+                break;
+            case 2:
+                scrBackgroundSetColorTo( make_color_rgb( 150, 150, 255 ) );
+                break;
+        }
     }
     segment = 11;
 }
@@ -1366,6 +1408,14 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>///Arch. Segment 12 (2:49 - 3:05) Robotic Bridge
 if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t == 8465 ) {
+        scrBackgroundMoveTo( 800, 0, 50 );
+        scrBackgroundShaderSpeed( 1.0 );
+        scrBackgroundSetMultipleColorTo( 
+            make_color_rgb( 255, 150, 150 ), 
+            make_color_rgb( 150, 255, 150 ),
+            make_color_rgb( 150, 150, 255 ) );
+    }
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
         arch_xx = 800-32;
@@ -1375,6 +1425,9 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             arch_rpt = 1;
             if( t &lt; 8849 ) {
                 arch_xx = lerp(800-32, 32, (t - 8673)/(8858-8673));
+                with( objAlgShaderBackground ) {
+                    x = other.arch_xx;
+                }
             }
         }
         if( t &gt;= 8849 ) {
@@ -1451,6 +1504,11 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
 if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    if( t == 9230 ) {
+        scrBackgroundMoveTo( 400, 304, 50 );
+        scrBackgroundShaderSpeed( 1.0 );
+        scrBackgroundSetColorTo( make_color_rgb( 255, 255, 255 ) );
     }
     
     if( ( t - 9230 ) % 48 &lt; 24 &amp;&amp; ( t - 9230 ) % 2 == 0 ) {
@@ -3415,7 +3473,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 40 (8:14 - 8:29) Remembrance D
+            <string>///Alg Segment 40 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3826,6 +3884,7 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 46 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 46;
+    t = 29680;
 }
 </string>
           </argument>
@@ -4034,6 +4093,7 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Segment 51 (10:24 - 10:40) Q Solo
 if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
+    t = 32750;
     segment = 51;
 }
 </string>

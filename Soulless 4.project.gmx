@@ -167,6 +167,7 @@
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
+    <sprite>sprites\spriteBackground</sprite>
     <sprite>sprites\sprite135</sprite>
     <sprites name="General">
       <sprite>sprites\sBlockTileV</sprite>
@@ -251,6 +252,12 @@
       <script>scripts\scrGetSegmentOffset.gml</script>
       <script>scripts\scrApplyMusicCorrection.gml</script>
       <script>scripts\scrStartFromHere.gml</script>
+      <script>scripts\scrBackgroundMoveTo.gml</script>
+      <script>scripts\scrBackgroundShaderSpeed.gml</script>
+      <script>scripts\scrBackgroundSetColorTo.gml</script>
+      <script>scripts\scrBackgroundSetMultipleColorTo.gml</script>
+      <script>scripts\scrBackgroundColorStep.gml</script>
+      <script>scripts\shader_set_uniform_color.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -263,6 +270,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
+    <shader type="GLSLES">shaders\backgroundShader.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -481,6 +489,7 @@
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
       <object>objects\objAlgShaderDrawer</object>
+      <object>objects\objAlgShaderBackground</object>
       <object>objects\objAlgStar</object>
       <object>objects\objAlgStarSlowing</object>
       <object>objects\objAlgA25Star</object>
