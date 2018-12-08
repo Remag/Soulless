@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 20850;
+t = 24690;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3417,6 +3417,57 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Segment 40 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 24690;
+    if( phaseT &lt; 192 ) {
+        if( phaseT % 6 == 0 ) {
+            var obj = instance_create( 400, random( lerp( 0, 308, phaseT / 192  ) ), objAlgA40Spawner );
+            obj.spawnMode = irandom( 3 );
+        }
+    } else if( phaseT &lt; 192 * 2 ) {
+        if( phaseT % 6 == 0 ) {
+            var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 ) / 192 ) );
+            var spawnY = random( 208 );
+            var bullet = objAlgStar;
+            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            var dir = scrTargetPlayer( 400, spawnY ) + 180 / spawnCount;
+            var circle = scrMakeCircle( 400, spawnY, dir, spawnCount, 9, bullet ); 
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = color;
+            }
+        }
+    } else if( phaseT &lt; 192 * 3 ) {
+        if( phaseT % 6 == 0 ) {
+            var mode = irandom( 3 );
+            var spawnY = random( lerp( 0, 208, ( phaseT - 192 * 2 ) / 192  ) );
+            var obj = instance_create( 100, spawnY, objAlgA40Spawner );
+            obj.spawnMode = mode;
+            obj.maxFrame /= 2;
+            obj = instance_create( 700, spawnY, objAlgA40Spawner );
+            obj.spawnMode = mode;
+            obj.maxFrame /= 2;
+        }
+    } else if( phaseT &lt; 192 * 4 ) {
+        if( phaseT % 6 == 0 ) {
+            var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 * 3 ) / 192 ) );
+            var spawnY = random( 208 );
+            var bullet = objAlgStar;
+            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            var dir = scrTargetPlayer( 100, spawnY ) + 180 / spawnCount;
+            var circle = scrMakeCircle( 100, spawnY, dir, spawnCount, 9, bullet ); 
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = color;
+            }
+            dir = scrTargetPlayer( 700, spawnY ) + 180 / spawnCount;
+            circle = scrMakeCircle( 700, spawnY, dir, spawnCount, 9, bullet ); 
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = color;
+            }
+        }
+    }
     segment = 40;
 }
 </string>
