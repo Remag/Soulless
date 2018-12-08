@@ -144,6 +144,7 @@
       <sprite>sprites\sprArchBullet15</sprite>
     </sprites>
     <sprites name="Algeran">
+      <sprite>sprites\sprAlgRing</sprite>
       <sprite>sprites\sprAlgSphereColored</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
       <sprite>sprites\sprAlgWaveColored</sprite>
@@ -504,6 +505,8 @@
       <object>objects\objAlgA8Effect</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA31Sphere</object>
+      <object>objects\objAlgA35Ring</object>
+      <object>objects\objAlgA36Ring</object>
       <object>objects\objAlgA37Sphere</object>
       <object>objects\objAlgA37Sphere2</object>
       <object>objects\objAlgA37Sphere3</object>
@@ -523,6 +526,7 @@
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA2Spawner</object>
       <object>objects\objAlgA39Spawner</object>
+      <object>objects\objAlgA36Spawner</object>
       <object>objects\objAlgComet</object>
       <object>objects\objAlgA22Sphere</object>
       <object>objects\objAlgA6Spawner</object>

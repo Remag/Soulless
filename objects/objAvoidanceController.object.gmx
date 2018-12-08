@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 26605;
+t = 20850;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -2775,36 +2775,49 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 35 (7:12 - 7:20) Memories Of A Machine
-if( t &gt;= 21615 &amp;&amp; t &lt; 22000 &amp;&amp; instance_exists(objPlayer) ) {
-
-    if( t%12 == 3 ) {
-        a = instance_create(random(800), -32, objArchBullet17Holder);
-        a.n = choose(3,5,7);
-        a.vspeed = irandom_range(8,16);
+            <string>///Alg Segment 35 (7:12 - 7:20) Memories Of A Machine
+if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    if( t == 21807 ) {
-        a = instance_create(0, 0, objArchBullet18Spawner);
-        a.hspeed = 256/96;
-        a = instance_create(800, 0, objArchBullet18Spawner);
-        a.hspeed = -256/96;
-    }
-    if( t == 21903 ) {
-        with(objArchBullet18Spawner) {
-            speed = 0;
+    var phaseT = t - 21615;
+    if( phaseT == 0 ) {
+        seg35LeftBeat = 48;
+        if( scrGetPlayerX() &gt; 400 ) {
+            seg35LeftBeat = 0;
         }
     }
     
-    if( t == 21999 ) {
-        with(objArchBullet17Holder) {
-            instance_destroy();
+    if( phaseT % 48 == 0 ) {
+        var radius = 0;
+        var spawnX = 800;
+        var rotationSpeed = -1.5 * 300;
+        var color = make_colour_hsv( 150, 255, 255 );
+        if( phaseT % 96 == seg35LeftBeat ) {
+            spawnX = 0;
+            color = make_colour_hsv( 90, 255, 255 );
+            rotationSpeed = 1.5 * 300;
         }
-        with(objArchBullet17) {
-            fadeout = 1;
-        }
-        with(objArchBullet18Spawner) {
-            instance_destroy();
+        var spawnY = random_range( 404, 608 );
+        var count = 80;
+        var parts = 5;
+        var initialAngle = random( 360 );
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( 0, 0, objAlgA35Ring );
+            obj.image_blend = color;
+            obj.circleAngle = initialAngle + i * 360 / count;
+            obj.circleX = spawnX;
+            obj.circleY = spawnY;
+            obj.circleRadius = radius;
+            obj.circleRadiusSpeed = 4;
+            obj.circleSpeedX = 0;
+            obj.circleSpeedY = 0;
+            obj.circleRotationSpeed = rotationSpeed;
+            if( i % floor( count / parts ) &lt; floor( count / parts / 2 ) + 1 ) {
+                obj.image_alpha = 0.1;
+                obj.shouldKill = false;
+            }
         }
     }
 
@@ -2830,51 +2843,49 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 22000 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 36 (7:20 - 7:28) Memories Of A Machine
+            <string>///Alg Segment 36 (7:20 - 7:28) Memories Of A Machine
 if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) ) {
-    if( t == 22000 ) {
-        scrMakeShapes(400, 304, 0, 4, 4, 12, objArchBullet15);
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
     }
-    if( t == 22024 ) {
-        scrMakeShapes(400, 304, 45, 4, 4, 12, objArchBullet15);
+    
+    var phaseT = t - 22000;
+    if( phaseT == 0 ) {
+        seg36SpawnX = 400;
     }
-    if( t == 22096 ) {
-        scrMakeCircle(400, 304, 0, 8, 8, objArchBullet15_3);
-    }
-    if( t == 22120 ) {
-        scrMakeCircle(400, 304, 22.5, 8, 8, objArchBullet15_3);
-    }
-    if( t == 22192 ) {
-        with(objArchBullet15) {
-            speed = 3;
-        }
-    }
-    if( t == 22288 ) {
-        with(objArchBullet15) {
-            speed = 8;
-            bounce = false;
-        }
-    }
-    /*if( t == 22048 ||
-        t == 22060 ||
-        t == 22072 ||
-        t == 22084 ) {
-        if( t % 24 == 16 ) {
-            //мимо
-            for( i = 0; i &lt; 4; i++ ) {
-                a = instance_create(400, 0, objArchBullet16);
-                a.direction = point_direction(400, 0, objPlayer.x, objPlayer.y) + i * 15 - 22.5; 
-                a.speed = 20;
-            }
-        } else {
-            //в игрока
-            for( i = 0; i &lt; 3; i++ ) {
-                a = instance_create(400, 0, objArchBullet16);
-                a.direction = point_direction(400, 0, objPlayer.x, objPlayer.y) + i * 15 - 15; 
-                a.speed = 20;
+    if( phaseT &lt; 192 ) {
+        if( phaseT % 2 == 0 ) {
+            var spawnX = lerp( 400, seg36SpawnX, phaseT / 192 );
+            instance_create( spawnX, lerp( 0, 250, phaseT / 192 ), objAlgA36Spawner );
+            seg36SpawnX += 200;
+            if( seg36SpawnX == 800 ) {
+                seg36SpawnX = 200;
             }
         }
-    }*/
+    } else {
+        if( phaseT == 192 ) {
+            with( objAlgA36Spawner ) {
+                instance_destroy();
+            }
+            with( objAlgA36Ring ) {
+                speed /= 2;
+                maxSpeed /= 2;
+                gravity /= 2;
+            }
+        }
+        
+        var obj = instance_create( seg36SpawnX, 250, objAlgA36Spawner );
+        obj.seg36MaxSpeed /= 2;
+        obj.seg36Speed /= 2;
+        obj.seg36Gravity /= 2;
+        obj.maxFrame = choose( 2, 4, 6, 8, 10 );
+        obj.counter *= 2;
+        seg36SpawnX += 200;
+        if( seg36SpawnX == 800 ) {
+            seg36SpawnX = 200;
+        }
+    }
+    
     segment = 36;
 }
 </string>
