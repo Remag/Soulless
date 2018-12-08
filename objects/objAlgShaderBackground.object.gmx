@@ -30,6 +30,7 @@ iResolutionX = 0.77;
 iResolutionY = 0.3;
 
 shaderSpeed = 1 / 50;
+baseSpeedMultiplier = 0.02;
 //image_blend = make_color_rgb( 255, 255, 0 );
 iColor2 = image_blend;
 iColor3 = image_blend;
@@ -63,9 +64,9 @@ image_yscale = 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>iTime += shaderSpeed;
+            <string>iTime += shaderSpeed * baseSpeedMultiplier;
 
-if( image_alpha &lt; 0.1 ) {
+if( image_alpha &lt; 0.2 ) {
     image_alpha += 0.1 / 50;
 }
 
