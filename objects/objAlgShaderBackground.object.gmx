@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>iTime = 0;
-iResolutionX = 800;
-iResolutionY = 608;
+iResolutionX = 0.77;
+iResolutionY = 0.3;
 
 shaderSpeed = 1 / 50;
 baseSpeedMultiplier = 0.02;
