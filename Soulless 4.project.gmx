@@ -179,6 +179,58 @@
     <sprite>sprites\sprite135</sprite>
     <sprites name="MainMenu">
       <sprite>sprites\sprSoullessLabel</sprite>
+      <sprites name="TitleFragments">
+        <sprite>sprites\sTitleBase</sprite>
+        <sprites name="L">
+          <sprite>sprites\sTitleL1</sprite>
+          <sprite>sprites\sTitleL2</sprite>
+          <sprite>sprites\sTitleL3</sprite>
+          <sprite>sprites\sTitleL4</sprite>
+        </sprites>
+        <sprites name="E">
+          <sprite>sprites\sTitleE1</sprite>
+          <sprite>sprites\sTitleE2</sprite>
+          <sprite>sprites\sTitleE3</sprite>
+          <sprite>sprites\sTitleE4</sprite>
+          <sprite>sprites\sTitleE5</sprite>
+          <sprite>sprites\sTitleE6</sprite>
+          <sprite>sprites\sTitleE7</sprite>
+          <sprite>sprites\sTitleE8</sprite>
+        </sprites>
+        <sprites name="S1">
+          <sprite>sprites\sTitleS11</sprite>
+          <sprite>sprites\sTitleS12</sprite>
+          <sprite>sprites\sTitleS13</sprite>
+          <sprite>sprites\sTitleS14</sprite>
+          <sprite>sprites\sTitleS15</sprite>
+          <sprite>sprites\sTitleS16</sprite>
+          <sprite>sprites\sTitleS17</sprite>
+          <sprite>sprites\sTitleS18</sprite>
+          <sprite>sprites\sTitleS19</sprite>
+          <sprite>sprites\sTitleS110</sprite>
+        </sprites>
+        <sprites name="S2">
+          <sprite>sprites\sTitleS21</sprite>
+          <sprite>sprites\sTitleS22</sprite>
+          <sprite>sprites\sTitleS23</sprite>
+          <sprite>sprites\sTitleS24</sprite>
+          <sprite>sprites\sTitleS25</sprite>
+          <sprite>sprites\sTitleS26</sprite>
+          <sprite>sprites\sTitleS27</sprite>
+          <sprite>sprites\sTitleS28</sprite>
+          <sprite>sprites\sTitleS29</sprite>
+          <sprite>sprites\sTitleS210</sprite>
+          <sprite>sprites\sTitleS211</sprite>
+          <sprite>sprites\sTitleS212</sprite>
+          <sprite>sprites\sTitleS213</sprite>
+          <sprite>sprites\sTitleS214</sprite>
+          <sprite>sprites\sTitleS215</sprite>
+          <sprite>sprites\sTitleS216</sprite>
+          <sprite>sprites\sTitleS217</sprite>
+          <sprite>sprites\sTitleS218</sprite>
+          <sprite>sprites\sTitleS219</sprite>
+        </sprites>
+      </sprites>
     </sprites>
     <sprites name="General">
       <sprite>sprites\sBlockTileV</sprite>
@@ -418,6 +470,64 @@
       <object>objects\oVersionInfo</object>
       <object>objects\oMenuEffectController1</object>
       <object>objects\oMenuEffectSelector</object>
+      <object>objects\oFragmentExplosion</object>
+      <objects name="TitleFragments">
+        <object>objects\oTitleBase</object>
+        <object>objects\oTitleFragment</object>
+        <objects name="L">
+          <object>objects\oTitleLFragment</object>
+          <object>objects\oTitleLFragment1</object>
+          <object>objects\oTitleLFragment2</object>
+          <object>objects\oTitleLFragment3</object>
+          <object>objects\oTitleLFragment4</object>
+        </objects>
+        <objects name="E">
+          <object>objects\oTitleEFragment</object>
+          <object>objects\oTitleEFragment1</object>
+          <object>objects\oTitleEFragment2</object>
+          <object>objects\oTitleEFragment3</object>
+          <object>objects\oTitleEFragment4</object>
+          <object>objects\oTitleEFragment5</object>
+          <object>objects\oTitleEFragment6</object>
+          <object>objects\oTitleEFragment7</object>
+          <object>objects\oTitleEFragment8</object>
+        </objects>
+        <objects name="S1">
+          <object>objects\oTitleS1Fragment</object>
+          <object>objects\oTitleS1Fragment1</object>
+          <object>objects\oTitleS1Fragment2</object>
+          <object>objects\oTitleS1Fragment3</object>
+          <object>objects\oTitleS1Fragment4</object>
+          <object>objects\oTitleS1Fragment5</object>
+          <object>objects\oTitleS1Fragment6</object>
+          <object>objects\oTitleS1Fragment7</object>
+          <object>objects\oTitleS1Fragment8</object>
+          <object>objects\oTitleS1Fragment9</object>
+          <object>objects\oTitleS1Fragment10</object>
+        </objects>
+        <objects name="S2">
+          <object>objects\oTitleS2Fragment</object>
+          <object>objects\oTitleS2Fragment1</object>
+          <object>objects\oTitleS2Fragment2</object>
+          <object>objects\oTitleS2Fragment3</object>
+          <object>objects\oTitleS2Fragment4</object>
+          <object>objects\oTitleS2Fragment5</object>
+          <object>objects\oTitleS2Fragment6</object>
+          <object>objects\oTitleS2Fragment7</object>
+          <object>objects\oTitleS2Fragment8</object>
+          <object>objects\oTitleS2Fragment9</object>
+          <object>objects\oTitleS2Fragment10</object>
+          <object>objects\oTitleS2Fragment11</object>
+          <object>objects\oTitleS2Fragment12</object>
+          <object>objects\oTitleS2Fragment13</object>
+          <object>objects\oTitleS2Fragment14</object>
+          <object>objects\oTitleS2Fragment15</object>
+          <object>objects\oTitleS2Fragment16</object>
+          <object>objects\oTitleS2Fragment17</object>
+          <object>objects\oTitleS2Fragment18</object>
+          <object>objects\oTitleS2Fragment19</object>
+        </objects>
+      </objects>
     </objects>
     <objects name="General">
       <object>objects\oEntranceWarp</object>

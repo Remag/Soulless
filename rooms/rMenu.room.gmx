@@ -54,11 +54,54 @@
     <instance objName="oMainMenu" x="400" y="350" name="inst_6EC1A5D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSettingsMenu" x="-100" y="300" name="inst_2FFBCD09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSlotSelection" x="900" y="300" name="inst_FD9AB898" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oTitleImage" x="400" y="124" name="inst_17CC682B" locked="0" code="" scaleX="0.75" scaleY="0.75" colour="4294967295" rotation="0"/>
-    <instance objName="oVersionInfo" x="4" y="583" name="inst_B3E13D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oMenuTransitionController" x="0" y="1" name="inst_372A2C7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oMenuEffectSelector" x="20" y="1" name="inst_66A295E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeIn" x="-17" y="-16" name="inst_FBCA30C8" locked="0" code="fadeColor = c_white;&#xA;fadeDelta = 0.02;&#xA;&#xA;if( global.debugMode ) {&#xA;    image_alpha = 0;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oVersionInfo" x="-20" y="583" name="inst_B3E13D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oMenuTransitionController" x="-24" y="1" name="inst_372A2C7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oMenuEffectSelector" x="-4" y="1" name="inst_66A295E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeIn" x="-41" y="-16" name="inst_FBCA30C8" locked="0" code="fadeColor = c_white;&#xA;fadeDelta = 0.02;&#xA;&#xA;if( global.debugMode ) {&#xA;    image_alpha = 0;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleBase" x="27" y="86" name="inst_726C92DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleLFragment1" x="338" y="100" name="inst_45B705CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleLFragment2" x="367" y="157" name="inst_23526306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleLFragment3" x="368" y="183" name="inst_FD7E937B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleLFragment4" x="360" y="175" name="inst_1DA3BA82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment1" x="392" y="123" name="inst_3E89E604" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment2" x="410" y="127" name="inst_A03C7D1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment3" x="439" y="75" name="inst_1D4D01F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment4" x="434" y="124" name="inst_F41913B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment5" x="386" y="184" name="inst_DBF80DA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment6" x="411" y="170" name="inst_C5B9F05A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment7" x="443" y="168" name="inst_54B357DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment8" x="470" y="174" name="inst_BB5AC3E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleEFragment8" x="420" y="102" name="inst_E3440071" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment1" x="489" y="112" name="inst_591AB162" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment2" x="512" y="101" name="inst_6E00D82C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment3" x="528" y="113" name="inst_02668EC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment4" x="536" y="122" name="inst_8ECEC6D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment5" x="500" y="123" name="inst_D8DCB3A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment6" x="491" y="157" name="inst_D8656C8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment7" x="508" y="143" name="inst_C243DB0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment8" x="527" y="148" name="inst_7ABA3D66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment9" x="501" y="178" name="inst_207B3286" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS1Fragment10" x="527" y="169" name="inst_8A45DE5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment1" x="562" y="113" name="inst_7E5D3505" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment2" x="562" y="109" name="inst_8D0618A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment3" x="575" y="101" name="inst_9BC871C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment4" x="585" y="107" name="inst_FF619FD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment5" x="597" y="121" name="inst_ED105A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment6" x="599" y="111" name="inst_6CE7596C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment7" x="557" y="129" name="inst_E5660B2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment8" x="567" y="126" name="inst_FB304D67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment9" x="586" y="136" name="inst_FEAE2E16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment10" x="561" y="141" name="inst_34C90CF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment12" x="586" y="146" name="inst_3D95F6D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment13" x="561" y="161" name="inst_C985A862" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment14" x="565" y="175" name="inst_8A9BC636" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment15" x="583" y="179" name="inst_9FEE3B4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment16" x="589" y="165" name="inst_6F7B9DB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment18" x="601" y="147" name="inst_BB5A1CF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment19" x="600" y="168" name="inst_E2CB3938" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment11" x="571" y="138" name="inst_CD9E8C82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oTitleS2Fragment17" x="596" y="157" name="inst_A65BB418" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFragmentExplosion" x="-4" y="136" name="inst_7F0C72BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="143" y="153" w="16" h="16" xo="0" yo="0" id="10002984" name="inst_2F4AB2A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
