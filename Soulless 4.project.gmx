@@ -154,6 +154,7 @@
     <sprites name="Algeran">
       <sprite>sprites\sprAlgRing</sprite>
       <sprite>sprites\sprAlgSphereColored</sprite>
+      <sprite>sprites\sprAlgSphereEffect</sprite>
       <sprite>sprites\sprAlgKunaiColored</sprite>
       <sprite>sprites\sprAlgWaveColored</sprite>
       <sprite>sprites\sprAlgComet</sprite>
