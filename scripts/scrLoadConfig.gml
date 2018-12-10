@@ -35,12 +35,12 @@ global.alignLeftButton[0] = ini_read_real("Controls","Align_left",ord("A"));
 global.alignRightButton[0] = ini_read_real("Controls","Align_right",ord("D"));
 
 //menu keys (not rebindable)
-global.menuLeftButton[0] = vk_left;
+global.menuUpButton[0] = vk_left;
 global.menuRightButton[0] = vk_right;
 global.menuUpButton[0] = vk_up;
 global.menuDownButton[0] = vk_down;
-global.menuAcceptButton[0] = vk_shift;
-global.menuBackButton[0] = ord("Z");
+global.menuAcceptButton1[0] = vk_shift;
+global.menuAcceptButton2[0] = ord("Z");
 global.menuOptionsButton[0] = vk_enter;
 
 if (global.controllerEnabled)
@@ -66,8 +66,8 @@ global.menuLeftButton[1] = gp_padl;
 global.menuRightButton[1] = gp_padr;
 global.menuUpButton[1] = gp_padu;
 global.menuDownButton[1] = gp_padd;
-global.menuAcceptButton[1] = gp_face1;
-global.menuBackButton[1] = gp_face2;
+global.menuAcceptButton1[1] = gp_face1;
+global.menuAcceptButton2[1] = gp_face2;
 global.menuOptionsButton[1] = gp_select;
 
 ini_close();

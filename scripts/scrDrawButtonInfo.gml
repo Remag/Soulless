@@ -12,13 +12,13 @@ var optionsButton;
 if (!global.controllerMode)
 {
     backButton = scrGetKeybind(global.menuBackButton[0]);
-    acceptButton = scrGetKeybind(global.menuAcceptButton[0]);
+    acceptButton = scrGetKeybind(global.menuAcceptButton1[0]);
     optionsButton = scrGetKeybind(global.menuOptionsButton[0]);
 }
 else
 {
     backButton = scrGetControllerBind(global.menuBackButton[1]);
-    acceptButton = scrGetControllerBind(global.menuAcceptButton[1]);
+    acceptButton = scrGetControllerBind(global.menuAcceptButton1[1]);
     optionsButton = scrGetControllerBind(global.menuOptionsButton[1]);
 }
 

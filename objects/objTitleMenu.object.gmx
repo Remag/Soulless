@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto( rMenu );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,8 +48,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (scrButtonCheckPressed(global.menuAcceptButton))
-    room_goto(rMenu);
+            <string>if( scrButtonCheckPressed( global.menuAcceptButton1 ) ) {
+    if( global.debugMode ) {
+        room_goto( rMenu );
+    } else {
+        var fade = instance_create( 0, 0, oFadeOut );   
+        fade.fadeColor = c_white;
+        fade.fadeDelta = 0.03;
+        audio_play_sound( sndWoosh, 0, false );
+        alarm[0] = 100;
+    }
+}
 </string>
           </argument>
         </arguments>

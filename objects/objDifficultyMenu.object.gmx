@@ -178,7 +178,7 @@ else
             global.menuSelectPrev[0] = 0;
             room_goto(rTitle);  //go back
         }
-        else if (scrButtonCheckPressed(global.menuAcceptButton))
+        else if (scrButtonCheckPressed(global.menuAcceptButton1))
         {
             if (global.menuMode == 0)   //use the difficulty select room to select difficulty
             {
@@ -222,7 +222,7 @@ else
             {
                 difSelect = false;
             }
-            else if (scrButtonCheckPressed(global.menuAcceptButton))
+            else if (scrButtonCheckPressed(global.menuAcceptButton1))
             {
                 global.savenum = select+1;
                 
@@ -266,7 +266,7 @@ else
             {
                 warnText = false;
             }
-            else if (scrButtonCheckPressed(global.menuAcceptButton))
+            else if (scrButtonCheckPressed(global.menuAcceptButton1))
             {
                 if (warnSelect)
                 {

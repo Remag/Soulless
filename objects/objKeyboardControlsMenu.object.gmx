@@ -130,7 +130,7 @@ if (!settingKey)
         instance_create(x,y,objOptionsMenu);
         instance_destroy();
     }
-    else if (scrButtonCheckPressed(global.menuAcceptButton))
+    else if (scrButtonCheckPressed(global.menuAcceptButton1))
     {
         if (select != 10)
         {

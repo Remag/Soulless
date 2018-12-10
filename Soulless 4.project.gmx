@@ -33,8 +33,16 @@
       <sound>sound\sndShoot</sound>
       <sound>sound\sndDeath</sound>
       <sound>sound\sndItem</sound>
+      <sound>sound\sndWooshBoom</sound>
       <sound>sound\sndBlockChange</sound>
     </sounds>
+    <sound>sound\musMenu1</sound>
+    <sound>sound\musMenu2</sound>
+    <sound>sound\musMenu3</sound>
+    <sound>sound\musMenu4</sound>
+    <sound>sound\musMenu5</sound>
+    <sound>sound\sndBoom</sound>
+    <sound>sound\sndWoosh</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -169,6 +177,9 @@
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\spriteBackground</sprite>
     <sprite>sprites\sprite135</sprite>
+    <sprites name="MainMenu">
+      <sprite>sprites\sprSoullessLabel</sprite>
+    </sprites>
     <sprites name="General">
       <sprite>sprites\sBlockTileV</sprite>
       <sprite>sprites\sprCoin</sprite>
@@ -239,19 +250,24 @@
       <script>scripts\scrA43CircleSpawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
     </scripts>
+    <scripts name="MainMenu">
+      <script>scripts\scrLoadLastSlot.gml</script>
+      <script>scripts\scrSaveLastSlot.gml</script>
+      <script>scripts\scrChooseMainMenuMusic.gml</script>
+    </scripts>
     <scripts name="General">
+      <script>scripts\scrStartFromHere.gml</script>
+      <script>scripts\scrGetSegmentOffset.gml</script>
+      <script>scripts\scrGetSegmentGate.gml</script>
       <script>scripts\scrFindCurrencyDelta.gml</script>
       <script>scripts\scrShowCurrency.gml</script>
-      <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrRestartAttempt.gml</script>
+      <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
       <script>scripts\scrGetGateSegmentCount.gml</script>
       <script>scripts\scrFindLocalSegment.gml</script>
       <script>scripts\scrFindGlobalSegment.gml</script>
-      <script>scripts\scrGetSegmentGate.gml</script>
-      <script>scripts\scrGetSegmentOffset.gml</script>
       <script>scripts\scrApplyMusicCorrection.gml</script>
-      <script>scripts\scrStartFromHere.gml</script>
       <script>scripts\scrBackgroundMoveTo.gml</script>
       <script>scripts\scrBackgroundShaderSpeed.gml</script>
       <script>scripts\scrBackgroundSetColorTo.gml</script>
@@ -276,6 +292,7 @@
     <font>fonts\fDefault30</font>
     <font>fonts\fPracticeTitle</font>
     <font>fonts\fDefault24</font>
+    <font>fonts\fMenuOption</font>
     <font>fonts\fNotifications</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fAttackNumber</font>
@@ -391,6 +408,17 @@
       <object>objects\objBossIndicator</object>
       <object>objects\objGameClear</object>
     </objects>
+    <objects name="MainMenu">
+      <object>objects\oSoullessTitle</object>
+      <object>objects\oMainMenu</object>
+      <object>objects\oSettingsMenu</object>
+      <object>objects\oSlotSelection</object>
+      <object>objects\oMenuTransitionController</object>
+      <object>objects\oTitleImage</object>
+      <object>objects\oVersionInfo</object>
+      <object>objects\oMenuEffectController1</object>
+      <object>objects\oMenuEffectSelector</object>
+    </objects>
     <objects name="General">
       <object>objects\oEntranceWarp</object>
       <object>objects\oPlayerData</object>
@@ -401,6 +429,8 @@
       <object>objects\oBlackFadeIn</object>
       <object>objects\oMainAvoidanceController</object>
       <object>objects\objBigWarp</object>
+      <object>objects\oFadeOut</object>
+      <object>objects\oFadeIn</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

@@ -5,9 +5,11 @@ var roomSong;
 switch (room)                       //determines which song to play
 {
     case rTitle:                    //add rooms here, if you have several rooms that play the same song they can be put together
+        roomSong = -1;
+        break;
     case rMenu:
     case rOptions:
-        roomSong = -1;
+        roomSong = scrChooseMainMenuMusic();
         break;                      //make sure to always put a break after setting the song
     case rAvoidanceMainRoom:
     case rPracticeActiveRoom:
