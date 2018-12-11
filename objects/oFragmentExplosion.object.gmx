@@ -50,11 +50,14 @@
             <string>var explosionY = 150;
 var explosionX = 300;
 with( oTitleFragment ) {
-    hspeed = power( ( x - explosionX ), 1.5 ) * random_range( 0.0003, 0.001 );
-    vspeed = ( y - explosionY ) * random_range( 0, 0.01 );
+    //hspeed = power( ( x - explosionX ), 1.6 ) * random_range( 0.00012, 0.00034 );
+    hspeed = power( ( x - explosionX ), 1.6 ) * random_range( 0.00005, 0.00010 );
+    //vspeed = ( y - explosionY ) * random_range( 0, 0.01 );
+    vspeed = ( y - explosionY ) * random_range( 0, 0.005 );
     fragmentFriction = ( x - explosionX ) * 0.0001;
     fragmentRotation = ( x - explosionX ) * random_range( 0, 0.002 ) * choose( -1, 1 );
-    minSpeed = hspeed / 10;
+   // minSpeed = hspeed / 10;
+    minSpeed = hspeed / 5;
 }
 
 with( oTitleLFragment ) {

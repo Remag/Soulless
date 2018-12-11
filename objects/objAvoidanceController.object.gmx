@@ -1296,13 +1296,22 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
                 break;
         }
     }
-    if( t == 7082 || t == 7468 || t == 7661 ) {
+    if( t == 7082 || t == 7468 ) {
         a = instance_create(0,0,objArchEventWall1);
         a.hspeed = 20;
     }
-    if( t == 7276 || t == 7661 ) {
+    if( t == 7276 ) {
         a = instance_create(832,0,objArchEventWall1);
         a.hspeed = -20;
+    }
+    if( t == 7661 ) {
+        a1 = instance_create(0,0,objArchEventWall1);
+        a1.hspeed = 20;
+        a2 = instance_create(832,0,objArchEventWall1);
+        a2.hspeed = -20;
+        with( objArchBullet1 ) {
+            gravity = -gravity;
+        }
     }
     if( t == 7681 ) {
         with(objArchEventWall1) {
