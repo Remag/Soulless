@@ -291,6 +291,18 @@ if( t &gt;= 1930 &amp;&amp; t &lt; 2705 &amp;&amp; instance_exists(objPlayer) ) 
         with( oRedireS3CircleBullet ) { speed = 1.3; }
         with( oRedireS3Arrow ) { speed = 1.3; }
         with( oRedireS3ArrowSpawner ) { instance_destroy(); }
+        // Spawn shadows.
+        with( oRedireS3Arrow ) {
+            var shadow = instance_create( x, y, oRedireS3Shadow );
+            shadow.sprite_index = sprite_index;
+            shadow.image_angle = image_angle;
+            shadow.direction = direction;
+            shadow.image_xscale = image_xscale;
+            shadow.image_yscale = image_yscale;
+            shadow.image_speed = 0;
+            shadow.speed = speed / 2;
+            shadow.alphaDelta = random_range( 0.0015, 0.005 );
+        }
     }
     
     // Effects by Algeran

@@ -30,7 +30,7 @@ speed = max( speed, minSpeed );
 
 image_angle += fragmentRotation;
 fragmentRotation -= fragmentFriction * 0.5 * sign( fragmentRotation );
-fragmentRotation = sign( fragmentRotation ) * max( abs( fragmentRotation ), 0.1 );
+fragmentRotation = sign( fragmentRotation ) * max( abs( fragmentRotation ), fragmentMinRotation );
 </string>
           </argument>
         </arguments>

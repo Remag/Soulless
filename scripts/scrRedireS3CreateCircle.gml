@@ -1,9 +1,9 @@
 var circleX = argument0;
 var circleImageId = argument1;
 
-var circleCount = 50;
+var circleCount = 48;
 var circleSpeed = 5;
-var circleScale = 0.6;
+var circleScale = 3;
 
 var dirDelta = 360 / circleCount;
 for( var circleDir = 0; circleDir < 360; circleDir += dirDelta ) {

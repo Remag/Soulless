@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_alpha = 0.2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,62 +48,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var explosionY = 150;
-var explosionX = 300;
-with( oTitleFragment ) {
-    //hspeed = power( ( x - explosionX ), 1.6 ) * random_range( 0.00012, 0.00034 );
-    hspeed = power( ( x - explosionX ), 1.6 ) * random_range( 0.00005, 0.00010 );
-    //vspeed = ( y - explosionY ) * random_range( 0, 0.01 );
-    vspeed = ( y - explosionY ) * random_range( 0, 0.005 );
-    vspeed = min( vspeed, 0.5 * hspeed );
-    fragmentFriction = ( x - explosionX ) * 0.0001;
-    fragmentRotation = ( x - explosionX ) * random_range( 0, 0.002 ) * choose( -1, 1 );
-    //fragmentMinRotation = 0.03 * hspeed;
-    fragmentMinRotation = 0.2 * hspeed * hspeed;
-   // minSpeed = hspeed / 10;
-    minSpeed = ( x - explosionX ) * 0.003 * hspeed / 5;
-}
-
-with( oTitleLFragment ) {
-    //hspeed = random_range( 0, 1 );
-    //friction = 0.01;
-}
-
-with( oTitleEFragment ) {
-    //hspeed = random_range( 1, 2 );
-    //friction = 0.001;
-}
-
-with( oTitleS1Fragment ) {
-    //hspeed = random_range( 2, 3 );
-    //friction = 0.0001;
-}
-
-with( oTitleS2Fragment ) {
-    //hspeed = random_range( 3, 4 );
-    //friction = 0.00001;
+            <string>image_alpha -= alphaDelta;
+if( image_alpha &lt;= 0 ) {
+    instance_destroy();
 }
 </string>
           </argument>
