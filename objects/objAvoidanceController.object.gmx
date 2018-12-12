@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 5003;
+t = 5775;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -623,82 +623,83 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5003 &amp;&amp; instance_exists(objPlayer) ) 
     
     // Effects by Algeran.
     if( phaseT == 0 ) {
+        if( !instance_exists( objAlgShaderDrawer ) ) {
+            instance_create( 0, 0, objAlgShaderDrawer );
+        }
         with( objAlgA8Effect ) {
-            instance_change( objArchEffect1, false );
             direction = random_range( -10, 10 );
             speed = random_range( 10, 15 );
             image_alpha = random_range( 0.01, 0.3 );
-            image_xscale = 0.2;
-            image_yscale = 0.2;
-            image_blend = make_color_rgb( 255, 255, 255 );
+            image_blend = make_color_hsv( 80, 255, 255 );
         }
     }
     if( phaseT &lt; 96 ) {
         repeat( 2 ) {
-            a = instance_create( -10, random( 608 ), objArchEffect1 );
+            a = instance_create( -10, random( 608 ), objAlgA8Effect );
             a.direction = random_range( -10, 10 );
             a.speed = random_range( 10, 15 );
             a.image_alpha = random_range( 0.01, 0.3 );
-            a.image_xscale = 0.2;
-            a.image_yscale = 0.2;
+            a.image_xscale = 0.34;
+            a.image_yscale = 0.34;
+            a.image_blend = make_color_hsv( 80, 255, 255 );
         }
     } else if( phaseT == 96 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             canWarp = true;
             direction = random_range( 260, 280 );
             speed = random_range( 6, 10 );
             friction = speed / 25;
         }
     } else if( phaseT &gt;= 96 &amp;&amp; phaseT &lt; 96 * 2 &amp;&amp; phaseT % 24 == 0 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             speed += friction * 24;
         }
     } else if( phaseT == 96 * 2 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = random_range( 170, 190 );
             friction *= -1.5;
         }
     } else if( phaseT == 96 * 2 + 24 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             friction = 0;
         }
     } else if( phaseT == 96 * 3 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = random( 360 );
             speed = random_range( 6, 10 );
             friction = speed / 25;
         }
     } else if( phaseT &gt;= 96 * 3 &amp;&amp; phaseT &lt; 96 * 4 &amp;&amp; phaseT % 24 == 0 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = random( 360 );
             speed += friction * 24;
         }
     } else if( phaseT == 96 * 4 ) {
         var dir = point_direction( 800 - 128, 128, scrGetPlayerX(), scrGetPlayerY() );
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             addDir = random_range( -10, 10 );
             direction = dir + addDir;
             friction *= -1.5;
         }
     } else if( phaseT == 96 * 4 + 24 ) {
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             friction = 0;
         }
     } else if( phaseT &gt; 96 * 4 &amp;&amp; phaseT &lt; 96 * 6 ) {
         var dir = point_direction( 800 - 128, 128, scrGetPlayerX(), scrGetPlayerY() );
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = dir + addDir;
         }
     } else if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 6 + 24 ) {
         var dirOld = point_direction( 800 - 128, 128, scrGetPlayerX(), scrGetPlayerY() );
         var dirNew = point_direction( 128, 128, scrGetPlayerX(), scrGetPlayerY() );
         var dir = lerp( dirOld, dirNew, ( phaseT - 96 * 6 ) / 24 );
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = dir + addDir;
         }
     } else if( phaseT &gt;= 96 * 6 + 24 &amp;&amp; phaseT &lt; 96 * 8 ) {
         var dir = point_direction( 128, 128, scrGetPlayerX(), scrGetPlayerY() );
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             direction = dir + addDir;
         }
     }
@@ -887,14 +888,15 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
     
     // Effects
     if( phaseT == 0 ) {
-        if( !instance_exists( objArchEffect1 ) ) {
+        if( !instance_exists( objAlgA8Effect ) ) {
             repeat( 130 ) {
-                var obj = instance_create( random( 800 ), random( 608 ), objArchEffect1 );
+                var obj = instance_create( random( 800 ), random( 608 ), objAlgA8Effect );
                 obj.image_alpha = random_range( 0.01, 0.3 );
             }
         }
-        with( objArchEffect1 ) {
+        with( objAlgA8Effect ) {
             instance_change( objAlgA7Effect, true );
+            
             var distance = point_distance( x, y, 400, 200 ) * pi;
             var time = irandom_range( 96, 96 * 2 );
             speed = distance / time;
@@ -1017,12 +1019,13 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         obj.gravity_direction = random_range( 260, 280 );
     } else if( phaseT &lt; 96 * 4 ) {
         with( objAlgWave ) {
+            var value = lerp( 0.1, 0.3, y / 608 );
             speed = storedSpeed;
-            friction = 0.3;
-            gravity = 0.3;
+            friction = value;
+            gravity = value;
         }
     } else if( phaseT &lt; 96 * 5 ) {
-        if( t % 3 == 0 ) {
+        if( t % 2 == 0 ) {
             var obj = instance_create( 0, lerp( 0, 304, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
             obj.direction = random_range( -90, 90 );
             obj.image_angle = obj.direction;
@@ -1041,12 +1044,13 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     } else if( phaseT &lt; 96 * 6 ) {
         with( objAlgWave ) {
+            var value = lerp( 0.1, 0.3, y / 608 );
             speed = storedSpeed;
-            friction = 0.3;
-            gravity = 0.3;
+            friction = value;
+            gravity = value;
         }
     } else if( phaseT &lt; 96 * 7 ) {
-        if( t % 2 == 0 ) {
+        if( t % 3 != 0 ) {
             var obj = instance_create( 800, lerp( 608, 558, ( phaseT - 96 * 6 ) / 96 ), objAlgWave );
             obj.direction = random_range( 90, min( 140, lerp( 90, 140, ( phaseT - 96 * 6 ) / 50 ) ) );
             obj.image_angle = obj.direction;
@@ -1065,9 +1069,10 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     } else if( phaseT &lt; 96 * 8 ) {
         with( objAlgWave ) {
+            var value = lerp( 0.1, 0.3, y / 608 );
             speed = storedSpeed;
-            friction = 0.3;
-            gravity = 0.3;
+            friction = value;
+            gravity = value;
         }
     } else if( t == 6534 ) {
         with( objAlgWave ) {
@@ -4242,18 +4247,18 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
     {
         var spawnX = random_range( 50, 750 );
         var spawnY = random_range( 32, 64 );
-        var circle = scrMakeCircle( spawnX, spawnY, random( 360 ), 8, 3, objAlgSphere );
+        var circle = scrMakeCircle( spawnX, spawnY, random( 360 ), 8, 3, objAlgA54FullCircle );
         var color = random( 255 );
         for( var i = 0; i &lt; 8; i++ ) {
             circle[i].image_blend = make_colour_hsv( color, 255, 255 );
         }
         
-        var obj = instance_create( spawnX, spawnY, objAlgSphereBounce );
+        var obj = instance_create( spawnX, spawnY, objAlgA54CircleBounce );
         obj.image_xscale = 0.75;
         obj.image_yscale = 0.75;
         obj.direction = random( 360 );
         obj.speed = 5;
-        obj.image_blend = make_colour_hsv( color, 255, 100 );
+        obj.image_blend = make_colour_hsv( color, 255, 255 );
         obj.image_alpha = 1;
         obj.friction = 5 / 400;
     }
@@ -4286,11 +4291,11 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( t == 34670 ) {
-        with( objAlgSphereBounce ) {
+        with( objAlgA54CircleBounce ) {
             friction = -0.0075;
             speed = 0.01;
             if( irandom( 2 ) == 0 ) {
-                var obj = instance_create( x, y, objAlgSphereWrap );
+                var obj = instance_create( x, y, objAlgA55CircleWrap );
                 obj.speed = speed;
                 obj.friction = friction;
                 obj.image_blend = image_blend;
@@ -4301,7 +4306,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
                 obj.hstep = obj.hspeed * 1.5;
                 obj.vstep = obj.vspeed * 1.5;
                 
-                obj = instance_create( x, y, objAlgSphereWrap );
+                obj = instance_create( x, y, objAlgA55CircleWrap );
                 obj.speed = speed;
                 obj.friction = friction;
                 obj.image_blend = image_blend;
@@ -4310,7 +4315,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
                 obj.direction = 270 + random_range( -15, 15 );
                 obj.isHorizontal = false;
             } else {
-                var obj = instance_create( x, y, objAlgSphereWrap );
+                var obj = instance_create( x, y, objAlgA55CircleWrap );
                 obj.speed = speed;
                 obj.friction = friction;
                 obj.image_blend = image_blend;
@@ -4329,11 +4334,11 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
             instance_destroy();
         }
     } else if( t == 35070 ) {
-        with( objAlgSphereWrap ) {
+        with( objAlgA55CircleWrap ) {
             friction = 0;
         }
     } else if( t &gt;= 35247 &amp;&amp; t &lt;= 35647 ) {
-        with( objAlgSphereWrap ) {
+        with( objAlgA55CircleWrap ) {
             if( isHorizontal ) {
                 hspeed -= hstep;
                 vspeed -= vstep;
@@ -4368,17 +4373,18 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     if( t == 35825 ) {
-        with( objAlgSphereWrap ) {
+        with( objAlgA55CircleWrap ) {
             speed = 0.01;
             direction = 90 + random_range( -30, 30 );
             friction = -random_range( 0.002, 0.003 );
         }
     } else if( t == 36425 ) {
-        with( objAlgSphereWrap ) {
+        with( objAlgA55CircleWrap ) {
             friction = 0;
         }
     }
     
+    var satValue = lerp( 255, 0, ( t - 35825 ) / ( 36550 - 35825 ) );
     var phaseT = t - 35825 + 50;
     if( phaseT == 48 + 24
         || phaseT == 48 * 3 + 24
@@ -4400,16 +4406,23 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
     {
         if( t % 3 == 1 ) {
             var xDiff = lerp( 0, 24, ( phaseT % 24 ) / 24 );
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
-            var obj = instance_create( seg56PlayerX + xDiff, 608 - 16, objAlgA56Sphere );
+            var color = make_colour_hsv( random( 255 ), 0, 255 );
+            var obj = instance_create( seg56PlayerX + xDiff, 608 - 16, objAlgA56FullCircle );
             obj.image_blend = color;
-            obj = instance_create( seg56PlayerX - xDiff, 608 - 16, objAlgA56Sphere );
+            obj = instance_create( seg56PlayerX - xDiff, 608 - 16, objAlgA56FullCircle );
             obj.image_blend = color;
         }
     }
     
+    if( t &lt; 36550 ) {
+        with( objAlgA55CircleWrap ) {
+            var hue = colour_get_hue( image_blend );
+            image_blend = make_colour_hsv( hue, satValue, 255 );
+        }
+    }
+    
     if( t == 36550 ) {
-        with( objAlgSphereWrap ) {
+        with( objAlgA55CircleWrap ) {
             instance_change( objAlgSphereDisappearing2, true );
             friction = -0.25;
         }
