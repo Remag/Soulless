@@ -4139,7 +4139,7 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 51 (10:24 - 10:40) Q Solo
+            <string>///Arch. Segment 51 (10:24 - 10:40) Q Solo
 if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
     var s51_part = floor((t - 31215)/192)
     if( t%2 == 0 ) {
