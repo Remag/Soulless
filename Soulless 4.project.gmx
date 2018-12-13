@@ -230,6 +230,7 @@
       <sprite>sprites\sprArchBullet13</sprite>
       <sprite>sprites\sprArchBullet14</sprite>
       <sprite>sprites\sprArchBullet15</sprite>
+      <sprite>sprites\sprArchBullet16</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgRing</sprite>
@@ -644,6 +645,7 @@
     <object>objects\objAvatar</object>
     <objects name="Arch">
       <object>objects\objArchEffect1</object>
+      <object>objects\objArchEffect2</object>
       <object>objects\objArchBullet1</object>
       <object>objects\objArchBullet2</object>
       <object>objects\objArchBullet3</object>
@@ -675,6 +677,9 @@
       <object>objects\objArchBullet17Holder</object>
       <object>objects\objArchBullet17</object>
       <object>objects\objArchBullet18Spawner</object>
+      <object>objects\objArchBullet19</object>
+      <object>objects\objArchBullet19_2</object>
+      <object>objects\objArchBullet20</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
