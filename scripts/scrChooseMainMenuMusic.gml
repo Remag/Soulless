@@ -1,1 +1,5 @@
-return choose( musMenu1, musMenu2, musMenu3, musMenu4, musMenu5 );
+return choose( 'music/musMenu1.ogg',
+    'music/musMenu2.ogg',
+    'music/musMenu3.ogg',
+    'music/musMenu4.ogg',
+    'music/musMenu5.ogg' );

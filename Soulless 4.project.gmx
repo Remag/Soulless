@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
-    <datafiles number="1" name="music">
+  <datafiles number="16" name="datafiles">
+    <datafiles number="16" name="music">
       <datafile>
         <name>musAvoidance.ogg</name>
         <exists>-1</exists>
@@ -22,6 +22,91 @@
         </ConfigOptions>
         <filename>musAvoidance.ogg</filename>
       </datafile>
+      <datafile>
+        <name>musMenu1.ogg</name>
+        <exists>-1</exists>
+        <size>1434834</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>musMenu1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>musMenu2.ogg</name>
+        <exists>-1</exists>
+        <size>1127504</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>musMenu2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>musMenu3.ogg</name>
+        <exists>-1</exists>
+        <size>1122611</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>musMenu3.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>musMenu4.ogg</name>
+        <exists>-1</exists>
+        <size>884636</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>musMenu4.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>musMenu5.ogg</name>
+        <exists>-1</exists>
+        <size>898563</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>musMenu5.ogg</filename>
+      </datafile>
     </datafiles>
   </datafiles>
   <NewExtensions/>
@@ -36,11 +121,6 @@
       <sound>sound\sndWooshBoom</sound>
       <sound>sound\sndBlockChange</sound>
     </sounds>
-    <sound>sound\musMenu1</sound>
-    <sound>sound\musMenu2</sound>
-    <sound>sound\musMenu3</sound>
-    <sound>sound\musMenu4</sound>
-    <sound>sound\musMenu5</sound>
     <sound>sound\sndBoom</sound>
     <sound>sound\sndWoosh</sound>
   </sounds>
@@ -542,6 +622,7 @@
       <object>objects\objBigWarp</object>
       <object>objects\oFadeOut</object>
       <object>objects\oFadeIn</object>
+      <object>objects\oMusicContainer</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

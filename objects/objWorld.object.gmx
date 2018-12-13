@@ -36,7 +36,9 @@ if( !instance_exists( oPlayerData ) ) {
     instance_create( 0, 0, oCurrencyDisplayController );
 }
     
-    
+if( !instance_exists( oMusicContainer ) ) {
+    instance_create( 0, 0, oMusicContainer );
+}
 </string>
           </argument>
         </arguments>

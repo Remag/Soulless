@@ -9,11 +9,11 @@ switch (room)                       //determines which song to play
         break;
     case rMenu:
     case rOptions:
-        roomSong = scrChooseMainMenuMusic();
+        roomSong = oMusicContainer.menuMusic;
         break;                      //make sure to always put a break after setting the song
     case rAvoidanceMainRoom:
     case rPracticeActiveRoom:
-        roomSong = global.musAvoidance;
+        roomSong = oMusicContainer.avoidanceMusic;
         break;
     default:                        //default option in case the room does not have a song set
         roomSong = -1;

@@ -35,4 +35,3 @@ global.controllerDelayLength = 5;   //sets the delay in frames in which the play
 
 global.extraSaveProtection = false; //sets whether to use the ds_map_secure functions for saving/loading (improves save security and prevents transferring between PCs)
 
-global.musAvoidance = audio_create_stream('music/musAvoidance.ogg');
