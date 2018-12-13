@@ -247,6 +247,8 @@
       <sprite>sprites\sprAlgKnife</sprite>
       <sprite>sprites\sprAlgRice</sprite>
       <sprite>sprites\sprAlgSphereGrad</sprite>
+      <sprite>sprites\sprAlgFullCircle</sprite>
+      <sprite>sprites\sprAlgCircle</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireFrostBullet</sprite>
@@ -756,7 +758,10 @@
       <object>objects\objAlgA44Bounce</object>
       <object>objects\objAlgA45Sphere</object>
       <object>objects\objAlgA50Sphere</object>
-      <object>objects\objAlgA56Sphere</object>
+      <object>objects\objAlgA54CircleBounce</object>
+      <object>objects\objAlgA54FullCircle</object>
+      <object>objects\objAlgA55CircleWrap</object>
+      <object>objects\objAlgA56FullCircle</object>
       <object>objects\objAlgSpawner</object>
       <object>objects\objAlgA2Spawner</object>
       <object>objects\objAlgA39Spawner</object>
