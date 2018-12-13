@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 5775;
+t = 31215;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -3916,7 +3916,6 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             <string>///Segment 46 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 46;
-    t = 29680;
 }
 </string>
           </argument>
@@ -3962,8 +3961,25 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 48 (9:46 - 9:54) Mosh Solo
+            <string>///Arch. Segment 48 (9:46 - 9:54) Mosh Solo
 if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) ) {
+
+    var phaseT = (t - 29300)%(48*4);
+    if( phaseT &lt; 48 * 3 &amp;&amp; phaseT % 48 == 0 ) {
+        var xx = random_range(100, 700);
+        if( t &lt; 29492 ) {
+            var yy = random_range(64, 192);
+        } else {
+            var yy = random_range(192, 352);
+        }
+        for( i = 0; i &lt; 360; i+= 22.5 ) {
+            a = instance_create(xx, yy, objArchBullet19);
+            a.direction = i;
+            a.gravity_direction = i + 180;
+            a.speed = 12;
+            a.gravity = a.speed / 48;
+        }
+    }
     segment = 48;
 }
 </string>
@@ -4125,7 +4141,24 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Segment 51 (10:24 - 10:40) Q Solo
 if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
-    t = 32750;
+    var s51_part = floor((t - 31215)/192)
+    if( t%2 == 0 ) {
+        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
+        if( s51_part == 0 || s51_part == 1 ) {
+            a.direction = 270 + 40;
+        } else {
+            a.direction = 270 - 40;
+        }
+        a.speed = 4;
+        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
+        if( s51_part == 1 || s51_part == 2 ) {
+            a.direction = 270 + 40;
+        } else {
+            a.direction = 270 - 40;
+        }
+        a.speed = 4;
+        a.image_index = 1;
+    }
     segment = 51;
 }
 </string>
