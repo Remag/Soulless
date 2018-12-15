@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 29300;
+//t = 29300;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -122,31 +122,51 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
     }
     
     var phaseT = t - 19;
-    if( phaseT % 24 == 0 ) {
-        var obj = instance_create( random_range( 100, 700 ), 304, objAlgSphereBounce );
-        obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
-        obj.speed = random_range( 3, 4 );
-        obj.direction = random_range( 70, 110 );
-        
-        var effectObj = instance_create( obj.x, obj.y, objAlgA1SphereEffect );
-        effectObj.speed = obj.speed;
-        effectObj.direction = obj.direction;
-    } else if( phaseT % 24 == 12 ) {
-        var spawnXLeft = lerp( 64, 500, scrGetPlayerX() / 800 );
-        var spawnXRight = lerp( 300, 800 - 64, scrGetPlayerX() / 800 );
-        var obj = instance_create( random_range( spawnXLeft, spawnXRight ), 304, objAlgSphereBounce );
-        obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
-        obj.speed = random_range( 3, 4 );
-        obj.direction = random_range( 70, 110 );
-        
-        var effectObj = instance_create( obj.x, obj.y, objAlgA1SphereEffect );
-        effectObj.speed = obj.speed;
-        effectObj.direction = obj.direction;
+    if( phaseT &lt; 96 * 10 ) {
+        if( phaseT % 4 == 0 ) {
+            var spawnX = 0;
+            var spawnY = 0;
+            if( phaseT &lt; 96 * 4 ) {
+                spawnX = choose( 0, 800 );
+                spawnY = 0;
+            } else if( phaseT &lt; 96 * 6 ) {
+                spawnX = choose( 0, 800 );
+                spawnY = lerp( 0, 608, spawnX / 800 );
+            } else if( phaseT &lt; 96 * 8 ) {
+                spawnX = choose( 0, 800 );
+                spawnY = lerp( 608, 0, spawnX / 800 );
+            } else if( phaseT &lt; 96 * 10 ) {
+                spawnX = choose( 0, 800 );
+                spawnY = 608;
+            } else if( phaseT &lt; 96 * 12 ) {
+                spawnX = choose( 0, 800 );
+                spawnY = choose( 0, 608 );
+            }
+            var obj = instance_create( spawnX, spawnY, objAlgSphere );
+            obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
+            obj.speed = random_range( 3, 6 );
+            obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+            obj.isSpeedReduced = false;
+        }
+    } else {
+         if( phaseT % 6 != 0 ) {
+            var spawnX = choose( 0, 800 );
+            var spawnY = choose( 0, 608 );
+            var obj = instance_create( spawnX, spawnY, objAlgSphere );
+            obj.image_blend = make_colour_hsv( random_range( -10, 10 ), 255, 255 ); 
+            obj.speed = random_range( 2, 6 );
+            obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+            obj.isSpeedReduced = false;
+        }
     }
     
     if( phaseT &gt;= 96 * 4 &amp;&amp; phaseT % 192 == 0 ) {
-        with( objAlgSphereBounce ) {
-            direction = choose( -1, 1 ) * random_range( 80, 100 );
+        with( objAlgSphere ) {
+            if( !isSpeedReduced ) {
+                direction = random_range( 240, 300 );
+                speed /= 2;
+                isSpeedReduced = true;
+            }
             var obj = instance_create( x, y, objAlgA1SphereEffect );
             obj.speed = speed;
             obj.direction = direction;
@@ -154,7 +174,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
         }
     }
     if( t == 1164 ) {
-        with( objAlgSphereBounce ) {
+        with( objAlgSphere ) {
             instance_change( objAlgSphere, false );
             direction = scrTargetPlayer( x, y ) + 180;
             speed = 10;
