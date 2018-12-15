@@ -149,7 +149,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
             obj.isSpeedReduced = false;
         }
     } else {
-         if( phaseT % 6 != 0 ) {
+         if( phaseT % 2 == 0 ) {
             var spawnX = choose( 0, 800 );
             var spawnY = choose( 0, 608 );
             var obj = instance_create( spawnX, spawnY, objAlgSphere );
