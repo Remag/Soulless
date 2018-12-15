@@ -257,6 +257,7 @@
       <sprite>sprites\sprRedireArrow</sprite>
       <sprite>sprites\sprRedireBall</sprite>
       <sprite>sprites\sprRedireWideArrow</sprite>
+      <sprite>sprites\sprRedireRectBullet</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -712,6 +713,12 @@
         <object>objects\oRedireS24Bullet</object>
         <object>objects\oRedireS24ExplosionTrigger</object>
         <object>objects\oRedireS24FountainBullet</object>
+      </objects>
+      <objects name="Segment46">
+        <object>objects\oRedireS46CornerSpawner</object>
+        <object>objects\oRedireS46CornerBullet</object>
+        <object>objects\oRedireS46CrawlerSpawner</object>
+        <object>objects\oRedireS46CrawlerBullet</object>
       </objects>
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
