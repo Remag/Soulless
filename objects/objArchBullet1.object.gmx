@@ -53,7 +53,7 @@ createdTime = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 736 ) {
+            <string>if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 640 ) {
     instance_destroy();
 }
 if( createdTime &gt; 0 ) {

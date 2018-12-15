@@ -250,6 +250,7 @@
       <sprite>sprites\sprAlgSphereGrad</sprite>
       <sprite>sprites\sprAlgFullCircle</sprite>
       <sprite>sprites\sprAlgCircle</sprite>
+      <sprite>sprites\sprAlgLaser</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireFrostBullet</sprite>
@@ -725,6 +726,9 @@
       <object>objects\objAlgA25Star</object>
       <object>objects\objAlgEffect</object>
       <object>objects\objAlgBackEffect</object>
+      <object>objects\objAlgLaserEffect</object>
+      <object>objects\objAlgLaserDisappearing</object>
+      <object>objects\objAlgLaserBackEffect</object>
       <object>objects\objAlg</object>
       <object>objects\objAlgSphere</object>
       <object>objects\objAlgRing</object>
@@ -744,6 +748,11 @@
       <object>objects\objAlgA7Sphere</object>
       <object>objects\objAlgA7Effect</object>
       <object>objects\objAlgA8Effect</object>
+      <object>objects\objAlgA10EffectSpawner</object>
+      <object>objects\objAlgA14EffectSpawner</object>
+      <object>objects\objAlgA11LaserEffect</object>
+      <object>objects\objAlgA12LaserEffect</object>
+      <object>objects\objAlgA13LaserEffect</object>
       <object>objects\objAlgA20Sphere</object>
       <object>objects\objAlgA31Sphere</object>
       <object>objects\objAlgA35Ring</object>

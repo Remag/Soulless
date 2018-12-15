@@ -59,7 +59,7 @@ image_alpha = 0;
             <string>if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 736 ) {
     instance_destroy();
 }
-image_alpha += 1/25;
+image_alpha += 1/36;
 
 if( image_alpha &gt;= 1 ) {
     repeat(15) {

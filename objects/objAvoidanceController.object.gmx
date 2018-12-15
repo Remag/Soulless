@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 29300;
+t = 6545;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1243,20 +1243,23 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    if( !instance_exists( objAlgShaderBackground ) ) {
-        instance_create( 700, 100, objAlgShaderBackground );
-    }
-    
     if( t == 6545 ) {
         segment9Angle = 0;
-        scrMakeCircle( 700, 100, random( 360 ), 8, 2, objAlgA7Sphere );
+        var randomAngle = random( 360 );
+        scrMakeCircle( 700, 100, randomAngle, 8, 2, objAlgA7Sphere );
         with( objAlgA7Sphere ) {
             curveSpeed = 3;
             image_blend = make_color_rgb( 255, 255, 0 );
         }
-        scrBackgroundMoveTo( 700, 100, 0 );
-        scrBackgroundSetColorTo( make_color_rgb( 255, 255, 0 ) );
-        scrBackgroundShaderSpeed( 2.0 );
+        for( var i = 0; i &lt; 4; i++ ) {
+            var obj = instance_create( 700, 100, objAlgLaserEffect );
+            obj.image_angle = randomAngle;
+            obj.image_yscale = 0.5;
+            obj.image_blend = make_color_rgb( 255, 255, 0 );
+            obj.rotationSpeed = 1.5;
+            obj.hspeed = -1.5;
+            randomAngle += 180 / 4;
+        }
     }
     
     if( t % 5 == 0 ) {
@@ -1273,12 +1276,13 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     with( objAlgA7Sphere ) {
         x -= 1.5;
     }
-    with( objAlgShaderBackground ) {
-        x -= 1.5;
-    }
     if( t == 6920 ) {
         with( objAlgA7Sphere ) {
             instance_destroy();
+        }
+        with( objAlgLaserEffect ) {
+            instance_change( objAlgLaserDisappearing, true );
+            alphaStep = image_alpha / 5;
         }
     }
     segment = 9;
@@ -1304,51 +1308,42 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
           <argument>
             <kind>1</kind>
             <string>///Arch. Segment 10 (2:19 - 2:34) Throwback B
-if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) {
-    if( t == 6925 ) {
-        scrBackgroundMoveTo( 400, 0, 50 );
-        scrBackgroundShaderSpeed( 2.0 );
+if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
     }
-    if(t == 6925 ||
-       t == 6979 ||
-       t == 7027 ||
-       t == 7122 ||
-       t == 7173 ||
-       t == 7221 ||
-       t == 7317 ||
-       t == 7366 ||
-       t == 7415 ||
-       t == 7509 ||
-       t == 7556 ||
-       t == 7604 ) {
-        a = instance_create(objPlayer.x, objPlayer.y, objArchBullet3);
-        a.vspeed = -random_range(30,45);
-        a.gravity = -a.vspeed/25;
+    var phaseT = t - 6925;
+    if( phaseT % 192 == 0 || phaseT % 192 == 48 || phaseT % 192 == 96 ) {
+         a = instance_create(objPlayer.x, objPlayer.y, objArchBullet3);
+        a.vspeed = -random_range(20,30);
+        a.gravity = -a.vspeed/36;
+        
+        var obj = instance_create( a.x, a.y, objAlgA10EffectSpawner );
         switch( a.image_index ) {
             case 0:
-                scrBackgroundSetColorTo( make_color_rgb( 255, 150, 150 ) );
+                obj.image_blend = make_colour_rgb( 255, 0, 0 );
                 break;
             case 1:
-                scrBackgroundSetColorTo( make_color_rgb( 150, 255, 150 ) );
+                obj.image_blend = make_colour_rgb( 0, 255, 0 );
                 break;
             case 2:
-                scrBackgroundSetColorTo( make_color_rgb( 150, 150, 255 ) );
+                obj.image_blend = make_colour_rgb( 0, 0, 255 );
                 break;
         }
-    }
-    if( t == 7082 || t == 7468 ) {
+    } else if( phaseT == 96 + 48 ) {
         a = instance_create(0,0,objArchEventWall1);
-        a.hspeed = 20;
-    }
-    if( t == 7276 ) {
-        a = instance_create(832,0,objArchEventWall1);
-        a.hspeed = -20;
-    }
-    if( t == 7661 ) {
-        a1 = instance_create(0,0,objArchEventWall1);
-        a1.hspeed = 20;
-        a2 = instance_create(832,0,objArchEventWall1);
-        a2.hspeed = -20;
+        a.hspeed = 800 / 48;
+    } else if( phaseT == 96 * 3 + 48 ) {
+        a = instance_create(800,0,objArchEventWall1);
+        a.hspeed = -800 / 48;
+    } else if( phaseT == 96 * 5 + 48 ) {
+        a = instance_create(0,0,objArchEventWall1);
+        a.hspeed = 800 / 48;
+    } else if( phaseT == 96 * 7 + 48 ) {
+        a = instance_create(0,0,objArchEventWall1);
+        a.hspeed = 800 / 48;
+        a = instance_create(800,0,objArchEventWall1);
+        a.hspeed = -800 / 48;
         with( objArchBullet1 ) {
             gravity = -gravity;
         }
@@ -1382,11 +1377,10 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7695 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>/// Arch. Segment 11 (2:34 - 2:49) Throwback C
 if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) {
-    if( t == 7695 ) {
-        scrBackgroundMoveTo( 400, 304, 50 );
-        scrBackgroundShaderSpeed( 1.0 );
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
     }
-    if( t%48 == 15 &amp;&amp; t &lt; 8440 ) {
+    if( t % 48 == 15 &amp;&amp; t &lt; 8440 ) {
         var a_xx = random_range(128, 256);
         var a_yy = random_range(64, 192);
         var a_image_index = irandom(2);
@@ -1408,6 +1402,29 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         
+        var color;
+        switch( a_image_index ) {
+            case 0:
+                color = make_colour_rgb( 255, 0, 0 );
+                break;
+            case 1:
+                color = make_colour_rgb( 0, 255, 0 );
+                break;
+            case 2:
+                color = make_colour_rgb( 0, 0, 255 );
+                break;
+        }
+        var count = irandom_range( 6, 9 );
+        var effectsRotationSpeed = choose( -1, 1 );
+        var effectsAngle = random( 360 );
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( a_xx, a_yy, objAlgA11LaserEffect );
+            obj.image_angle = a_dir + effectsAngle + i * 180 / count;
+            obj.image_yscale = 0.5;
+            obj.image_blend = color;
+            obj.rotationSpeed = effectsRotationSpeed;
+        }
+        
         var a_dir = point_direction(800-a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25 - a_rng;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
@@ -1424,16 +1441,12 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         
-        switch( a_image_index ) {
-            case 0:
-                scrBackgroundSetColorTo( make_color_rgb( 255, 150, 150 ) );
-                break;
-            case 1:
-                scrBackgroundSetColorTo( make_color_rgb( 150, 255, 150 ) );
-                break;
-            case 2:
-                scrBackgroundSetColorTo( make_color_rgb( 150, 150, 255 ) );
-                break;
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( 800 - a_xx, a_yy, objAlgA11LaserEffect );
+            obj.image_angle = a_dir - ( effectsAngle + i * 180 / count );
+            obj.image_yscale = 0.5;
+            obj.image_blend = color;
+            obj.rotationSpeed = -effectsRotationSpeed;
         }
     }
     segment = 11;
@@ -1460,13 +1473,29 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             <kind>1</kind>
             <string>///Arch. Segment 12 (2:49 - 3:05) Robotic Bridge
 if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
     if( t == 8465 ) {
-        scrBackgroundMoveTo( 800, 0, 50 );
-        scrBackgroundShaderSpeed( 1.0 );
-        scrBackgroundSetMultipleColorTo( 
-            make_color_rgb( 255, 150, 150 ), 
-            make_color_rgb( 150, 255, 150 ),
-            make_color_rgb( 150, 150, 255 ) );
+        var count = 9;
+        var effectsAngle = random( 360 );
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( 800 - 32, 32, objAlgA12LaserEffect );
+            obj.image_angle = effectsAngle + i * 180 / count;
+            obj.image_yscale = 0.5;
+            switch( i % 3 ) {
+                case 0:
+                    obj.image_blend = make_colour_rgb( 255, 0, 0 );
+                    break;
+                case 1:
+                    obj.image_blend = make_colour_rgb( 0, 255, 0 );
+                    break;
+                case 2:
+                    obj.image_blend = make_colour_rgb( 0, 0, 255 );
+                    break;
+            }
+            obj.rotationSpeed = -1;
+        }
     }
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
@@ -1476,21 +1505,26 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             arch_spd *= 0.5;
             arch_rpt = 1;
             if( t &lt; 8849 ) {
-                arch_xx = lerp(800-32, 32, (t - 8673)/(8858-8673));
-                with( objAlgShaderBackground ) {
+                arch_xx = lerp(800-32, 32, (t - 8657)/(8858-8657));
+                with( objAlgA12LaserEffect ) {
                     x = other.arch_xx;
                 }
             }
         }
         if( t &gt;= 8849 ) {
             arch_xx = 32;
+            with( objAlgA12LaserEffect ) {
+                x = other.arch_xx;
+            }
         }
         if( t == 8657 || t == 9041 ) {
+            objAlgA12LaserEffect.rotationSpeed *= 0.5;
             with(objArchBullet1) {
                 speed *= 0.5;
             }
         }
         if( t == 8849 ) {
+            objAlgA12LaserEffect.rotationSpeed *= -2;
             with(objArchBullet1) {
                 speed *= 2;
             }
@@ -1504,6 +1538,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             a.image_index = irandom(2);
         }
     }
+
     if(t == 9137 ||
        t == 9163 ||
        t == 9184 ||
@@ -1528,6 +1563,12 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
     } else if( t == 9250 ) {
         with( objArchBullet1 ) {
             instance_destroy();
+        }
+    }
+    if( t == 9240 ) {
+        with( objAlgA12LaserEffect ) {
+            instance_change( objAlgLaserDisappearing, true );
+            alphaStep = image_alpha / 10;
         }
     }
     segment = 12;
@@ -1557,13 +1598,9 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
-    if( t == 9230 ) {
-        scrBackgroundMoveTo( 400, 304, 50 );
-        scrBackgroundShaderSpeed( 1.0 );
-        scrBackgroundSetColorTo( make_color_rgb( 255, 255, 255 ) );
-    }
     
-    if( ( t - 9230 ) % 48 &lt; 24 &amp;&amp; ( t - 9230 ) % 2 == 0 ) {
+    var phaseT = t - 9230;
+    if( phaseT % 48 &lt; 24 &amp;&amp; phaseT % 2 == 0 ) {
         repeat( 3 ) {
             var scale = random_range( 0.4, 1 ) * 8 / 15;
             var obj = instance_create( random( 800 ), 0, objAlgStarSlowing );
@@ -1572,6 +1609,23 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.image_xscale = scale;
             obj.image_yscale = scale;
+        }
+    }
+    if( phaseT % 48 == 24 ) {
+        var count = 12;
+        var effectsRotationSpeed = choose( -10, 10 );
+        var effectsAngle = random( 360 );
+        var spawnX = 32;
+        if( phaseT % 96 == 24 ) {
+            spawnX = 800 - 32;
+        }
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( spawnX, 32, objAlgA13LaserEffect );
+            obj.image_angle = effectsAngle + i * 180 / count;
+            obj.image_yscale = 1;
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.rotationSpeed = effectsRotationSpeed;
+            obj.rotationSpeedMax = 10;
         }
     }
 
@@ -1608,8 +1662,8 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         seg14CircleAngle = random( 360 );
     }
     
-    var tPhase = ( t - 9615 ) % 96;
-    if( t &lt; 9999 &amp;&amp; tPhase &lt; 25 ) {
+    var phaseT = ( t - 9615 ) % 96;
+    if( t &lt; 9999 &amp;&amp; phaseT &lt; 25 ) {
         var scale = random_range( 0.4, 1 ) * 8 / 15;
         var obj = instance_create( random( 800 ), 0, objAlgStarSlowing );
         obj.speed = 0.1;
@@ -1619,17 +1673,48 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         obj.image_yscale = scale;
     }
     
-    if( tPhase &gt;= 48 &amp;&amp; tPhase % 3 == 0 ) {
+    if( phaseT &gt;= 48 &amp;&amp; phaseT % 3 == 0 ) {
         scrMakeCircle( 400, 100, seg14CircleAngle, seg14CircleCount, 10, objAlgA14Bullet ); 
-        if( tPhase % 12 == 9 ) {
+        if( phaseT % 12 == 9 ) {
             seg14CircleCount += 10;
             seg14CircleAngle = random( 360 );
         }
     }
     
-    if( tPhase == 0 ) {
+    if( phaseT == 0 ) {
         seg14CircleAngle = random( 360 );
         seg14CircleCount = 10;
+    }
+    
+    if( phaseT % 96 == 24 ) {
+        var count = 8;
+        var effectsRotationSpeed = choose( -10, 10 );
+        var effectsAngle = random( 360 );
+        var spawnX = 32;
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( spawnX, 32, objAlgA13LaserEffect );
+            obj.image_angle = effectsAngle + i * 180 / count;
+            obj.image_yscale = 1;
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.rotationSpeed = effectsRotationSpeed;
+            obj.rotationSpeedMax = 10;
+        }
+        effectsAngle = random( 360 );
+        spawnX = 800 - 32;
+        for( var i = 0; i &lt; count; i++ ) {
+            var obj = instance_create( spawnX, 32, objAlgA13LaserEffect );
+            obj.image_angle = effectsAngle + i * 180 / count;
+            obj.image_yscale = 1;
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.rotationSpeed = -effectsRotationSpeed;
+            obj.rotationSpeedMax = 10;
+        }
+    }
+    
+    if( phaseT % 96 &gt;= 48 &amp;&amp; phaseT % 3 == 0 ) {
+        var obj = instance_create( 0, lerp( 0, 608, ( phaseT % 96 - 48 ) / 48 ), objAlgLaserBackEffect );
+        obj.image_yscale = 1;
+        obj.image_blend = make_colour_hsv( 0, 255, 255 );
     }
 
     segment = 14;
@@ -1690,6 +1775,18 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    if( tPhase &lt; 48 &amp;&amp; tPhase % 3 == 0 ) {
+        var obj = instance_create( 0, lerp( 0, 608, tPhase / 48 ), objAlgLaserBackEffect );
+        obj.image_yscale = 1;
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+    }
+    
+    if( tPhase &gt;= 48 &amp;&amp; tPhase % 3 == 0 ) {
+        var obj = instance_create( 0, lerp( 608, 0, ( tPhase - 48 ) / 48 ), objAlgLaserBackEffect );
+        obj.image_yscale = 1;
+        obj.image_blend = make_colour_hsv( 100, 255, 255 );
+    }
+    
     segment = 15;
 }
 </string>
@@ -1713,7 +1810,11 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Red Segment 16 (3:28 - 3:35) Fatalism D
-if( t &gt;= 10380 &amp;&amp; t &lt; 10775 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+
     segment = 16;
     
     // Top spawner.
@@ -1730,10 +1831,47 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10775 &amp;&amp; instance_exists(objPlayer) 
     }
     
     // Clean up.
-    if( t == 10774 ) {
+    if( t == 10763 ) {
         with( oRedireSpawner ) {
             instance_destroy();
         }
+    }
+    
+    // Effects by Algeran.
+    var phaseT = ( t - 10380 );
+    if( phaseT % 96 == 0 ) {
+        var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 0;
+        obj.spawnYFrom = 0;
+        obj.spawnYTo = 0;
+        obj.spawnAngle = 90;
+        obj.spawnBlend = make_colour_rgb( 255, 0, 0 );
+        
+        obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 800;
+        obj.spawnYFrom = 0;
+        obj.spawnYTo = 0;
+        obj.spawnAngle = 90;
+        obj.spawnBlend = make_colour_rgb( 255, 0, 0 );
+    }
+    if( phaseT % 96 == 48 ) {
+        var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 0;
+        obj.spawnXTo = 0;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 0;
+        obj.spawnAngle = 0;
+        obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
+        
+        obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 0;
+        obj.spawnXTo = 0;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 608;
+        obj.spawnAngle = 0;
+        obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
 }
 </string>
@@ -1757,9 +1895,14 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10775 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Red Segment 17 (3:35 - 3:43) Fatalism E
-if( t &gt;= 10775 &amp;&amp; t &lt; 11150 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 10764 &amp;&amp; t &lt; 11148 &amp;&amp; instance_exists(objPlayer) ) {
+
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
     segment = 17;
-    if( t == 10775 ) {
+    if( t == 10764 ) {
     
         instance_create( 800, 100, oRedireS17SideSpawner );
         instance_create( 800, 300, oRedireS17SideSpawner );
@@ -1776,6 +1919,43 @@ if( t &gt;= 10775 &amp;&amp; t &lt; 11150 &amp;&amp; instance_exists(objPlayer) 
         with( oRedireS17SideSpawner ) {
             instance_destroy();
         }
+    }
+    
+    // Effects by Algeran.
+    var phaseT = ( t - 10764 );
+    if( phaseT % 96 == 0 ) {
+        var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 0;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 0;
+        obj.spawnAngle = 45;
+        obj.spawnBlend = make_colour_rgb( 255, 0, 0 );
+        
+        obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 800;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 608;
+        obj.spawnAngle = 45;
+        obj.spawnBlend = make_colour_rgb( 255, 0, 0 );
+    }
+    if( phaseT % 96 == 48 ) {
+        var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 0;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 608;
+        obj.spawnAngle = 135;
+        obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
+        
+        obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+        obj.spawnXFrom = 400;
+        obj.spawnXTo = 800;
+        obj.spawnYFrom = 304;
+        obj.spawnYTo = 0;
+        obj.spawnAngle = 135;
+        obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
 }
 </string>
@@ -1799,7 +1979,7 @@ if( t &gt;= 10775 &amp;&amp; t &lt; 11150 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Red Segment 18 (3:43 - 3:51) Fatalism F
-if( t &gt;= 11150 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 18;
     
     if( t == 11155 ) {
@@ -1831,6 +2011,71 @@ if( t &gt;= 11150 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
         with( oRedireS18CircleBullet ) {
             isActive = false;
             fadeOut = true;
+        }
+    }
+    
+    // Effects by Algeran.
+    var phaseT = ( t - 11148 );
+    if( phaseT % 48 == 0 &amp;&amp; phaseT &lt; 96 * 4 ) {
+        var spawnIndex = 0;
+        repeat( 3 ) {
+            var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
+            if( scrGetPlayerX() &lt; 400 ) {
+                obj.spawnXFrom = 800;
+                switch( spawnIndex ) {
+                    case 0:
+                        obj.spawnXTo = 0;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 0;
+                        obj.spawnAngle = 90;
+                        break;
+                    case 1:
+                        obj.spawnXTo = 0;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 608;
+                        obj.spawnAngle = 135;
+                        break;
+                    case 2:
+                        obj.spawnXTo = 800;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 608;
+                        obj.spawnAngle = 0;
+                        break;
+                }
+            } else {
+                obj.spawnXFrom = 0;
+                switch( spawnIndex ) {
+                    case 0:
+                        obj.spawnXTo = 800;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 0;
+                        obj.spawnAngle = 90;
+                        break;
+                    case 1:
+                        obj.spawnXTo = 800;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 608;
+                        obj.spawnAngle = 45;
+                        break;
+                    case 2:
+                        obj.spawnXTo = 0;
+                        obj.spawnYFrom = 0;
+                        obj.spawnYTo = 608;
+                        obj.spawnAngle = 0;
+                        break;
+                }
+            }
+            if( phaseT &lt; 96 ) {
+                obj.spawnBlend = make_colour_hsv( 80, 255, 255 );
+            } else if( phaseT &lt; 96 * 2 ) {
+                obj.spawnBlend = make_colour_hsv( 33, 255, 255 );
+            } else if( phaseT &lt; 96 * 3 ) {
+                obj.spawnBlend = make_colour_hsv( 20, 255, 255 );
+            } else {
+                obj.spawnBlend = make_colour_hsv( 0, 255, 255 );        
+            }
+            obj.maxFrame = 48;
+            spawnIndex++;
         }
     }
 }
