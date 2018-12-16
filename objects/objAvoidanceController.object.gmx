@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 21615;
+//t = 3470;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -185,7 +185,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
         }
     }
     
-    repeat( 1 ) {
+    if( phaseT % 2 == 0 ) {
         a = instance_create( random_range( 0, 800 ), 0, objAlgA8Effect );
         a.direction = -90 + random_range( -2, 2 );
         a.speed = random_range( 1, 1.5 );
@@ -483,14 +483,14 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
             obj.maxSpeed = obj.speed;
             obj.gravity = 0.15;
             obj.direction = initialAngle + random_range( -10, 10 );
-            obj.sprite_index = sprRedireSphereGrey;
+            //obj.sprite_index = sprRedireSphereGrey;
             var color = ( segment5Color + random_range( -10, 10 ) ) % 255;
             if( color &lt; 0 ) {
                 color += 255;
             }
             obj.image_blend = make_colour_hsv( color, 255, 255 );
             obj.shouldKill = false;
-            obj.image_alpha = 0.1;
+            obj.image_alpha = 0;
         }
     }
     
@@ -1037,6 +1037,9 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     var phaseT = t - 5775;
+    if( phaseT == 0 ) {
+        segment8Angle = random( 360 );
+    }
     if( phaseT &lt; 96 ) {
         var obj = instance_create( 800, lerp( 0, 304, phaseT / 96 ), objAlgWave );
         obj.direction = random_range( 90, 270 );
@@ -1045,6 +1048,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         obj.image_blend = make_color_hsv( 0, 255, 255 );
         obj.storedSpeed = random_range( 4, 8 );
         obj.gravity_direction = random_range( 260, 280 );
+        obj.vspeed += 304 / 96;
     } else if( phaseT &lt; 96 * 2 ) {
         with( objAlgWave ) {
             speed = storedSpeed;
@@ -1067,23 +1071,26 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             gravity = value;
         }
     } else if( phaseT &lt; 96 * 5 ) {
-        if( t % 2 == 0 ) {
-            var obj = instance_create( 0, lerp( 0, 304, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
-            obj.direction = random_range( -90, 90 );
+        //if( t % 2 == 0 ) {
+            var obj = instance_create( 0, lerp( 0, 204, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
+            obj.direction = segment8Angle;//random_range( -90, 90 );
             obj.image_angle = obj.direction;
-            obj.speed = random_range( 4, 12 );
+            obj.speed = random_range( 4, 6 );
             obj.image_blend = make_color_hsv( 128, 255, 255 );
-            obj.storedSpeed = random_range( 6, 8 );
+            obj.storedSpeed = random_range( 6, 6 );
             obj.gravity_direction = random_range( 260, 280 );
+            obj.vspeed += 304 / 96;
             
-            obj = instance_create( 800, lerp( 0, 304, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
-            obj.direction = random_range( 90, 270 );
+            obj = instance_create( 800, lerp( 0, 204, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
+            obj.direction = segment8Angle + 180;//random_range( 90, 270 );
             obj.image_angle = obj.direction;
-            obj.speed = random_range( 4, 12 );
+            obj.speed = random_range( 4, 6 );
             obj.image_blend = make_color_hsv( 160, 255, 255 );
-            obj.storedSpeed = random_range( 6, 8 );
+            obj.storedSpeed = random_range( 6, 6 );
             obj.gravity_direction = random_range( 260, 280 );
-        }
+            obj.vspeed += 204 / 96;
+        //}
+        segment8Angle += random_range( 15, 20 );
     } else if( phaseT &lt; 96 * 6 ) {
         with( objAlgWave ) {
             var value = lerp( 0.1, 0.3, y / 608 );
@@ -1098,7 +1105,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction;
             obj.speed = random_range( lerp( 15, 6, ( phaseT - 96 * 6 ) / 96 ), 15 );
             obj.image_blend = make_color_hsv( 192, 255, 255 );
-            obj.storedSpeed = random_range( 4, 8 );
+            obj.storedSpeed = random_range( 6, 8 );
             obj.gravity_direction = random_range( 260, 280 );
             
             obj = instance_create( 0, lerp( 608, 558, ( phaseT - 96 * 6 ) / 96 ), objAlgWave );
@@ -1106,7 +1113,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction;
             obj.speed = random_range( lerp( 15, 6, ( phaseT - 96 * 6 ) / 96 ), 15 );
             obj.image_blend = make_color_hsv( 224, 255, 255 );
-            obj.storedSpeed = random_range( 4, 8 );
+            obj.storedSpeed = random_range( 6, 8 );
             obj.gravity_direction = random_range( 260, 280 );
         }
     } else if( phaseT &lt; 96 * 8 ) {
@@ -1116,7 +1123,8 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             friction = value;
             gravity = value;
         }
-    } else if( t == 6534 ) {
+    } 
+    if( t == 6544 ) {
         with( objAlgWave ) {
             speed = storedSpeed;
             friction = 0;
@@ -1149,6 +1157,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             obj.targetDir = random_range( 260, 280 );
         }
         with( objAlgA8Effect ) {
+            canWarp = false;
             direction = point_direction( x, y, 800, lerp( 0, 304, phaseT / 96 ) );
         }
     } else if( phaseT == 96 ) {
@@ -1274,11 +1283,11 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             image_blend = make_color_rgb( 255, 255, 0 );
         }
         for( var i = 0; i &lt; 4; i++ ) {
-            var obj = instance_create( 700, 100, objAlgLaserEffect );
+            var obj = instance_create( 700, 100, objAlgA12LaserEffect );
             obj.image_angle = randomAngle;
             obj.image_yscale = 0.5;
             obj.image_blend = make_color_rgb( 255, 255, 0 );
-            obj.rotationSpeed = 1.5;
+            obj.rotationSpeed = -1.5;
             obj.hspeed = -1.5;
             randomAngle += 180 / 4;
         }
@@ -1298,10 +1307,11 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     with( objAlgA7Sphere ) {
         x -= 1.5;
     }
-    if( t == 6920 ) {
+    if( t == 6870 ) {
         with( objAlgA7Sphere ) {
             instance_destroy();
         }
+    } else if( t == 6920 ) {
         with( objAlgLaserEffect ) {
             instance_change( objAlgLaserDisappearing, true );
             alphaStep = image_alpha / 5;

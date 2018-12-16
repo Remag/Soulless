@@ -52,6 +52,7 @@ maxSpeed = 0;
             <string>event_inherited();
 if( vspeed &lt; 0 ) {
     image_alpha = lerp( 1, 0, -vspeed / maxSpeed );
+    image_alpha *= image_alpha;
 } else if( vspeed &gt; 0 ) {
     if( image_alpha &lt; 1 ) {
         image_alpha += 0.1;

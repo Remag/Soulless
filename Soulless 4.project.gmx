@@ -728,6 +728,7 @@
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
       <object>objects\objAlgShaderDrawer</object>
+      <object>objects\objAlgShaderEffectsDrawer</object>
       <object>objects\objAlgShaderBackground</object>
       <object>objects\objAlgStar</object>
       <object>objects\objAlgStarSlowing</object>

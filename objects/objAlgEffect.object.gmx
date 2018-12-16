@@ -73,10 +73,10 @@ blendMode = bm_add;
           <argument>
             <kind>1</kind>
             <string>if( shouldUseShader ) {
-    if( !instance_exists( objAlgShaderDrawer ) ) {
-        instance_create( 0, 0, objAlgShaderDrawer );
+    if( !instance_exists( objAlgShaderEffectsDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderEffectsDrawer );
     }
-    with( objAlgShaderDrawer ) {
+    with( objAlgShaderEffectsDrawer ) {
         drawObjects[drawObjectsIndex] = other.id;
         drawObjectsIndex++;
     }
