@@ -253,6 +253,7 @@
       <sprite>sprites\sprAlgLaser</sprite>
     </sprites>
     <sprites name="Redire">
+      <sprite>sprites\sprRedireSphereGrey</sprite>
       <sprite>sprites\sprRedireFrostBullet</sprite>
       <sprite>sprites\sprRedireArrow</sprite>
       <sprite>sprites\sprRedireBall</sprite>
