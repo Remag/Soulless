@@ -56,7 +56,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="objArchBullet1">
+    <event eventtype="4" ename="objArchBullet1_S10">
       <action>
         <libid>1</libid>
         <id>603</id>

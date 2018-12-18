@@ -63,7 +63,7 @@ image_alpha += 1/36;
 
 if( image_alpha &gt;= 1 ) {
     repeat(15) {
-        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1)
+        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1_S10)
         a.direction = random(360);
         a.speed = random_range(3, 10);
         a.vspeed -= 3;
@@ -73,7 +73,7 @@ if( image_alpha &gt;= 1 ) {
         a.image_yscale = a.image_xscale;
     }
     repeat(10) {
-        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1)
+        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1_S10)
         a.direction = random(360);
         a.speed = random(3);
         a.vspeed -= 3;
@@ -83,7 +83,7 @@ if( image_alpha &gt;= 1 ) {
         a.image_yscale = a.image_xscale;
     }
     repeat(35) {
-        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1)
+        a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1_S10)
         a.direction = random(180);
         a.speed = random_range(6, 12);
         a.gravity = 0.2;

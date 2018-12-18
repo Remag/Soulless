@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 3470;
+//t = 8465;
 
 segment = 1; //Номер сегмента (для дебага)
 
@@ -1346,7 +1346,7 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
     }
     var phaseT = t - 6925;
     if( phaseT % 192 == 0 || phaseT % 192 == 48 || phaseT % 192 == 96 ) {
-         a = instance_create(objPlayer.x, objPlayer.y, objArchBullet3);
+         a = instance_create(objPlayer.x, 608-32, objArchBullet3);
         a.vspeed = -random_range(20,30);
         a.gravity = -a.vspeed/36;
         
@@ -1376,8 +1376,10 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
         a.hspeed = 800 / 48;
         a = instance_create(800,0,objArchEventWall1);
         a.hspeed = -800 / 48;
-        with( objArchBullet1 ) {
-            gravity = -gravity;
+        with( objArchBullet1_S10 ) {
+            if( y &lt; 608 - 96 ) {
+                gravity = -gravity;
+            }
         }
     }
     if( t == 7681 ) {
@@ -1417,7 +1419,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
         var a_yy = random_range(64, 192);
         var a_image_index = irandom(2);
         
-        var a_rng = random_range(-4,4);
+        var a_rng = random_range(-1,1);
         var a_dir = point_direction(a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25 + a_rng;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
@@ -1426,8 +1428,15 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                 a.speed = 6;
                 a.alarm[0] = 10;
                 a.image_index = a_image_index;
-                if( j &gt;= 22 ) {
-                    a.alarm[1] = 24;
+                if( j &gt; 21 ) {
+                    if( t &lt; 8400 ) {
+                        a.alarm[1] = 24;
+                    } else {
+                        a.alarm[4] = 24;
+                    }
+                } else if( j == 21 &amp;&amp; i == 0 &amp;&amp; t % 96 == 15 ) {
+                    a.alarm[3] = 24;
+                    a.image_index = 3;
                 } else {
                     a.alarm[2] = 24;
                 }
@@ -1465,8 +1474,15 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                 a.speed = 6;
                 a.alarm[0] = 10;
                 a.image_index = a_image_index;
-                if( j &gt;= 22 ) {
-                    a.alarm[1] = 24;
+                if( j &gt; 21 ) {
+                    if( t &lt; 8400 ) {
+                        a.alarm[1] = 24;
+                    } else {
+                        a.alarm[4] = 24;
+                    }
+                } else if( j == 21 &amp;&amp; i == 0 &amp;&amp; t % 96 != 15 ) {
+                    a.alarm[3] = 24;
+                    a.image_index = 3;
                 } else {
                     a.alarm[2] = 24;
                 }
@@ -1532,10 +1548,10 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
         arch_xx = 800-32;
-        arch_rpt = 1;
+        arch_period = 1;
         if( (t &gt; 8657 &amp;&amp; t &lt; 8849) || ( t &gt; 9041 &amp;&amp; t &lt; 9230 ) ) {
             arch_spd *= 0.5;
-            arch_rpt = 1;
+            arch_period = 2;
             if( t &lt; 8849 ) {
                 arch_xx = lerp(800-32, 32, (t - 8657)/(8858-8657));
                 with( objAlgA12LaserEffect ) {
@@ -1561,7 +1577,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
                 speed *= 2;
             }
         }
-        repeat(arch_rpt) {
+        if( t % arch_period == 0 ) {
             a = instance_create(arch_xx, 32, objArchBullet1);
             a.direction = random_range(180, 360);
             a.speed = arch_spd;
@@ -1579,7 +1595,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
        t == 9204 ||
        t == 9210 ) {
         arch_xx = random_range(32,800-32);
-        repeat(20) {
+        repeat(18) {
             a = instance_create(arch_xx, 32, objArchBullet1);
             a.direction = random_range(180, 360);
             a.speed = random_range(5,14);
@@ -1928,14 +1944,12 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Red Segment 17 (3:35 - 3:43) Fatalism E
 if( t &gt;= 10764 &amp;&amp; t &lt; 11148 &amp;&amp; instance_exists(objPlayer) ) {
-
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
     segment = 17;
     if( t == 10764 ) {
-    
         instance_create( 800, 100, oRedireS17SideSpawner );
         instance_create( 800, 300, oRedireS17SideSpawner );
         instance_create( 800, 500, oRedireS17SideSpawner );
