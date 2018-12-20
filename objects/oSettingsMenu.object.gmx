@@ -5,9 +5,50 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oBaseMenu</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isActive = false;
+baseX = x;
+
+select = global.menuSelectPrev[1];
+
+ySelector = y;
+xSeperation = 440;
+ySeperation = 48;
+
+strSelect[0] = "Music";
+strSelect[1] = "Volume Level";
+strSelect[2] = "Vsync";
+strSelect[3] = "Keyboard Controls";
+strSelect[4] = "Controller Options";
+strSelect[5] = "Back";
+
+optionsNum = array_length_1d( strSelect );
+
+playerIndex = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,6 +67,145 @@
           <argument>
             <kind>1</kind>
             <string>isActive = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( !isActive ) {
+    exit;
+}
+
+//animate player sprite
+playerIndex = (playerIndex + 1/5) mod 4;
+
+if (scrButtonCheckPressed(global.menuUpButton))
+{
+    audio_play_sound(global.menuSound,0,false);
+    select -= 1;
+    if(select &lt; 0)
+        select = optionsNum-1;
+}
+else if (scrButtonCheckPressed(global.menuDownButton))
+{
+    audio_play_sound(global.menuSound,0,false);
+    select += 1;
+    if(select &gt; optionsNum-1)
+        select = 0;
+}
+
+else if( scrButtonCheckPressed(global.menuAcceptButton1) || scrButtonCheckPressed(global.menuAcceptButton2 ) )
+{
+    if( select == 0 ) {    //toggle mute music
+        scrToggleMusic();
+    } else if( select == 2 ) {   //toggle vsync mode
+        global.vsyncMode = !global.vsyncMode;
+        
+        scrSetVsync();
+    } else if( select == 3 ) {   //go to the keyboard controls menu
+        scrSaveConfig();    //save changes
+        global.menuSelectPrev[1] = select;
+        instance_create(x,y,objKeyboardControlsMenu);
+        instance_destroy();
+        exit;
+    } else if( select == 4 ) {   //go to the controller options menu
+        scrSaveConfig();    //save changes
+        global.menuSelectPrev[1] = select;
+        instance_create(x,y,objControllerMenu);
+        instance_destroy();
+        exit;
+    } else if( select == 5 ) {  //save changes and go back
+        scrSaveConfig();
+        global.menuSelectPrev[1] = 0;
+        oMenuTransitionController.targetX = oMainMenu.baseX;
+        oMainMenu.alarm[0] = 1;
+        isActive = false;
+        exit;
+    }
+}
+
+
+if (select == 1)
+{
+    if (scrButtonCheck(global.menuRightButton))  //raise volume
+    {
+        if (global.volumeLevel &lt; 100)
+            global.volumeLevel += 1;
+        
+        audio_master_gain(global.volumeLevel/100);  //set master gain
+    }
+    else if (scrButtonCheck(global.menuLeftButton))  //lower volume
+    {
+        if (global.volumeLevel &gt; 0)
+            global.volumeLevel -= 1;
+        
+        audio_master_gain(global.volumeLevel/100);  //set master gain
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var xSelector = x - 220;
+
+draw_set_color(c_white);
+draw_set_font(fMenuOption);
+draw_set_halign(fa_left);
+
+for(var i = 0; i &lt; optionsNum; i++)
+    draw_text(xSelector,ySelector+(ySeperation*i),strSelect[i]);
+
+draw_set_halign(fa_right);
+
+if (global.muteMusic)
+    draw_text(xSelector+xSeperation,ySelector,"Off");
+else
+    draw_text(xSelector+xSeperation,ySelector,"On");
+
+draw_text(xSelector+xSeperation,ySelector+ySeperation,string(global.volumeLevel) + "%");
+    
+if (global.vsyncMode)
+    draw_text(xSelector+xSeperation,ySelector+(ySeperation*2),"On");
+else
+    draw_text(xSelector+xSeperation,ySelector+(ySeperation*2),"Off");
+
+draw_sprite(sprPlayerIdle,playerIndex,xSelector-16,ySelector+(ySeperation*select)+26);
+
 </string>
           </argument>
         </arguments>

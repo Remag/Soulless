@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oBaseMenu</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>currentSelection = 0;
 isActive = true;
+baseX = x;
 
 </string>
           </argument>
@@ -90,13 +91,13 @@ if( isUp ) {
 if( isSelect ) {
     switch( currentSelection ) {
         case 0:
-            oMenuTransitionController.targetX = oSlotSelection.x;
+            oMenuTransitionController.targetX = oSlotSelection.baseX;
             //oSlotSelection.alarm[0] = 1;
             oSlotSelection.isActive = true;
             isActive = false;
             break;
         case 1:
-            oMenuTransitionController.targetX = oSettingsMenu.x;
+            oMenuTransitionController.targetX = oSettingsMenu.baseX;
             oSettingsMenu.alarm[0] = 1;
             isActive = false;
             break;

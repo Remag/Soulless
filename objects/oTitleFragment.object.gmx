@@ -26,10 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>speed -= fragmentFriction;
-speed = max( speed, minSpeed );
+if( speed &lt; minSpeed ) {
+    speed = minSpeed;
+    minSpeed = 0;
+    fragmentFriction = speed / fragmentStillDelay;
+} else {
+    speed = max( speed, minSpeed );
+}
+
+if( speed &lt;= 0.02 ) {
+    fragmentMinRotation = 0;
+}
 
 image_angle += fragmentRotation;
-fragmentRotation -= fragmentFriction * 0.5 * sign( fragmentRotation );
+fragmentRotation -= fragmentRotFriction * 0.5 * sign( fragmentRotation );
 fragmentRotation = sign( fragmentRotation ) * max( abs( fragmentRotation ), fragmentMinRotation );
 </string>
           </argument>

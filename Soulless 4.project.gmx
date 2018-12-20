@@ -413,6 +413,7 @@
       <script>scripts\scrBackgroundSetMultipleColorTo.gml</script>
       <script>scripts\scrBackgroundColorStep.gml</script>
       <script>scripts\shader_set_uniform_color.gml</script>
+      <script>scripts\scrTweenValue.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -429,7 +430,6 @@
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
-    <font>fonts\fPracticeTitle</font>
     <font>fonts\fDefault24</font>
     <font>fonts\fMenuOption</font>
     <font>fonts\fNotifications</font>
@@ -437,6 +437,7 @@
     <font>fonts\fAttackNumber</font>
     <font>fonts\fPracticeHint</font>
     <font>fonts\fDefault12</font>
+    <font>fonts\fPracticeTitle</font>
   </fonts>
   <objects name="objects">
     <objects name="world">
@@ -549,6 +550,7 @@
     </objects>
     <objects name="MainMenu">
       <object>objects\oSoullessTitle</object>
+      <object>objects\oBaseMenu</object>
       <object>objects\oMainMenu</object>
       <object>objects\oSettingsMenu</object>
       <object>objects\oSlotSelection</object>

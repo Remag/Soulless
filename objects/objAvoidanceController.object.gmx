@@ -1434,7 +1434,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                     } else {
                         a.alarm[4] = 24;
                     }
-                } else if( j == 21 &amp;&amp; i == 0 &amp;&amp; t % 96 == 15 ) {
+                } else if( j == 21 &amp;&amp; i == 0 &amp;&amp; t % 96 == 15 &amp;&amp; t &gt; 7700 ) {
                     a.alarm[3] = 24;
                     a.image_index = 3;
                 } else {

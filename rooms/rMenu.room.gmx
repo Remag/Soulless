@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="oMainMenu" x="400" y="350" name="inst_6EC1A5D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSettingsMenu" x="-100" y="300" name="inst_2FFBCD09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSettingsMenu" x="-230" y="300" name="inst_2FFBCD09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSlotSelection" x="900" y="300" name="inst_FD9AB898" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oVersionInfo" x="23" y="579" name="inst_B3E13D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMenuTransitionController" x="19" y="-3" name="inst_372A2C7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

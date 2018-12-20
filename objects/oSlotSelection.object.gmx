@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oBaseMenu</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>isActive = false;
+baseX = x;
 
 // Load data from save files.
 currentSelection = scrLoadLastSlot();
@@ -161,7 +162,7 @@ if( isSelect ) {
             }
             break;
         case 3:
-            oMenuTransitionController.targetX = oMainMenu.x;
+            oMenuTransitionController.targetX = oMainMenu.baseX;
             oMainMenu.alarm[0] = 1;
             isActive = false;
         default:

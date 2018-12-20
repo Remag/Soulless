@@ -28,7 +28,7 @@
             <string>draw_set_font( fPracticeTitle );
 draw_set_halign( fa_center );
 
-draw_text( x, y, "Practice Room" );
+draw_text( x, y, "Practice" );
 
 draw_set_halign( fa_left );
 draw_set_font( fDefault24 );

@@ -35,7 +35,7 @@ global.alignLeftButton[0] = ini_read_real("Controls","Align_left",ord("A"));
 global.alignRightButton[0] = ini_read_real("Controls","Align_right",ord("D"));
 
 //menu keys (not rebindable)
-global.menuUpButton[0] = vk_left;
+global.menuLeftButton[0] = vk_left;
 global.menuRightButton[0] = vk_right;
 global.menuUpButton[0] = vk_up;
 global.menuDownButton[0] = vk_down;
@@ -43,23 +43,21 @@ global.menuAcceptButton1[0] = vk_shift;
 global.menuAcceptButton2[0] = ord("Z");
 global.menuOptionsButton[0] = vk_enter;
 
-if (global.controllerEnabled)
-{
-    //controller options
-    global.controllerIndex = ini_read_real("Controller", "Index", -1); //-1 means no controller
-    global.leftButton[1] = ini_read_real("Controller","Left",gp_padl);
-    global.rightButton[1] = ini_read_real("Controller","Right",gp_padr);
-    global.upButton[1] = ini_read_real("Controller","Up",gp_padu);
-    global.downButton[1] = ini_read_real("Controller","Down",gp_padd);
-    global.jumpButton[1] = ini_read_real("Controller","Jump",gp_face1);
-    global.shootButton[1] = ini_read_real("Controller","Shoot",gp_face3);
-    global.restartButton[1] = ini_read_real("Controller","Restart",gp_face4);
-    global.skipButton[1] = ini_read_real("Controller","Skip",gp_face2);
-    global.portalButton[1] = ini_read_real("Controller","PortalRoom",gp_select);
-    global.pauseButton[1] = ini_read_real("Controller","Pause",gp_start);
-    global.alignLeftButton[1] = ini_read_real("Controller","Align_left",gp_shoulderl);
-    global.alignRightButton[1] = ini_read_real("Controller","Align_right",gp_shoulderr);
-}
+//controller options
+global.controllerIndex = ini_read_real("Controller", "Index", -1); //-1 means no controller
+global.leftButton[1] = ini_read_real("Controller","Left",gp_padl);
+global.rightButton[1] = ini_read_real("Controller","Right",gp_padr);
+global.upButton[1] = ini_read_real("Controller","Up",gp_padu);
+global.downButton[1] = ini_read_real("Controller","Down",gp_padd);
+global.jumpButton[1] = ini_read_real("Controller","Jump",gp_face1);
+global.shootButton[1] = ini_read_real("Controller","Shoot",gp_face3);
+global.restartButton[1] = ini_read_real("Controller","Restart",gp_face4);
+global.skipButton[1] = ini_read_real("Controller","Skip",gp_face2);
+global.portalButton[1] = ini_read_real("Controller","PortalRoom",gp_select);
+global.pauseButton[1] = ini_read_real("Controller","Pause",gp_start);
+global.alignLeftButton[1] = ini_read_real("Controller","Align_left",gp_shoulderl);
+global.alignRightButton[1] = ini_read_real("Controller","Align_right",gp_shoulderr);
+
 
 //menu buttons (not rebindable)
 global.menuLeftButton[1] = gp_padl;
