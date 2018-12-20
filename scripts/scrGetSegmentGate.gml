@@ -8,4 +8,4 @@ for( var i = 1; i <= 6; i++ ) {
     segment -= count;
 }
 
-return -1;
+return 6;

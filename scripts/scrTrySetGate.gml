@@ -3,8 +3,8 @@ var gateId = argument0;
 if( gateId >= 1 && gateId <= maxGate ) {
     currentGate = gateId;
     segmentCount = scrGetGateSegmentCount( gateId );
-    if( maxGate == currentGate && !global.unlockEntirePractice ) {
-        pbSegment = scrFindLocalSegment( global.pb_segment );
+    if( maxGate == currentGate && !global.unlockEntirePractice && !global.gameClear ) {
+        pbSegment = scrFindLocalSegment( practiceLimitSegment );
     } else {
         pbSegment = segmentCount - 1;
     }

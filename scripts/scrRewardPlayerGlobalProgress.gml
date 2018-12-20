@@ -1,7 +1,7 @@
 var segment = objAvoidanceController.segment;
 var pbSegment = global.pb_segment;
 
-var gate = scrGetSegmentGate( pbSegment ); 
+var gate = scrGetSegmentGate( segment ); 
 var pbGate = scrGetSegmentGate( pbSegment );
 
 var payoutCount = 0;

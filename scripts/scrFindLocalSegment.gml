@@ -9,4 +9,4 @@ for( var i = 1; i <= 6; i++ ) {
     result -= localCount;
 }
 
-return 0;
+return result;

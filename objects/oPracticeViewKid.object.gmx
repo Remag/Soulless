@@ -86,6 +86,9 @@ ds_map_add( oPracticeAttackSelector.childrenMap, id, -1 )
             <string>if( scrButtonCheckPressed( global.portalButton ) ) {
     moveLeft = true;
     moveRight = false;
+    with( oPracticeAttackSelector ) {
+        isActive = false;
+    }
 }
 
 if( moveLeft ) {

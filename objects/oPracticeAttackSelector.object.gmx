@@ -27,13 +27,15 @@
             <kind>1</kind>
             <string>currentGate = oPlayerData.lastPracticeGate;
 segmentCount = scrGetGateSegmentCount( currentGate );
-if( global.unlockEntirePractice ) {
-    maxGate = 5;
+if( global.unlockEntirePractice || global.gameClear ) {
+    maxGate = 6;
     pbSegment = segmentCount - 1;
+    practiceLimitSegment = scrGetSegmentCount();
 } else {
-    maxGate = scrGetSegmentGate( global.pb_segment );
+    practiceLimitSegment = clamp( global.pb_segment, 0, scrGetSegmentCount() - scrGetGateSegmentCount( 6 ) );
+    maxGate = scrGetSegmentGate( practiceLimitSegment );
     if( maxGate == currentGate ) {
-        pbSegment = scrFindLocalSegment( global.pb_segment );
+        pbSegment = scrFindLocalSegment( practiceLimitSegment );
     } else {
         pbSegment = segmentCount - 1;
     }
@@ -42,6 +44,7 @@ if( global.unlockEntirePractice ) {
 childrenMap = ds_map_create();
 selectChangeDelay = 0;
 unfreezeDelay = 10;
+isActive = true;
 </string>
           </argument>
         </arguments>
@@ -87,7 +90,11 @@ unfreezeDelay = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>selectChangeDelay++;
+            <string>if( !isActive ) {
+    exit;
+}
+
+selectChangeDelay++;
 var isLeft = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.leftButton );
 var isTop = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.upButton );
 var isRight = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.rightButton );
@@ -136,7 +143,7 @@ if( isSelect &amp;&amp; currentSegment != -1 ) {
     if( oPlayerData.currencyCount &gt;= price ) {
         oPlayerData.currencyCount -= price;
         oPlayerData.practiceStartSegment = scrFindGlobalSegment( currentGate, currentSegment );
-        oPlayerData.practiceEndSegment = global.pb_segment + 1;
+        oPlayerData.practiceEndSegment = practiceLimitSegment + 1;
         oPlayerData.targetEntranceId = 0;
         room_goto( rPracticeActiveRoom );
     }

@@ -403,6 +403,7 @@
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
+      <script>scripts\scrGetSegmentCount.gml</script>
       <script>scripts\scrGetGateSegmentCount.gml</script>
       <script>scripts\scrFindLocalSegment.gml</script>
       <script>scripts\scrFindGlobalSegment.gml</script>
