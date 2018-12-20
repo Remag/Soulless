@@ -321,14 +321,6 @@ if (global.debugMode &amp;&amp; global.gameStarted &amp;&amp; !global.gamePaused
     {
         global.debugOverlay = !global.debugOverlay;
     }
-    if (keyboard_check_pressed(vk_insert))  //saves game
-    {
-        with (objPlayer)
-        {
-            //scrSaveGame(true);
-            audio_play_sound(sndItem,0,false);
-        }
-    }
     if (keyboard_check_pressed(vk_delete))  //toggles showing the hitbox
     {
         global.debugShowHitbox = !global.debugShowHitbox;

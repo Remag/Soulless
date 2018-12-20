@@ -728,6 +728,9 @@
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
       <object>objects\oRedireSpawner</object>
+      <objects name="Segment7">
+        <object>objects\oRedireS7KunaiSpawner</object>
+      </objects>
     </objects>
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
