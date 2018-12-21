@@ -28,9 +28,9 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 8465;
+//t = 10380;
 
-segment = 1; //Номер сегмента (для дебага)
+segment = 1;
 
 angle = 0;
 shake = 0;

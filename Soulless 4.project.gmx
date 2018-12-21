@@ -259,6 +259,7 @@
       <sprite>sprites\sprRedireBall</sprite>
       <sprite>sprites\sprRedireWideArrow</sprite>
       <sprite>sprites\sprRedireRectBullet</sprite>
+      <sprite>sprites\sprRedireStar</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -699,12 +700,13 @@
       <objects name="Segment16">
         <object>objects\oRedireS16TopSpawner</object>
         <object>objects\oRedireS16SideSpawner</object>
-        <object>objects\oRedireS16Arrow</object>
+        <object>objects\oRedireS16StarSlowing</object>
         <object>objects\oRedireS16Ball</object>
       </objects>
       <objects name="Segment17">
         <object>objects\oRedireS17SideSpawner</object>
         <object>objects\oRedireS17TopSpawner</object>
+        <object>objects\oRedireS17StarSlowing</object>
       </objects>
       <objects name="Segment18">
         <object>objects\oRedireS18CircleBullet</object>
