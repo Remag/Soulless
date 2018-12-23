@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 10380;
+t = 5775;
 
 segment = 1;
 
@@ -1084,10 +1084,12 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     } else if( phaseT &lt; 96 * 5 ) {
         //if( t % 2 == 0 ) {
+            var speedMax = lerp( 8, 1, ( phaseT - 96 * 4 ) / 96 );
+            var speedMin = lerp( 4, 1, ( phaseT - 96 * 4 ) / 96 );
             var obj = instance_create( 0, lerp( 0, 204, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
             obj.direction = segment8Angle;//random_range( -90, 90 );
             obj.image_angle = obj.direction;
-            obj.speed = random_range( 4, 6 );
+            obj.speed = random_range( speedMin, speedMax );
             obj.image_blend = make_color_hsv( 128, 255, 255 );
             obj.storedSpeed = random_range( 6, 6 );
             obj.gravity_direction = random_range( 260, 280 );
@@ -1096,7 +1098,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             obj = instance_create( 800, lerp( 0, 204, ( phaseT - 96 * 4 ) / 96 ), objAlgWave );
             obj.direction = segment8Angle + 180;//random_range( 90, 270 );
             obj.image_angle = obj.direction;
-            obj.speed = random_range( 4, 6 );
+            obj.speed = random_range( speedMin, speedMax );
             obj.image_blend = make_color_hsv( 160, 255, 255 );
             obj.storedSpeed = random_range( 6, 6 );
             obj.gravity_direction = random_range( 260, 280 );
@@ -3282,7 +3284,7 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
             with( objAlgA36Ring ) {
                 speed /= 2;
                 maxSpeed /= 2;
-                gravity /= 2;
+                gravity /= 4;
             }
         }
         
