@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 5775;
+//t = 5775;
 
 segment = 1;
 
@@ -126,8 +126,10 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
         var period;
         if( phaseT &lt; 96 * 6 ) {
             period = 4;
-        } else {
+        } else if( phaseT &lt; 96 * 8 ) {
             period = 5;
+        } else {
+            period = 4;
         }
         if( phaseT % period == 0 ) {
             var spawnX = 0;
@@ -818,12 +820,14 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.trailTime = 0.8;
             
             obj = instance_create( 800, 0, objAlgKunai );
             obj.direction = lerp( 180, 270, ( phaseT - 96 - 24 ) / 24 );
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.trailTime = 0.8;
         }
     } else if( phaseT &gt;= 96 + 72 &amp;&amp; phaseT &lt; 96 * 2 ) {
         if( t % 3 == 0 ) {
@@ -832,12 +836,14 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.trailTime = 0.8;
             
             obj = instance_create( 800, 0, objAlgKunai );
             obj.direction = lerp( 270, 180, ( phaseT - 96 - 72 ) / 24 );
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
+            obj.trailTime = 0.8;
         }
     } else if( phaseT == 96 * 4 ) {
         with( objAlgKunai ) {
@@ -893,12 +899,14 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+            obj.trailTime = 0.8;
             
             obj = instance_create( 600, 0, objAlgKunai );
             obj.direction = lerp( 360, 180, ( phaseT - 96 * 5 + 24 ) / 25 );
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+            obj.trailTime = 0.8;
         }
     } else if( phaseT &gt;= 96 * 5 + 72 &amp;&amp; phaseT &lt; 96 * 6 ) {
         if( t % 3 == 0 ) {
@@ -907,11 +915,13 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
             obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+            obj.trailTime = 0.8;
             
             obj = instance_create( 600, 0, objAlgKunai );
             obj.direction = lerp( 180, 360, ( phaseT - 96 * 5 + 72 ) / 25 );
             obj.image_angle = obj.direction
             obj.speed = random_range( 4, 5 );
+            obj.trailTime = 0.8;
             obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
         }
     } else if( phaseT == 96 * 7 ) {
@@ -925,7 +935,7 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
     } else if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 8 ) {
         var speedMin = lerp( 5, 18, ( phaseT - 96 * 6 ) / ( 96 + 48 ) );
         var speedMax = lerp( 11, 18, ( phaseT - 96 * 6 ) / ( 96 + 48 ) );
-        var arc = lerp( 90, 20, ( t - 5550 ) / 224 );
+        var arc = lerp( 90, 15, ( t - 5550 ) / 224 );
         var obj = instance_create( 400, 0, objAlgKunai );
         obj.direction = random_range( 225 - arc, 315 + arc );
         obj.image_angle = obj.direction
@@ -933,6 +943,8 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
         obj.image_blend = make_colour_rgb( random_range( 0, 128 ), random_range( 0, 128 ), 255 );
         if( phaseT &gt;= 96 * 7 ) {
             obj.trailTime = 0.2;
+        } else {
+            obj.trailTime = 0.4;
         }
     } else if( phaseT == 96 * 8 ) {
         with( objAlgKunai ) {
@@ -1391,7 +1403,7 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
         a = instance_create(800,0,objArchEventWall1);
         a.hspeed = -800 / 48;
         with( objArchBullet1_S10 ) {
-            if( y &lt; 608 - 96 ) {
+            if( y &lt; objPlayer.y + 9 ) {
                 gravity = -gravity;
             }
         }
@@ -1832,7 +1844,7 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
             var obj = instance_create( random( 800 ), 0, objAlgBullet );
             obj.speed = random_range( 6, 10 );
             obj.direction = random_range( 185, 365 );
-            obj.image_blend = make_colour_hsv( 100, 255, 255 );
+            obj.image_blend = make_colour_rgb( 255, 0, 0 );
         }
     }
     

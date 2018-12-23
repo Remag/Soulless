@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-spawnPeriod = 4;
+spawnPeriod = 5;
 </string>
           </argument>
         </arguments>
@@ -77,7 +77,7 @@ if( instance_exists( objPlayer ) ) {
           <argument>
             <kind>1</kind>
             <string>var bullet = instance_create( x, y, oRedireS16StarSlowing );
-bullet.direction = -90 + random_range( -20, 20 );
+bullet.direction = -90 + random_range( -15, 15 );
 bullet.image_angle = bullet.direction;
 bullet.speed = random_range( 4, 8 );
 bullet.image_blend = make_colour_hsv( random( 255 ), 255, 255 );

@@ -73,8 +73,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(other) {
-    if( y &lt; 608 - 32 ) {
+            <string>var verticalCutoff;
+if( instance_exists( objPlayer ) ) {
+    verticalCutoff = objPlayer.y + 9;
+} else {
+    verticalCutoff = 608 - 32   
+}
+with(other) {
+    if( y &lt; verticalCutoff ) {
         hspeed += hspeed/16;
         vspeed = -5;
     }

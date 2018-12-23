@@ -52,7 +52,7 @@ image_angle = random( 360 );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = lerp( 1, 16, x / 800 );
+            <string>speed = lerp( 1, 14, x / 800 );
 image_angle += 1;
 </string>
           </argument>
