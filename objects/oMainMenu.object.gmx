@@ -28,6 +28,9 @@
             <string>currentSelection = 0;
 isActive = true;
 baseX = x;
+selectorImageIndex = 0;
+fireOffset = 0;
+fireDelta = 0.1;
 
 </string>
           </argument>
@@ -76,6 +79,12 @@ baseX = x;
             <kind>1</kind>
             <string>if( !isActive ) {
     exit;
+}
+
+selectorImageIndex += 0.2;
+fireOffset += fireDelta;
+if( fireOffset &gt; 2 || fireOffset &lt; -2 ) {
+    fireDelta = -fireDelta;
 }
 
 var isDown = scrButtonCheckPressed( global.menuDownButton );
@@ -142,15 +151,15 @@ var arrowX;
 switch( currentSelection ) {
     case 0:
         arrowY = 0;
-        arrowX = 100;
+        arrowX = 93;
         break;
     case 1:
         arrowY = 48;
-        arrowX = 77;
+        arrowX = 72;
         break;
     case 2:
         arrowY = 96;
-        arrowX = 43;
+        arrowX = 38;
         break;
     default:
         break;
@@ -160,8 +169,10 @@ draw_text( x, y, "Start Game" );
 draw_text( x, y + 48, "Settings" );
 draw_text( x, y + 96, "Exit" );
 
-draw_sprite( sprUiArrow, 0, x - arrowX, y + arrowY );
-draw_sprite_ext( sprUiArrow, 0, x + arrowX, y + arrowY, -1, 1, 0, c_white, 1 );
+texture_set_interpolation( true );
+draw_sprite( sprSoulFire, selectorImageIndex, x - arrowX, y + arrowY + fireOffset );
+draw_sprite_ext( sprSoulFire, selectorImageIndex, x + arrowX, y + arrowY + fireOffset, -1, 1, 0, c_white, 1 );
+texture_set_interpolation( false );
 
 draw_set_valign( fa_top );
 draw_set_halign( fa_left );

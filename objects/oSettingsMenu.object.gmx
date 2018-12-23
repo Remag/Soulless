@@ -122,14 +122,24 @@ else if( scrButtonCheckPressed(global.menuAcceptButton1) || scrButtonCheckPresse
     } else if( select == 3 ) {   //go to the keyboard controls menu
         scrSaveConfig();    //save changes
         global.menuSelectPrev[1] = select;
-        instance_create(x,y,objKeyboardControlsMenu);
-        instance_destroy();
+        with( oControllerInputMenu ) { instance_destroy(); }
+        if( !instance_exists( oKeyboardInputMenu ) ) {
+            instance_create( -800, 305, oKeyboardInputMenu );
+        }
+        oMenuTransitionController.targetX = oKeyboardInputMenu.baseX;
+        oKeyboardInputMenu.alarm[0] = 1;
+        isActive = false;
         exit;
     } else if( select == 4 ) {   //go to the controller options menu
         scrSaveConfig();    //save changes
         global.menuSelectPrev[1] = select;
-        instance_create(x,y,objControllerMenu);
-        instance_destroy();
+        with( oKeyboardInputMenu ) { instance_destroy(); }
+        if( !instance_exists( oControllerInputMenu ) ) {
+            instance_create( -800, 305, oControllerInputMenu );
+        }
+        oMenuTransitionController.targetX = oControllerInputMenu.baseX;
+        oControllerInputMenu.alarm[0] = 1;
+        isActive = false;
         exit;
     } else if( select == 5 ) {  //save changes and go back
         scrSaveConfig();
