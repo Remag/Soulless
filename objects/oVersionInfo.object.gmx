@@ -27,9 +27,11 @@
             <kind>1</kind>
             <string>draw_set_color( c_white );
 draw_set_font( fNotifications );
+draw_set_halign( fa_left );
 
 draw_text( x, y, "v0.5-dev" );
 
+draw_set_halign( fa_center );
 draw_set_font( fDefault24 );
 </string>
           </argument>

@@ -417,6 +417,8 @@
       <script>scripts\scrBackgroundColorStep.gml</script>
       <script>scripts\shader_set_uniform_color.gml</script>
       <script>scripts\scrTweenValue.gml</script>
+      <script>scripts\scrOnPortalButton.gml</script>
+      <script>scripts\scrOnPlayerRestart.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -650,6 +652,7 @@
       <object>objects\oPracticeBackdrop</object>
       <object>objects\oPracticeAvoidanceController</object>
       <object>objects\oPracticeEndTitle</object>
+      <object>objects\oRefundNotification</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>

@@ -29,6 +29,8 @@
 targetEntranceId = 0;
 lastPracticeSegment = -1;
 lastPracticeGate = 1;
+practicePrice = 0;
+isFirstPracticeAttempt = false;
 
 </string>
           </argument>

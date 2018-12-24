@@ -3,7 +3,7 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>32</vsnap>
+  <vsnap>16</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
@@ -58,6 +58,7 @@
     <instance objName="oPlayerEntrance" x="384" y="544" name="inst_EDAAD694" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCurrencyDisplayView" x="3" y="580" name="inst_770A8355" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticeAvoidanceController" x="32" y="32" name="inst_846238D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oRefundNotification" x="768" y="592" name="inst_BDFFE2CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="0" y="576" w="32" h="32" xo="0" yo="0" id="10002824" name="inst_44CA963D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

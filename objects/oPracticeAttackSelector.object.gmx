@@ -42,8 +42,8 @@ if( global.unlockEntirePractice || global.gameClear ) {
 }
 
 childrenMap = ds_map_create();
-selectChangeDelay = 0;
-unfreezeDelay = 10;
+unfreezeDelay = 20;
+quitDelay = 0;
 isActive = true;
 </string>
           </argument>
@@ -94,11 +94,11 @@ isActive = true;
     exit;
 }
 
-selectChangeDelay++;
-var isLeft = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.leftButton );
-var isTop = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.upButton );
-var isRight = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.rightButton );
-var isBottom = selectChangeDelay &gt; unfreezeDelay &amp;&amp; scrButtonCheckPressed( global.downButton );
+quitDelay++;
+var isLeft = scrButtonCheckPressed( global.leftButton );
+var isTop = scrButtonCheckPressed( global.upButton );
+var isRight = scrButtonCheckPressed( global.rightButton );
+var isBottom = scrButtonCheckPressed( global.downButton );
 var isSelect = scrButtonCheckPressed( global.shootButton );
 
 if( isLeft ) {
@@ -145,6 +145,8 @@ if( isSelect &amp;&amp; currentSegment != -1 ) {
         oPlayerData.practiceStartSegment = scrFindGlobalSegment( currentGate, currentSegment );
         oPlayerData.practiceEndSegment = practiceLimitSegment + 1;
         oPlayerData.targetEntranceId = 0;
+        oPlayerData.practicePrice = price;
+        oPlayerData.isFirstPracticeAttempt = true;
         room_goto( rPracticeActiveRoom );
     }
 }
@@ -153,6 +155,7 @@ if( !instance_exists( oPreviewAvoidanceController ) &amp;&amp; currentSegment !=
     var globalSegment = scrFindGlobalSegment( currentGate, currentSegment );
     var segmentController = instance_create( 0, 0, oPreviewAvoidanceController );
     segmentController.t = scrGetSegmentOffset( globalSegment );
+    segmentController.startSegment = globalSegment;
     var musicId = audio_play_sound( oMusicContainer.avoidanceMusic, 0, false );
 
     audio_sound_gain( musicId, 0, 0 );
@@ -299,9 +302,6 @@ for( var i = 0; i &lt; segmentCount; i++ ) {
     }
     draw_text( segmentX + 48, segmentY + 48, string( i + 1 ) );
     if( currentSegment == i ) {
-        if( selectChangeDelay &lt; unfreezeDelay ) {
-            draw_set_alpha( selectChangeDelay / unfreezeDelay );
-        }
         draw_rectangle( segmentX + 16, segmentY + 16, segmentX + 78, segmentY + 78, true );
         draw_set_alpha( 1 );
     }

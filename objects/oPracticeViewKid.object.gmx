@@ -83,7 +83,7 @@ ds_map_add( oPracticeAttackSelector.childrenMap, id, -1 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( scrButtonCheckPressed( global.portalButton ) ) {
+            <string>if( scrButtonCheckPressed( global.portalButton ) &amp;&amp; oPracticeAttackSelector.quitDelay &gt;= oPracticeAttackSelector.unfreezeDelay ) {
     moveLeft = true;
     moveRight = false;
     with( oPracticeAttackSelector ) {

@@ -80,7 +80,7 @@ if( instance_exists( objPlayer ) ) {
     verticalCutoff = 608 - 32   
 }
 with(other) {
-    if( y &lt; verticalCutoff ) {
+    if( y &lt; verticalCutoff || gravity &lt; 0 ) {
         hspeed += hspeed/16;
         vspeed = -5;
     }

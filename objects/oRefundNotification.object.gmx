@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1000001</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,48 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var quitButton = scrGetKeybind( global.portalButton[0] );
-quitTooltipText = quitButton + ": Exit";
+            <string>var portalStr = scrGetKeybind( global.portalButton[0] );
+notificationStr = "Press " + portalStr + " to refund";
+
+step = 0;
+
+if( oPlayerData.isFirstPracticeAttempt ) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>step++;
+
+if( !instance_exists( objPlayer ) ) {
+    instance_destroy();
+}
+
+if( step &gt; 100 ) {
+    image_alpha -= 0.01;
+    if( image_alpha &lt;= 0 ) {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -49,10 +89,16 @@ quitTooltipText = quitButton + ": Exit";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font( fPracticeHint );
+            <string>draw_set_font( fNotifications );
+draw_set_halign( fa_right );
+draw_set_valign( fa_center );
+draw_set_alpha( image_alpha );
 
-draw_text( x, y + 32, quitTooltipText );
+draw_text( x, y, notificationStr );
 
+draw_set_alpha( 1 );
+draw_set_halign( fa_left );
+draw_set_valign( fa_top );
 draw_set_font( fDefault24 );
 </string>
           </argument>
