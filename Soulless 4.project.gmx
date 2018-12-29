@@ -718,8 +718,10 @@
         <object>objects\oRedireS18CircleBullet</object>
       </objects>
       <objects name="Segment23">
-        <object>objects\oRedireS23Ball</object>
-        <object>objects\oRedireS23BallSpawner</object>
+        <object>objects\oRedireS23CircleController</object>
+        <object>objects\oRedireS23CircleBullet</object>
+        <object>objects\oRedireS23CornerCircleBullet</object>
+        <object>objects\oRedireS23Bullet</object>
       </objects>
       <objects name="Segment24">
         <object>objects\oRedireS24Spawner</object>

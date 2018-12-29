@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 5775;
+//t = 13840;
 
 segment = 1;
 
@@ -2471,17 +2471,48 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
 if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 23;
     
-    // Spawn accelerating bullets.
+    // Spawn an accelerating ring.
     if( t == 13840 ) {
-        var spawner = instance_create( 0, 0, oRedireS23BallSpawner );
-        spawner.spawnPeriod = 1.5;
+        var mainX = 400;
+        var mainY = 0;
+        var circleRadius = 50;
+        var mainController = instance_create( mainX, mainY, oRedireS23CircleController );
+        mainController.radius = circleRadius;
+        mainController.radiusDelta = 1.7;
+        var leftCornerController = instance_create( 0, 608, oRedireS23CircleController );
+        leftCornerController.radius = circleRadius;
+        leftCornerController.radiusDelta = 1;
+        var rightCornerController = instance_create( 800, 608, oRedireS23CircleController );
+        rightCornerController.radius = circleRadius;
+        rightCornerController.radiusDelta = 1;
+        
+        var circleCount = 20;
+        var spawnDir = random_range( 0, 360 ); 
+        for( var i = 0; i &lt; circleCount; i++ ) {
+            var offsetX = lengthdir_x( circleRadius, spawnDir );
+            var offsetY = lengthdir_y( circleRadius, spawnDir );
+            // Main circle.
+            var ringBullet = instance_create( mainX + offsetX, mainY + offsetY, oRedireS23CircleBullet );
+            ringBullet.startDir = spawnDir;
+            ringBullet.controller = mainController;
+            // Corner circles.
+            var leftCornerBullet = instance_create( offsetX, 608 + offsetY, oRedireS23CornerCircleBullet );
+            leftCornerBullet.startDir = spawnDir;
+            leftCornerBullet.controller = leftCornerController;
+            var rightCornerBullet = instance_create( 800 + offsetX, 608 + offsetY, oRedireS23CornerCircleBullet );
+            rightCornerBullet.startDir = spawnDir;
+            rightCornerBullet.controller = rightCornerController;
+            
+            spawnDir += 360 / circleCount;
+        }
     }
         
-    // Slow them down.
+    // Slow the ring down.
     if( t == 14035 ) {
-        with( oRedireS23BallSpawner ) {
-            vaccelDelta = -vaccelDelta;
-            vspeedDelta = -vspeedDelta;
+        with( oRedireS23CircleController ) {
+            phaseAccel = -phaseAccel;
+            radiusDelta = -radiusDelta;
+            hueDelta = -hueDelta;
         }
     }
     
@@ -2499,18 +2530,25 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
             spawnPeriod -= 0.02;
         }
     }
-    
-    if( t == 14220 ) {
-        with( oRedireS23BallSpawner ) {
-            instance_destroy();
-        }
-    }
-    
+
     // First explosion of the next segment.
     if( t == 14175 ) {
         var spawnX = random_range( 64, 160 );
         var spawnY = random_range( 48, 76 );
         instance_create( spawnX, spawnY, oRedireS24ExplosionTrigger );
+    }
+    
+    // Delete the cirlce.
+    if( t == 14224 ) {
+        with( oRedireS23CircleController ) {
+            instance_destroy();
+        }
+        with( oRedireS23CircleBullet ) {
+            instance_destroy();
+        }
+        with( oRedireS23CornerCircleBullet ) {
+            instance_destroy();
+        }
     }
 }
 </string>
