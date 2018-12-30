@@ -260,6 +260,7 @@
       <sprite>sprites\sprRedireWideArrow</sprite>
       <sprite>sprites\sprRedireRectBullet</sprite>
       <sprite>sprites\sprRedireStar</sprite>
+      <sprite>sprites\sprRedireS18Backdrop</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -395,6 +396,7 @@
       <script>scripts\scrLoadLastSlot.gml</script>
       <script>scripts\scrSaveLastSlot.gml</script>
       <script>scripts\scrChooseMainMenuMusic.gml</script>
+      <script>scripts\scrDrawInputRow.gml</script>
     </scripts>
     <scripts name="General">
       <script>scripts\scrStartFromHere.gml</script>
@@ -716,6 +718,7 @@
       </objects>
       <objects name="Segment18">
         <object>objects\oRedireS18CircleBullet</object>
+        <object>objects\oRedireS18Backdrop</object>
       </objects>
       <objects name="Segment23">
         <object>objects\oRedireS23CircleController</object>

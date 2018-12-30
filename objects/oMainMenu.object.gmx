@@ -89,7 +89,7 @@ if( fireOffset &gt; 2 || fireOffset &lt; -2 ) {
 
 var isDown = scrButtonCheckPressed( global.menuDownButton );
 var isUp = scrButtonCheckPressed( global.menuUpButton );
-var isSelect = scrButtonCheckPressed( global.menuAcceptButton1 ) || scrButtonCheck( global.menuAcceptButton2 );
+var isSelect = scrButtonCheckPressed( global.menuAcceptButton1 ) || scrButtonCheckPressed( global.menuAcceptButton2 );
 
 if( isDown ) {
     currentSelection = min( 2, currentSelection + 1 );

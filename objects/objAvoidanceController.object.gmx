@@ -2084,14 +2084,19 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
             fadeOut = true;
         }
     }
+    if( t == 11529 ) {
+        with( oRedireS18Backdrop ) {
+            instance_destroy();
+        }
+    }
     
     // Effects by Algeran.
     var phaseT = ( t - 11148 );
-    if( phaseT % 48 == 0 &amp;&amp; phaseT &lt; 96 * 4 ) {
+    if( phaseT == 20 || phaseT == 72 || phaseT == 115 || phaseT == 165 || phaseT == 205 || phaseT == 248 || phaseT == 290 ) {
         var spawnIndex = 0;
         repeat( 3 ) {
             var obj = instance_create( 0, 0, objAlgA14EffectSpawner );
-            if( scrGetPlayerX() &lt; 400 ) {
+            if( scrGetPlayerX() &lt;= 400 ) {
                 obj.spawnXFrom = 800;
                 switch( spawnIndex ) {
                     case 0:
@@ -2136,11 +2141,11 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
                         break;
                 }
             }
-            if( phaseT &lt; 96 ) {
+            if( phaseT &lt;= 24 ) {
                 obj.spawnBlend = make_colour_hsv( 80, 255, 255 );
-            } else if( phaseT &lt; 96 * 2 ) {
+            } else if( phaseT &lt;= 120 ) {
                 obj.spawnBlend = make_colour_hsv( 33, 255, 255 );
-            } else if( phaseT &lt; 96 * 3 ) {
+            } else if( phaseT &lt;= 216 ) {
                 obj.spawnBlend = make_colour_hsv( 20, 255, 255 );
             } else {
                 obj.spawnBlend = make_colour_hsv( 0, 255, 255 );        

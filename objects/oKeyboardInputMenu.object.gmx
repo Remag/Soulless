@@ -29,40 +29,43 @@
 baseX = x;
 
 select = 0;
-xSelector = 120;
-ySelector = 48;
-xSeperation = 560;
-ySeperation = 40;
+firstColumnOffsetX = -340;
+secondColumnOffsetX = 50;
+columnOffsetY = -30;
+keyOffsetX = 265;
+
+ySeparation = 40;
 
 settingKey = false;     //sets whether or not a key is getting set
 resetPrompt = false;    //shows the message that controls were reset
 
-strSelect[0] = "Left Button";
-strSelect[1] = "Right Button";
-strSelect[2] = "Up Button";
-strSelect[3] = "Down Button";
-strSelect[4] = "Jump Button";
-strSelect[5] = "Shoot Button";
-strSelect[6] = "Restart Button";
-strSelect[7] = "Skip Button";
-strSelect[8] = "Portal Room Button";
-strSelect[9] = "Pause Button";
-strSelect[10] = "Reset Controls";
+strSelect[0] = "Left";
+strSelect[1] = "Right";
+strSelect[2] = "Up";
+strSelect[3] = "Down";
+strSelect[4] = "Restore Defaults";
+strSelect[5] = "Jump";
+strSelect[6] = "Shoot";
+strSelect[7] = "Restart";
+strSelect[8] = "Portal";
+strSelect[9] = "";
 
 //get current controls
 strKey[0] = scrGetKeybind(global.leftButton[0]);
 strKey[1] = scrGetKeybind(global.rightButton[0]);
 strKey[2] = scrGetKeybind(global.upButton[0]);
 strKey[3] = scrGetKeybind(global.downButton[0]);
-strKey[4] = scrGetKeybind(global.jumpButton[0]);
-strKey[5] = scrGetKeybind(global.shootButton[0]);
-strKey[6] = scrGetKeybind(global.restartButton[0]);
-strKey[7] = scrGetKeybind(global.skipButton[0]);
+strKey[4] = "";
+strKey[5] = scrGetKeybind(global.jumpButton[0]);
+strKey[6] = scrGetKeybind(global.shootButton[0]);
+strKey[7] = scrGetKeybind(global.restartButton[0]);
 strKey[8] = scrGetKeybind(global.portalButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
-strKey[10] = "";
+strKey[9] = "Back";
 
-playerIndex = 0;
+animationIndex = 0;
+animationStep = 0;
+fireOffset = 0;
+fireDelta = 0.1;
 </string>
           </argument>
         </arguments>
@@ -135,42 +138,53 @@ playerIndex = 0;
     exit;
 }
 
-//animate player sprite
-playerIndex = (playerIndex + 1/5) mod 4;
+// Animate the selector.
+animationIndex += 0.2;
+animationStep++;
+fireOffset += fireDelta;
+if( fireOffset &gt; 2 || fireOffset &lt; -2 ) {
+    fireDelta = -fireDelta;
+}
 
 if (!settingKey)
 {
-    if (scrButtonCheckPressed(global.menuUpButton))
-    {
+    if( scrButtonCheckPressed( global.menuLeftButton ) ) {
+        audio_play_sound(global.menuSound,0,false);
+        select -= 5;
+        if( select &lt; 0 ) {
+            select += 10;
+        }
+    } else if( scrButtonCheckPressed( global.menuRightButton ) ) {
+        audio_play_sound(global.menuSound,0,false);
+        select += 5;
+        if( select &gt; 9 ) {
+            select -= 10;
+        }
+    } else if( scrButtonCheckPressed( global.menuUpButton ) ) {
         audio_play_sound(global.menuSound,0,false);
         select -= 1;
-        if(select &lt; 0)
-            select = 10;
-    }
-    else if (scrButtonCheckPressed(global.menuDownButton))
-    {
+        if( select &lt; 0 ) {
+            select = 9;
+        }
+    } else if( scrButtonCheckPressed(global.menuDownButton ) ) {
         audio_play_sound(global.menuSound,0,false);
         select += 1;
-        if(select &gt; 10)
+        if( select &gt; 9 ) {
             select = 0;
-    }
-    else if (scrButtonCheckPressed(global.menuAcceptButton2))
-    {
-        scrSaveConfig();    //save changes
-        oMenuTransitionController.targetX = oSettingsMenu.baseX;
-        oSettingsMenu.alarm[0] = 1;
-        isActive = false;
-        exit;
-    }
-    else if (scrButtonCheckPressed(global.menuAcceptButton1))
-    {
-        if (select != 10)
-        {
-            settingKey = true;
         }
-        else
-        {
-            //default controls
+    } else if( scrButtonCheckPressed( global.menuAcceptButton1 ) || scrButtonCheckPressed( global.menuAcceptButton2 ) ) {
+        if( select == 9 ) {
+           scrSaveConfig();    //save changes
+           oMenuTransitionController.targetX = oSettingsMenu.baseX;
+           oSettingsMenu.alarm[0] = 1;
+           isActive = false;
+           exit; 
+        }
+        if( select != 4 ) {
+            settingKey = true;
+            animationStep = 0;
+        } else {
+            // Default controls.
             global.leftButton[0] = vk_left;
             global.rightButton[0] = vk_right;
             global.upButton[0] = vk_up;
@@ -178,36 +192,30 @@ if (!settingKey)
             global.jumpButton[0] = vk_shift;
             global.shootButton[0] = ord("Z");
             global.restartButton[0] = ord("R");
-            global.skipButton[0] = ord("S");
             global.portalButton[0] = ord("Q");
-            global.pauseButton[0] = ord("P");
             
             resetPrompt = true;
             alarm[1] = 50;
         }
     }
-}
-else
-{
-    if (keyboard_check_pressed(vk_anykey))  //check if a key is being pressed and if it is, store that key
-    {
+} else {
+    if( keyboard_check_pressed( vk_anykey ) ) { //check if a key is being pressed and if it is, store that key
         var keyChange;
         
         keyChange = keyboard_key;
         
-        if (keyChange == 160 || keyChange == 161)   //check if current key pressed is either shift key
+        if( keyChange == 160 || keyChange == 161 ) {   //check if current key pressed is either shift key
             keyChange = 16; //set it to work for both shift keys
+        }
         
         if (select == 0) {global.leftButton[0] = keyChange;}
         else if (select == 1) {global.rightButton[0] = keyChange;}
         else if (select == 2) {global.upButton[0] = keyChange;}
         else if (select == 3) {global.downButton[0] = keyChange;}
-        else if (select == 4) {global.jumpButton[0] = keyChange;}
-        else if (select == 5) {global.shootButton[0] = keyChange;}
-        else if (select == 6) {global.restartButton[0] = keyChange;}
-        else if (select == 7) {global.skipButton[0] = keyChange;}
+        else if (select == 5) {global.jumpButton[0] = keyChange;}
+        else if (select == 6) {global.shootButton[0] = keyChange;}
+        else if (select == 7) {global.restartButton[0] = keyChange;}
         else if (select == 8) {global.portalButton[0] = keyChange;}
-        else if (select == 9) {global.pauseButton[0] = keyChange;}
         
         settingKey = false;
     }
@@ -222,13 +230,12 @@ strKey[0] = scrGetKeybind(global.leftButton[0]);
 strKey[1] = scrGetKeybind(global.rightButton[0]);
 strKey[2] = scrGetKeybind(global.upButton[0]);
 strKey[3] = scrGetKeybind(global.downButton[0]);
-strKey[4] = scrGetKeybind(global.jumpButton[0]);
-strKey[5] = scrGetKeybind(global.shootButton[0]);
-strKey[6] = scrGetKeybind(global.restartButton[0]);
-strKey[7] = scrGetKeybind(global.skipButton[0]);
+strKey[4] = "";
+strKey[5] = scrGetKeybind(global.jumpButton[0]);
+strKey[6] = scrGetKeybind(global.shootButton[0]);
+strKey[7] = scrGetKeybind(global.restartButton[0]);
 strKey[8] = scrGetKeybind(global.portalButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
-strKey[10] = "";
+strKey[9] = "Back";
 </string>
           </argument>
         </arguments>
@@ -254,34 +261,14 @@ strKey[10] = "";
             <string>draw_set_color(c_white);
 draw_set_font(fMenuOption);
 
-for(var i = 0; i &lt; 11; i += 1)
-{
-    draw_set_halign(fa_left);
-    draw_text(xSelector,ySelector+i*ySeperation+32,strSelect[i]);
-    
-    draw_set_halign(fa_right);
-    
-    if(i == select)
-    {
-        draw_sprite(sprPlayerIdle,playerIndex,xSelector-20,ySelector+i*ySeperation+52);
-        
-        if (settingKey) //key prompt
-        {
-            draw_text(xSelector+xSeperation,ySelector+i*ySeperation+32,"Press the key to set");
-        }
-    }
-    
-    if (!settingKey || i != select)    //shows current key
-    {
-        draw_text(xSelector+xSeperation,ySelector+i*ySeperation+32,strKey[i]);
-    }
-    
-    if (resetPrompt &amp;&amp; i == 10) //reset controls prompt
-    {
-        draw_text(xSelector+xSeperation,ySelector+i*ySeperation+32,"Controls reset");
-    }
+for( var i = 0; i &lt; 4; i++ ) {
+    scrDrawInputRow( firstColumnOffsetX, i, i, false );
 }
-
+scrDrawInputRow( firstColumnOffsetX, 5, 4, false );
+for( var i = 0; i &lt; 4; i++ ) {
+    scrDrawInputRow( secondColumnOffsetX, i, i + 5, false );
+}
+scrDrawInputRow( secondColumnOffsetX, 5, 9, true );
 </string>
           </argument>
         </arguments>

@@ -9,23 +9,23 @@ switch(keyIn)
     //special keys
     case vk_space: return "Space";
     case vk_shift: return "Shift";
-    case vk_control: return "Control";
+    case vk_control: return "Ctrl";
     case vk_alt: return "Alt";
     case vk_enter: return "Enter";
     case vk_up: return "Up";
     case vk_down: return "Down";
     case vk_left: return "Left";
     case vk_right: return "Right";
-    case vk_backspace: return "Backspace";
+    case vk_backspace: return "Back";
     case vk_tab: return "Tab";
     case vk_insert: return "Insert";
     case vk_delete: return "Delete";
-    case vk_pageup: return "Page Up";
-    case vk_pagedown: return "Page Down";
+    case vk_pageup: return "Pg U";
+    case vk_pagedown: return "Pg D";
     case vk_home: return "Home";
     case vk_end: return "End";
-    case vk_escape: return "Escape";
-    case vk_printscreen: return "Print Screen";
+    case vk_escape: return "Esc";
+    case vk_printscreen: return "Prnt Scr";
     case vk_f1: return "F1";
     case vk_f2: return "F2";
     case vk_f3: return "F3";
@@ -38,12 +38,12 @@ switch(keyIn)
     case vk_f10: return "F10";
     case vk_f11: return "F11";
     case vk_f12: return "F12";
-    case vk_lshift: return "Left Shift";
-    case vk_rshift: return "Right Shift";
-    case vk_lcontrol: return "Left Control";
-    case vk_rcontrol: return "Right Control";
-    case vk_lalt: return "Left Alt";
-    case vk_ralt: return "Right Alt";
+    case vk_lshift: return "LShift";
+    case vk_rshift: return "RShift";
+    case vk_lcontrol: return "LCtrl";
+    case vk_rcontrol: return "RCtrl";
+    case vk_lalt: return "LAlt";
+    case vk_ralt: return "RAlt";
     //numpad keys
     case 96: return "0";
     case 97: return "1";

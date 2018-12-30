@@ -124,7 +124,7 @@ else if( scrButtonCheckPressed(global.menuAcceptButton1) || scrButtonCheckPresse
         global.menuSelectPrev[1] = select;
         with( oControllerInputMenu ) { instance_destroy(); }
         if( !instance_exists( oKeyboardInputMenu ) ) {
-            instance_create( -800, 305, oKeyboardInputMenu );
+            instance_create( -970, 305, oKeyboardInputMenu );
         }
         oMenuTransitionController.targetX = oKeyboardInputMenu.baseX;
         oKeyboardInputMenu.alarm[0] = 1;
@@ -135,7 +135,7 @@ else if( scrButtonCheckPressed(global.menuAcceptButton1) || scrButtonCheckPresse
         global.menuSelectPrev[1] = select;
         with( oKeyboardInputMenu ) { instance_destroy(); }
         if( !instance_exists( oControllerInputMenu ) ) {
-            instance_create( -800, 305, oControllerInputMenu );
+            instance_create( -970, 305, oControllerInputMenu );
         }
         oMenuTransitionController.targetX = oControllerInputMenu.baseX;
         oControllerInputMenu.alarm[0] = 1;

@@ -36,7 +36,7 @@ switch( segment ) {
     case 17:
         return 10764;
     case 18:
-        return 11150;
+        return 11148;
     case 19:
         return 11530;
     case 20:

@@ -4,8 +4,10 @@ var count = argument2;
 var avgSpeed = argument3;
 
 var centerX = 32;
+var backdropX = 0;
 if( objPlayer.x > 400 ) {
     centerX = 768;
+    backdropX = 800;
 }
 var centerY = 576;
 var scale = 0.4;
@@ -24,3 +26,13 @@ for( var circleDir = 0; circleDir < 180; circleDir += dirDelta ) {
     circle.image_alpha = 0;
     circle.fadeInDelta = 0.2;
 }
+
+// Set the backdrop for effects.
+with( oRedireS18Backdrop ) {
+    instance_destroy();
+}
+
+var backdrop = instance_create( backdropX, 608, oRedireS18Backdrop );
+var scale = radius / ( backdrop.sprite_width / 2 - 48 );
+backdrop.image_xscale = scale;
+backdrop.image_yscale = scale;
