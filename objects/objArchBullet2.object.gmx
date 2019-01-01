@@ -127,11 +127,12 @@ if( instance_exists( objPlayer ) ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i = 3;
-do {
-    direction = random(360);
-    i--;
-} until(i &lt;= 0 || direction &lt; 180)
+            <string>var relevanceProbability = 0.1;
+if( random_range( 0, 1 ) &lt; relevanceProbability ) {
+    direction = random_range( 180, 360 );
+} else {
+    direction = random_range( 0, 180 );
+}
 //direction += 180;
 speed = random_range(3,6);
 </string>

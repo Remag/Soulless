@@ -57,6 +57,10 @@ if( frame % 24 &lt; framesToIncrease ) {
 } else {
     image_yscale = 2 - 1.5 * sin( ( ( frame % 24 - framesToIncrease ) / ( 24 - framesToIncrease ) ) * pi / 2 );
 }
+
+if( !instance_exists( objPlayer ) ) {
+    hspeed = 0;
+}
 </string>
           </argument>
         </arguments>
