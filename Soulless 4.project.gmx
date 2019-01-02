@@ -261,6 +261,7 @@
       <sprite>sprites\sprRedireRectBullet</sprite>
       <sprite>sprites\sprRedireStar</sprite>
       <sprite>sprites\sprRedireS18Backdrop</sprite>
+      <sprite>sprites\sprRedireSphereEffect</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -741,6 +742,9 @@
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
       <object>objects\oRedireSpawner</object>
+      <objects name="Segment1">
+        <object>objects\oRedireS1Effect</object>
+      </objects>
       <objects name="Segment7">
         <object>objects\oRedireS7KunaiSpawner</object>
       </objects>

@@ -36,13 +36,14 @@
         effX = 810;
         effY = effPos - 800;
     }
-    a = instance_create( effX, effY, objArchEffect1 );
+    a = instance_create( effX, effY, oRedireS1Effect );
     a.direction = 225 + random_range( -10, 10 );
     a.speed = random_range( 8, 12 );
-    a.image_alpha = random_range( 0.01, 0.3 );
-    a.image_index = 0;
-    a.image_xscale = 0.2;
-    a.image_yscale = 0.2;
+    a.image_alpha = random_range( 0.1, 0.3 );
+    a.image_index = irandom_range( 0, 3 );
+    a.image_xscale = 0.5;
+    a.image_yscale = 0.5;
+    a.depth = 0;
 }
 </string>
           </argument>
