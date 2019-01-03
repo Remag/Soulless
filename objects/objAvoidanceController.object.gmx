@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 13840;
+//t = 15850;
 
 segment = 1;
 
@@ -2179,35 +2179,35 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Alg Segment 19 (3:51 - 4:06) Machinations A
-if( t &gt;= 11530 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) ) {
+if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    var tPhase = ( t - 11530 ) % 190;
+    var tPhase = ( t - 11540 );
     
-    if( t == 11530 ) {
+    if( tPhase == 0 ) {
         seg19SpawnXMin = 200;
         seg19SpawnXMax = 600;
         seg19SpawnYMin = 30;
         seg19SpawnYMax = 170;
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 0, 255, 255 );
-    } else if( t == 11720 ) {
+    } else if( tPhase == 192 ) {
         seg19SpawnXMin = 0;
         seg19SpawnXMax = 50;
         seg19SpawnYMin = 0;
         seg19SpawnYMax = 200;
         seg19CircleCount = 35;
         seg19SpawnColor = make_colour_hsv( 125, 255, 255 );
-    } else if( t == 11910 ) {
+    } else if( tPhase == 192 * 2 ) {
         seg19SpawnXMin = 750;
         seg19SpawnXMax = 800;
         seg19SpawnYMin = 0;
         seg19SpawnYMax = 200;
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 43, 255, 255 );
-    } else if( t == 12100 ) {
+    } else if( tPhase == 192 * 3 ) {
         seg19SpawnXMin = 0;
         seg19SpawnXMax = 800;
         seg19SpawnYMin = 30;
@@ -2216,8 +2216,8 @@ if( t &gt;= 11530 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnColor = make_colour_hsv( 190, 255, 255 );
     }
     
-    if( tPhase &lt; 142 ) {
-        if( tPhase % 50 == 10 ) {
+    if( tPhase % 192 &lt; 48 * 3 ) {
+        if( tPhase % 48 == 0 ) {
             var circlePhase = random( 360 );
             var circleOffset = 0;
             repeat( 2 ) {
@@ -2262,6 +2262,42 @@ if( t &gt;= 11530 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    if( !instance_exists( objAlgA19SquareEffect ) ) {
+        repeat( 50 ) {
+            var obj = instance_create( scrGetPlayerX(), scrGetPlayerY(), objAlgA19SquareEffect );
+            obj.rotationSpeed = random_range( 20, 60 ) * choose( -1, 1 );
+            obj.image_index = 2;
+        }
+    }
+    
+    // Effects.
+    var colorHue = colour_get_hue( seg19SpawnColor );
+    with( objAlgA19SquareEffect ) {
+        var radius = random_range( 180, 200 );
+        speed = 1;
+        direction = random( 360 );
+        x = scrGetPlayerX() + hspeed * radius;
+        y = scrGetPlayerY() + vspeed * radius;
+        speed = 0;
+        image_blend = make_colour_hsv( colorHue, 255, random_range( 20, 100 ) );
+        if( irandom( 19 ) == 0 || other.t == 12289 ) {
+            var obj = instance_create( x, y, objAlgSquareEffect );
+            obj.direction = direction;
+            obj.speed = 1;
+            obj.friction = -0.5;
+            obj.image_blend = image_blend;
+            obj.image_index = image_index;
+            obj.image_angle = image_angle
+            obj.rotationSpeed = self.rotationSpeed / 3;
+        }
+    }
+    if( t == 12289 ) {
+        with( objAlgA19SquareEffect ) {
+            instance_destroy();
+        }
+    }
+    
+    
     segment = 19;
 }
 </string>
@@ -2299,25 +2335,40 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
             if( t == 12290 ) {
                 lineSpeed = 10;
             }
-            with( objAlgA20Sphere ) {
-                if( frame == 0 ) {
-                    speed = lineSpeed;
-                    direction = 270;
-                }
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = lineSpeed;
+                line[i].direction = 270;
+            }
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = 608 / 20 - lineSpeed;
+                line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
+                line[i].direction = 90;
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_index = 1;
             }
         }
     } else if( t &lt; 12670 ) {
-        if( tPhase == 0 || tPhase == 31 || tPhase == 62 ) {
+        if( tPhase == 0 || tPhase == 24 || tPhase == 48 ) {
             var offset = random_range( -20, 0 );
             var line = scrMakeLine( offset, 0, 840 + offset, 0, 30, objAlgA20Sphere );
-            var lineSpeed = lerp( 35, 20, tPhase / 62 );
-            with( objAlgA20Sphere ) {
-                if( frame == 0 ) {
-                    speed = lineSpeed;
-                    direction = 270;
-                    framePoint1 = 10;
-                    framePoint2 = 31;
-                }
+            var lineSpeed = lerp( 35, 20, tPhase / 62 ) * 5 / 6;
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = lineSpeed;
+                line[i].direction = 270;
+                line[i].framePoint1 = 12;
+                line[i].framePoint2 = 24;
+                line[i].minSpeed = 3;
+                line[i].maxSpeed = 15;
+            }
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = 608 / 12 - lineSpeed;
+                line[i].framePoint1 = 12;
+                line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
+                line[i].direction = 90;
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_index = 1;
             }
         }
     }
@@ -2360,25 +2411,40 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
                 lineSpeed = 10;
             }
             
-            with( objAlgA20Sphere ) {
-                if( frame == 0 ) {
-                    speed = lineSpeed;
-                    direction = 270;
-                }
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = lineSpeed;
+                line[i].direction = 270;
+            }
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = 608 / 20 - lineSpeed;
+                line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
+                line[i].direction = 90;
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_index = 1;
             }
         }
     } else if( t &lt; 13059 ) {
-        if( tPhase == 0 || tPhase == 31 || tPhase == 62 ) {
+        if( tPhase == 0 || tPhase == 24 || tPhase == 48 ) {
             var offset = random_range( -20, 0 );
             var line = scrMakeLine( offset, 0, 840 + offset, 0, 25, objAlgA20Sphere );
-            var lineSpeed = lerp( 35, 20, tPhase / 62 );
-            with( objAlgA20Sphere ) {
-                if( frame == 0 ) {
-                    speed = lineSpeed;
-                    direction = 270;
-                    framePoint1 = 10;
-                    framePoint2 = 31;
-                }
+            var lineSpeed = lerp( 35, 20, tPhase / 62 ) * 5 / 6;
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = lineSpeed;
+                line[i].direction = 270;
+                line[i].framePoint1 = 12;
+                line[i].framePoint2 = 24;
+                line[i].minSpeed = 3;
+                line[i].maxSpeed = 15;
+            }
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
+                line[i].speed = 608 / 12 - lineSpeed;
+                line[i].framePoint1 = 12;
+                line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
+                line[i].direction = 90;
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_index = 1;
             }
         }
     }
@@ -2388,6 +2454,14 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.speed = random_range( 9, 10 );
         obj.direction = random_range( 180, 360 );
         obj.image_blend = make_colour_hsv( 188, 255, 255 );
+        
+        var obj = instance_create( random_range( 0, 800 ), 608, objAlgSquareEffect );
+        obj.direction = random_range( 60, 120 );
+        obj.speed = 1;
+        obj.friction = -0.5;
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 10, 20 ) );
+        obj.image_index = 2;
+        obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
     }
     segment = 21;
 }
@@ -2457,6 +2531,27 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         
         with( objAlgWave ) {
             direction = scrTargetPlayer( x, y ) + 180;
+        }
+    }
+    
+    // Effects.
+    if( phaseT % 2 == 0 ) {
+        if( phaseT % 4 == 0 ) {
+            var obj = instance_create( 0, choose( 0, 608 ), objAlgSquareEffect );
+            obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+            obj.speed = 1;
+            obj.friction = -0.25;
+            obj.image_blend = make_colour_hsv( 192, 255, random_range( 10, 20 ) );
+            obj.image_index = 2;
+            obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+        } else {
+            var obj = instance_create( 800, choose( 0, 608 ), objAlgSquareEffect );
+            obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+            obj.speed = 1;
+            obj.friction = -0.25;
+            obj.image_blend = make_colour_hsv( 135, 255, random_range( 10, 20 ) );
+            obj.image_index = 2;
+            obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
         }
     }
 
@@ -2566,6 +2661,16 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
             instance_destroy();
         }
     }
+    
+    // Effects.
+    if( ( t - 13840 ) % 24 == 0 &amp;&amp; t &lt; 14225 - 24 ) {
+        var obj = instance_create( 400, 304, objAlgA21SquareEffect );
+        obj.image_index = 1;
+        obj.rotationSpeed = random_range( 1, 2 );
+        with( oRedireS23CircleController ) {
+            obj.image_blend = make_colour_hsv( self.currentHue, 255, random_range( 5, 10 ) );
+        }
+    }
 }
 </string>
           </argument>
@@ -2652,6 +2757,34 @@ if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) 
     if( t == 14499 ) {
         with( oRedireS24Spawner ) { instance_destroy(); }
     }
+    
+    // Effects.
+    var phaseT = t - 14225;
+    if( phaseT % 12 == 0 &amp;&amp; t &lt; 14615 ) {
+        var obj = instance_create( 400, 304, objAlgA22SquareEffect );
+        obj.depth -= t;
+    
+        obj.rotationSpeed = random_range( 1, 2 ) * choose( -1, 1 );
+        obj.image_index = 2;
+        if( t == 14609 ) {
+            obj.image_blend = make_colour_hsv( 0, 255, 10 );
+        } else if( phaseT % 24 == 0 ) {
+            obj.image_blend = make_colour_hsv( 166, 255, 10 );
+        } else {
+            obj.image_blend = make_colour_hsv( 138, 255, 10 );
+        }
+    }
+    
+    if( t &gt;= 14676 &amp;&amp; t &lt; 14699 ) {
+        var colorVal = lerp( 10, 0, ( t - 14676 ) / 24 );
+        with( objAlgA22SquareEffect ) {
+           image_blend = make_colour_hsv( colour_get_hue( image_blend ), 255, colorVal );
+        }
+    } else if( t == 14699 ) {
+        with( objAlgA22SquareEffect ) {
+            instance_destroy();
+        }
+    }
 }
 </string>
           </argument>
@@ -2695,6 +2828,39 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
             scrA25Spawn( 5, 208 - random( 32 ), -1 );
         }
     }
+    
+    // Effects.
+    if( phaseT == 0 ) {
+        seg25EffectsDir = choose( -1, 1 );
+        seg25EffectsImage = 1;
+    }
+    if( phaseT &lt; 96 * 4 ) {
+        if( phaseT % 96 == 0 ) {
+            seg25EffectsDir *= -1;
+        }
+    } else if( phaseT &lt; 96 * 8 ) {
+        if( phaseT % 48 == 0 ) {
+            seg25EffectsDir *= -1;
+        }
+    } else {
+        if( phaseT % 48 == 0 ) {
+            seg25EffectsDir *= -1;
+            seg25EffectsImage = 3 - seg25EffectsImage;
+        }
+    }
+    if( phaseT % 2 == 0 ) {
+        repeat( 2 ) {
+            var obj = instance_create( 400, 304, objAlgA25SquareEffect );
+            obj.direction = random( 360 );
+            obj.speed = 1.2;
+            obj.friction = -0.1;
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 10, 20 ) );
+            obj.image_index = 2;
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.movementRotation = random_range( 2, 4 ) * seg25EffectsDir / 2;
+        }
+    }
+    
     segment = 25;
 }
 </string>
@@ -2739,6 +2905,18 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
             speed = 10;
         }
     }
+    
+    // Effects.
+    if( t % 2 == 0 ) {
+        repeat( 2 ) {
+            var obj = instance_create( random( 800 ), 608, objAlgSquareDisappearing );
+            obj.direction = random_range( 70, 110 );
+            obj.speed = 10;
+            obj.image_blend = choose( make_colour_rgb( 20, 0, 0 ), make_colour_rgb( 0, 20, 0 ), make_colour_rgb( 0, 0, 20 ) );
+            obj.image_index = 2;
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        }
+    }
 }
 </string>
           </argument>
@@ -2780,7 +2958,39 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
             a.speed = random_range(1,3);
             a.special = 1;
         }
+        
     }
+    
+    // Effects.
+    if( t % 2 == 0 ) {
+        repeat( 2 ) {
+            var obj = instance_create( random( 800 ), 608, objAlgSquareDisappearing );
+            obj.direction = random_range( 70, 110 );
+            obj.speed = 10;
+            obj.image_blend = make_colour_rgb( 20, 0, 0 );
+            obj.image_index = 2;
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        }
+    }
+    if( t % 4 == 0 ) {
+        with( objArchBullet5 ) {
+            var obj = instance_create( x, y, objAlgA27SquareEffect );
+            obj.direction = random_range( 75, 125 );
+            obj.speed = 8;
+            obj.image_blend = make_colour_hsv( 0, 255, random_range( 40, 80 ) );
+            obj.image_index = 1;
+            obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+        }
+        if( t &gt;= 16910 ) {
+            var obj = instance_create( random( 800 ), 0, objAlgA27SquareEffect );
+            obj.direction = 180 + random_range( 75, 125 );
+            obj.speed = 8;
+            obj.image_blend = make_colour_hsv( 0, 255, random_range( 40, 80 ) );
+            obj.image_index = 1;
+            obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+        }
+    }
+    
 }
 </string>
           </argument>
@@ -2834,6 +3044,47 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
             a.rspd = 4;
         }
     }
+    
+    // Effects.
+    if( t % 3 == 0 &amp;&amp; t &lt; 17705 ) {
+        var spawnX = choose( 0, 800 );
+        var spawnY = random( 608 );
+        if( t % 6 == 0 ) {
+            spawnX = random( 800 );
+            spawnY = choose( 0, 608 );
+        }
+        var obj = instance_create( spawnX, spawnY, objAlgA28SquareEffect );
+        obj.direction = point_direction( obj.x, obj.y, 400, 304 );
+        obj.speed = 8;
+        if( t &lt; 17401 ) {
+            obj.image_blend = make_colour_hsv( 160, 255, random_range( 40, 80 ) );
+        } else {
+            obj.image_blend = make_colour_hsv( choose( 0, 160 ), 255, random_range( 40, 80 ) );
+        }
+        obj.image_index = 1;
+        obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+    }
+    
+    if( t &gt;= 17401 &amp;&amp; t &lt;= 17755 &amp;&amp; ( t - 17401 ) % 54 == 0 ) {
+        var obj = instance_create( 400, 304, objAlgA27SquareEffect );
+        if( ( t - 17401 ) % 108 == 0 ) {
+            obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        } else {
+            obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        }
+        obj.image_index = 1;
+        obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+    }
+    if( t == 17755 ) {
+        with( objAlgA27SquareEffect ) {
+            if( colour_get_hue( image_blend ) == 135 ) {
+                hspeed = -20;
+            } else {
+                hspeed = 20;
+            }
+            vspeed = ( 304 - 32 - 96 ) / 20;
+        }
+    }
 }
 </string>
           </argument>
@@ -2863,27 +3114,50 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
     if( t == 17775 ) {
         seg29Speed = random_range( 0.5, 29 );
     }
+    var effectColorVal = random_range( 5, 40 );
     var scale = 0.85 * 15 / 18;
     seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
     if( t % 10 != 0 ) {
         if( t &lt; 17967 ) {
-            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Wave );
+            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
             obj.speed = seg29Speed;
             obj.direction = 90;
             obj.dirInc = 2;
             obj.image_blend = make_colour_hsv( 192, 255, 255 );
             obj.image_xscale = scale;
             obj.image_yscale = scale;
+            
+            obj = instance_create( 0, random( 608 ), objAlgA29SquareEffect );
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.speed = 6;
+            obj.friction = -0.5;
+            obj.image_index = 2;
+            obj.direction = random_range( -20, 20 );
+            obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
+            
         } else if( t &lt; 18159 ) {
-            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Wave );
+            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
             obj.speed = seg29Speed;
             obj.direction = 90;
             obj.dirInc = -2;
             obj.image_blend = make_colour_hsv( 135, 255, 255 );
             obj.image_xscale = scale;
             obj.image_yscale = scale;
+            
+            obj = instance_create( 800, random( 608 ), objAlgA29SquareEffect );
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.speed = 6;
+            obj.friction = -0.5;
+            obj.image_index = 2;
+            obj.direction = random_range( 160, 200 );
+            obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
         } else if( t &lt; 18351 ) {
-            var obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Wave );
+            var obj = 0;
+            if( ( t - 18159 ) % 48 &lt; 24 ) {
+                obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
+            } else {
+                obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
+            }
             obj.speed = seg29Speed;
             obj.direction = 90;
             if( obj.x &gt; 400 ) {
@@ -2895,8 +3169,26 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
             }
             obj.image_xscale = scale;
             obj.image_yscale = scale;
+            
+            obj = instance_create( choose( 0, 800 ), random( 608 ), objAlgA29SquareEffect );
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.speed = 6;
+            obj.friction = -0.5;
+            obj.image_index = 2;
+            if( obj.x &lt; 400 ) {
+                obj.direction = random_range( -20, 20 );
+                obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
+            } else {
+                obj.direction = random_range( 160, 200 );
+                obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
+            }
         } else if( t &lt; 18500 ) {
-            var obj = instance_create( choose( 0, 800 ), 608 - 32 - lerp( 96, 0, ( t - 18351 ) / 150 ), objAlgA29Wave );
+            var obj = 0;
+            if( ( t - 18351 ) % 24 &lt; 12 ) {
+                obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
+            } else {
+                obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
+            }
             obj.speed = seg29Speed;
             obj.direction = 90;
             if( obj.x &gt; 400 ) {
@@ -2908,6 +3200,19 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
             }
             obj.image_xscale = scale;
             obj.image_yscale = scale;
+            
+            obj = instance_create( choose( 0, 800 ), random( 608 ), objAlgA29SquareEffect );
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.speed = 6;
+            obj.friction = -0.5;
+            obj.image_index = 2;
+            if( obj.x &lt; 400 ) {
+                obj.direction = random_range( -20, 20 );
+                obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
+            } else {
+                obj.direction = random_range( 160, 200 );
+                obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
+            }
         }
     }
 

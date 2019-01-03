@@ -251,6 +251,8 @@
       <sprite>sprites\sprAlgFullCircle</sprite>
       <sprite>sprites\sprAlgCircle</sprite>
       <sprite>sprites\sprAlgLaser</sprite>
+      <sprite>sprites\sprAlgSquare</sprite>
+      <sprite>sprites\sprAlgSquareLeehee</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireSphereGrey</sprite>
@@ -759,6 +761,8 @@
       <object>objects\objAlgA25Star</object>
       <object>objects\objAlgEffect</object>
       <object>objects\objAlgBackEffect</object>
+      <object>objects\objAlgSquareEffect</object>
+      <object>objects\objAlgSquareDisappearing</object>
       <object>objects\objAlgLaserEffect</object>
       <object>objects\objAlgLaserDisappearing</object>
       <object>objects\objAlgLaserBackEffect</object>
@@ -786,7 +790,15 @@
       <object>objects\objAlgA11LaserEffect</object>
       <object>objects\objAlgA12LaserEffect</object>
       <object>objects\objAlgA13LaserEffect</object>
+      <object>objects\objAlgA19SquareEffect</object>
+      <object>objects\objAlgA20SquareEffect</object>
       <object>objects\objAlgA20Sphere</object>
+      <object>objects\objAlgA21SquareEffect</object>
+      <object>objects\objAlgA22SquareEffect</object>
+      <object>objects\objAlgA25SquareEffect</object>
+      <object>objects\objAlgA27SquareEffect</object>
+      <object>objects\objAlgA28SquareEffect</object>
+      <object>objects\objAlgA29SquareEffect</object>
       <object>objects\objAlgA31Sphere</object>
       <object>objects\objAlgA35Ring</object>
       <object>objects\objAlgA36Ring</object>
@@ -828,7 +840,7 @@
       <object>objects\objAlgKnife</object>
       <object>objects\objAlgA19Knife</object>
       <object>objects\objAlgFragAppearing</object>
-      <object>objects\objAlgA29Wave</object>
+      <object>objects\objAlgA29Frag</object>
       <object>objects\objAlgBullet</object>
       <object>objects\objAlgA14Bullet</object>
       <object>objects\objAlgFlower</object>

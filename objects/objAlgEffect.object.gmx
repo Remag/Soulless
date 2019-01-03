@@ -3,7 +3,7 @@
   <spriteName>sprAlgSphereColored</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>shouldUseShader = true;
 blendMode = bm_add;
+depth = 10000000;
 </string>
           </argument>
         </arguments>
