@@ -50,21 +50,10 @@ for (var i = 0; i &lt; 3; i++)
         exists[i] = true;
         
         //load the save map
-        var saveMap;
-        
-        if (global.extraSaveProtection) //use ds_map_secure function
-        {
-            saveMap = ds_map_secure_load("Data\save"+string(i+1));
-        }
-        else    //use text file
-        {
-            var f = file_text_open_read("Data\save"+string(i+1));
-            
-            saveMap = json_decode(base64_decode(file_text_read_string(f)));
-            
-            file_text_close(f);
-        }
-        
+        var f = file_text_open_read("Data\save"+string(i+1));
+        var saveMap = json_decode(base64_decode(file_text_read_string(f)));
+        file_text_close(f);
+                
         if (saveMap != -1)  //check if the save map loaded correctly
         {
             death[i] = ds_map_find_value(saveMap,"death");

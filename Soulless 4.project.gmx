@@ -408,6 +408,8 @@
       <script>scripts\scrFindCurrencyDelta.gml</script>
       <script>scripts\scrShowCurrency.gml</script>
       <script>scripts\scrRestartAttempt.gml</script>
+      <script>scripts\scrGetGateOpenReward.gml</script>
+      <script>scripts\scrGetGateSegmentReward.gml</script>
       <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
       <script>scripts\scrGetSegmentCount.gml</script>

@@ -1,9 +1,4 @@
 var gateId = argument0;
-var segmentId = argument1;
-
-if( segmentId == -1 ) {
-    return 0;
-}
 
 switch( gateId ) {
     case 1:
@@ -11,13 +6,13 @@ switch( gateId ) {
     case 2:
         return 50;
     case 3:
-        return 100;
+        return 250;
     case 4:
-        return 500;
+        return 1000;
     case 5:
-        return 1000;
+        return 5000;
     case 6:
-        return 1000;
+        return 5000;
     default:
         return 0;
 }

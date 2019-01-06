@@ -18,20 +18,13 @@ ds_map_add(saveMap,"saveGameClear",global.gameClear);
 ds_map_add(saveMap,"mapMd5",md5_string_unicode(json_encode(saveMap)+global.md5StrAdd));
 
 //save the map to a file
-if (global.extraSaveProtection) //use ds_map_secure function
-{
-    ds_map_secure_save(saveMap,"Data\save"+string(global.savenum));
-}
-else    //use text file
-{
-    //open the save file
-    var f = file_text_open_write("Data\save"+string(global.savenum));
+//open the save file
+var f = file_text_open_write("Data\save"+string(global.savenum));
     
-    //write map to the save file with base64 encoding
-    file_text_write_string(f,base64_encode(json_encode(saveMap)));
+//write map to the save file with base64 encoding
+file_text_write_string(f,base64_encode(json_encode(saveMap)));
     
-    file_text_close(f);
-}
+file_text_close(f);
 
 //destroy the map
 ds_map_destroy(saveMap);
