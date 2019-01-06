@@ -51,15 +51,15 @@ despawn = false;
             <kind>1</kind>
             <string>event_inherited();
 if( !despawn ) {
-    if( image_xscale &lt; 4 ) {
-        image_xscale += 3 / 25;
+    if( image_xscale &lt; 3 ) {
+        image_xscale += 2 / 25;
     }
     if( image_yscale &gt; 0.25 ) {
         image_yscale -= 0.75 / 25;
     }
 } else {
     if( image_xscale &gt; 0.25 ) {
-        image_xscale -= 3.75 / 10;
+        image_xscale -= 2.75 / 10;
     }
 }
 </string>

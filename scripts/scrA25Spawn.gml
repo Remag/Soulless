@@ -10,11 +10,11 @@ var spawnDir = argument2;
 var spawnRadius = random_range( 50, 80 );
 var spawnRotationSpeed = random_range( 2, 3 ) * choose( -1, 1 );
 if( spawnCount == 4 ) {
-    spawnRadius = random_range( 60, 100 );
-    spawnRotationSpeed = random_range( 1.75, 2.5 ) * choose( -1, 1 );
+    spawnRadius = random_range( 65, 100 );
+    spawnRotationSpeed = random_range( 1.65, 2.3 ) * choose( -1, 1 );
 } else if( spawnCount >= 5 ) {
-    spawnRadius = random_range( 70, 120 );
-    spawnRotationSpeed = random_range( 1.5, 2.25 ) * choose( -1, 1 );
+    spawnRadius = random_range( 80, 120 );
+    spawnRotationSpeed = random_range( 1.3, 1.85 ) * choose( -1, 1 );
 }
 
 var spawnCircleX = 900;
