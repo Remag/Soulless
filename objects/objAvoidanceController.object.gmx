@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 11540;
+t = 28525;
 
 segment = 1;
 
@@ -4723,7 +4723,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         if( t%24 == 0 ) {
             with(objArchBullet21) {
                 if( self.mode == 1 ) {
-                    for( i = random(60); i &lt; 360; i += 60 ) {
+                    for( i = random(90); i &lt; 360; i += 90 ) {
                         a = instance_create(x, y, objArchBullet21_2);
                         a.direction = i;
                         a.speed = 6;
@@ -4737,23 +4737,24 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
     if( t &gt; 28920 ) {
         var s47_imindex = round(lerp(0, 6, ((t-24)%96)/96));
         var s47_dir = (t - 28920) * 9.3;
+        var s47_speed = lerp( 7, 9, ( t - 28920 ) / ( 29300 - 28920 ) );
         if( t%2 == 0 ) {
             a = instance_create(400, 200, objArchBullet22);
             a.direction = s47_dir;
             a.image_single = s47_imindex;
-            a.speed = 9;
+            a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = s47_dir + 180;
             a.image_single = s47_imindex;
-            a.speed = 9;
+            a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = -s47_dir;
             a.image_single = s47_imindex;
-            a.speed = 9;
+            a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = -s47_dir + 180;
             a.image_single = s47_imindex;
-            a.speed = 9;
+            a.speed = s47_speed;
         }
     }
     if( t &lt; 29300 ) {
