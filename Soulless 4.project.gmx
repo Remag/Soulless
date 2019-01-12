@@ -762,6 +762,8 @@
       <object>objects\objAlgStar</object>
       <object>objects\objAlgStarSlowing</object>
       <object>objects\objAlgA25Star</object>
+      <object>objects\objAlgA25Star2</object>
+      <object>objects\objAlgA25StarTrail</object>
       <object>objects\objAlgEffect</object>
       <object>objects\objAlgBackEffect</object>
       <object>objects\objAlgSquareEffect</object>
@@ -835,6 +837,7 @@
       <object>objects\objAlgA6Spawner</object>
       <object>objects\objAlgWave</object>
       <object>objects\objAlgWaveDisappearing</object>
+      <object>objects\objAlgA8Wave</object>
       <object>objects\objAlgA49Wave</object>
       <object>objects\objAlgRice</object>
       <object>objects\objAlgKunai</object>
