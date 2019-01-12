@@ -1063,6 +1063,63 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     var phaseT = t - 5775;
+    
+    if( phaseT &lt; 96 ) {
+        var obj = instance_create( 800, 608, objAlgA8Wave );
+        obj.direction = random_range(100, 135);
+        obj.speed = random_range(8,26);
+        obj.gravity = 0.2;
+        obj.image_blend = make_color_hsv( 0, 255, 255 );
+    }
+    if( phaseT == 96 ) {
+        with(objAlgA8Wave) {
+            gravity = 0;
+            direction = 225;
+            speed = 0.1;
+            friction = -random_range(0.1, 0.3);
+        }
+    }
+    
+    if( phaseT &gt;= 192 &amp;&amp; phaseT &lt; 384 ) {
+        if( phaseT % 48 == 0 ) {
+            repeat(15) {
+                var obj = instance_create( 800, 608, objAlgA8Wave );
+                obj.direction = random_range(100, 135);
+                obj.speed = random_range(8,20);
+                obj.gravity = 0.2;
+                obj.image_blend = make_color_hsv( 0, 255, 255 );
+                obj.alarm[0] = 24;
+            }
+        }
+        if( phaseT % 48 == 24 ) {
+            repeat(15) {
+                var obj = instance_create( 0, 608, objAlgA8Wave );
+                obj.direction = random_range(45, 80);
+                obj.speed = random_range(8,20);
+                obj.gravity = 0.2;
+                obj.image_blend = make_color_hsv( 0, 255, 255 );
+                obj.alarm[0] = 24;
+            }
+        }
+    }
+    
+    if( phaseT &gt;= 384 &amp;&amp; phaseT &lt; 480 ) {
+        var obj = instance_create( 0, 608, objAlgA8Wave );
+        obj.direction = random_range(45, 80);
+        obj.speed = random_range(8,26);
+        obj.gravity = 0.2;
+        obj.image_blend = make_color_hsv( 0, 255, 255 );
+    }
+    if( phaseT == 480 ) {
+        with(objAlgA8Wave) {
+            gravity = 0;
+            direction = -45;
+            speed = 0.1;
+            friction = -random_range(0.1, 0.3);
+        }
+    }
+    
+    /*
     if( phaseT == 0 ) {
         segment8Angle = random( 360 );
     }
@@ -1258,6 +1315,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             canWarp = false;
         }
     }
+    */
     segment = 8;
 }
 </string>
