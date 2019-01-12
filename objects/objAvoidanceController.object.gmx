@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 5775;
+//t = 20850;
 
 segment = 1;
 
@@ -2756,7 +2756,7 @@ if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) 
         obj.depth -= t;
     
         obj.rotationSpeed = random_range( 1, 2 ) * choose( -1, 1 );
-        obj.image_index = 2;
+        obj.image_index = 0;
         if( t == 14609 ) {
             obj.image_blend = make_colour_hsv( 0, 255, 10 );
         } else if( phaseT % 24 == 0 ) {
@@ -3264,6 +3264,9 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
+    if( t == 18545 &amp;&amp; !instance_exists( objAlgShaderBackground ) ) {
+        instance_create( 400, 304, objAlgShaderBackground );
+    }
     var phaseT = t - 18545;
     if( phaseT % 48 == 0 ) {
         with( objAlgA30Sphere ) {
@@ -3275,7 +3278,13 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
             }
         }
         if( phaseT != 48 * 7 ) {
-            var color = make_color_hsv( random( 255 ), 255, 255 );
+            var hueVal = random( 255 );
+            var color = make_color_hsv( hueVal, 255, 255 );
+            with( objAlgShaderBackground ) {
+                self.shaderHue = hueVal;
+                self.shaderSpeed = 2 / 50;
+                self.shaderFriction = self.shaderSpeed * 2 / 3 / 48;
+            }
             var spawnX = random_range( 150, 650 );
             var spawnY = random( 150 );
             repeat( 90 ) {
@@ -3297,12 +3306,16 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     if( phaseT == 48 * 7 ) {
-        seg30Color = make_color_hsv( random( 255 ), 255, 255 );
+        var hueVal = random( 255 );
+        seg30Color = make_color_hsv( hueVal, 255, 255 );
         seg30Side = 0;
         if( scrGetPlayerX() &lt; 400 ) {
             seg30Side = 800;
         }
         seg30Dir = point_direction( seg30Side, 0, scrGetPlayerX(), scrGetPlayerY() );
+        with( objAlgShaderBackground ) {
+            self.shaderHue = hueVal;
+        }
     }
     if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 36 ) {
         var obj = instance_create( seg30Side, 0, objAlgRice );
@@ -3336,6 +3349,12 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
             friction = -0.2;
             direction = point_direction( x, y, scrGetPlayerX(), scrGetPlayerY() ) + choose( -90, 90 );
             image_angle = direction;
+        }
+    }
+    
+    if( t == 19657 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 40;
         }
     }
     
@@ -3453,6 +3472,75 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    // Effects.
+    if( phaseT == 0 ) {
+        var obj = instance_create( 800, 404, objAlgShaderBackground );
+        obj.shaderHue = 66;
+        obj.shaderSpeed = -1 / 50;
+        obj.shaderFriction = 1 / 50 / 48;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    } else if( phaseT == 96 ) {
+        with( objAlgShaderBackground ) {
+            self.shaderSpeed = 0;
+            self.shaderFriction = 0;
+        }
+        var obj = instance_create( 100, 0, objAlgShaderBackground );
+        obj.shaderHue = 127;
+        obj.shaderSpeed = -1 / 50;
+        obj.shaderFriction = 1 / 50 / 48;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    } else if( phaseT == 96 * 2 ) {
+        with( objAlgShaderBackground ) {
+            self.shaderSpeed = -1 / 50;
+            self.shaderFriction = 0;
+        }
+    } else if( phaseT == 96 * 3 + 48 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 48;
+        }
+    } else if( phaseT == 96 * 4 ) {
+        var obj = instance_create( 700, 0, objAlgShaderBackground );
+        obj.shaderHue = 166;
+        obj.shaderSpeed = 1 / 50;
+        obj.shaderFriction = -1 / 50 / 48;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    } else if( phaseT == 96 * 5 ) {
+        with( objAlgShaderBackground ) {
+            self.shaderSpeed = 0;
+            self.shaderFriction = 0;
+        }
+        var obj = instance_create( 0, 504, objAlgShaderBackground );
+        obj.shaderHue = 230;
+        obj.shaderSpeed = 1 / 50;
+        obj.shaderFriction = -1 / 50 / 48;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    } else if( phaseT == 96 * 6 ) {
+        with( objAlgShaderBackground ) {
+            self.shaderSpeed = 1 / 50;
+            self.shaderFriction = 0;
+        }
+    } else if( phaseT == 96 * 7 + 48 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 48;
+        }
+    }
+    
     segment = 31;
 }
 </string>
@@ -3482,6 +3570,8 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
     }
     if( t == 20465 ) {
         seg32Color = random( 255 );
+        seg32EffectsColor = 0;
+        seg32EffectPos = 0;
     }
     var phaseT = t - 20465;
     var left = lerp( 0, 250, phaseT / 385 );
@@ -3490,6 +3580,7 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
     if( phaseT % 24 == 0 &amp;&amp; phaseT &lt; 384 ) {
         var circle = scrMakeCircle( random_range( left, right ), 150, random( 360 ), 11, choose( 0.5, 1.5, 2.5, 3.5 ), objAlgSphere );
         var color = random( 255 );
+        seg32EffectsColor = color;
         for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
             circle[i].image_blend = make_color_hsv( color, 255, 255 );
             circle[i].gravity = 0.15;
@@ -3508,6 +3599,28 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
     
     seg32Color = ( seg32Color + 256 / 4 ) % 256
     segment = 32;
+    
+    // Effects
+    if( phaseT % 24 == 0 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
+        }
+        if( phaseT &lt; 384 ) {
+            seg32EffectPos = ( seg32EffectPos + 1 ) % 4;
+            var spawnX = floor( seg32EffectPos / 2 ) * 800;
+            var spawnY = ( seg32EffectPos % 2 ) * 608;
+            var obj = instance_create( spawnX, spawnY, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = seg32EffectsColor;
+            obj.shaderSpeed = 1 / 50;
+            obj.alphaStep = 0.1 / 24;
+            obj.shaderMod1 = 0;
+            obj.shaderMod2 = 0;
+            obj.shaderMod3 = 0;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        }
+    }
 }
 </string>
           </argument>
@@ -3553,6 +3666,12 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
             friction = -0.1;
         }
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
 }
 </string>
           </argument>
@@ -3585,6 +3704,12 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
     }
     if( t % 24 == 12 ) {
         scrMakeCircle(400, 160, point_direction(400,160,objPlayer.x, objPlayer.y), 14, 8, objArchBullet8);
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
     segment = 34;
 }
@@ -3654,6 +3779,11 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) 
         }
     }
 
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 35;
 }
 </string>
@@ -3718,7 +3848,11 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
             seg36SpawnX = 200;
         }
     }
-    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 36;
 }
 </string>
@@ -3745,6 +3879,11 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
 if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
     
     if( t &lt; 23100 ) {
@@ -3929,6 +4068,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Arch. Segment 38 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
+
     if( t &gt; 23150 &amp;&amp; t &lt; 23333 ) {
         if( t % 48 == 0 ) {
             repeat(18) {
@@ -4042,6 +4182,11 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     }*/
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 38;
 }
 </string>
@@ -4226,6 +4371,12 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 39;
 }
 </string>
@@ -4301,6 +4452,12 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 40;
 }
 </string>
@@ -4346,6 +4503,12 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) 
             scrA41SpawnLine( irandom( 2 ), 800, 0.5 );
         }
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 41;
 }
 </string>
@@ -4390,6 +4553,12 @@ if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
         if( phaseT % 36 == 12 ) {
             seg42Count++;
         }
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
     segment = 42;
 }
@@ -4467,6 +4636,12 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         scrA43CircleSpawn( 400, 608 - 32, seg43FinalRadius, 24, seg43FinalCount );
         seg43FinalRadius -= 75;
         seg43FinalCount -= 14;
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
     segment = 43;
 }
@@ -4564,6 +4739,12 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
             instance_change( objAlgSphereDisappearing, true );
         } 
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 44;
 }
 </string>
@@ -4634,6 +4815,11 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 45;
 }
 </string>
@@ -4696,6 +4882,12 @@ if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) 
         with( oRedireS46CrawlerSpawner ) {
             instance_destroy();
         }
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
 }
 </string>
@@ -4788,6 +4980,17 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         }
     }
 
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 47;
 }
 </string>
@@ -4828,6 +5031,12 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
             a.speed = 12;
             a.gravity = a.speed / 48;
         }
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
     }
     segment = 48;
 }
@@ -4889,6 +5098,11 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 49;
 }
 </string>
@@ -4966,6 +5180,11 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 50;
 }
 </string>
@@ -5008,6 +5227,12 @@ if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) 
         a.speed = 4;
         a.image_index = 1;
     }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 51;
 }
 </string>
@@ -5032,6 +5257,12 @@ if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Segment 52 (10:40 - 10:55) Mourning Solo
 if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
+
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 52;
 }
 </string>
@@ -5086,6 +5317,17 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
     if( t == 33524 ) {
         with(objArchBullet13) {
             instance_destroy();
+        }
+    }
+    
+    // Effects.
+    if( t == 32750 &amp;&amp; !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
+    if( t == 33500 ) {
+        with( objAlgShaderDisco ) {
+            self.alphaStep = -0.1 / 25;
         }
     }
     segment = 53;
