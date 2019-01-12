@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 14225;
+//t = 28525;
 
 segment = 1;
 
@@ -4704,8 +4704,76 @@ if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 47 (9:30 - 9:46) Solo Of A Robot A &amp; B
+            <string>///Arch. Segment 47 (9:30 - 9:46) Solo Of A Robot A &amp; B
 if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) ) {
+    if( t == 28525 ) {
+        for( i = 0; i &lt; 360 ; i += 10 ) {
+            if( i % 60 == 0 ) {
+                var s47_mode = 1;
+            } else {
+                var s47_mode = 0;
+            }
+            a = instance_create(400, 200, objArchBullet21);
+            a.dir = i;
+            a.mode = s47_mode;
+            a = instance_create(400, 200, objArchBullet21);
+            a.dir = i;
+            a.slope_sign = -1;
+            a.mode = s47_mode;
+        }
+    }
+    
+    if( t &gt; 28525 &amp;&amp; t &lt; 28920 ) {
+        if( t%24 == 0 ) {
+            with(objArchBullet21) {
+                if( self.mode == 1 ) {
+                    for( i = random(90); i &lt; 360; i += 90 ) {
+                        a = instance_create(x, y, objArchBullet21_2);
+                        a.direction = i;
+                        a.speed = 6;
+                        //a.gravity = 0.3;
+                    }
+                }
+            }
+        }
+    }
+    
+    if( t &gt; 28920 ) {
+        var s47_imindex = round(lerp(0, 6, ((t-24)%96)/96));
+        var s47_dir = (t - 28920) * 9.3;
+        var s47_speed = lerp( 7, 9, ( t - 28920 ) / ( 29300 - 28920 ) );
+        if( t%2 == 0 ) {
+            a = instance_create(400, 200, objArchBullet22);
+            a.direction = s47_dir;
+            a.image_single = s47_imindex;
+            a.speed = s47_speed;
+            a = instance_create(400, 200, objArchBullet22);
+            a.direction = s47_dir + 180;
+            a.image_single = s47_imindex;
+            a.speed = s47_speed;
+            a = instance_create(400, 200, objArchBullet22);
+            a.direction = -s47_dir;
+            a.image_single = s47_imindex;
+            a.speed = s47_speed;
+            a = instance_create(400, 200, objArchBullet22);
+            a.direction = -s47_dir + 180;
+            a.image_single = s47_imindex;
+            a.speed = s47_speed;
+        }
+    }
+    if( t &lt; 29300 ) {
+        var s47_slope = sin(((t+83)%192)/192*2*pi)//lerp(-1,1,((t+83)%192)/192);
+        with(objArchBullet21) {
+            slope = rad_x * s47_slope;
+        }
+    }
+    
+    if( t == 29299 ) {
+        with(objArchBullet21) {
+            instance_destroy();
+        }
+    }
+
     segment = 47;
 }
 </string>
