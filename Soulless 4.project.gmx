@@ -439,6 +439,8 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
     <shader type="GLSLES">shaders\backgroundShader.shader</shader>
+    <shader type="GLSLES">shaders\sdrSpiral1.shader</shader>
+    <shader type="GLSLES">shaders\sdrDisco.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -759,6 +761,7 @@
       <object>objects\objAlgShaderDrawer</object>
       <object>objects\objAlgShaderEffectsDrawer</object>
       <object>objects\objAlgShaderBackground</object>
+      <object>objects\objAlgShaderDisco</object>
       <object>objects\objAlgStar</object>
       <object>objects\objAlgStarSlowing</object>
       <object>objects\objAlgA25Star</object>
