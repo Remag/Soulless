@@ -3726,9 +3726,28 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
     }
     
     // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
+    if( t == 20850 ) {
+        var obj = instance_create( 400, 0, objAlgShaderBackground );
+        obj.shaderHue = 25;
+        obj.shaderSpeed = 1 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        
+        obj = instance_create( 400, 608, objAlgShaderBackground );
+        obj.shaderHue = 166;
+        obj.shaderSpeed = 1 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+    } else if( t == 21210 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
+        }
     }
 }
 </string>
@@ -3765,9 +3784,50 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
     }
     
     // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
+    if( t == 21230 ) {
+        var obj = instance_create( 400, 160, objAlgShaderBackground );
+        obj.shaderHue = 0;
+        obj.shaderSpeed = 2 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 1.5;
+        obj.image_yscale = 1.5;
+        
+        obj = instance_create( 400, 160, objAlgShaderBackground );
+        obj.shaderHue = 255 / 3;
+        obj.shaderSpeed = 2 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 1.5;
+        obj.image_yscale = 1.5;
+        
+        obj = instance_create( 400, 160, objAlgShaderBackground );
+        obj.shaderHue = 510 / 3;
+        obj.shaderSpeed = 2 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 1.5;
+        obj.image_yscale = 1.5;
+        
+        obj = instance_create( 400, 160, objAlgShaderBackground );
+        obj.shaderHue = 25;
+        obj.shaderSpeed = -2 / 50;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.image_xscale = 1.5;
+        obj.image_yscale = 1.5;
+    } else if( t == 21595 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
+        }
     }
     segment = 34;
 }
@@ -3838,9 +3898,31 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) 
     }
 
     // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
+    if( phaseT == 0 ) {
+        var obj = instance_create( 0, 0, objAlgShaderBackground );
+        obj.shaderHue = 150;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        
+        obj = instance_create( 800, 0, objAlgShaderBackground );
+        obj.shaderHue = 90;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod1 = 0;
+        obj.shaderMod2 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        
+    } else if( t == 21979 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
+        }
     }
     segment = 35;
 }
@@ -3906,10 +3988,58 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
             seg36SpawnX = 200;
         }
     }
+    
     // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
+    if( phaseT == 0 ) {
+        var color = random( 255 );
+        var obj = instance_create( 0, 0, objAlgShaderBackground );
+        obj.shaderHue = color;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        obj.hspeed = 800 / 380;
+        
+        obj = instance_create( 800, 0, objAlgShaderBackground );
+        obj.shaderHue = ( color + 255 / 4 ) % 255;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        obj.vspeed = 608 / 380;
+        
+        obj = instance_create( 0, 608, objAlgShaderBackground );
+        obj.shaderHue = ( color + 255 * 2 / 4 ) % 255;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        obj.vspeed = -608 / 380;
+        
+        obj = instance_create( 800, 608, objAlgShaderBackground );
+        obj.shaderHue = ( color + 255 * 3 / 4 ) % 255;
+        obj.shaderSpeed = -1.55 / 48;
+        obj.alphaStep = 0.1 / 24;
+        obj.shaderMod2 = 0;
+        obj.shaderMod3 = 0;
+        obj.shaderMod4 = 0;
+        obj.image_xscale = 2;
+        obj.image_yscale = 2;
+        obj.hspeed = -800 / 380;
+        
+    } else if( t == 22360 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
+        }
     }
     segment = 36;
 }
@@ -3938,25 +4068,22 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
-    // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
-    }
     
+    var tPhase = t - 22380;
     if( t &lt; 23100 ) {
-        var tPhase = t - 22380;
         if( tPhase == 0 ) { 
             seg37Angle = random( 360 );
             seg37Rotation = random_range( 20, 40 );
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 400, 250, random( 360 ), 30, 30, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 image_blend = color;
                 friction = speed / 10;
             }
         } else if( tPhase == 24 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 400, 250, random( 360 ), 30, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -3980,7 +4107,8 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
                 }
             }
         } else if( tPhase == 96 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 200, 250, random( 360 ), 30, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -3990,7 +4118,8 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
                 isMarked = false;
             }
         } else if( tPhase == 96 + 24 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 600, 250, random( 360 ), 30, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -4030,14 +4159,16 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         if( tPhase == 384 ) { 
             seg37Angle = random( 360 );
             seg37Rotation = random_range( 20, 40 );
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 400, 250, random( 360 ), 25, 30, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 image_blend = color;
                 friction = speed / 10;
             }
         } else if( tPhase == 384 + 24 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 400, 250, random( 360 ), 25, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -4061,7 +4192,8 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
                 }
             }
         } else if( tPhase == 384 + 96 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 200, 250, random( 360 ), 25, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -4071,7 +4203,8 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
                 isMarked = false;
             }
         } else if( tPhase == 480 + 24 ) { 
-            var color = make_colour_hsv( random( 255 ), 255, 255 );
+            seg37ColorHue = random( 255 );
+            var color = make_colour_hsv( seg37ColorHue, 255, 255 );
             scrMakeCircle( 600, 250, random( 360 ), 25, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
@@ -4100,6 +4233,106 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
                 obj.hspeed = random_range( -1.5, 1.5 );
                 obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             }
+        }
+    }
+    
+    // Effects.
+    
+    if( tPhase &lt; 384 * 2 ) {
+        if( tPhase % 384 == 0 ) {
+            with( objAlgShaderBackground ) {
+                self.alphaStep = -0.1 / 12;
+            }
+            
+            var obj = instance_create( 400, 250, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = seg37ColorHue;
+            obj.shaderSpeed = 0;
+            obj.shaderMod4 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 24 ) {
+            var obj = instance_create( 400, 250, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = seg37ColorHue;
+            obj.shaderSpeed = 0;
+            obj.shaderMod4 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 48 ) {
+            with( objAlgShaderBackground ) {
+                self.shaderFriction = -1 / 50 / 6;
+            }
+        } else if( tPhase % 384 == 86 ) {
+            with( objAlgShaderBackground ) {
+                self.alphaStep = -0.1 / 10;
+            }
+        } else if( tPhase % 384 == 96 ) {
+            var obj = instance_create( 200, 250, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = seg37ColorHue;
+            obj.shaderSpeed = 0;
+            obj.shaderMod4 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 96 + 24 ) {
+            var obj = instance_create( 600, 250, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = seg37ColorHue;
+            obj.shaderSpeed = 0;
+            obj.shaderMod4 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 96 + 48 ) {
+            with( objAlgShaderBackground ) {
+                self.shaderFriction = -1 / 50 / 6;
+            }
+        } else if( tPhase % 384 == 96 + 86 ) {
+            with( objAlgShaderBackground ) {
+                self.alphaStep = -0.1 / 10;
+            }
+        } else if( tPhase % 384 == 96 * 2 ) {
+            var obj = instance_create( 400, 0, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = random( 255 );
+            obj.shaderSpeed = 2 / 50;
+            obj.shaderMod1 = 0;
+            obj.shaderMod2 = 0;
+            obj.shaderMod3 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 96 * 2 + 48 ) {
+            with( objAlgShaderBackground ) {
+                self.shaderFriction = -2 / 50 / 12;
+            }
+        } else if( tPhase % 384 == 96 * 3 ) {
+            with( objAlgShaderBackground ) {
+                self.alphaStep = -0.1 / 12;
+            }
+            var obj = instance_create( 400, 608, objAlgShaderBackground );
+            obj.iTime = random( 20 );
+            obj.shaderHue = random( 255 );
+            obj.shaderSpeed = 2 / 50;
+            obj.shaderMod1 = 0;
+            obj.shaderMod2 = 0;
+            obj.shaderMod3 = 0;
+            obj.alphaStep = 0.1 / 24;
+            obj.image_xscale = 2;
+            obj.image_yscale = 2;
+        } else if( tPhase % 384 == 96 * 3 + 48 ) {
+            with( objAlgShaderBackground ) {
+                self.shaderFriction = -2 / 50 / 12;
+            }
+        } 
+    }
+    if( t == 23130 ) {
+        with( objAlgShaderBackground ) {
+            self.alphaStep = -0.1 / 24;
         }
     }
     segment = 37;
