@@ -8,7 +8,7 @@ if( room == rAvoidanceMainRoom ) {
         oPlayerData.currencyCount += oPlayerData.practicePrice;
         scrOnPlayerRestart();
         scrChangeRoom( rPracticeChoiceRoom, 1 );
-    } else if( !instance_exists( objPlayer ) ) {
+    } else if( !instance_exists( objPlayer ) || instance_exists( oPracticeEndTitle ) ) {
         scrOnPlayerRestart();
         scrChangeRoom( rPracticeChoiceRoom, 1 );
     }

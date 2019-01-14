@@ -1074,7 +1074,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     if( phaseT == 96 ) {
         with(objAlgA8Wave) {
             gravity = 0;
-            //direction = 225;
+            direction = 225;
             speed = 0.1;
             friction = -random_range(0.1, 0.3);
         }
@@ -1113,7 +1113,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     if( phaseT == 480 ) {
         with(objAlgA8Wave) {
             gravity = 0;
-            //direction = -45;
+            direction = -45;
             speed = 0.1;
             friction = -random_range(0.1, 0.3);
         }
@@ -3708,9 +3708,9 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 33 (6:57 - 7:05) Savagery Of Angels
+            <string>///Arch. Segment 32 (6:57 - 7:05) Savagery Of Angels
 if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 33;
+    segment = 32;
     
     if( t &lt; 21138 ) {
         if( t % 24 == 0 ) {
@@ -3778,7 +3778,7 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 34 (7:05 - 7:12) Savagery Of Angels
+            <string>///Arch. Segment 33 (7:05 - 7:12) Savagery Of Angels
 if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) ) {
     if( t % 24 == 0 &amp;&amp; t &lt; 21519 ) {
         for( i = 0; i &lt; 360; i += 40 ) {
@@ -3837,7 +3837,7 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
             self.alphaStep = -0.1 / 24;
         }
     }
-    segment = 34;
+    segment = 33;
 }
 </string>
           </argument>
@@ -3859,7 +3859,7 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 35 (7:12 - 7:20) Memories Of A Machine
+            <string>///Alg Segment 34 (7:12 - 7:20) Memories Of A Machine
 if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3932,7 +3932,7 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) 
             self.alphaStep = -0.1 / 24;
         }
     }
-    segment = 35;
+    segment = 34;
 }
 </string>
           </argument>
@@ -3954,7 +3954,7 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 36 (7:20 - 7:28) Memories Of A Machine
+            <string>///Alg Segment 35 (7:20 - 7:28) Memories Of A Machine
 if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -4049,7 +4049,7 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
             self.alphaStep = -0.1 / 24;
         }
     }
-    segment = 36;
+    segment = 35;
 }
 </string>
           </argument>
@@ -4071,7 +4071,7 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 37 (7:28 - 7:43) Remembrance A
+            <string>///Alg Segment 36 (7:28 - 7:43) Remembrance A
 if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -4343,7 +4343,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             self.alphaStep = -0.1 / 24;
         }
     }
-    segment = 37;
+    segment = 36;
 }
 </string>
           </argument>
@@ -4365,7 +4365,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 38 (7:43 - 7:59) Remembrance B
+            <string>///Arch. Segment 37 (7:43 - 7:59) Remembrance B
 if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) ) {
 
     if( t &gt; 23150 &amp;&amp; t &lt; 23333 ) {
@@ -4486,7 +4486,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 38;
+    segment = 37;
 }
 </string>
           </argument>
@@ -4508,7 +4508,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 39 (7:59 - 8:14) Remembrance C
+            <string>///Alg Segment 38 (7:59 - 8:14) Remembrance C
 if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -4676,7 +4676,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 39;
+    segment = 38;
 }
 </string>
           </argument>
@@ -4698,7 +4698,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 40 (8:14 - 8:29) Remembrance D
+            <string>///Alg Segment 39 (8:14 - 8:29) Remembrance D
 if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -4757,6 +4757,57 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
+    segment = 39;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alg Segment 40 (8:29 - 8:45) The Calm Before The Storm
+if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) ) {
+    if( !instance_exists( objAlgShaderDrawer ) ) {
+        instance_create( 0, 0, objAlgShaderDrawer );
+    }
+    
+    var phaseT = t - 25460;
+    if( phaseT % 24 == 0 ) {
+        if( phaseT &lt; 96 * 2 ) {
+            scrA41SpawnLine( irandom( 2 ), 0, 1 );
+        } else if( phaseT &lt; 96 * 4 ) {
+            scrA41SpawnLine( irandom( 2 ), 800, 1 );
+        } else if( phaseT &lt; 96 * 6 ) {
+            var centerX = 0;
+            if( phaseT % 48 == 24 ) {
+                centerX = 800;
+            }
+            scrA41SpawnLine( irandom( 2 ), centerX, 1 );
+        } else if( phaseT &lt; 96 * 8 ) {
+            scrA41SpawnLine( irandom( 2 ), 0, 0.5 );
+            scrA41SpawnLine( irandom( 2 ), 800, 0.5 );
+        }
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 40;
 }
 </string>
@@ -4779,27 +4830,27 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 41 (8:29 - 8:45) The Calm Before The Storm
-if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) ) {
+            <string>///Alg Segment 41 (8:45 - 8:52) Xyphos
+if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
-    var phaseT = t - 25460;
-    if( phaseT % 24 == 0 ) {
-        if( phaseT &lt; 96 * 2 ) {
-            scrA41SpawnLine( irandom( 2 ), 0, 1 );
-        } else if( phaseT &lt; 96 * 4 ) {
-            scrA41SpawnLine( irandom( 2 ), 800, 1 );
-        } else if( phaseT &lt; 96 * 6 ) {
-            var centerX = 0;
-            if( phaseT % 48 == 24 ) {
-                centerX = 800;
-            }
-            scrA41SpawnLine( irandom( 2 ), centerX, 1 );
-        } else if( phaseT &lt; 96 * 8 ) {
-            scrA41SpawnLine( irandom( 2 ), 0, 0.5 );
-            scrA41SpawnLine( irandom( 2 ), 800, 0.5 );
+    var phaseT = t - 26230;
+    if( phaseT == 0 ) {
+        seg42Count = 3;
+    }
+    if( phaseT % 12 == 0 &amp;&amp; phaseT &lt; 96 + 48 &amp;&amp; phaseT &gt;= 36 ) {
+        var color = make_colour_hsv( random( 255 ), 255, 255 ); 
+        for( var i = 0; i &lt; seg42Count; i++ ) {
+            var segmentLength = 800 / seg42Count;
+            var obj = instance_create( random_range( i * segmentLength, ( i + 1 ) * segmentLength ), 0, objAlgA42Sphere );
+            obj.image_blend = color;
+            obj.speed = lerp( 10, 15, phaseT / ( 96 + 48 ) );
+            obj.direction = random_range( 225, 315 );
+        }
+        if( phaseT % 36 == 12 ) {
+            seg42Count++;
         }
     }
     
@@ -4830,58 +4881,7 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 42 (8:45 - 8:52) Xyphos
-if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
-    if( !instance_exists( objAlgShaderDrawer ) ) {
-        instance_create( 0, 0, objAlgShaderDrawer );
-    }
-    
-    var phaseT = t - 26230;
-    if( phaseT == 0 ) {
-        seg42Count = 3;
-    }
-    if( phaseT % 12 == 0 &amp;&amp; phaseT &lt; 96 + 48 &amp;&amp; phaseT &gt;= 36 ) {
-        var color = make_colour_hsv( random( 255 ), 255, 255 ); 
-        for( var i = 0; i &lt; seg42Count; i++ ) {
-            var segmentLength = 800 / seg42Count;
-            var obj = instance_create( random_range( i * segmentLength, ( i + 1 ) * segmentLength ), 0, objAlgA42Sphere );
-            obj.image_blend = color;
-            obj.speed = lerp( 10, 15, phaseT / ( 96 + 48 ) );
-            obj.direction = random_range( 225, 315 );
-        }
-        if( phaseT % 36 == 12 ) {
-            seg42Count++;
-        }
-    }
-    
-    // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
-    }
-    segment = 42;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Alg Segment 43 (8:52 - 9:08) Stepping Solo A &amp; B
+            <string>///Alg Segment 42 (8:52 - 9:08) Stepping Solo A &amp; B
 if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) ) {
 
     if( !instance_exists( objAlgShaderDrawer ) ) {
@@ -4942,7 +4942,7 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 43;
+    segment = 42;
 }
 </string>
           </argument>
@@ -4964,7 +4964,7 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 44 (9:08 - 9:15) Breaker Solo
+            <string>///Alg Segment 43 (9:08 - 9:15) Breaker Solo
 if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5044,7 +5044,7 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 44;
+    segment = 43;
 }
 </string>
           </argument>
@@ -5066,7 +5066,7 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 45 (9:15 - 9:23) Enlightened Solo A
+            <string>///Alg Segment 44 (9:15 - 9:23) Enlightened Solo A
 if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5119,7 +5119,7 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 45;
+    segment = 44;
 }
 </string>
           </argument>
@@ -5141,9 +5141,9 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Red Segment 46 (9:23 - 9:30) Enlightened Solo B
+            <string>///Red Segment 45 (9:23 - 9:30) Enlightened Solo B
 if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 46;
+    segment = 45;
     
     // Corner bursts.
     if( t == 28145 || t == 28340 ) {
@@ -5209,7 +5209,7 @@ if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 47 (9:30 - 9:46) Solo Of A Robot A &amp; B
+            <string>///Arch. Segment 46 (9:30 - 9:46) Solo Of A Robot A &amp; B
 if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) ) {
     if( t == 28525 ) {
         for( i = 0; i &lt; 360 ; i += 10 ) {
@@ -5290,7 +5290,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 47;
+    segment = 46;
 }
 </string>
           </argument>
@@ -5312,7 +5312,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 48 (9:46 - 9:54) Mosh Solo
+            <string>///Arch. Segment 47 (9:46 - 9:54) Mosh Solo
 if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) ) {
 
     var phaseT = (t - 29300)%(48*4);
@@ -5337,7 +5337,7 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 48;
+    segment = 47;
 }
 </string>
           </argument>
@@ -5359,7 +5359,7 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 49 (9:54 - 10:09) Dark Solo A
+            <string>///Alg Segment 48 (9:54 - 10:09) Dark Solo A
 if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5402,7 +5402,7 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
-    segment = 49;
+    segment = 48;
 }
 </string>
           </argument>
@@ -5424,7 +5424,7 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 50 (10:09 - 10:24) Dark Solo B
+            <string>///Alg Segment 49 (10:09 - 10:24) Dark Solo B
 if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5484,6 +5484,54 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 400, 304, objAlgShaderDisco );
         obj.iTime = t / 50;
     }
+    segment = 49;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arch. Segment 50 (10:24 - 10:40) Q Solo
+if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
+    var s51_part = floor((t - 31215)/192)
+    if( t%2 == 0 ) {
+        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
+        if( s51_part == 0 || s51_part == 1 ) {
+            a.direction = 270 + 40;
+        } else {
+            a.direction = 270 - 40;
+        }
+        a.speed = 4;
+        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
+        if( s51_part == 1 || s51_part == 2 ) {
+            a.direction = 270 + 40;
+        } else {
+            a.direction = 270 - 40;
+        }
+        a.speed = 4;
+        a.image_index = 1;
+    }
+    
+    // Effects.
+    if( !instance_exists( objAlgShaderDisco ) ) {
+        var obj = instance_create( 400, 304, objAlgShaderDisco );
+        obj.iTime = t / 50;
+    }
     segment = 50;
 }
 </string>
@@ -5506,27 +5554,9 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 51 (10:24 - 10:40) Q Solo
-if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
-    var s51_part = floor((t - 31215)/192)
-    if( t%2 == 0 ) {
-        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
-        if( s51_part == 0 || s51_part == 1 ) {
-            a.direction = 270 + 40;
-        } else {
-            a.direction = 270 - 40;
-        }
-        a.speed = 4;
-        a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
-        if( s51_part == 1 || s51_part == 2 ) {
-            a.direction = 270 + 40;
-        } else {
-            a.direction = 270 - 40;
-        }
-        a.speed = 4;
-        a.image_index = 1;
-    }
-    
+            <string>///Segment 51 (10:40 - 10:55) Mourning Solo
+if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
+
     // Effects.
     if( !instance_exists( objAlgShaderDisco ) ) {
         var obj = instance_create( 400, 304, objAlgShaderDisco );
@@ -5554,37 +5584,7 @@ if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 52 (10:40 - 10:55) Mourning Solo
-if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
-
-    // Effects.
-    if( !instance_exists( objAlgShaderDisco ) ) {
-        var obj = instance_create( 400, 304, objAlgShaderDisco );
-        obj.iTime = t / 50;
-    }
-    segment = 52;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Arch. Segment 53 (10:55 - 11:11) Murderous Solo A &amp; B
+            <string>///Arch. Segment 52 (10:55 - 11:11) Murderous Solo A &amp; B
 if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) ) {
     if( t == 32750 ) {
         a = instance_create(400, 128, objArchBullet13);
@@ -5629,7 +5629,7 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
             self.alphaStep = -0.1 / 25;
         }
     }
-    segment = 53;
+    segment = 52;
 }
 </string>
           </argument>
@@ -5651,7 +5651,7 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 54 (11:11 - 11:33) Outro A &amp; B &amp; C
+            <string>///Alg Segment 53 (11:11 - 11:33) Outro A &amp; B &amp; C
 if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5685,7 +5685,7 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         obj.image_alpha = 1;
         obj.friction = 5 / 400;
     }
-    segment = 54;
+    segment = 53;
 }
 </string>
           </argument>
@@ -5707,7 +5707,7 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 55 (11:33 - 11:57) Outro D &amp; E
+            <string>///Alg Segment 54 (11:33 - 11:57) Outro D &amp; E
 if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5768,7 +5768,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     }
-    segment = 55;
+    segment = 54;
 }
 </string>
           </argument>
@@ -5790,7 +5790,7 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 56 (11:57 - 12:19) Outro F
+            <string>///Alg Segment 55 (11:57 - 12:19) Outro F
 if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -5850,7 +5850,7 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
             friction = -0.25;
         }
     }
-    segment = 56;
+    segment = 55;
 }
 </string>
           </argument>

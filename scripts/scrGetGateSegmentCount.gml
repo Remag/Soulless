@@ -6,7 +6,7 @@ switch( gateId ) {
     case 2:
         return 10;
     case 3:
-        return 11;
+        return 10;
     case 4: 
         return 12;
     case 5:
