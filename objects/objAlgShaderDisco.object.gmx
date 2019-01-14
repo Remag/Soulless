@@ -66,8 +66,8 @@ if( instance_exists( objPlayer ) ) {
 
 frame++;
 
-if( image_alpha &lt; maxAlpha || alphaStep &lt; 0 ) {
-    image_alpha += alphaStep;
+if( image_alpha &lt; maxAlpha * 2 || alphaStep &lt; 0 ) {
+    image_alpha += alphaStep * 2;
     if( alphaStep &lt; 0 &amp;&amp; image_alpha &lt;= 0 ) {
         instance_destroy();
     }

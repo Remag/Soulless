@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 5775;
+t = 17010;
 
 segment = 1;
 
@@ -2398,7 +2398,7 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
                 line[i].speed = 608 / 20 - lineSpeed;
                 line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
                 line[i].direction = 90;
-                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 50, 60 ) );
                 line[i].image_index = 1;
             }
         }
@@ -2421,7 +2421,7 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
                 line[i].framePoint1 = 12;
                 line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
                 line[i].direction = 90;
-                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 50, 60 ) );
                 line[i].image_index = 1;
             }
         }
@@ -2474,7 +2474,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
                 line[i].speed = 608 / 20 - lineSpeed;
                 line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
                 line[i].direction = 90;
-                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 50, 60 ) );
                 line[i].image_index = 1;
             }
         }
@@ -2497,7 +2497,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
                 line[i].framePoint1 = 12;
                 line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
                 line[i].direction = 90;
-                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 20, 40 ) );
+                line[i].image_blend = make_colour_hsv( random( 255 ), 255, random_range( 50, 60 ) );
                 line[i].image_index = 1;
             }
         }
@@ -2513,7 +2513,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.direction = random_range( 60, 120 );
         obj.speed = 1;
         obj.friction = -0.5;
-        obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 10, 20 ) );
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 40, 50 ) );
         obj.image_index = 2;
         obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
     }
@@ -2594,7 +2594,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
             obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
             obj.speed = 1;
             obj.friction = -0.25;
-            obj.image_blend = make_colour_hsv( 192, 255, random_range( 10, 20 ) );
+            obj.image_blend = make_colour_hsv( 192, 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
         } else {
@@ -2602,7 +2602,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
             obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
             obj.speed = 1;
             obj.friction = -0.25;
-            obj.image_blend = make_colour_hsv( 135, 255, random_range( 10, 20 ) );
+            obj.image_blend = make_colour_hsv( 135, 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
         }
@@ -2699,7 +2699,7 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
         obj.image_index = 1;
         obj.rotationSpeed = random_range( 1, 2 );
         with( oRedireS23CircleController ) {
-            obj.image_blend = make_colour_hsv( self.currentHue, 255, random_range( 5, 10 ) );
+            obj.image_blend = make_colour_hsv( self.currentHue, 255, random_range( 30, 40 ) );
         }
     }
 }
@@ -2824,16 +2824,16 @@ if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) 
         obj.rotationSpeed = random_range( 1, 2 ) * choose( -1, 1 );
         obj.image_index = 0;
         if( t == 14609 ) {
-            obj.image_blend = make_colour_hsv( 0, 255, 10 );
+            obj.image_blend = make_colour_hsv( 0, 255, 40 );
         } else if( phaseT % 24 == 0 ) {
-            obj.image_blend = make_colour_hsv( 166, 255, 10 );
+            obj.image_blend = make_colour_hsv( 166, 255, 40 );
         } else {
-            obj.image_blend = make_colour_hsv( 138, 255, 10 );
+            obj.image_blend = make_colour_hsv( 138, 255, 40 );
         }
     }
     
     if( t &gt;= 14676 &amp;&amp; t &lt; 14699 ) {
-        var colorVal = lerp( 10, 0, ( t - 14676 ) / 24 );
+        var colorVal = lerp( 40, 0, ( t - 14676 ) / 24 );
         with( objAlgA22SquareEffect ) {
            image_blend = make_colour_hsv( colour_get_hue( image_blend ), 255, colorVal );
         }
@@ -2941,7 +2941,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
             obj.direction = random( 360 );
             obj.speed = 1.2;
             obj.friction = -0.1;
-            obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 10, 20 ) );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
             obj.movementRotation = random_range( 2, 4 ) * seg25EffectsDir / 2;
@@ -2999,7 +2999,7 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
             var obj = instance_create( random( 800 ), 608, objAlgSquareDisappearing );
             obj.direction = random_range( 70, 110 );
             obj.speed = 10;
-            obj.image_blend = choose( make_colour_rgb( 20, 0, 0 ), make_colour_rgb( 0, 20, 0 ), make_colour_rgb( 0, 0, 20 ) );
+            obj.image_blend = choose( make_colour_rgb( 40, 0, 0 ), make_colour_rgb( 0, 40, 0 ), make_colour_rgb( 0, 0, 40 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
         }
@@ -3054,7 +3054,7 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
             var obj = instance_create( random( 800 ), 608, objAlgSquareDisappearing );
             obj.direction = random_range( 70, 110 );
             obj.speed = 10;
-            obj.image_blend = make_colour_rgb( 20, 0, 0 );
+            obj.image_blend = make_colour_rgb( 40, 0, 0 );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
         }
@@ -3144,9 +3144,13 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
         obj.direction = point_direction( obj.x, obj.y, 400, 304 );
         obj.speed = 8;
         if( t &lt; 17401 ) {
-            obj.image_blend = make_colour_hsv( 160, 255, random_range( 40, 80 ) );
+            obj.image_blend = make_colour_hsv( 160, 205, random_range( 40, 80 ) );
         } else {
-            obj.image_blend = make_colour_hsv( choose( 0, 160 ), 255, random_range( 40, 80 ) );
+            if( irandom( 1 ) == 0 ) {
+                obj.image_blend = make_colour_hsv( 0, 255, random_range( 40, 80 ) );
+            } else {
+                obj.image_blend = make_colour_hsv( 160, 205, random_range( 40, 80 ) );
+            }
         }
         obj.image_index = 1;
         obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
@@ -3201,7 +3205,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
     if( t == 17775 ) {
         seg29Speed = random_range( 0.5, 29 );
     }
-    var effectColorVal = random_range( 5, 40 );
+    var effectColorVal = random_range( 35, 60 );
     var scale = 0.85 * 15 / 18;
     seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
     if( t % 10 != 0 ) {
