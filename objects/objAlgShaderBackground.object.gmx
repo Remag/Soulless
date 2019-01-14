@@ -81,7 +81,7 @@ if( image_alpha &lt; maxAlpha || alphaStep &lt; 0 ) {
 }
 
 var colorValue = 5 + 45 * abs( sin( frame * pi / 24 ) );
-image_blend = make_color_hsv( shaderHue, 255, colorValue );
+image_blend = make_color_hsv( shaderHue, 230, colorValue );
 
 
 //var colorStep = 25;
