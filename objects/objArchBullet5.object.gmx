@@ -59,7 +59,7 @@ pat = choose(0,1);
             <kind>1</kind>
             <string>if( t % 2 == 0 ) {
     a = instance_create(x, y, objArchBullet5_2);
-    a.direction = 270 + random_range(-45, 45);
+    a.direction = 270 + random_range(-35, 35);
     a.special = 1;
     a.speed = random_range(4,5);
 }

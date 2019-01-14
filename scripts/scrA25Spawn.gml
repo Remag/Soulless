@@ -8,13 +8,13 @@ var spawnCircleY = argument1;
 var spawnDir = argument2;
 
 var spawnRadius = random_range( 50, 80 );
-var spawnRotationSpeed = random_range( 2, 3 ) * choose( -1, 1 );
+var spawnRotationSpeed = random_range( 1, 2 ) * choose( -1, 1 );
 if( spawnCount == 4 ) {
     spawnRadius = random_range( 65, 100 );
-    spawnRotationSpeed = random_range( 1.65, 2.3 ) * choose( -1, 1 );
+    spawnRotationSpeed = random_range( 1, 2 ) * choose( -1, 1 );
 } else if( spawnCount >= 5 ) {
     spawnRadius = random_range( 80, 120 );
-    spawnRotationSpeed = random_range( 1.3, 1.85 ) * choose( -1, 1 );
+    spawnRotationSpeed = random_range( 1.1, 1.9 ) * choose( -1, 1 );
 }
 
 var spawnCircleX = 900;
@@ -27,7 +27,7 @@ var circle = scrMakeCircle( 800, 608, random( 360 ), spawnCount, 1, objAlgA25Sta
 for( var i = 0; i < spawnCount; i++ ) {
     circle[i].image_blend = color;
     circle[i].circleX = spawnCircleX;
-    circle[i].circleSpeed = 6 * spawnDir;
+    circle[i].circleSpeed = 3 * spawnDir;
     circle[i].circleRadius = spawnRadius
     circle[i].circleY = spawnCircleY;
     circle[i].circleAngle = circle[i].direction;

@@ -64,13 +64,13 @@ image_xscale -= 3/96;
 image_yscale -= 3/96;
 
 if( t == 96 ) {
-    repeat(20) {
+    repeat(30) {
         a = instance_create(x, y, objArchBullet1);
         a.createdTime = 0;
         if( instance_exists(objPlayer) ) {
-            a.direction = point_direction(x, y, objPlayer.x, objPlayer.y) + random_range(-5,5);
+            a.direction = point_direction(x, y, objPlayer.x, objPlayer.y) + random_range(-7,7);
         }
-        a.speed = random_range(5,12);
+        a.speed = random_range(4,7);
         a.image_xscale = random_range(0.1, 0.5);
         a.image_yscale = a.image_xscale;
         a.image_index = irandom(2);
@@ -78,7 +78,7 @@ if( t == 96 ) {
     
     instance_destroy();
 } else {
-    repeat(lerp(5, 1, t/96)) {
+    repeat(lerp(4, 1.5, t/96)) {
         a = instance_create(x, y, objArchBullet1);
         a.createdTime = 0;
         a.direction = random(360);

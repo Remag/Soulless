@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 20850;
+t = 5775;
 
 segment = 1;
 
@@ -1074,7 +1074,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     if( phaseT == 96 ) {
         with(objAlgA8Wave) {
             gravity = 0;
-            direction = 225;
+            //direction = 225;
             speed = 0.1;
             friction = -random_range(0.1, 0.3);
         }
@@ -1113,7 +1113,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     if( phaseT == 480 ) {
         with(objAlgA8Wave) {
             gravity = 0;
-            direction = -45;
+            //direction = -45;
             speed = 0.1;
             friction = -random_range(0.1, 0.3);
         }
@@ -2242,6 +2242,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnYMax = 200;
         seg19CircleCount = 35;
         seg19SpawnColor = make_colour_hsv( 125, 255, 255 );
+        with( objAlgA19Knife ) {
+            image_blend = other.seg19SpawnColor;
+        }
     } else if( tPhase == 192 * 2 ) {
         seg19SpawnXMin = 750;
         seg19SpawnXMax = 800;
@@ -2249,6 +2252,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnYMax = 200;
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 43, 255, 255 );
+        with( objAlgA19Knife ) {
+            image_blend = other.seg19SpawnColor;
+        }
     } else if( tPhase == 192 * 3 ) {
         seg19SpawnXMin = 0;
         seg19SpawnXMax = 800;
@@ -2256,6 +2262,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnYMax = 170;
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 190, 255, 255 );
+        with( objAlgA19Knife ) {
+            image_blend = other.seg19SpawnColor;
+        }
     }
     
     if( tPhase % 192 &lt; 48 * 3 ) {
@@ -2440,7 +2449,7 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 21 (4:13 - 4:21) Machinations B
+            <string>///Alg Segment 20B (4:13 - 4:21) Machinations B
 if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2508,7 +2517,6 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.image_index = 2;
         obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
     }
-    segment = 21;
 }
 </string>
           </argument>
@@ -2530,7 +2538,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 22 (4:21 - 4:37) Reminiscence A &amp; B
+            <string>///Alg Segment 21 (4:21 - 4:37) Reminiscence A &amp; B
 if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2538,7 +2546,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
     
     var phaseT = ( t - 13075 );
 
-    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 28 == 0 ) ) {
+    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 30 == 0 ) ) {
         var obj = instance_create( -150, 32, objAlgA22Sphere );
         obj.hspeed = random_range( 1.5, 3 );
         obj.gravity = 0.095;
@@ -2600,7 +2608,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         }
     }
 
-    segment = 22;
+    segment = 21;
 }
 
 </string>
@@ -2623,9 +2631,9 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Red Segment 23 (4:37 - 4:45) Reminiscence C
+            <string>///Red Segment 22 (4:37 - 4:45) Reminiscence C
 if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 23;
+    segment = 22;
     
     // Spawn an accelerating ring.
     if( t == 13840 ) {
@@ -2715,9 +2723,9 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Red Segment 24 (4:45 - 4:54) Reminiscence D
+            <string>///Red Segment 23 (4:45 - 4:54) Reminiscence D
 if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 24;
+    segment = 23;
     
     // Bottom bullet.
     if( t == 14225 ) {
@@ -2855,19 +2863,19 @@ if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 25 (4:54 - 5:17) Victory Verse O
+            <string>///Alg Segment 24 (4:54 - 5:17) Victory Verse O
 if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     var phaseT = t - 14700;
     
-    if( phaseT % 48 == 0 ) {
+    if( phaseT % 75 == 0 &amp;&amp; phaseT &lt;= 96 * 10 ) {
         if( phaseT &gt;= 96 * 8 ) {
             scrA25Spawn( 5, 608 - random( 32 ), -1 );
             scrA25Spawn( 3, 408 - random( 32 ), 1 );
             scrA25Spawn( 4, 208 - random( 32 ), -1 );
-        } else if( phaseT &gt;= 96 * 4 ) {
+        } else if( phaseT &gt;= 375 ) {
             scrA25Spawn( 4, 608 - random( 32 ), -1 );
             scrA25Spawn( 5, 408 - random( 32 ), 1 );
             scrA25Spawn( 3, 208 - random( 32 ), -1 );
@@ -2878,7 +2886,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    if( phaseT &gt;= 96 * 8 &amp;&amp; phaseT % 24 == 12 ) {
+    if(  phaseT &lt; 96 * 8 &amp;&amp; phaseT &gt;= 96 &amp;&amp; phaseT % 10 == 0 ) {
         var spawnPoint = random( 800 + 608 );
         var obj;
         if( spawnPoint &lt; 800 ) {
@@ -2893,7 +2901,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         obj.direction = 180 + 45;
     }
     
-    if( phaseT &gt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) {
+    if( phaseT &gt;= 96 * 8 &amp;&amp; phaseT % 10 == 0 ) {
         var spawnPoint = random( 800 + 608 );
         var obj;
         if( spawnPoint &lt; 800 ) {
@@ -2940,7 +2948,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    segment = 25;
+    segment = 24;
 }
 </string>
           </argument>
@@ -2962,9 +2970,9 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 26 (5:17 - 5:25) Victory Verse O
+            <string>///Arch. Segment 25 (5:17 - 5:25) Victory Verse O
 if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 26;
+    segment = 25;
     
     if(t == 15864 ||
        t == 15962 ||
@@ -3017,9 +3025,9 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 27 (5:25 - 5:40) Victory Verse X
+            <string>///Arch. Segment 26 (5:25 - 5:40) Victory Verse X
 if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 27;
+    segment = 26;
     
     if( t % 96 == 16 &amp;&amp; t &lt; 16910 ) {
         a = instance_create(400, 228, objArchBullet5);
@@ -3033,7 +3041,7 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
     if( t &gt; 16917 &amp;&amp; t &lt; 16974 &amp;&amp; t%6 == 0 ) {
         repeat(2) {
             a = instance_create(random_range(100, 700), random_range(32,256), objArchBullet5_2);
-            a.direction = 270 + random_range(-40, 40);
+            a.direction = 270 + random_range(-30, 30);
             a.speed = random_range(1,3);
             a.special = 1;
         }
@@ -3091,23 +3099,23 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 28 (5:40 - 5:55) Mercy
+            <string>///Arch. Segment 27 (5:40 - 5:55) Mercy
 if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) ) {
-    segment = 28;
+    segment = 27;
     if( t &lt; 17401 ) {
         if( t % 2 == 0 ) {
             a = instance_create(400, 304, objArchBullet4);
             a.image_index = 1;
             a.image_xscale = 0.9;
             a.image_yscale = 0.9;
-            a.rspd = random_range(2,8);
+            a.rspd = random_range(2,6);
         }
         if( t &gt; 17205 &amp;&amp; t % 10 != 0 ) {
             a = instance_create(400, 304, objArchBullet4);
             a.image_index = 1;
             a.image_xscale = 0.9;
             a.image_yscale = 0.9;
-            a.rspd = random_range(2,8);
+            a.rspd = random_range(2,6);
         }
     } else {
         if( t % 2 == 0 ) {
@@ -3185,7 +3193,7 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 29 (5:55 - 6:11) Malevolence
+            <string>///Alg Segment 28 (5:55 - 6:11) Malevolence
 if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3295,7 +3303,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         }
     }
 
-    segment = 29;
+    segment = 28;
 }
 </string>
           </argument>
@@ -3317,7 +3325,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 30 (6:11 - 6:34) Sickness A
+            <string>///Alg Segment 29 (6:11 - 6:34) Sickness A
 if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3416,7 +3424,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    segment = 30;
+    segment = 29;
 }
 </string>
           </argument>
@@ -3438,7 +3446,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 31 (6:34 - 6:49) Sickness B
+            <string>///Alg Segment 30 (6:34 - 6:49) Sickness B
 if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3599,7 +3607,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    segment = 31;
+    segment = 30;
 }
 </string>
           </argument>
@@ -3621,8 +3629,9 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 32 (6:49 - 6:57) Sickness C
+            <string>///Alg Segment 31 (6:49 - 6:57) Sickness C
 if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) ) {
+    segment = 31;
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
@@ -3656,7 +3665,6 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
     obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
     
     seg32Color = ( seg32Color + 256 / 4 ) % 256
-    segment = 32;
     
     // Effects
     if( phaseT % 24 == 0 ) {
