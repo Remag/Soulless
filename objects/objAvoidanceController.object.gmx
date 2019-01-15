@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-t = 17010;
+//t = 5775;
 
 segment = 1;
 
@@ -1065,18 +1065,24 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     var phaseT = t - 5775;
     
     if( phaseT &lt; 96 ) {
-        var obj = instance_create( 800, 608, objAlgA8Wave );
-        obj.direction = random_range(100, 135);
-        obj.speed = random_range(8,26);
-        obj.gravity = 0.2;
-        obj.image_blend = make_color_hsv( 0, 255, 255 );
+        repeat( 2 ) {
+            var obj = instance_create( 800, 608, objAlgA8Wave );
+            obj.direction = random_range(90, lerp( 120, 90, phaseT / 96 ) );
+            obj.speed = random_range(10,30);
+            obj.gravity = obj.speed / 55;
+            obj.image_blend = make_color_hsv( 0, 255, 255 );
+            obj.image_xscale = 0.75;
+            obj.image_yscale = 0.75;
+        }
     }
     if( phaseT == 96 ) {
+        var playerX = scrGetPlayerX();
+        var playerY = scrGetPlayerY();
         with(objAlgA8Wave) {
+            self.trigger = true;
             gravity = 0;
-            direction = 225;
             speed = 0.1;
-            friction = -random_range(0.1, 0.3);
+            friction = -lerp( 0.15, 0.025, point_direction( x, y, playerX, playerY ) / 1000 );
         }
     }
     
@@ -1087,7 +1093,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
                 obj.direction = random_range(100, 135);
                 obj.speed = random_range(8,20);
                 obj.gravity = 0.2;
-                obj.image_blend = make_color_hsv( 0, 255, 255 );
+                obj.image_blend = make_color_hsv( 128, 255, 255 );
                 obj.alarm[0] = 24;
             }
         }
@@ -1097,28 +1103,49 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
                 obj.direction = random_range(45, 80);
                 obj.speed = random_range(8,20);
                 obj.gravity = 0.2;
-                obj.image_blend = make_color_hsv( 0, 255, 255 );
+                obj.image_blend = make_color_hsv( 160, 255, 255 );
                 obj.alarm[0] = 24;
             }
         }
     }
     
     if( phaseT &gt;= 384 &amp;&amp; phaseT &lt; 480 ) {
-        var obj = instance_create( 0, 608, objAlgA8Wave );
-        obj.direction = random_range(45, 80);
-        obj.speed = random_range(8,26);
-        obj.gravity = 0.2;
-        obj.image_blend = make_color_hsv( 0, 255, 255 );
+        repeat( 2 ) {
+            var obj = instance_create( 0, 608, objAlgA8Wave );
+            obj.direction = random_range( lerp( 60, 90, ( phaseT - 384 ) / 96 ), 90);
+            obj.speed = random_range(10,30);
+            obj.gravity = obj.speed / 55;
+            obj.image_blend = make_color_hsv( 64, 255, 255 );
+            obj.image_xscale = 0.75;
+            obj.image_yscale = 0.75;
+        }
     }
     if( phaseT == 480 ) {
+        var playerX = scrGetPlayerX();
+        var playerY = scrGetPlayerY();
         with(objAlgA8Wave) {
+            self.trigger = true;
             gravity = 0;
-            direction = -45;
             speed = 0.1;
-            friction = -random_range(0.1, 0.3);
+            friction = -lerp( 0.15, 0.025, point_direction( x, y, playerX, playerY ) / 1000 );
         }
     }
     
+    if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 8 - 96 ) {
+        if( phaseT % 2 == 0 ) {
+            var obj = instance_create( 800, 204, objAlgA8Wave );
+            obj.direction = random_range(-10, 10) + 180;
+            obj.speed = random_range(0,800) / 24;
+            obj.image_blend = make_color_hsv( 192, 255, 255 );
+            obj.alarm[0] = 24;
+        } else {      
+            var obj = instance_create( 0, 204, objAlgA8Wave );
+            obj.direction = random_range(-10, 10);
+            obj.speed = random_range(0,800) / 24;
+            obj.image_blend = make_color_hsv( 224, 255, 255 );
+            obj.alarm[0] = 24;
+        }
+    }
     /*
     if( phaseT == 0 ) {
         segment8Angle = random( 360 );
