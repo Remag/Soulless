@@ -2616,12 +2616,12 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
     
     // Effects.
     if( phaseT % 2 == 0 ) {
-        if( phaseT % 4 == 0 ) {
+        if( phaseT % 4 = 0 ) {
             var obj = instance_create( 0, choose( 0, 608 ), objAlgSquareEffect );
             obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
             obj.speed = 1;
             obj.friction = -0.25;
-            obj.image_blend = make_colour_hsv( 192, 255, random_range( 40, 50 ) );
+            obj.image_blend = make_colour_hsv( 135, 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
         } else {
@@ -2629,7 +2629,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
             obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
             obj.speed = 1;
             obj.friction = -0.25;
-            obj.image_blend = make_colour_hsv( 135, 255, random_range( 40, 50 ) );
+            obj.image_blend = make_colour_hsv( 192, 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
         }
@@ -2754,92 +2754,44 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
 if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 23;
     
-    // Bottom bullet.
+    // Explosions.
     if( t == 14225 ) {
-        var s24SpawnX;
-        var s24Dir;
-        if( objPlayer.x &lt;= 400 ) {
-            s24SpawnX = 768;
-            s24Dir = 180;
-        } else {
-            s24SpawnX = 32;
-            s24Dir = 0;
-        }
-        
-        
+        scrRedireS23CreateExplosion( 100 );
+        scrRedireS23CreateExplosion( 700 );
+    }
+    if( t == 14275 ) {
+        scrRedireS23CreateExplosion( 200 );
+        scrRedireS23CreateExplosion( 600 );
+    }
+    if( t == 14320 ) {
+        scrRedireS23CreateExplosion( 300 );
+        scrRedireS23CreateExplosion( 500 );
+    }
+    if( t == 14370 ) {
+        scrRedireS23CreateExplosion( 400 );
     }
     
-
-    if( t == 14225 || t == 14275 || t == 14320 || t == 14370 || t == 14415 || t == 14465 || t == 14515 ) {
-        // Ball spawners.
-        var s24LBottomBullet = instance_create( 32, 576, oRedireS24BottomBullet );
-        s24LBottomBullet.direction = 0;
-        s24LBottomBullet.speed = 3;
-        s24LBottomBullet.BaseAngle = 95;
-        var s24RBottomBullet = instance_create( 768, 576, oRedireS24BottomBullet );
-        s24RBottomBullet.direction = 180;
-        s24RBottomBullet.speed = 3;
-        s24RBottomBullet.BaseAngle = 85;
-    
-        // Fountains.   
-        with( oRedireS24BottomBullet ) {   
-            for( var i = 0; i &lt; SpawnCount; i++ ) {
-                var s24Bullet = instance_create( x, y, oRedireS24FountainBullet );
-                s24Bullet.direction = BaseAngle + random_range( -AngleDelta, AngleDelta );
-                s24Bullet.speed = SpawnSpeed + random_range( -5, 5 );
-           }
-           SpawnCount -= 5;
-           BaseScale = 0;
-        }
+    if( t == 14415 ) {
+        scrRedireS23CreateExplosion( 300 );
+        scrRedireS23CreateExplosion( 500 );
     }
-    
-    if( t == 14560 ) {
-        // Final ball spawners.
-        var s24LBottomBullet = instance_create( 32, 576, oRedireS24BottomBullet );
-        s24LBottomBullet.direction = 0;
-        s24LBottomBullet.speed = 2.4;
-        s24LBottomBullet.BaseAngle = 95;
-        s24LBottomBullet.SpeedDelta = 0.06;
-        var s24RBottomBullet = instance_create( 768, 576, oRedireS24BottomBullet );
-        s24RBottomBullet.direction = 180;
-        s24RBottomBullet.speed = 2.4;
-        s24RBottomBullet.BaseAngle = 85;
-        s24RBottomBullet.SpeedDelta = 0.06;
+    if( t == 14465 ) {
+        scrRedireS23CreateExplosion( 200 );
+        scrRedireS23CreateExplosion( 600 );
     }
-    
-    // Slow down.
-    if( t == 14550 ) {
-        with( oRedireS24BottomBullet ) {   
-            SpeedDelta = 0.06;
-        }
-    }
-    
+    if( t == 14515 ) {
+        scrRedireS23CreateExplosion( 100 );
+        scrRedireS23CreateExplosion( 700 );
+    }    
+ 
     // Final burst.
     if( t &gt;= 14615 ) {
-        with( oRedireS24BottomBullet ) { 
-            FadeScale = true;
-            var s24Delta = 0.005;
-            image_xscale -= s24Delta;
-            image_yscale -= s24Delta;
-            var s24Bullet = instance_create( x, y + 1, oRedireS24FountainBullet );
-            s24Bullet.direction = BaseAngle + random_range( -AngleDelta, AngleDelta );
-            s24Bullet.speed = 12 + random_range( -5, 5 );
-            s24Bullet.gravity = 0.15;
-            var s24Scale = 0.2;
-            s24Bullet.image_xscale = s24Scale;
-            s24Bullet.image_yscale = s24Scale;
-        }   
+ 
     }
     
+    // Last actions.
     if( t == 14699 ) {
-        with( oRedireS24BottomBullet ) {
-            isActive = false;
-            fadeOut = true;
-        }
-        with( oRedireS24FountainBullet ) {
-            isActive = false;
-            fadeOut = true;
-        }
+       
     }
     
     // Effects.

@@ -78,7 +78,7 @@ if( t == 96 ) {
     
     instance_destroy();
 } else {
-    repeat(lerp(4, 1.5, t/96)) {
+    repeat(lerp(4.5, 1.2, t/96)) {
         a = instance_create(x, y, objArchBullet1);
         a.createdTime = 0;
         a.direction = random(360);
