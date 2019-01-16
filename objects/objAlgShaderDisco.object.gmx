@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>iTime = 100;
+            <string>iTime = 26230 / 50;
 frame = 0;
 
-shaderSpeed = -1 / 50;
+shaderSpeed = 1 / 50;
 shaderFriction = 0;
 
 maxAlpha = 0.1;
@@ -102,7 +102,7 @@ if( image_alpha &lt; maxAlpha * 2 || alphaStep &lt; 0 ) {
     var _uvs = sprite_get_uvs( sprite_index, image_index );
     shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
     //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );
-    shader_set_uniform_f( iTimePos, iTime - 327 );
+    shader_set_uniform_f( iTimePos, 26230 * 2 / 50 - iTime - 327 );
     //shader_set_uniform_f( iResolutionPos, iResolutionX, iResolutionY );
     draw_self();
     shader_reset();
