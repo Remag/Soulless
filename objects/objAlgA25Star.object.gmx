@@ -27,11 +27,14 @@
             <kind>1</kind>
             <string>event_inherited();
 circleAngle = 0;
+spawnDir = 1;
 circleX = 900;
 circleY = 608 - 32;
 circleRadius = 100;
-circleSpeed = -1;
+circleSpeedX = -1;
+circleSpeedY = 0;
 circleRotationSpeed = 0.5;
+circleId = 0;
 image_xscale = 16 / 30;
 image_yscale = 16 / 30;
 </string>
@@ -60,24 +63,39 @@ image_yscale = 16 / 30;
 x = circleX + circleRadius * cos( circleAngle / 180 * pi );
 y = circleY + circleRadius * sin( circleAngle / 180 * pi );
 circleAngle += circleRotationSpeed;
-circleX += circleSpeed;
+circleX += circleSpeedX;
+circleY += circleSpeedY;
 
 var obj = instance_create( x, y, objAlgSphereDisappearing );
 obj.image_blend = image_blend;
 obj.image_alpha = 0.25;
 obj.image_xscale = 0.5;
 obj.image_yscale = 0.5;
-obj.hspeed = ( circleX + circleSpeed * 4 - x ) / 5;
-obj.vspeed = ( circleY - y ) / 5;
+obj.hspeed = ( circleX + circleSpeedX * 4 - x ) / 5;
+obj.vspeed = ( circleY + circleSpeedY * 4 - y ) / 5;
 
-if( x - sprite_width &gt; 1500 ) {
+if( x - sprite_width &gt; 1050 ) {
+    with( objAlgA25Star ) {
+        if( self.circleId == other.circleId ) {
+            instance_destroy();
+        }
+    }
     instance_destroy();
-} else if( x + sprite_width &lt; -700 ) {
+} else if( x + sprite_width &lt; -272 ) {
+    with( objAlgA25Star ) {
+        if( self.circleId == other.circleId ) {
+            instance_destroy();
+        }
+    }
     instance_destroy();
-} else if( y - sprite_height &gt; 758 ) {
-    instance_destroy();
-} else if( y + sprite_height &lt; -150 ) {
-    instance_destroy();
+} 
+while( y - sprite_height &gt; 758 ) {
+    y -= 808;
+    circleY -= 808;
+} 
+while( y + sprite_height &lt; -150 ) {
+    y += 808;
+    circleY += 808;
 }
 </string>
           </argument>

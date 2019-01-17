@@ -2848,51 +2848,31 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     var phaseT = t - 14700;
+    if( t == 14700 ) {
+        seg24Offset = 0;
+        seg24XOffset = 6 * 47;
+        seg24XSpeed = 6;
+        seg24YSpeed = 0;
+        seg24YCircleId = 0;
+    }
     
-    if( phaseT % 75 == 0 &amp;&amp; phaseT &lt;= 96 * 10 ) {
-        if( phaseT &gt;= 96 * 8 ) {
-            scrA25Spawn( 5, 608 - random( 32 ), -1 );
-            scrA25Spawn( 3, 408 - random( 32 ), 1 );
-            scrA25Spawn( 4, 208 - random( 32 ), -1 );
-        } else if( phaseT &gt;= 375 ) {
-            scrA25Spawn( 4, 608 - random( 32 ), -1 );
-            scrA25Spawn( 5, 408 - random( 32 ), 1 );
-            scrA25Spawn( 3, 208 - random( 32 ), -1 );
-        } else {
-            scrA25Spawn( 3, 608 - random( 32 ), -1 );
-            scrA25Spawn( 4, 408 - random( 32 ), 1 );
-            scrA25Spawn( 5, 208 - random( 32 ), -1 );
+    seg24XOffset += abs( seg24XSpeed );
+    if( phaseT &gt;= 96 * 4 ) {
+        seg24XSpeed = 6 * cos( ( phaseT - 96 * 4 ) * pi / ( 1150 - 96 * 4 ) );
+        seg24YSpeed = 6 * sin( ( phaseT - 96 * 4 ) * pi / ( 1150 - 96 * 4 ) );
+        seg24Offset += seg24YSpeed;
+        with( objAlgA25Star ) {
+            self.circleSpeedX = self.spawnDir * other.seg24XSpeed;
+            self.circleSpeedY = other.seg24YSpeed;
         }
     }
     
-    if(  phaseT &lt; 96 * 8 &amp;&amp; phaseT &gt;= 96 &amp;&amp; phaseT % 10 == 0 ) {
-        var spawnPoint = random( 800 + 608 );
-        var obj;
-        if( spawnPoint &lt; 800 ) {
-            obj = instance_create( spawnPoint, 0, objAlgA25Star2 );
-        } else {
-            obj = instance_create( 800, spawnPoint - 800, objAlgA25Star2 );
-        }
-        obj.image_blend = make_colour_hsv( 157, 255, 255 );
-        obj.image_xscale = 0.5;
-        obj.image_yscale = 0.5;
-        obj.speed = 7;
-        obj.direction = 180 + 45;
-    }
-    
-    if( phaseT &gt;= 96 * 8 &amp;&amp; phaseT % 10 == 0 ) {
-        var spawnPoint = random( 800 + 608 );
-        var obj;
-        if( spawnPoint &lt; 800 ) {
-            obj = instance_create( spawnPoint, 0, objAlgA25Star2 );
-        } else {
-            obj = instance_create( 0, spawnPoint - 800, objAlgA25Star2 );
-        }
-        obj.image_blend = make_colour_hsv( 30, 255, 255 );
-        obj.image_xscale = 0.5;
-        obj.image_yscale = 0.5;
-        obj.speed = 7;
-        obj.direction = 270 + 45;
+    if( seg24XOffset &gt;= 6 * 48 &amp;&amp; phaseT &lt; 96 * 11 ) {
+        scrA25Spawn( 3, 608 - random( 32 ) + seg24Offset, -1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 4, 408 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 5, 208 - random( 32 ) + seg24Offset, -1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 4, 8 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
+        seg24XOffset -= 6 * 48;
     }
     
     // Effects.
