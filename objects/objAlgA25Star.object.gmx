@@ -89,13 +89,13 @@ if( x - sprite_width &gt; 1050 ) {
     }
     instance_destroy();
 } 
-while( y - sprite_height &gt; 758 ) {
-    y -= 808;
-    circleY -= 808;
+while( y - sprite_height &gt; 728 ) {
+    y -= 1008;
+    circleY -= 1008;
 } 
-while( y + sprite_height &lt; -150 ) {
-    y += 808;
-    circleY += 808;
+while( y + sprite_height &lt; -380 ) {
+    y += 1008;
+    circleY += 1008;
 }
 </string>
           </argument>

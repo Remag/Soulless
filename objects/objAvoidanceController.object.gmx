@@ -1226,7 +1226,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             speed = storedSpeed;
             direction = image_angle;
         }
-    }
+    }*/
     
     // Effects
     if( phaseT == 0 ) {
@@ -1240,9 +1240,12 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     }
     if( phaseT &lt; 96 ) {
         repeat( 2 ) {
-            var spawnVal = random( 810 * 2 + 618 );
-            var spawnX = 800 - min( spawnVal, 810 * 2 + 618 - spawnVal, 810 );
-            var spawnY = max( min( spawnVal - 810, 618 ), -10 );
+            var spawnX = -10
+            var spawnY = random_range( -10, 608 );
+            if( irandom( 1 ) == 0 ) {
+                spawnX = random_range( -10, 800 );
+                spawnY = -10;
+            }
             var obj = instance_create( spawnX, spawnY, objAlgA8Effect );
             obj.speed = random_range( 10, 15 );
             obj.maxSpeed = obj.speed;
@@ -1254,7 +1257,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
         with( objAlgA8Effect ) {
             canWarp = false;
-            direction = point_direction( x, y, 800, lerp( 0, 304, phaseT / 96 ) );
+            direction = point_direction( x, y, 800, 608 );
         }
     } else if( phaseT == 96 ) {
         with( objAlgA8Effect ) {
@@ -1272,37 +1275,30 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     } else if( phaseT == 96 * 2 ) {
         with( objAlgA8Effect ) {
-            image_blend = make_color_hsv( 64, 255, 255 );
+            isLeft = irandom( 1 ) == 0;
+            if( isLeft ) {
+                image_blend = make_color_hsv( 160, 255, 255 );
+            } else {
+                image_blend = make_color_hsv( 128, 255, 255 );
+            }
             maxSpeed = savedMaxSpeed;
         }
     } else if( phaseT &lt; 96 * 3 ) {
         with( objAlgA8Effect ) {
-            gravity_direction = point_direction( x, y, 0, 608 );
-        }
-    } else if( phaseT &lt; 96 * 4 ) {
-        with( objAlgA8Effect ) {
-            if( phaseT &lt; 96 * 3 + 24 ) {
-                maxSpeed = lerp( savedMaxSpeed, savedMaxSpeed / 2, ( phaseT - 96 * 3 ) / 24 );
+            if( isLeft ) {
+                gravity_direction = point_direction( x, y, 0, 608 );
+            } else {
+                gravity_direction = point_direction( x, y, 800, 608 );
             }
-            gravity_direction = targetDir;
         }
     } else if( phaseT == 96 * 4 ) {
         with( objAlgA8Effect ) {
-            isLeft = irandom( 1 ) == 0;
-            if( isLeft ) {
-                image_blend = make_color_hsv( 128, 255, 255 );
-            } else {
-                image_blend = make_color_hsv( 160, 255, 255 );
-            }
+            image_blend = make_color_hsv( 64, 255, 255 );
             maxSpeed = savedMaxSpeed;
         }
     } else if( phaseT &lt; 96 * 5 ) {
         with( objAlgA8Effect ) {
-            if( isLeft ) {
-                gravity_direction = point_direction( x, y, 0, lerp( 0, 304, ( phaseT - 96 * 4 ) / 96 ) );
-            } else {
-                gravity_direction = point_direction( x, y, 800, lerp( 0, 304, ( phaseT - 96 * 4 ) / 96 ) );
-            }
+            gravity_direction = point_direction( x, y, 0, 608 );
         }
     } else if( phaseT &lt; 96 * 6 ) {
         with( objAlgA8Effect ) {
@@ -1321,28 +1317,28 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             }
             maxSpeed = savedMaxSpeed;
         }
-    } else if( phaseT &lt; 96 * 7 ) {
-        with( objAlgA8Effect ) {
-            if( isLeft ) {
-                gravity_direction = point_direction( x, y, 0, 608 );
-            } else {
-                gravity_direction = point_direction( x, y, 800, 608 );
-            }
-        }
     } else if( phaseT &lt; 96 * 8 ) {
         with( objAlgA8Effect ) {
-            if( phaseT &lt; 96 * 7 + 24 ) {
-                maxSpeed = lerp( savedMaxSpeed, savedMaxSpeed / 2, ( phaseT - 96 * 7 ) / 24 );
+            if( isLeft ) {
+                gravity_direction = point_direction( x, y, 0, 200 );
+            } else {
+                gravity_direction = point_direction( x, y, 800, 200 );
             }
-            gravity_direction = targetDir;
         }
     }
-    if( t == 6544 - 24 ) {
+    if( t == 6544 - 48 ) {
         with( objAlgA8Effect ) {
             canWarp = false;
         }
     }
-    */
+    if( t &gt;= 6544 - 10 ) {
+        with( objAlgA8Effect ) {
+            image_alpha -= 0.03;
+            if( image_alpha &lt;= 0 ) {
+                instance_destroy();
+            }
+        }
+    }
     segment = 8;
 }
 </string>
@@ -2859,7 +2855,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
     seg24XOffset += abs( seg24XSpeed );
     if( phaseT &gt;= 96 * 4 ) {
         seg24XSpeed = 6 * cos( ( phaseT - 96 * 4 ) * pi / ( 1150 - 96 * 4 ) );
-        seg24YSpeed = 6 * sin( ( phaseT - 96 * 4 ) * pi / ( 1150 - 96 * 4 ) );
+        seg24YSpeed = 6.2 * sin( ( phaseT - 96 * 4 ) * pi / ( 1150 - 96 * 4 ) );
         seg24Offset += seg24YSpeed;
         with( objAlgA25Star ) {
             self.circleSpeedX = self.spawnDir * other.seg24XSpeed;
@@ -2869,9 +2865,9 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
     
     if( seg24XOffset &gt;= 6 * 48 &amp;&amp; phaseT &lt; 96 * 11 ) {
         scrA25Spawn( 3, 608 - random( 32 ) + seg24Offset, -1, seg24XSpeed, seg24YSpeed );
-        scrA25Spawn( 4, 408 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
-        scrA25Spawn( 5, 208 - random( 32 ) + seg24Offset, -1, seg24XSpeed, seg24YSpeed );
-        scrA25Spawn( 4, 8 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 4, 358 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 5, 108 - random( 32 ) + seg24Offset, -1, seg24XSpeed, seg24YSpeed );
+        scrA25Spawn( 4, -142 - random( 32 ) + seg24Offset, 1, seg24XSpeed, seg24YSpeed );
         seg24XOffset -= 6 * 48;
     }
     

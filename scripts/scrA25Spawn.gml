@@ -13,10 +13,10 @@ var spawnRadius = random_range( 50, 80 );
 var spawnRotationSpeed = random_range( 2, 3 ) * choose( -1, 1 );
 if( spawnCount == 4 ) {
     spawnRadius = random_range( 65, 100 );
-    spawnRotationSpeed = random_range( 1.65, 2.3 ) * choose( -1, 1 );
+    spawnRotationSpeed = random_range( 1.45, 2.0 ) * choose( -1, 1 );
 } else if( spawnCount >= 5 ) {
     spawnRadius = random_range( 80, 120 );
-    spawnRotationSpeed = random_range( 1.3, 1.85 ) * choose( -1, 1 );
+    spawnRotationSpeed = random_range( 1.2, 1.55 ) * choose( -1, 1 );
 }
 
 var spawnCircleX = 900;
