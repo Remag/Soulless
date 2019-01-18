@@ -3619,17 +3619,19 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    var obj = instance_create( left, 0, objAlgSphere );
-    obj.speed = 14;
-    obj.direction = random_range( 268, 272 );
-    obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
-    
-    obj = instance_create( right, 0, objAlgSphere );
-    obj.speed = 14;
-    obj.direction = random_range( 268, 272 );
-    obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
-    
-    seg32Color = ( seg32Color + 256 / 4 ) % 256
+    repeat( 2 ) {
+        var obj = instance_create( random_range( 0, left ), 0, objAlgSphere );
+        obj.speed = 14;
+        obj.direction = random_range( 268, 272 );
+        obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
+        
+        obj = instance_create( random_range( right, 800 ), 0, objAlgSphere );
+        obj.speed = 14;
+        obj.direction = random_range( 268, 272 );
+        obj.image_blend = make_colour_hsv( seg32Color, 255, 255 );
+        
+        seg32Color = ( seg32Color + 256 / 4 ) % 256
+    }
     
     // Effects
     if( phaseT % 24 == 0 ) {
@@ -5299,10 +5301,18 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
     if( tPhase == 300 ) {
         with( objAlgA44Line ) {
             instance_change( objAlgSphereDisappearing, true );
+            var targetX = choose( 32, 400, 768 );
+            direction = point_direction( x, y, targetX, 32 );
+            speed = point_distance( x, y, targetX, 32 ) / 20;
+            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
         
         with( objAlgA44Bounce ) {
             instance_change( objAlgSphereDisappearing, true );
+            var targetX = choose( 32, 400, 768 );
+            direction = point_direction( x, y, targetX, 32 );
+            speed = point_distance( x, y, targetX, 32 ) / 20;
+            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         } 
     }
     
@@ -5517,18 +5527,22 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         if( t%2 == 0 ) {
             a = instance_create(400, 200, objArchBullet22);
             a.direction = s47_dir;
+            a.image_angle = a.direction;
             a.image_single = s47_imindex;
             a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = s47_dir + 180;
+            a.image_angle = a.direction;
             a.image_single = s47_imindex;
             a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = -s47_dir;
+            a.image_angle = a.direction;
             a.image_single = s47_imindex;
             a.speed = s47_speed;
             a = instance_create(400, 200, objArchBullet22);
             a.direction = -s47_dir + 180;
+            a.image_angle = a.direction;
             a.image_single = s47_imindex;
             a.speed = s47_speed;
         }

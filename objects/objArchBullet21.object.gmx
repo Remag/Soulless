@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>dir = 0;
+frame = 0;
 rad_x = 192;
 rad_y = 64;
 
@@ -57,6 +58,12 @@ mode = 0;
             <kind>1</kind>
             <string>if( mode == 0 ) {
     image_alpha = 0.25;
+}
+
+frame++;
+if( frame &lt;= 48 ) {
+    rad_x = lerp( 1, 192, frame / 48 );
+    rad_y = lerp( 1, 64, frame / 48 );
 }
 
 dir += 5;
