@@ -231,6 +231,7 @@
       <sprite>sprites\sprArchBullet14</sprite>
       <sprite>sprites\sprArchBullet15</sprite>
       <sprite>sprites\sprArchBullet16</sprite>
+      <sprite>sprites\sprArchBullet17</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgRing</sprite>
@@ -707,6 +708,8 @@
       <object>objects\objArchBullet21</object>
       <object>objects\objArchBullet21_2</object>
       <object>objects\objArchBullet22</object>
+      <object>objects\objArchBullet23</object>
+      <object>objects\objArchBullet24</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">

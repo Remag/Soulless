@@ -5827,8 +5827,41 @@ if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Segment 51 (10:40 - 10:55) Mourning Solo
+            <string>///Arch. Segment 51 (10:40 - 10:55) Mourning Solo
 if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) ) {
+
+    var s51_t = t - 31985;
+    
+    var s51_dir = random(360);
+    var s51_x = random_range(100, 700);
+    var s51_y = random_range(32, 160);
+    
+    if( s51_t%96 == 24 ) {
+        scrMakeShapes(s51_x, s51_y, s51_dir, 3, 8, 5, objArchBullet24);
+    }
+    
+    if( s51_t%96 == 48 ) {
+        scrMakeShapes(s51_x, s51_y, s51_dir, 4, 7, 4, objArchBullet24);
+    }
+    
+    if( s51_t == 0 || s51_t%96 == 72 ) {
+        scrMakeShapes(800-s51_x, s51_y, s51_dir, 5, 8, 3, objArchBullet24);
+    }
+    
+    /*if( s51_t%96 == 48 ) {
+        scrMakeShapes(s51_x, s51_y, s51_dir, 5, 5, 5, objArchBullet24);
+    }*/
+    
+    if( s51_t%96 == 72 &amp;&amp; t &lt; (32750 - 72) ) {
+        for( i = 0; i &lt; 360; i += 24 ) {
+            a = instance_create(s51_x, s51_y, objArchBullet23);
+            a.direction = s51_dir + i;
+            a.curve = 360/20;
+            a.speed = 12;
+            a.alarm[0] = 24;
+            a.image_blend = c_orange;
+        }
+    }
 
     // Effects.
     if( !instance_exists( objAlgShaderDisco ) ) {
