@@ -5835,17 +5835,21 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
     var s51_dir = random(360);
     var s51_x = random_range(100, 700);
     var s51_y = random_range(32, 160);
+    var s51_count = 8;
+    if( t &gt; 32650 ) {
+        s51_count = 5;
+    }
     
     if( s51_t%96 == 24 ) {
-        scrMakeShapes(s51_x, s51_y, s51_dir, 3, 8, 5, objArchBullet24);
+        scrMakeShapes(s51_x, s51_y, s51_dir, 3, s51_count, 5, objArchBullet24);
     }
     
     if( s51_t%96 == 48 ) {
-        scrMakeShapes(s51_x, s51_y, s51_dir, 4, 7, 4, objArchBullet24);
+        scrMakeShapes(s51_x, s51_y, s51_dir, 4, s51_count - 1, 4, objArchBullet24);
     }
     
     if( s51_t == 0 || s51_t%96 == 72 ) {
-        scrMakeShapes(800-s51_x, s51_y, s51_dir, 5, 8, 3, objArchBullet24);
+        scrMakeShapes(800-s51_x, s51_y, s51_dir, 5, s51_count, 3, objArchBullet24);
     }
     
     /*if( s51_t%96 == 48 ) {
@@ -5859,7 +5863,7 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
             a.curve = 360/20;
             a.speed = 12;
             a.alarm[0] = 24;
-            a.image_blend = c_orange;
+            a.image_blend = c_purple;
         }
     }
 

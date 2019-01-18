@@ -58,7 +58,11 @@ tag = 0;
     a.direction = direction;
     a.speed = i;
     a.tag = 1;
-    a.image_blend = merge_colour(c_red, c_yellow, clr_t);
+    if( clr_t &lt; 0.5 ) {
+        a.image_blend = merge_colour(c_red, c_purple, clr_t * 2);
+    } else {
+        a.image_blend = merge_colour(c_purple, c_yellow, ( clr_t - 0.5 ) * 2 );
+    }
 }
 instance_destroy();
 </string>
