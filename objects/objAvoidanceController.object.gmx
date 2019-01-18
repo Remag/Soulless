@@ -3162,8 +3162,14 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
     }
     var effectColorVal = random_range( 35, 60 );
     var scale = 0.85 * 15 / 18;
-    seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
-    if( t % 10 != 0 ) {
+    if( t &lt; 18159 ) {
+        seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
+    } else if( t &lt; 18351 ) {
+        seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 16 + 6.75;
+    } else {
+        seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 7.75 + 6.75;
+    }
+    //if( t % 10 != 0 ) {
         if( t &lt; 17967 ) {
             var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
             obj.speed = seg29Speed;
@@ -3200,9 +3206,9 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         } else if( t &lt; 18351 ) {
             var obj = 0;
             if( ( t - 18159 ) % 48 &lt; 24 ) {
-                obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
+                obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Frag );
             } else {
-                obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
+                obj = instance_create( choose( 0, 800 ), 608 - 32 - 96, objAlgA29Frag );
             }
             obj.speed = seg29Speed;
             obj.direction = 90;
@@ -3228,12 +3234,12 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
                 obj.direction = random_range( 160, 200 );
                 obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
             }
-        } else if( t &lt; 18500 ) {
+        } else if( t &lt; 18480 ) {
             var obj = 0;
             if( ( t - 18351 ) % 24 &lt; 12 ) {
-                obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
+                obj = instance_create( choose( 0, 800 ), random_range( 608 - 32 * 5, 200 ), objAlgA29Frag );
             } else {
-                obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
+                obj = instance_create( choose( 0, 800 ), random_range( 608 - 32 * 5, 200 ), objAlgA29Frag );
             }
             obj.speed = seg29Speed;
             obj.direction = 90;
@@ -3260,7 +3266,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
                 obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
             }
         }
-    }
+    //}
 
     segment = 28;
 }
