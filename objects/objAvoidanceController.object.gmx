@@ -5315,6 +5315,15 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
             image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         } 
     }
+    if( tPhase &gt;= 320 ) {
+        repeat( 3 ) {
+            var targetX = choose( 32, 400, 768 );
+            var obj = instance_create( targetX, 32, objAlgSphereDisappearing );
+            obj.direction = random( 360 );
+            obj.speed = random_range( 3, 6 );
+            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        }
+    }
     
     // Effects.
     if( !instance_exists( objAlgShaderDisco ) ) {
@@ -5877,7 +5886,7 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
             a.curve = 360/20;
             a.speed = 12;
             a.alarm[0] = 24;
-            a.image_blend = c_purple;
+            a.image_blend = c_red;
         }
     }
 
