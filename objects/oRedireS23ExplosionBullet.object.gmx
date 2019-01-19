@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = choose( 1, 5 );
+            <string>image_index = choose( 0, 3 );
 
 var scale = 0.4;
 image_xscale = scale;

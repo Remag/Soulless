@@ -738,15 +738,16 @@
         <object>objects\oRedireS18CircleBullet</object>
         <object>objects\oRedireS18Backdrop</object>
       </objects>
-      <objects name="Segment23">
+      <objects name="Segment22">
         <object>objects\oRedireS23CircleController</object>
         <object>objects\oRedireS23CircleBullet</object>
         <object>objects\oRedireS23CornerCircleBullet</object>
         <object>objects\oRedireS23Bullet</object>
       </objects>
-      <objects name="Segment24">
-        <object>objects\oRedireS24FountainBullet</object>
-        <object>objects\oRedireS24BottomBullet</object>
+      <objects name="Segment23">
+        <object>objects\oRedireS23ExplosionBullet</object>
+        <object>objects\oRedireS23BulletTrail</object>
+        <object>objects\oRedireS23WallBullet</object>
       </objects>
       <objects name="Segment46">
         <object>objects\oRedireS46CornerSpawner</object>
