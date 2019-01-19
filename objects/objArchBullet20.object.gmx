@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+frame = 0;
 </string>
           </argument>
         </arguments>
@@ -51,7 +52,15 @@
             <string>if( y &lt; 352 ) {
     x += hspeed * 3;
     y += vspeed * 3;
+    
+    frame++;
+    if( frame % 2 == 0 ) {
+        var obj = instance_create( x, y, objArchBullet20_2 );
+        obj.image_index = image_index;
+        obj.image_angle = image_angle;
+    }
 }
+
 if( y &gt;= 448 &amp;&amp; image_index == 1 ) {
     direction = 270;
 }
