@@ -710,6 +710,9 @@
       <object>objects\objArchBullet22</object>
       <object>objects\objArchBullet23</object>
       <object>objects\objArchBullet24</object>
+      <object>objects\objArchBullet25</object>
+      <object>objects\objArchBullet25_fade</object>
+      <object>objects\objArchBullet26</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
@@ -828,6 +831,7 @@
       <object>objects\objAlgA43Circle2</object>
       <object>objects\objAlgA44Line</object>
       <object>objects\objAlgA44Bounce</object>
+      <object>objects\objAlgArchA44Random</object>
       <object>objects\objAlgA45Sphere</object>
       <object>objects\objAlgA50Sphere</object>
       <object>objects\objAlgA54CircleBounce</object>

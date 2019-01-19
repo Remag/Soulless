@@ -5100,7 +5100,63 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) 
           <argument>
             <kind>1</kind>
             <string>///Alg Segment 41 (8:45 - 8:52) Xyphos
-if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {    
+if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) ) {
+    var phaseT = t - 26230 - 48;
+    
+    if( phaseT == 0 ) {
+        for( i = 0; i &lt; 360; i += 45 ) {
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = 360/24.5;
+            a.max_len = 200;
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = -360/24.5;
+            a.max_len = 200;
+            
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = 360/48.5;
+            a.max_len = 125;
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = -360/48.5;
+            a.max_len = 125;
+            
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = 360/96.5;
+            a.max_len = 50;
+            a = instance_create(400, 200, objArchBullet25);
+            a.dir = i;
+            a.dir_spd = -360/96.5;
+            a.max_len = 50;
+        }
+    }
+    
+    if( phaseT &gt; 0 &amp;&amp; phaseT &lt; 26393 ) {
+        var s41_tt = phaseT/(26393 - 26230 - 48);
+        var s41_len = sin(s41_tt*pi);
+        with(objArchBullet25) {
+            x = xstart + lengthdir_x(s41_len*max_len, self.dir);
+            y = ystart + lengthdir_y(s41_len*max_len, self.dir);
+        }
+        if( phaseT % 12 == 0 ) {
+            with(objArchBullet25) {
+                a = instance_create(x, y, objArchBullet26);
+                a.direction = point_direction(x, y, xstart, ystart)// + random_range(-5,5);
+                a.speed = random_range(3,7);
+                a.curve = a.speed / 10 * choose(-1,1);
+                //scrMakeCircle(x, y, random(360), 8, random_range(3,5), objArchBullet26);
+            }
+        }
+    }
+    if( t == 26393 ) {
+        with(objArchBullet25) {
+            instance_destroy();
+        }
+    }
+    /*
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
@@ -5121,7 +5177,7 @@ if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
         if( phaseT % 36 == 12 ) {
             seg42Count++;
         }
-    }
+    }*/
     
     // Effects.
     if( !instance_exists( objAlgShaderDisco ) ) {
@@ -5240,6 +5296,19 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
     }
     
     var tPhase = t - 27375;
+    
+    //Arch edit
+    if( tPhase%96 &gt;= 60 &amp;&amp; tPhase%96 &lt;= 84 &amp;&amp; tPhase &lt;= 96 * 3 ) {
+        repeat(1) {
+            a = instance_create(random_range(32,768), 0, objAlgArchA44Random);
+            a.direction = 270 + random_range(-30, 30);
+            a.speed = 5;
+            //a.image_blend = make_colour_hsv(random(2550), 255, 255);
+        }
+    }
+    
+    //Arch edit end
+    
     var seg44UpperBound = 608;
     var seg44LowerBound = 128;
     
@@ -5297,6 +5366,12 @@ if( t &gt;= 27375 &amp;&amp; t &lt; 27760 &amp;&amp; instance_exists(objPlayer) 
             y = other.seg44MaxY;
         }
     }
+    //Arch edit start
+    var seg44Blend_inv = make_color_hsv( (seg44H + 128)%255, 255, 255 );
+    with( objAlgArchA44Random ) {
+        image_blend = seg44Blend_inv;
+    }
+    //Arch edit end
     
     if( tPhase == 300 ) {
         with( objAlgA44Line ) {
@@ -5512,7 +5587,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
                     for( i = random(90); i &lt; 360; i += 90 ) {
                         a = instance_create(x, y, objArchBullet21_2);
                         a.direction = i;
-                        a.speed = 6;
+                        a.speed = 5;
                         //a.gravity = 0.3;
                     }
                 }
