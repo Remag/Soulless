@@ -1,5 +1,5 @@
 var s24ExplosionX = argument0;
-var s24RngCount = 35;
+var s24RngCount = 30;
 for( var i = 0; i < s24RngCount; i++ ) {
     var bullet = instance_create( s24ExplosionX, 100, oRedireS23ExplosionBullet );
     bullet.speed = random_range( 4, 8 );
