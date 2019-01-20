@@ -8,30 +8,6 @@
   <parentName>oRedireSpawner</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited();
-spawnPeriod = 1.2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -49,17 +25,16 @@ spawnPeriod = 1.2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var t = objAvoidanceController.t;
-var radius = lerp( 100, 0, ( t - 5160 ) / 220 );
-var speedMin = lerp( 4, 15, ( t - 5160 ) / 220 );
-var speedMax = lerp( 8, 15, ( t - 5160 ) / 220 );
-var arc = lerp( 140, 40, ( t - 5160 ) / 220 );
-var obj = instance_create( 400 + random_range( -radius, radius ), 50, objAlgKunai );
-obj.direction = random_range( 225 - arc, 320 + arc );
-obj.image_angle = obj.direction
-obj.speed = random_range( speedMin, speedMax );
-obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
-obj.trailTime = 0.4;
+            <string>var phaseT = objAvoidanceController.t - 5775;
+var obj = instance_create( 800, 608, objAlgA8Wave );
+obj.direction = random_range(90, lerp( 120, 90, phaseT / 96 ) );
+obj.image_angle = obj.direction;
+obj.speed = random_range(10,30);
+obj.gravity = obj.speed / 55;
+obj.image_blend = make_color_hsv( 0, 255, 255 );
+var scale = 0.85;
+obj.image_xscale = scale;
+obj.image_yscale = scale;
 </string>
           </argument>
         </arguments>

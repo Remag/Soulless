@@ -1064,18 +1064,13 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     var phaseT = t - 5775;
     
-    if( phaseT &lt; 96 ) {
-        repeat( choose( 1, 2, 2, 2 ) ) {
-            var obj = instance_create( 800, 608, objAlgA8Wave );
-            obj.direction = random_range(90, lerp( 120, 90, phaseT / 96 ) );
-            obj.image_angle = obj.direction;
-            obj.speed = random_range(10,30);
-            obj.gravity = obj.speed / 55;
-            obj.image_blend = make_color_hsv( 0, 255, 255 );
-            obj.image_xscale = 0.75;
-            obj.image_yscale = 0.75;
-        }
+    if( phaseT == 0 ) {
+        var s8Spawner = instance_create( 0, 0, oRedireS8RightFountainSpawner );
+        s8Spawner.spawnPeriod = 0.65;
+    } else if( phaseT == 96 ) {
+        with( oRedireS8RightFountainSpawner ) { instance_destroy(); }
     }
+    
     if( phaseT == 96 ) {
         var playerX = scrGetPlayerX();
         var playerY = scrGetPlayerY();
@@ -1089,7 +1084,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT &gt;= 192 &amp;&amp; phaseT &lt; 384 ) {
         if( phaseT % 48 == 0 ) {
-            repeat(15) {
+            repeat(14) {
                 var obj = instance_create( 800, 608, objAlgA8Wave );
                 obj.direction = random_range(100, 135);
                 obj.image_angle = obj.direction;
@@ -1100,7 +1095,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         if( phaseT % 48 == 24 ) {
-            repeat(15) {
+            repeat(14) {
                 var obj = instance_create( 0, 608, objAlgA8Wave );
                 obj.direction = random_range(45, 80);
                 obj.image_angle = obj.direction;
@@ -1112,18 +1107,13 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     
-    if( phaseT &gt;= 384 &amp;&amp; phaseT &lt; 480 ) {
-        repeat( choose( 1, 2, 2, 2 ) ) {
-            var obj = instance_create( 0, 608, objAlgA8Wave );
-            obj.direction = random_range( lerp( 60, 90, ( phaseT - 384 ) / 96 ), 90);
-            obj.image_angle = obj.direction;
-            obj.speed = random_range(10,30);
-            obj.gravity = obj.speed / 55;
-            obj.image_blend = make_color_hsv( 64, 255, 255 );
-            obj.image_xscale = 0.75;
-            obj.image_yscale = 0.75;
-        }
+    if( phaseT == 384 ) {
+        var s8Spawner = instance_create( 0, 0, oRedireS8LeftFountainSpawner );
+        s8Spawner.spawnPeriod = 0.67;
+    } else if( phaseT == 480 ) {
+        with( oRedireS8LeftFountainSpawner ) { instance_destroy(); }
     }
+    
     if( phaseT == 480 ) {
         var playerX = scrGetPlayerX();
         var playerY = scrGetPlayerY();
@@ -1135,23 +1125,16 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         }
     }
     
-    if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 8 - 96 ) {
-        if( phaseT % 2 == 0 ) {
-            var obj = instance_create( 800, 204, objAlgA8Wave );
-            obj.direction = random_range(-10, 10) + 180;
-            obj.image_angle = obj.direction;
-            obj.speed = random_range(0,800) / 24;
-            obj.image_blend = make_color_hsv( 192, 255, 255 );
-            obj.alarm[0] = 24;
-        } else {      
-            var obj = instance_create( 0, 204, objAlgA8Wave );
-            obj.direction = random_range(-10, 10);
-            obj.image_angle = obj.direction;
-            obj.speed = random_range(0,800) / 24;
-            obj.image_blend = make_color_hsv( 224, 255, 255 );
-            obj.alarm[0] = 24;
-        }
+    if( phaseT == 96 * 6 ) {
+        var s8LeftSpawner = instance_create( 0, 0, oRedireS8LeftWaveSpawner );
+        s8LeftSpawner.spawnPeriod = 2.2;
+        var s8RightSpawner = instance_create( 0, 0, oRedireS8RightWaveSpawner );
+        s8RightSpawner.spawnPeriod = 2.2;
+    
+    } else if( phaseT == 96 * 8 - 96 ) {
+        with( oRedireSpawner ) { instance_destroy(); }
     }
+     
     
     // Effects
     if( phaseT == 0 ) {
@@ -2495,7 +2478,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
     
     var phaseT = ( t - 13075 );
 
-    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 30 == 0 ) ) {
+    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 0 ) ) {
         var obj = instance_create( -150, 32, objAlgA22Sphere );
         obj.hspeed = random_range( 1.5, 3 );
         obj.gravity = 0.095;
@@ -2505,7 +2488,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         obj.hspeed = random_range( 2, 10 );
         obj.gravity = 0.095;
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
-    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 28 == 14 ) ) {
+    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 14 ) ) {
         var obj = instance_create( 950, 32, objAlgA22Sphere );
         obj.hspeed = -random_range( 1.5, 3 );
         obj.gravity = 0.095;

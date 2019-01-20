@@ -764,6 +764,12 @@
       <objects name="Segment7">
         <object>objects\oRedireS7KunaiSpawner</object>
       </objects>
+      <objects name="Segment8">
+        <object>objects\oRedireS8LeftFountainSpawner</object>
+        <object>objects\oRedireS8RightFountainSpawner</object>
+        <object>objects\oRedireS8LeftWaveSpawner</object>
+        <object>objects\oRedireS8RightWaveSpawner</object>
+      </objects>
     </objects>
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
