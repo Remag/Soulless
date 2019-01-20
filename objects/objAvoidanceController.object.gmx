@@ -1065,15 +1065,15 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     var phaseT = t - 5775;
     
     if( phaseT &lt; 96 ) {
-        repeat( choose( 1, 2, 2, 2 ) ) {
+        repeat( choose( 1, 1, 2, 2, 2 ) ) {
             var obj = instance_create( 800, 608, objAlgA8Wave );
             obj.direction = random_range(90, lerp( 120, 90, phaseT / 96 ) );
             obj.image_angle = obj.direction;
             obj.speed = random_range(10,30);
             obj.gravity = obj.speed / 55;
             obj.image_blend = make_color_hsv( 0, 255, 255 );
-            obj.image_xscale = 0.75;
-            obj.image_yscale = 0.75;
+            obj.image_xscale = 0.8;
+            obj.image_yscale = 0.8;
         }
     }
     if( phaseT == 96 ) {
@@ -1089,7 +1089,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT &gt;= 192 &amp;&amp; phaseT &lt; 384 ) {
         if( phaseT % 48 == 0 ) {
-            repeat(15) {
+            repeat(14) {
                 var obj = instance_create( 800, 608, objAlgA8Wave );
                 obj.direction = random_range(100, 135);
                 obj.image_angle = obj.direction;
@@ -1100,7 +1100,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         if( phaseT % 48 == 24 ) {
-            repeat(15) {
+            repeat(14) {
                 var obj = instance_create( 0, 608, objAlgA8Wave );
                 obj.direction = random_range(45, 80);
                 obj.image_angle = obj.direction;
@@ -1113,15 +1113,15 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     if( phaseT &gt;= 384 &amp;&amp; phaseT &lt; 480 ) {
-        repeat( choose( 1, 2, 2, 2 ) ) {
+        repeat( choose( 1, 1, 2, 2, 2 ) ) {
             var obj = instance_create( 0, 608, objAlgA8Wave );
             obj.direction = random_range( lerp( 60, 90, ( phaseT - 384 ) / 96 ), 90);
             obj.image_angle = obj.direction;
             obj.speed = random_range(10,30);
             obj.gravity = obj.speed / 55;
             obj.image_blend = make_color_hsv( 64, 255, 255 );
-            obj.image_xscale = 0.75;
-            obj.image_yscale = 0.75;
+            obj.image_xscale = 0.8;
+            obj.image_yscale = 0.8;
         }
     }
     if( phaseT == 480 ) {
@@ -2495,7 +2495,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
     
     var phaseT = ( t - 13075 );
 
-    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 30 == 0 ) ) {
+    if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 0 ) ) {
         var obj = instance_create( -150, 32, objAlgA22Sphere );
         obj.hspeed = random_range( 1.5, 3 );
         obj.gravity = 0.095;
@@ -2505,7 +2505,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         obj.hspeed = random_range( 2, 10 );
         obj.gravity = 0.095;
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
-    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 28 == 14 ) ) {
+    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 14 ) ) {
         var obj = instance_create( 950, 32, objAlgA22Sphere );
         obj.hspeed = -random_range( 1.5, 3 );
         obj.gravity = 0.095;
