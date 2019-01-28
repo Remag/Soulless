@@ -2488,7 +2488,7 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
         obj.hspeed = random_range( 2, 10 );
         obj.gravity = 0.095;
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
-    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 14 ) ) {
+    } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 15 ) ) {
         var obj = instance_create( 950, 32, objAlgA22Sphere );
         obj.hspeed = -random_range( 1.5, 3 );
         obj.gravity = 0.095;
@@ -6416,10 +6416,10 @@ if( shake ) {
             <string>draw_set_font(fDefault12);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-scrDrawTextOutline(40, 40, "Segment: " + string(segment), c_white, c_black);
-scrDrawTextOutline(40, 56, "Frame: " + string(t), c_white, c_black);
-scrDrawTextOutline(40, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
-scrDrawTextOutline(40, 88, "Instances: " + string(instance_count), c_white, c_black);
+scrDrawTextOutline(645, 40, "Segment: " + string(segment), c_white, c_black);
+scrDrawTextOutline(645, 56, "Frame: " + string(t), c_white, c_black);
+scrDrawTextOutline(645, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
+scrDrawTextOutline(645, 88, "Instances: " + string(instance_count), c_white, c_black);
 </string>
           </argument>
         </arguments>

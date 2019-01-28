@@ -1,30 +1,13 @@
 var segment = objAvoidanceController.segment;
 var pbSegment = global.pb_segment;
 
-var gate = scrGetSegmentGate( segment ); 
-var pbGate = scrGetSegmentGate( pbSegment );
-
 var payoutCount = 0;
 // General payout.
-for( var i = 2; i <= segment; i++ ) {
-    var segmentGate = scrGetSegmentGate( i );
-    payoutCount += scrGetGateSegmentReward( segmentGate );
-}
-
+payoutCount += scrGetTotalAttackReward( segment );
 // Attack PB.
-if( segment > pbSegment ) {
-    for( var i = pbSegment + 1; i <= segment; i++ ) {
-        var segmentGate = scrGetSegmentGate( i );
-        payoutCount += scrGetGateSegmentReward( segmentGate ) * 5;
-    }
-}
-
+payoutCount += scrGetTotalPbReward( pbSegment, segment );
 // Gate PB.
-if( gate > pbGate ) {
-    for( var i = pbGate; i < gate; i++ ) {
-        payoutCount += scrGetGateOpenReward( i );
-    }
-}
+payoutCount += scrGetTotalGateReward( pbSegment, segment );
 
 oPlayerData.currencyCount += payoutCount;
 

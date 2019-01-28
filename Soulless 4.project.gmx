@@ -142,7 +142,6 @@
       <sprite>sprites\sprBow</sprite>
       <sprite>sprites\sprBullet</sprite>
       <sprite>sprites\sprBlood</sprite>
-      <sprite>sprites\sprGameOver</sprite>
     </sprites>
     <sprites name="blocks">
       <sprite>sprites\sprBlockMask</sprite>
@@ -330,8 +329,10 @@
       <sprite>sprites\sprCoin</sprite>
       <sprite>sprites\sprUiArrow</sprite>
       <sprite>sprites\sprBigWarp</sprite>
+      <sprite>sprites\sprGameOver</sprite>
     </sprites>
     <sprite>sprites\sprSoulFire</sprite>
+    <sprite>sprites\sprSoulCrystal</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -412,6 +413,9 @@
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrGetGateOpenReward.gml</script>
       <script>scripts\scrGetGateSegmentReward.gml</script>
+      <script>scripts\scrGetTotalAttackReward.gml</script>
+      <script>scripts\scrGetTotalPbReward.gml</script>
+      <script>scripts\scrGetTotalGateReward.gml</script>
       <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
       <script>scripts\scrGetSegmentCount.gml</script>
@@ -474,7 +478,6 @@
       <object>objects\objBullet</object>
       <object>objects\objBloodEmitter</object>
       <object>objects\objBlood</object>
-      <object>objects\objGameOver</object>
       <object>objects\objBasePlayer</object>
     </objects>
     <objects name="blocks">
@@ -649,6 +652,7 @@
       <object>objects\oFadeOut</object>
       <object>objects\oFadeIn</object>
       <object>objects\oMusicContainer</object>
+      <object>objects\oGameOverController</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

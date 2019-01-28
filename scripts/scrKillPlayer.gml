@@ -25,12 +25,7 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
             instance_destroy();
         }
         
-        if( room == rAvoidanceMainRoom ) {
-            // Reward the player and set pbs.
-            scrRewardPlayerGlobalProgress();
-        }
-        
-        instance_create(0,0,objGameOver);
+        instance_create(0,0,oGameOverController);
         
         global.death += 1; //increment deaths
             
