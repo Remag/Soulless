@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 dirInc = 0;
+frame = 0;
+framePoint = 90;
 </string>
           </argument>
         </arguments>
@@ -50,9 +52,11 @@ dirInc = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-direction += dirInc;
-if( direction &gt; 270 &amp;&amp; dirInc &gt; 0 || direction &gt; 200 &amp;&amp; direction &lt; 270 &amp;&amp; dirInc &lt; 0 ) {
-    direction = 270;
+frame++;
+if( frame &lt;= framePoint ) {
+    direction += dirInc;
+} else {
+    friction = -0.05;
 }
 
 if( y &gt; 640 ) {

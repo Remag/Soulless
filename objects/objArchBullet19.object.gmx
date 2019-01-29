@@ -33,6 +33,7 @@ chains_n = 5;
 for( i = 0; i &lt; chains_n; i++ ) {
     chain[i] = instance_create(xstart, ystart, objArchBullet19_2);
 }
+isOutside = false;
 
 t = 0;
 </string>
@@ -84,6 +85,8 @@ if( chains ) {
         chain[i].y = lerp(ystart, y, i/chains_n);
         chain[i].image_angle = point_direction(xstart, ystart, x, y);
     }
+} else if( isOutside ) {
+    instance_destroy();
 }
 
 t++;
@@ -111,6 +114,8 @@ t++;
             <kind>1</kind>
             <string>if( !chains ) {
     instance_destroy();
+} else {
+    isOutside = true;
 }
 </string>
           </argument>
