@@ -333,6 +333,7 @@
     </sprites>
     <sprite>sprites\sprSoulFire</sprite>
     <sprite>sprites\sprSoulCrystal</sprite>
+    <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -882,6 +883,8 @@
     <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
+    <object>objects\objInverseCircle</object>
+    <object>objects\objInverseCircleController</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
