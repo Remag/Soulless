@@ -142,6 +142,7 @@ if( isSelect &amp;&amp; currentSegment != -1 ) {
     var price = oPracticePriceView.currentPrice;
     if( oPlayerData.currencyCount &gt;= price ) {
         oPlayerData.currencyCount -= price;
+        scrSaveGame();
         oPlayerData.practiceStartSegment = scrFindGlobalSegment( currentGate, currentSegment );
         oPlayerData.practiceEndSegment = practiceLimitSegment + 1;
         oPlayerData.targetEntranceId = 0;

@@ -61,8 +61,10 @@
 
     draw_text( x + 10, yOffset + y + 13, "Price:" );
     var scale = 0.5;
+    texture_set_interpolation( true );
     draw_sprite_ext( sprSoulCrystal, 3, x + 75, yOffset + y, scale, scale, 0, c_white, 1 );
-
+    texture_set_interpolation( false );
+    
     if( oPlayerData.currencyCount &gt;= currentPrice ) {
         draw_set_color( c_white );
     } else {

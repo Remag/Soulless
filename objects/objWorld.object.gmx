@@ -227,8 +227,8 @@ if (global.gameStarted)
                 scrRewardPlayerGlobalProgress();
             }
             
-            scrSaveGame(); //save death/time
             scrRestartAttempt();
+            scrSaveGame(); //save death/time
         }
         
         // Allow the usage of portal button unless the avoidance is in progress.
