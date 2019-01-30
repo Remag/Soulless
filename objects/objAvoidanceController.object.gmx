@@ -3123,10 +3123,11 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
             obj.image_index = 2;
             obj.direction = random_range( 160, 200 );
             obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
-        } else if( t &lt; 18351 ) {
+        }
+        if( t &gt;= 18130 &amp;&amp; t &lt; 18351 &amp;&amp; t % 5 != 0 ) {
             var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18159 ) / ( 18351 - 18159 ) );
-            var spawnDir = lerp( 100, 30, ( t - 18159 ) / ( 18351 - 18159 ) );
-            var spawnFramePoint = floor( lerp( 90, 70, ( t - 18159 ) / ( 18351 - 18159 ) ) );
+            var spawnDir = 45;
+            var spawnFramePoint = 80;
             var obj = instance_create( 800, spawnY, objAlgA29Frag );
             obj.speed = seg29Speed;
             obj.direction = spawnDir;
@@ -3148,10 +3149,11 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
                 obj.direction = random_range( 160, 200 );
                 obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
             }
-        } else if( t &lt; 18480 ) {
+        }
+        if( t &gt;= 18330 &amp;&amp; t &lt; 18480 &amp;&amp; t % 5 != 0 ) {
             var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
-            var spawnDir = lerp( 80, 150, ( t - 18351 ) / ( 18480 - 18351 ) );
-            var spawnFramePoint = floor( lerp( 90, 70, ( t - 18351 ) / ( 18480 - 18351 ) ) );
+            var spawnDir = 135; 
+            var spawnFramePoint = 80;
             var obj = instance_create( 0, spawnY, objAlgA29Frag );
             obj.speed = seg29Speed;
             obj.direction = spawnDir;
