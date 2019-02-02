@@ -54,12 +54,22 @@ var radius = lerp( 100, 0, ( t - 5160 ) / 220 );
 var speedMin = lerp( 4, 15, ( t - 5160 ) / 220 );
 var speedMax = lerp( 8, 15, ( t - 5160 ) / 220 );
 var arc = lerp( 140, 40, ( t - 5160 ) / 220 );
-var obj = instance_create( 400 + random_range( -radius, radius ), 50, objAlgKunai );
+var spawnX = 400 + random_range( -radius, radius );
+var obj = instance_create( spawnX, 50, objAlgKunai );
 obj.direction = random_range( 225 - arc, 320 + arc );
 obj.image_angle = obj.direction
 obj.speed = random_range( speedMin, speedMax );
 obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
 obj.trailTime = 0.4;
+
+repeat( 5 ) {
+    var obj = instance_create( spawnX, 50, objAlgSphereDisappearing );
+    obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+    obj.direction = random( 360 );
+    obj.speed = random_range( 3, 10 );
+    obj.image_xscale = 0.66;
+    obj.image_yscale = 0.66;
+}
 </string>
           </argument>
         </arguments>
