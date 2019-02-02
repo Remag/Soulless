@@ -841,6 +841,7 @@
       <object>objects\objAlgSphereGrad</object>
       <object>objects\objAlgSphereCurve</object>
       <object>objects\objAlgSphereTrail</object>
+      <object>objects\objAlgSphereAppearing</object>
       <object>objects\objAlgSphereDisappearing</object>
       <object>objects\objAlgSphereDisappearing2</object>
       <object>objects\objAlgSphereDisappearing3</object>

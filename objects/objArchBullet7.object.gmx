@@ -28,6 +28,7 @@
             <string>t = 0;
 
 dir = 90 + random_range(-45,45);
+image_angle = dir;
 spd = irandom_range(6,9);
 </string>
           </argument>
