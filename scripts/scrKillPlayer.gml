@@ -3,9 +3,7 @@
 if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
 {
     if (global.gameStarted) //normal death
-    {
-        global.deathSound = audio_play_sound(sndDeath,0,false);
-        
+    {        
         if (!global.muteMusic)  //play death music
         {
             if (global.deathMusicMode == 1) //instantly pause the current music
@@ -21,7 +19,7 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
         
         with (objPlayer)
         {
-            instance_create(x,y,objBloodEmitter);
+            instance_create(x,y,oPlayerData.currentSkin.deathController);
             instance_destroy();
         }
         

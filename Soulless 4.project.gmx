@@ -123,6 +123,7 @@
     </sounds>
     <sound>sound\sndBoom</sound>
     <sound>sound\sndWoosh</sound>
+    <sound>sound\sndGhostDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -134,10 +135,6 @@
     <sprites name="player">
       <sprite>sprites\sprPlayerMask</sprite>
       <sprite>sprites\sprPlayerMaskFlip</sprite>
-      <sprite>sprites\sprPlayerIdle</sprite>
-      <sprite>sprites\sprPlayerJump</sprite>
-      <sprite>sprites\sprPlayerFall</sprite>
-      <sprite>sprites\sprPlayerRunning</sprite>
       <sprite>sprites\sprPlayerSliding</sprite>
       <sprite>sprites\sprBow</sprite>
       <sprite>sprites\sprBullet</sprite>
@@ -271,6 +268,7 @@
     <sprite>sprites\sprite135</sprite>
     <sprites name="MainMenu">
       <sprite>sprites\sprSoullessLabel</sprite>
+      <sprite>sprites\sprSoulFire</sprite>
       <sprites name="TitleFragments">
         <sprite>sprites\sTitleBase</sprite>
         <sprites name="L">
@@ -327,12 +325,26 @@
     <sprites name="General">
       <sprite>sprites\sBlockTileV</sprite>
       <sprite>sprites\sprCoin</sprite>
+      <sprite>sprites\sprSoulCrystal</sprite>
       <sprite>sprites\sprUiArrow</sprite>
       <sprite>sprites\sprBigWarp</sprite>
       <sprite>sprites\sprGameOver</sprite>
     </sprites>
-    <sprite>sprites\sprSoulFire</sprite>
-    <sprite>sprites\sprSoulCrystal</sprite>
+    <sprites name="Skins">
+      <sprites name="Ghost">
+        <sprite>sprites\sprGhostKidIdle</sprite>
+        <sprite>sprites\sprGhostGroundJump</sprite>
+        <sprite>sprites\sprGhostAirJump</sprite>
+        <sprite>sprites\sprGhostDeathParticle</sprite>
+        <sprite>sprites\sprGhostBullet</sprite>
+      </sprites>
+      <sprites name="Kid">
+        <sprite>sprites\sprPlayerIdle</sprite>
+        <sprite>sprites\sprPlayerRunning</sprite>
+        <sprite>sprites\sprPlayerJump</sprite>
+        <sprite>sprites\sprPlayerFall</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
   <backgrounds name="background">
@@ -442,6 +454,15 @@
       <script>scripts\scrGetSegmentPrice.gml</script>
       <script>scripts\scrSelectSegment.gml</script>
     </scripts>
+    <scripts name="Skins">
+      <scripts name="JumpEffects">
+        <script>scripts\scrKidGroundJumpEffect.gml</script>
+        <script>scripts\scrKidAirJumpEffect.gml</script>
+        <script>scripts\scrGhostGroundJumpEffect.gml</script>
+        <script>scripts\scrGhostAirJumpEffect.gml</script>
+      </scripts>
+      <script>scripts\scrGetSkinInfoById.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
@@ -477,8 +498,6 @@
       <object>objects\objPlayer</object>
       <object>objects\objBow</object>
       <object>objects\objBullet</object>
-      <object>objects\objBloodEmitter</object>
-      <object>objects\objBlood</object>
       <object>objects\objBasePlayer</object>
     </objects>
     <objects name="blocks">
@@ -669,6 +688,28 @@
       <object>objects\oPracticeAvoidanceController</object>
       <object>objects\oPracticeEndTitle</object>
       <object>objects\oRefundNotification</object>
+    </objects>
+    <objects name="Skins">
+      <object>objects\oSkinInfo</object>
+      <objects name="Kid">
+        <object>objects\oKidSkinInfo</object>
+        <object>objects\oKidDeathController</object>
+        <object>objects\oKidBlood</object>
+      </objects>
+      <objects name="Ghost">
+        <object>objects\oGhostSkinInfo</object>
+        <object>objects\oGhostGroundJumpCloud</object>
+        <object>objects\oGhostAirJumpCloud</object>
+        <object>objects\oGhostDeathController</object>
+        <object>objects\oGhostDeathParticle</object>
+      </objects>
+      <object>objects\oWhiteSkinInfo</object>
+      <object>objects\oOutlineSkinInfo</object>
+    </objects>
+    <objects name="Shop">
+      <object>objects\oShopTitle</object>
+      <object>objects\oShopItemSelector</object>
+      <object>objects\oShopViewKid</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
@@ -898,6 +939,7 @@
     <room>rooms\rTemplate</room>
     <room>rooms\rPortalRoom</room>
     <room>rooms\rPracticeChoiceRoom</room>
+    <room>rooms\rShopRoom</room>
     <room>rooms\rPracticeActiveRoom</room>
     <room>rooms\rAvoidanceMainRoom</room>
     <room>rooms\rGG</room>

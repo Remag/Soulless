@@ -35,14 +35,28 @@ if (loadFile)
         //generate md5 string to compare with
         ds_map_delete(saveMap,"mapMd5");
         var genMd5 = md5_string_unicode(json_encode(saveMap)+global.md5StrAdd);
-        
-        if (mapMd5 != genMd5)   //check if md5 hash is invalid
-            saveValid = false;
+     
+        // Disable the hash check to not corrupt saves with version changes ( for now? ).   
+//        if (mapMd5 != genMd5)   //check if md5 hash is invalid
+//            saveValid = false;
             
         global.pb = ds_map_find_value(saveMap,"pb");
         global.pb_segment = ds_map_find_value(saveMap,"pb_segment");
         oPlayerData.currencyCount = ds_map_find_value(saveMap,"currencyCount");
         oCurrencyDisplayController.displayedCurrency = oPlayerData.currencyCount;
+        
+        // Skin info.
+        var vCurrentSkinId = ds_map_find_value( saveMap, "currentSkin" );
+        if( !is_undefined( vCurrentSkinId ) ) {
+            oPlayerData.currentSkin = instance_create( 0, 0, scrGetSkinInfoById( vCurrentSkinId ) );
+        }
+        var vSkinCount = array_length_1d( oPlayerData.skinStatuses );
+        for( var i = 0; i < vSkinCount; i++ ) {
+            var vCurrentUnlockedSkinStatus = ds_map_find_value( saveMap, "skin" + string( i ) );
+            if( !is_undefined( vCurrentUnlockedSkinStatus ) ) {
+                oPlayerData.skinStatuses[i] = vCurrentUnlockedSkinStatus;
+            }
+        }
         
         //destroy the map
         ds_map_destroy(saveMap);

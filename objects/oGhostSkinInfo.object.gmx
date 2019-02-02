@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oSkinInfo</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,20 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currencyCount = 0;
-targetEntranceId = 0;
-lastPracticeSegment = -1;
-lastPracticeGate = 1;
-practicePrice = 0;
-isFirstPracticeAttempt = false;
+            <string>uniqueId = 1;
+name = "Lost Soul";
 
-currentSkin = instance_create( 0, 0, oGhostSkinInfo );
-skinStatuses[0] = 1;
-skinStatuses[1] = 0;
-skinStatuses[2] = 0;
-skinStatuses[3] = 0;
-skinStatuses[4] = 0;
-skinStatuses[5] = 0;
+// Sprites.
+idleSprite = sprGhostKidIdle;
+runSprite = sprGhostKidIdle;
+jumpSprite = sprGhostKidIdle;
+fallSprite = sprGhostKidIdle;
+
+// Animation speed.
+idleAnimationSpeed = 0.15;
+runAnimationSpeed = 0.15;
+jumpAnimationSpeed = 0.15;
+fallAnimationSpeed = 0.15;
+
+// Animations.
+groundJumpEffect = scrGhostGroundJumpEffect;
+airJumpEffect = scrGhostAirJumpEffect;
+deathController = oGhostDeathController;
 </string>
           </argument>
         </arguments>

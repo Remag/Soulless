@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>0</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,20 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currencyCount = 0;
-targetEntranceId = 0;
-lastPracticeSegment = -1;
-lastPracticeGate = 1;
-practicePrice = 0;
-isFirstPracticeAttempt = false;
+            <string>global.deathSound = audio_play_sound( sndGhostDeath, 0, false );
 
-currentSkin = instance_create( 0, 0, oGhostSkinInfo );
-skinStatuses[0] = 1;
-skinStatuses[1] = 0;
-skinStatuses[2] = 0;
-skinStatuses[3] = 0;
-skinStatuses[4] = 0;
-skinStatuses[5] = 0;
+for( var i = 0; i &lt; 100; i++ ) {
+    var particle = instance_create( x, y, oGhostDeathParticle );
+    particle.direction = random( 360 );
+    particle.speed = random_range( 0, 10 );
+    particle.friction = particle.speed / 22;
+    var scale = random_range( 0.1, 0.5 );
+    particle.image_xscale = scale;
+    particle.image_yscale = scale;
+}
+alarm[0] = 20;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with( oGhostDeathParticle ) {
+    direction = random( 360 );
+    speed = random_range( 0, 0.5 );
+    friction = 0;
+}
+
+instance_destroy();
 </string>
           </argument>
         </arguments>

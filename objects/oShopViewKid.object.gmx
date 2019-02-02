@@ -28,16 +28,15 @@
             <string>sprite_index = oPlayerData.currentSkin.runSprite;
 image_speed = oPlayerData.currentSkin.runAnimationSpeed;
 
-if( x &lt; 32 ) {
-    moveRight = true;
-    moveLeft = false;
+if( x &gt; 768 ) {
+    moveLeft = true;
+    moveRight = false;
     alarm[0] = 27;
 } else {
     moveRight = false;
     moveLeft = false;
 }
 
-ds_map_add( oPracticeAttackSelector.childrenMap, id, -1 )
 </string>
           </argument>
         </arguments>
@@ -60,7 +59,7 @@ ds_map_add( oPracticeAttackSelector.childrenMap, id, -1 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveRight = false;
+            <string>moveLeft = false;
 </string>
           </argument>
         </arguments>
@@ -83,10 +82,10 @@ ds_map_add( oPracticeAttackSelector.childrenMap, id, -1 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( scrButtonCheckPressed( global.portalButton ) &amp;&amp; oPracticeAttackSelector.quitDelay &gt;= oPracticeAttackSelector.unfreezeDelay ) {
-    moveLeft = true;
-    moveRight = false;
-    with( oPracticeAttackSelector ) {
+            <string>if( scrButtonCheckPressed( global.portalButton ) ) {
+    moveLeft = false;
+    moveRight = true;
+    with( oShopItemSelector ) {
         isActive = false;
     }
 }
@@ -105,31 +104,6 @@ if( moveLeft ) {
     hspeed = 0;
     sprite_index = oPlayerData.currentSkin.idleSprite;
     image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="88">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if( global.debugMode ) {
-    global.unlockEntirePractice = true;
 }
 </string>
           </argument>

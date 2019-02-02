@@ -39,10 +39,8 @@ onPlatform = false; //sets if player is currently standing on a platform
 
 xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is facing left)
 
+sprite_index = oPlayerData.currentSkin.idleSprite;
 scrSetPlayerMask(); //set the player's hitbox
-
-if (global.difficulty == 0 &amp;&amp; global.gameStarted)   //create the player's bow
-    instance_create(x,y,objBow);
 
 </string>
           </argument>
@@ -66,10 +64,7 @@ if (global.difficulty == 0 &amp;&amp; global.gameStarted)   //create the player'
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//when the player is destroyed, also destroy the bow
-with (objBow)
-    instance_destroy();
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -112,26 +107,26 @@ if (global.playerAnimationFix)
             
             if ((L || R) &amp;&amp; !frozen)
             {
-                sprite_index = sprPlayerRunning;
-                image_speed = 1/2;
+                sprite_index = oPlayerData.currentSkin.runSprite;
+                image_speed = oPlayerData.currentSkin.runAnimationSpeed;
             }
             else
             {
-                sprite_index = sprPlayerIdle;
-                image_speed = 1/5;
+                sprite_index = oPlayerData.currentSkin.idleSprite;
+                image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
             }
         }
         else    //in the air
         { 
             if ((vspeed * global.grav) &lt; 0)
             {
-                sprite_index = sprPlayerJump;
-                image_speed = 1/2;
+                sprite_index = oPlayerData.currentSkin.jumpSprite;
+                image_speed = oPlayerData.currentSkin.jumpAnimationSpeed;
             }
             else
             {
-                sprite_index = sprPlayerFall;
-                image_speed = 1/2;
+                sprite_index = oPlayerData.currentSkin.fallSprite;
+                image_speed = oPlayerData.currentSkin.fallAnimationSpeed;
             }
         }
     }
@@ -205,8 +200,8 @@ if (h != 0)  //player is moving
                 hspeed = maxSpeed * h;
         }
         
-        sprite_index = sprPlayerRunning;
-        image_speed = 0.5;
+        sprite_index = oPlayerData.currentSkin.runSprite;
+        image_speed = oPlayerData.currentSkin.runAnimationSpeed;
     }
 }
 else    //player is not moving
@@ -231,15 +226,20 @@ else    //player is not moving
         }
     }
   
-    sprite_index = sprPlayerIdle;
-    image_speed = 0.2;
+    sprite_index = oPlayerData.currentSkin.idleSprite;
+    image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
 }
 
 
 if (!onPlatform)    //check if standing on a platform
 {
-    if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
-    else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
+    if( (vspeed * global.grav) &lt; -0.05 ) {
+        sprite_index = oPlayerData.currentSkin.jumpSprite;
+        image_speed = oPlayerData.currentSkin.jumpAnimationSpeed;
+    } else if((vspeed * global.grav) &gt; 0.05) {
+        sprite_index = oPlayerData.currentSkin.fallSprite;
+        image_speed = oPlayerData.currentSkin.fallAnimationSpeed;
+    }
 }
 else
 {

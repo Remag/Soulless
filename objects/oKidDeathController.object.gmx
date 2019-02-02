@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 20;
+            <string>global.deathSound = audio_play_sound(sndDeath,0,false);
+alarm[0] = 20;
 </string>
           </argument>
         </arguments>
@@ -72,7 +73,7 @@
           <argument>
             <kind>1</kind>
             <string>repeat(40)
-    instance_create(x,y,objBlood);
+    instance_create(x,y,oKidBlood);
 </string>
           </argument>
         </arguments>
