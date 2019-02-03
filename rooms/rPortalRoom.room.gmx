@@ -4,7 +4,7 @@
   <width>800</width>
   <height>608</height>
   <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -64,7 +64,7 @@
     <instance objName="objBlock" x="448" y="320" name="inst_F41FA08C" locked="0" code="" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="288" y="384" name="inst_67130AE3" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="480" y="384" name="inst_958F5DDA" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="-32" y="448" name="inst_3803180C" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="-64" y="448" name="inst_3803180C" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="832" y="448" name="inst_AE94F083" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="800" y="448" name="inst_D0DC0010" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="320" y="608" name="inst_97E2A53C" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
@@ -74,12 +74,15 @@
     <instance objName="oCurrencyDisplayView" x="35" y="38" name="inst_B86359CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlackFadeIn" x="-1" y="0" name="inst_9FD10C08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeBlock" x="768" y="480" name="inst_7E05A0E9" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 1 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeBlock" x="768" y="512" name="inst_6423402F" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 1 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeBlock" x="768" y="512" name="inst_6423402F" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 1 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFadeBlock" x="768" y="544" name="inst_DDC50E51" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 1 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeBlock" x="0" y="480" name="inst_B73BA876" locked="0" code="fadeIn = false;&#xA;image_alpha = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeBlock" x="0" y="512" name="inst_B8C57D87" locked="0" code="fadeIn = false;&#xA;image_alpha = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oFadeBlock" x="0" y="544" name="inst_F818570F" locked="0" code="fadeIn = false;&#xA;image_alpha = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeBlock" x="0" y="480" name="inst_B73BA876" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 8 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeBlock" x="0" y="512" name="inst_B8C57D87" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 8 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oFadeBlock" x="0" y="544" name="inst_F818570F" locked="0" code="fadeIn = false;&#xA;if( global.pb_segment &gt; 8 || global.unlockEntirePractice ) {&#xA;    image_alpha = 0;&#xA;    fadeOut = true;&#xA;} else {&#xA;    image_alpha = 1;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBigWarp" x="400" y="560" name="inst_AC14F74D" locked="0" code="roomTo = rAvoidanceMainRoom;&#xA;entranceTo = 0;&#xA;" scaleX="0.400000005960464" scaleY="0.400000005960464" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="-32" y="448" name="inst_007DF13F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="-32" y="576" name="inst_5BDFECA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oEntranceWarp" x="-32" y="480" name="inst_B0070B1D" locked="0" code="roomTo = rShopRoom;&#xA;entranceTo = 0;" scaleX="0.75" scaleY="3" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="480" y="384" w="32" h="32" xo="0" yo="0" id="10002820" name="inst_5995C031" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

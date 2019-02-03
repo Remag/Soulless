@@ -50,11 +50,11 @@ if (loadFile)
         if( !is_undefined( vCurrentSkinId ) ) {
             oPlayerData.currentSkin = instance_create( 0, 0, scrGetSkinInfoById( vCurrentSkinId ) );
         }
-        var vSkinCount = array_length_1d( oPlayerData.skinStatuses );
-        for( var i = 0; i < vSkinCount; i++ ) {
-            var vCurrentUnlockedSkinStatus = ds_map_find_value( saveMap, "skin" + string( i ) );
-            if( !is_undefined( vCurrentUnlockedSkinStatus ) ) {
-                oPlayerData.skinStatuses[i] = vCurrentUnlockedSkinStatus;
+        var vItemCount = array_length_1d( oPlayerData.itemUnlocks );
+        for( var i = 0; i < vItemCount; i++ ) {
+            var vCurrentUnlockedItemStatus = ds_map_find_value( saveMap, "item" + string( i ) );
+            if( !is_undefined( vCurrentUnlockedItemStatus ) ) {
+                oPlayerData.itemUnlocks[i] = vCurrentUnlockedItemStatus;
             }
         }
         

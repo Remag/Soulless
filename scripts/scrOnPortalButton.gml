@@ -12,7 +12,7 @@ if( room == rAvoidanceMainRoom ) {
         scrOnPlayerRestart();
         scrChangeRoom( rPracticeChoiceRoom, 1 );
     }
-} else if( room != rPracticeChoiceRoom ) {
+} else if( room != rPracticeChoiceRoom && room != rShopRoom ) {
     scrOnPlayerRestart();
     scrChangeRoom( rPortalRoom, 0 );
 }

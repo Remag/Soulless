@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>var quitButton = scrGetKeybind( global.portalButton[0] );
 quitTooltipText = quitButton + ": Exit";
+alignRight = false;
 </string>
           </argument>
         </arguments>
@@ -50,9 +51,15 @@ quitTooltipText = quitButton + ": Exit";
           <argument>
             <kind>1</kind>
             <string>draw_set_font( fPracticeHint );
+if( alignRight ) {
+    draw_set_halign( fa_right );
+}
+draw_set_valign( fa_bottom );
 
-draw_text( x, y + 32, quitTooltipText );
+draw_text( x, y, quitTooltipText );
 
+draw_set_valign( fa_top );
+draw_set_halign( fa_left );
 draw_set_font( fDefault24 );
 </string>
           </argument>

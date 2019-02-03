@@ -34,6 +34,8 @@ runSprite = sprPlayerRunning;
 jumpSprite = sprPlayerJump;
 fallSprite = sprPlayerFall;
 
+shopIconSprite = sprPlayerIdle;
+
 // Animation speed.
 idleAnimationSpeed = 0.2;
 runAnimationSpeed = 0.5;
