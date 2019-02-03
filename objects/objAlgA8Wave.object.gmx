@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 trigger = false;
+
 </string>
           </argument>
         </arguments>
@@ -78,6 +79,7 @@ speed = random_range(3,7);
 if( trigger &amp;&amp; speed &gt; 10 ) {
     speed = 10;
 }
+
 
 </string>
           </argument>

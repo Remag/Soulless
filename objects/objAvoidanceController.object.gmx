@@ -792,7 +792,7 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
     
     var phaseT = t - 5003;
     if( phaseT == 0 ) {
-        repeat( 80 ) {
+        repeat( 77 ) {
             var obj = instance_create( 400, 200, objAlgSphereCurve );
             obj.direction = random( 360 );
             obj.speed = random_range( 2, 3 ) * random_range( 2, 3 );
@@ -939,7 +939,7 @@ if( t &gt;= 5003 &amp;&amp; t &lt; 5772 &amp;&amp; instance_exists(objPlayer) ) 
     } else if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 8 ) {
         var speedMin = lerp( 5, 18, ( phaseT - 96 * 6 ) / ( 96 + 48 ) );
         var speedMax = lerp( 11, 18, ( phaseT - 96 * 6 ) / ( 96 + 48 ) );
-        var arc = lerp( 90, 15, ( t - 5550 ) / 224 );
+        var arc = lerp( 95, 15, ( t - 5550 ) / 224 );
         var obj = instance_create( 400, 0, objAlgKunai );
         obj.direction = random_range( 225 - arc, 315 + arc );
         obj.image_angle = obj.direction
@@ -1076,7 +1076,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 0 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8RightFountainSpawner );
-        s8Spawner.spawnPeriod = 0.65;
+        s8Spawner.spawnPeriod = 0.69;
     } else if( phaseT == 96 ) {
         with( oRedireS8RightFountainSpawner ) { instance_destroy(); }
     }
@@ -1119,7 +1119,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 384 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8LeftFountainSpawner );
-        s8Spawner.spawnPeriod = 0.67;
+        s8Spawner.spawnPeriod = 0.71;
     } else if( phaseT == 480 ) {
         with( oRedireS8LeftFountainSpawner ) { instance_destroy(); }
     }
@@ -3001,7 +3001,7 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
             a.image_yscale = 0.9;
             a.rspd = random_range(2,6);
         }
-    } else {
+    } else if( t &lt; 17725 ) {
         if( t % 2 == 0 ) {
             a = instance_create(400, 304, objArchBullet4);
             a.image_xscale = 0.9;
