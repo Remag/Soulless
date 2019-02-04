@@ -50,6 +50,7 @@
             <kind>1</kind>
             <string>a = instance_create(x+random_range(-1,1), y+random_range(-1,1), objArchBullet8_2);
 a.image_angle = image_angle;
+a.image_blend = image_blend;
 
 alarm[0] = 2;
 </string>

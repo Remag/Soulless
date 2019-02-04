@@ -1,13 +1,17 @@
 var skinId = argument0;
 
-if( 0 == skinId ) {
+if( skinId == 0 ) {
     return oKidSkinInfo;
-} else if( 1 == skinId ) {
+} else if( skinId == 1 ) {
     return oGhostSkinInfo;
-} else if( 2 == skinId ) {
-    return oWhiteSkinInfo;
-} else if( 3 == skinId ) {
-    return oOutlineSkinInfo;
+} else if( skinId == 2 ) {
+    return oKidSkinInfo;
+} else if( skinId == 3 ) {
+    return oKidSkinInfo;
+} else if( skinId == 4 ) {
+    return oKidSkinInfo;
+} else if( skinId == 5 ) {
+    return oKidSkinInfo;
 } else {
     return oKidSkinInfo;
 }

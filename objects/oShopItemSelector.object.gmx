@@ -7,7 +7,187 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var skinList = instance_create( 0, 0, oShopItemList );
+skinList.itemInfo[0] = instance_create( 0, 0, oKidSkinInfo );
+skinList.itemInfo[1] = instance_create( 0, 0, oGhostSkinInfo );
+skinList.itemInfo[2] = instance_create( 0, 0, oKidSkinInfo );
+skinList.itemInfo[3] = instance_create( 0, 0, oKidSkinInfo );
+skinList.itemInfo[4] = instance_create( 0, 0, oKidSkinInfo );
+skinList.itemInfo[5] = instance_create( 0, 0, oKidSkinInfo );
+itemLists[0] = skinList;
+
+currentSection = oPlayerData.lastShopSection;
+currentItem = oPlayerData.lastShopItem;
+maxUnlockedItem = scrGetMaxUnlockedItem( currentSection );
+
+sectionNames[0] = "Skins";
+//sectionNames[1] = "Weapons";
+
+isActive = true;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( !isActive ) {
+    exit;
+}
+
+var isLeft = scrButtonCheckPressed( global.leftButton );
+var isTop = scrButtonCheckPressed( global.upButton );
+var isRight = scrButtonCheckPressed( global.rightButton );
+var isBottom = scrButtonCheckPressed( global.downButton );
+var isSelect = scrButtonCheckPressed( global.shootButton );
+
+if( isLeft ) {
+    if( currentItem == -1 ) {
+        scrTrySetShopSection( currentSection - 1 )
+    } else if( currentItem != 0 ) {
+        scrTrySetShopItem( currentItem - 1 );
+    } else if( scrTrySetShopSection( currentSection - 1 ) ) {
+        scrTrySetShopItem( maxUnlockedItem );
+    }
+}
+if( isTop ) {
+    if( currentItem != -1 ) {
+        if( !scrTrySetShopItem( currentItem - 3 ) ) {
+            scrTryFocusShopSegmentSelection();
+        }
+    } else {
+        scrTrySetShopItem( maxUnlockedItem );
+    }
+}
+if( isRight ) {
+    if( currentItem == -1 ) {
+        scrTrySetShopSection( currentSection + 1 )
+    } else if( !scrTrySetShopItem( currentItem + 1 ) &amp;&amp; scrTrySetShopSection( currentSection + 1 ) ) {
+        scrTrySetShopItem( 0 );
+    }
+}
+if( isBottom ) {
+    if( currentItem == -1 ) {
+        scrTrySetShopItem( 0 );
+    } else if ( !scrTrySetShopItem( currentItem + 3 ) ) {
+        if( floor( maxUnlockedItem / 3 ) == floor( currentItem / 3 ) ) {
+            scrTryFocusShopSegmentSelection();
+        } else if( currentItem != maxUnlockedItem ) {
+            scrTrySetShopItem( maxUnlockedItem );        
+        }
+    }
+}
+
+if( isSelect &amp;&amp; currentItem != -1 ) {
+    scrTryBuyShopItem( currentSection, currentItem );
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font( fAttackNumber );
+draw_set_color( c_white );
+draw_set_halign( fa_center );
+draw_set_valign( fa_center );
+
+var sectionCount = array_length_1d( sectionNames );
+var sectionX = x + 96 * 3 / 2;
+var sectionY = y + 16;
+    
+draw_text( sectionX, sectionY, sectionNames[currentSection] );
+if( currentItem == -1 ) {
+    draw_rectangle( sectionX - 64, sectionY - 16, sectionX + 64, sectionY + 16, true );
+    if( currentSection &gt; 0 ) {
+        draw_sprite_ext( sprUiArrow, 0, sectionX - 75, sectionY, -1, 1, 0, c_white, 1 );
+    }
+    if( currentSection &lt; sectionCount - 1 ) {
+        draw_sprite_ext( sprUiArrow, 0, sectionX + 75, sectionY, 1, 1, 0, c_white, 1 );
+    }
+}
+
+var itemCount = array_length_1d( itemLists[currentSection].itemInfo );
+for( var i = 0; i &lt; itemCount; i++ ) {
+    var segmentRow = floor( i / 3 );
+    var segmentColumn = i % 3;
+    var segmentX = x + segmentColumn * 96;
+    var segmentY = y + segmentRow * 96 + 32;
+    
+    if( i &gt; maxUnlockedItem ) {
+        draw_set_color( c_gray );
+    } else {
+        draw_set_color( c_white );
+    }
+    draw_text( segmentX + 48, segmentY + 48, string( i + 1 ) );
+    if( currentItem == i ) {
+        draw_rectangle( segmentX + 16, segmentY + 16, segmentX + 78, segmentY + 78, true );
+        draw_set_alpha( 1 );
+    }
+}
+
+draw_set_color( c_white );
+draw_set_font( fDefault24 );
+draw_set_valign( fa_top );
+draw_set_halign( fa_left );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

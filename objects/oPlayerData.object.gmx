@@ -32,13 +32,44 @@ lastPracticeGate = 1;
 practicePrice = 0;
 isFirstPracticeAttempt = false;
 
-currentSkin = instance_create( 0, 0, oGhostSkinInfo );
-skinStatuses[0] = 1;
-skinStatuses[1] = 0;
-skinStatuses[2] = 0;
-skinStatuses[3] = 0;
-skinStatuses[4] = 0;
-skinStatuses[5] = 0;
+lastShopItem = -1;
+lastShopSection = 0;
+
+currentSkin = instance_create( 0, 0, oKidSkinInfo );
+currentWeapon = instance_create( 0, 0, oKidGunInfo );
+
+// Skins.
+itemUnlocks[0] = 1;
+itemUnlocks[1] = 0;
+itemUnlocks[2] = 0;
+itemUnlocks[3] = 0;
+itemUnlocks[4] = 0;
+itemUnlocks[5] = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with( currentSkin ) { 
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

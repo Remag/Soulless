@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>var phaseT = objAvoidanceController.t - 5775;
 var obj = instance_create( 800, 608, objAlgA8Wave );
-obj.direction = random_range(90, lerp( 120, 90, phaseT / 96 ) );
+obj.direction = random_range(90, lerp( 120, 90, ( phaseT ) / 96 ) );
 obj.image_angle = obj.direction;
 obj.speed = random_range(10,30);
 obj.gravity = obj.speed / 55;

@@ -456,6 +456,18 @@
       <script>scripts\scrGetSegmentPrice.gml</script>
       <script>scripts\scrSelectSegment.gml</script>
     </scripts>
+    <scripts name="Shop">
+      <script>scripts\scrGetMaxUnlockedItem.gml</script>
+      <script>scripts\scrTrySetShopItem.gml</script>
+      <script>scripts\scrTrySetShopSection.gml</script>
+      <script>scripts\scrTryFocusShopSegmentSelection.gml</script>
+      <script>scripts\scrSelectShopItem.gml</script>
+      <script>scripts\scrGetItemPrice.gml</script>
+      <script>scripts\scrTryBuyShopItem.gml</script>
+      <script>scripts\scrIsItemUnlocked.gml</script>
+      <script>scripts\scrIsItemEquipped.gml</script>
+      <script>scripts\scrEquipItem.gml</script>
+    </scripts>
     <scripts name="Skins">
       <scripts name="JumpEffects">
         <script>scripts\scrKidGroundJumpEffect.gml</script>
@@ -464,6 +476,9 @@
         <script>scripts\scrGhostAirJumpEffect.gml</script>
       </scripts>
       <script>scripts\scrGetSkinInfoById.gml</script>
+    </scripts>
+    <scripts name="Weapons">
+      <script>scripts\scrGetWeaponInfoById.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -710,10 +725,17 @@
       <object>objects\oWhiteSkinInfo</object>
       <object>objects\oOutlineSkinInfo</object>
     </objects>
+    <objects name="Weapons">
+      <object>objects\oWeaponInfo</object>
+      <objects name="Gun">
+        <object>objects\oKidGunInfo</object>
+      </objects>
+    </objects>
     <objects name="Shop">
       <object>objects\oShopTitle</object>
       <object>objects\oShopItemSelector</object>
       <object>objects\oShopViewKid</object>
+      <object>objects\oShopItemList</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
