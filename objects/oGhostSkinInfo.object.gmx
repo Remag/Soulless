@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>uniqueId = 1;
 name = "Lost Soul";
+description = "In search for eternal rest"
 
 // Sprites.
 idleSprite = sprGhostKidIdle;

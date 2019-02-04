@@ -3,7 +3,7 @@
   <spriteName>sprPlayerIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1000002</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>objBasePlayer</parentName>
   <maskName>&lt;undefined&gt;</maskName>

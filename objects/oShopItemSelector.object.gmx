@@ -178,6 +178,17 @@ for( var i = 0; i &lt; itemCount; i++ ) {
     }
 }
 
+// Price tag.
+if( currentItem != -1 ) {
+    var nameX = x + 96 * 1.5;
+    var nameY = y + 96 * 2 + 44;
+    draw_set_color( c_white ); 
+    draw_set_halign( fa_center );
+    draw_text( nameX, nameY, itemLists[currentSection].itemInfo[currentItem].name );
+    draw_set_font( fDescription );
+    draw_text( nameX, nameY + 32, itemLists[currentSection].itemInfo[currentItem].description );
+}
+
 draw_set_color( c_white );
 draw_set_font( fDefault24 );
 draw_set_valign( fa_top );

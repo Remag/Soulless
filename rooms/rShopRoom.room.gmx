@@ -3,7 +3,7 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>32</vsnap>
+  <vsnap>1</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
@@ -55,15 +55,16 @@
     <instance objName="objBlock" x="32" y="0" name="inst_C185D96E" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="96" name="inst_38A20927" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="768" y="0" name="inst_272AD52D" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="oEntranceWarp" x="808" y="480" name="inst_5D64A227" locked="0" code="roomTo = rPortalRoom;&#xA;entranceTo = 0;&#xA;" scaleX="0.75" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="oEntranceWarp" x="808" y="480" name="inst_5D64A227" locked="0" code="roomTo = rPortalRoom;&#xA;entranceTo = 2;&#xA;" scaleX="0.75" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="oPlayerEntrance" x="813" y="544" name="inst_EDAAD694" locked="0" code="kidObject = oShopViewKid;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCurrencyDisplayView" x="35" y="38" name="inst_770A8355" locked="0" code="alwaysShow = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oPracticeControlTooltip" x="764" y="447" name="inst_4B37E859" locked="0" code="alignRight = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oPracticeControlTooltip" x="762" y="445" name="inst_4B37E859" locked="0" code="alignRight = true;&#xA;actionDescription = &quot;Buy/Equip&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oShopTitle" x="400" y="64" name="inst_6B097288" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oShopItemSelector" x="256" y="128" name="inst_FEF5459D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="800" y="576" name="inst_69DBDAD8" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="832" y="448" name="inst_CDE52D99" locked="0" code="" scaleX="1.03225803375244" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="800" y="448" name="inst_02F9C581" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oShopDummy" x="401" y="535" name="inst_3456226B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="0" y="576" w="32" h="32" xo="0" yo="0" id="10002824" name="inst_44CA963D" depth="-1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

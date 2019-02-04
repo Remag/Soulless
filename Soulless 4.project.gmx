@@ -344,6 +344,7 @@
         <sprite>sprites\sprPlayerJump</sprite>
         <sprite>sprites\sprPlayerFall</sprite>
       </sprites>
+      <sprite>sprites\sprItemChangeParticle</sprite>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
@@ -465,6 +466,7 @@
       <script>scripts\scrIsItemUnlocked.gml</script>
       <script>scripts\scrIsItemEquipped.gml</script>
       <script>scripts\scrEquipItem.gml</script>
+      <script>scripts\scrCreateItemChangeParticles.gml</script>
     </scripts>
     <scripts name="Skins">
       <scripts name="JumpEffects">
@@ -492,6 +494,7 @@
     <font>fonts\fNotifications</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fAttackNumber</font>
+    <font>fonts\fDescription</font>
     <font>fonts\fPracticeHint</font>
     <font>fonts\fDefault12</font>
     <font>fonts\fPracticeTitle</font>
@@ -731,7 +734,9 @@
       <object>objects\oShopTitle</object>
       <object>objects\oShopItemSelector</object>
       <object>objects\oShopViewKid</object>
+      <object>objects\oShopDummy</object>
       <object>objects\oShopItemList</object>
+      <object>objects\oItemChangeParticle</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>

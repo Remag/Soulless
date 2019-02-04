@@ -1,4 +1,4 @@
-///scrSaveGame(saveposition)
+///scrSaveGame()
 ///saves the game
 
 //create a map for save data

@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var quitButton = scrGetKeybind( global.portalButton[0] );
+            <string>var quitButton = string_lower( scrGetKeybind( global.portalButton[0] ) );
 quitTooltipText = quitButton + ": Exit";
+
+selectPrefix = string_lower( scrGetKeybind( global.shootButton[0] ) ) + ": ";
+actionDescription = "Action";
 alignRight = false;
 </string>
           </argument>
@@ -57,6 +60,9 @@ if( alignRight ) {
 draw_set_valign( fa_bottom );
 
 draw_text( x, y, quitTooltipText );
+
+var selectTooltipText = selectPrefix + actionDescription;
+draw_text( x, y - 32, selectTooltipText );
 
 draw_set_valign( fa_top );
 draw_set_halign( fa_left );
