@@ -151,6 +151,7 @@
       <sprite>sprites\sprSlideBlockR</sprite>
       <sprite>sprites\sprSlideBlockL</sprite>
       <sprite>sprites\sprSaveBlocker</sprite>
+      <sprite>sprites\sprGate3Block</sprite>
     </sprites>
     <sprites name="slopes">
       <sprite>sprites\sprSlopeBlock</sprite>
@@ -265,6 +266,7 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\spriteBackground</sprite>
+    <sprite>sprites\sprShaderBlock</sprite>
     <sprite>sprites\sprite135</sprite>
     <sprites name="MainMenu">
       <sprite>sprites\sprSoullessLabel</sprite>
@@ -468,6 +470,7 @@
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
     <shader type="GLSLES">shaders\backgroundShader.shader</shader>
     <shader type="GLSLES">shaders\sdrSpiral1.shader</shader>
+    <shader type="GLSLES">shaders\sdrGate3Electro.shader</shader>
     <shader type="GLSLES">shaders\sdrDisco.shader</shader>
   </shaders>
   <fonts name="fonts">
@@ -511,6 +514,7 @@
       <object>objects\objSlideBlockR</object>
       <object>objects\objBossBlock</object>
       <object>objects\objSaveBlocker</object>
+      <object>objects\objGate3Block</object>
     </objects>
     <objects name="slopes">
       <object>objects\objSlope</object>
