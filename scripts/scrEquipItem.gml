@@ -14,3 +14,5 @@ if( section == 0 ) {
     }
     oPlayerData.currentWeapon = instance_create( 0, 0, weaponObject );
 }
+
+audio_play_sound( sndMenuSelect, 0, false );

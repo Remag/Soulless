@@ -26,12 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>var skinList = instance_create( 0, 0, oShopItemList );
-skinList.itemInfo[0] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[1] = instance_create( 0, 0, oGhostSkinInfo );
-skinList.itemInfo[2] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[3] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[4] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[5] = instance_create( 0, 0, oKidSkinInfo );
+for( var i = 0; i &lt; 6; i++ ) {
+    skinList.itemInfo[i] = instance_create( 0, 0, scrGetSkinInfoById( i ) );
+}
 itemLists[0] = skinList;
 
 currentSection = oPlayerData.lastShopSection;

@@ -107,7 +107,8 @@ if( isLeft ) {
     } else if( currentSegment != 0 ) {
         scrTrySetSegment( currentSegment - 1 );
     } else if( scrTrySetGate( currentGate - 1 ) ) {
-        scrTrySetSegment( pbSegment );
+        scrClearSegment( currentSegment );
+        scrSelectSegment( pbSegment );
     }
 }
 if( isTop ) {
@@ -123,12 +124,13 @@ if( isRight ) {
     if( currentSegment == -1 ) {
         scrTrySetGate( currentGate + 1 )
     } else if( !scrTrySetSegment( currentSegment + 1 ) &amp;&amp; scrTrySetGate( currentGate + 1 ) ) {
-        scrTrySetSegment( 0 );
+        scrClearSegment( currentSegment );
+        scrSelectSegment( 0 );
     }
 }
 if( isBottom ) {
     if( currentSegment == -1 ) {
-        scrSelectSegment( 0 );
+        scrTrySetSegment( 0 );
     } else if ( !scrTrySetSegment( currentSegment + 4 ) ) {
         if( floor( pbSegment / 4 ) == floor( currentSegment / 4 ) ) {
             scrTryFocusGateSelection();

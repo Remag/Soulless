@@ -3153,7 +3153,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
                 obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
             }
         }
-        if( t &gt;= 18330 &amp;&amp; t &lt; 18480 &amp;&amp; t % 5 != 0 ) {
+        if( t &gt;= 18330 &amp;&amp; t &lt; 18450 &amp;&amp; t % 5 != 0 ) {
             var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
             var spawnDir = 135; 
             var spawnFramePoint = 80;

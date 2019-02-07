@@ -19,7 +19,8 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
         
         with (objPlayer)
         {
-            instance_create(x,y,oPlayerData.currentSkin.deathController);
+            var controller = instance_create(x,y,oPlayerData.currentSkin.deathController);
+            controller.image_xscale = xScale;
             instance_destroy();
         }
         

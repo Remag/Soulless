@@ -124,6 +124,8 @@
     <sound>sound\sndBoom</sound>
     <sound>sound\sndWoosh</sound>
     <sound>sound\sndGhostDeath</sound>
+    <sound>sound\sndDemonDeath</sound>
+    <sound>sound\sndMenuSelect</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -347,6 +349,14 @@
         <sprite>sprites\sprPlayerFall</sprite>
       </sprites>
       <sprite>sprites\sprItemChangeParticle</sprite>
+      <sprites name="Demon">
+        <sprite>sprites\sprDemonIdle</sprite>
+        <sprite>sprites\sprDemonRun</sprite>
+        <sprite>sprites\sprDemonJump</sprite>
+        <sprite>sprites\sprDemonFall</sprite>
+        <sprite>sprites\sprDemonBlood</sprite>
+        <sprite>sprites\sprDemonFire</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
@@ -725,6 +735,11 @@
         <object>objects\oGhostDeathController</object>
         <object>objects\oGhostDeathParticle</object>
       </objects>
+      <objects name="Demon">
+        <object>objects\oDemonSkinInfo</object>
+        <object>objects\oDemonDeathController</object>
+        <object>objects\oDemonBlood</object>
+      </objects>
       <object>objects\oWhiteSkinInfo</object>
       <object>objects\oOutlineSkinInfo</object>
     </objects>
@@ -846,6 +861,9 @@
         <object>objects\oRedireS8RightFountainSpawner</object>
         <object>objects\oRedireS8LeftWaveSpawner</object>
         <object>objects\oRedireS8RightWaveSpawner</object>
+      </objects>
+      <objects name="Segment11">
+        <object>objects\oRedireCardTrail</object>
       </objects>
     </objects>
     <objects name="Algeran">
