@@ -30,6 +30,7 @@ var scale = random_range( 0.4, 1 ) * 8 / 15;
 image_xscale = scale;
 image_yscale = scale;
 image_angle = random( 360 );
+
 </string>
           </argument>
         </arguments>

@@ -28,13 +28,15 @@
             <string>image_index = irandom_range( 0, 2 );
 image_speed = 0;
 
-speed = random_range( 0.5, 1.8 );
+speed = random_range( 0.8, 1.7 );
 speed *= speed;
-direction = random_range( 0, 360 );
-
+direction = random_range( -10, 190 );
+mainDir = direction;
+dirDelta = 0;
 image_blend = make_color_hsv( random_range( 10, 50 ), random_range( 0, 255 ), 180 );
 
 step = 0;
+
 </string>
           </argument>
         </arguments>
@@ -58,17 +60,31 @@ step = 0;
           <argument>
             <kind>1</kind>
             <string>step++;
-var dir = direction;
-if( dir &gt;= 270 ) {
-    dir -= 360;
+
+var dirSign;
+if( direction &gt; 90 &amp;&amp; direction &lt; 270 ) {
+    dirSign = -1;
+} else {
+    dirSign = 1;
 }
-var dirDelta = sign( 90 - dir );
 
 var dirMaxDelta = max( 6, 100 / step );
-var directOffset = dirMaxDelta * dirDelta;
-var oppositeOffset = -0.95 * dirMaxDelta * dirDelta; 
-direction += random_range( min( directOffset, oppositeOffset ), max( directOffset, oppositeOffset ) );
+var directOffset = dirMaxDelta * dirSign;
+var topBias;
+if( step &lt; 20 ) {
+    topBias = 0.5;
+} else {
+    topBias = 0.95;
+}
+var oppositeOffset = -topBias * dirMaxDelta * dirSign; 
 
+dirDelta += random_range( min( directOffset, oppositeOffset ), max( directOffset, oppositeOffset ) );
+if( dirDelta &gt;= 270 ) {
+    dirDelta -= 360;
+}
+dirDelta = clamp( dirDelta, -45, 45 );
+
+direction = mainDir + dirDelta;
 image_angle += random_range( 0, 0.5 );
 </string>
           </argument>
