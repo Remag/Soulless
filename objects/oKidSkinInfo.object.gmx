@@ -47,6 +47,25 @@ fallAnimationSpeed = 0.5;
 groundJumpEffect = scrKidGroundJumpEffect;
 airJumpEffect = scrKidAirJumpEffect;
 deathController = oKidDeathController;
+
+// Weapon offsets.
+weaponIdleOffsetX = 4;
+weaponIdleOffsetsY[0] = -3;
+weaponIdleOffsetsY[1] = -2;
+weaponIdleOffsetsY[2] = -3;
+weaponIdleOffsetsY[3] = -3;
+
+weaponRunOffsetX = 5;
+weaponRunOffsetY = -3;
+
+weaponJumpOffsetX = 3;
+weaponJumpOffsetY = -5;
+
+weaponFallOffsetX = 4;
+weaponFallOffsetY = -2;
+
+// Projectile sprites.
+bulletSprite = sprBullet;
 </string>
           </argument>
         </arguments>

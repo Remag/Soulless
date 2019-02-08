@@ -47,6 +47,25 @@ fallAnimationSpeed = 0.15;
 groundJumpEffect = scrGhostGroundJumpEffect;
 airJumpEffect = scrGhostAirJumpEffect;
 deathController = oGhostDeathController;
+
+// Weapon offsets.
+weaponIdleOffsetX = 4;
+weaponIdleOffsetsY[0] = -3;
+weaponIdleOffsetsY[1] = -3;
+weaponIdleOffsetsY[2] = -3;
+weaponIdleOffsetsY[3] = -3;
+
+weaponRunOffsetX = 4;
+weaponRunOffsetY = -3;
+
+weaponJumpOffsetX = 4;
+weaponJumpOffsetY = -3;
+
+weaponFallOffsetX = 4;
+weaponFallOffsetY = -3;
+
+// Projectile properties.
+bulletSprite = sprGhostBullet;
 </string>
           </argument>
         </arguments>

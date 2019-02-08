@@ -60,11 +60,18 @@ if( item == -1 ) {
 
 visible = true;
 if( section == 0 ) {
-    
-    var info = oShopItemSelector.itemLists[0].itemInfo[item];
-    sprite_index = info.idleSprite;
-    image_speed = info.idleAnimationSpeed;
+    playerInfo = oShopItemSelector.itemLists[0].itemInfo[item];
+    weaponInfo = oPlayerData.currentWeapon;
+    sprite_index = playerInfo.idleSprite;
+    image_speed = playerInfo.idleAnimationSpeed;
+} else if( section == 1 ) {
+    playerInfo = oPlayerData.currentSkin;
+    weaponInfo = oShopItemSelector.itemLists[1].itemInfo[item];
+    sprite_index = oPlayerData.currentSkin.idleSprite;
+    image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
 } else {
+    playerInfo = oPlayerData.currentSkin;
+    weaponInfo = oPlayerData.currentWeapon;
     sprite_index = oPlayerData.currentSkin.idleSprite;
     image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
 }
@@ -93,6 +100,7 @@ if( section == 0 ) {
           <argument>
             <kind>1</kind>
             <string>draw_self();
+scrDrawWeapon( weaponInfo, playerInfo, 1, image_alpha );
 
 var section = oShopItemSelector.currentSection;
 var item = oShopItemSelector.currentItem;

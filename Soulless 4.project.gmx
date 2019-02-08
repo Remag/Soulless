@@ -358,6 +358,11 @@
         <sprite>sprites\sprDemonFire</sprite>
       </sprites>
     </sprites>
+    <sprites name="Weapons">
+      <sprite>sprites\sprGun</sprite>
+      <sprite>sprites\sprGunTilted</sprite>
+      <sprite>sprites\sprGadget</sprite>
+    </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
   <backgrounds name="background">
@@ -490,7 +495,11 @@
       <script>scripts\scrGetSkinInfoById.gml</script>
     </scripts>
     <scripts name="Weapons">
+      <scripts name="ShootEffects">
+        <script>scripts\scrShootKidGun.gml</script>
+      </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
+      <script>scripts\scrDrawWeapon.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
