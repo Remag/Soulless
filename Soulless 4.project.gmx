@@ -126,6 +126,8 @@
     <sound>sound\sndGhostDeath</sound>
     <sound>sound\sndDemonDeath</sound>
     <sound>sound\sndMenuSelect</sound>
+    <sound>sound\sndLighterUse</sound>
+    <sound>sound\sndLighterUse2</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -139,7 +141,6 @@
       <sprite>sprites\sprPlayerMaskFlip</sprite>
       <sprite>sprites\sprPlayerSliding</sprite>
       <sprite>sprites\sprBow</sprite>
-      <sprite>sprites\sprBullet</sprite>
       <sprite>sprites\sprBlood</sprite>
     </sprites>
     <sprites name="blocks">
@@ -362,6 +363,9 @@
       <sprite>sprites\sprGun</sprite>
       <sprite>sprites\sprGunTilted</sprite>
       <sprite>sprites\sprGadget</sprite>
+      <sprite>sprites\sprBullet</sprite>
+      <sprite>sprites\sprSpark</sprite>
+      <sprite>sprites\sprBigSpark</sprite>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
@@ -484,6 +488,8 @@
       <script>scripts\scrIsItemEquipped.gml</script>
       <script>scripts\scrEquipItem.gml</script>
       <script>scripts\scrCreateItemChangeParticles.gml</script>
+      <script>scripts\scrSetCurrentSkin.gml</script>
+      <script>scripts\scrSetCurrentWeapon.gml</script>
     </scripts>
     <scripts name="Skins">
       <scripts name="JumpEffects">
@@ -497,6 +503,7 @@
     <scripts name="Weapons">
       <scripts name="ShootEffects">
         <script>scripts\scrShootKidGun.gml</script>
+        <script>scripts\scrStrikeLighter.gml</script>
       </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
@@ -537,7 +544,6 @@
       <object>objects\objPlayerStart</object>
       <object>objects\objPlayer</object>
       <object>objects\objBow</object>
-      <object>objects\objBullet</object>
       <object>objects\objBasePlayer</object>
     </objects>
     <objects name="blocks">
@@ -756,6 +762,12 @@
       <object>objects\oWeaponInfo</object>
       <objects name="Gun">
         <object>objects\oKidGunInfo</object>
+        <object>objects\objBullet</object>
+      </objects>
+      <objects name="Lighter">
+        <object>objects\oOldLighterInfo</object>
+        <object>objects\oLighterSpark</object>
+        <object>objects\oLighterFlash</object>
       </objects>
     </objects>
     <objects name="Shop">

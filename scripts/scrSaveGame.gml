@@ -13,6 +13,7 @@ ds_map_add( saveMap, "pb_segment", global.pb_segment );
 ds_map_add( saveMap, "currencyCount", oPlayerData.currencyCount );
 
 ds_map_add( saveMap, "currentSkin", oPlayerData.currentSkin.uniqueId );
+ds_map_add( saveMap, "currentWeapon", oPlayerData.currentWeapon.uniqueId );
 var vItemCount = array_length_1d( oPlayerData.itemUnlocks );
 for( var i = 0; i < vItemCount; i++ ) {
     ds_map_add( saveMap, "item" + string( i ), oPlayerData.itemUnlocks[i] );

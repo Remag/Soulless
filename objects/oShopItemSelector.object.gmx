@@ -31,12 +31,18 @@ for( var i = 0; i &lt; 6; i++ ) {
 }
 itemLists[0] = skinList;
 
+var weaponList = instance_create( 0, 0, oShopItemList );
+for( var i = 0; i &lt; 6; i++ ) {
+    weaponList.itemInfo[i] = instance_create( 0, 0, scrGetWeaponInfoById( i + 6 ) );
+}
+itemLists[1] = weaponList;
+
 currentSection = oPlayerData.lastShopSection;
 currentItem = oPlayerData.lastShopItem;
 maxUnlockedItem = scrGetMaxUnlockedItem( currentSection );
 
 sectionNames[0] = "Characters";
-//sectionNames[1] = "Weapons";
+sectionNames[1] = "Weapons";
 
 isActive = true;
 

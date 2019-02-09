@@ -1,5 +1,9 @@
-var sectionId = argument0;
+var section = argument0;
 
 var pbGate = scrGetSegmentGate( global.pb_segment );
 //return pbGate - 1;
-return 2;
+if( section == 0 ) {
+    return 2;
+} else {
+    return 1;
+}

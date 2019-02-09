@@ -66,6 +66,14 @@ weaponFallOffsetY = -3;
 
 // Projectile properties.
 bulletSprite = sprGhostBullet;
+
+lighterFlashColor = make_color_rgb( 0, 255, 255 );
+lighterRedComponentMin = 0;
+lighterRedComponentMax = 0;
+lighterGreenComponentMin = 150;
+lighterGreenComponentMax = 255;
+lighterBlueComponentMin = 255;
+lighterBlueComponentMax = 255;
 </string>
           </argument>
         </arguments>

@@ -66,6 +66,14 @@ weaponFallOffsetY = -2;
 
 // Projectile sprites.
 bulletSprite = sprBullet;
+
+lighterFlashColor = c_yellow;
+lighterRedComponentMin = 255;
+lighterRedComponentMax = 255;
+lighterGreenComponentMin = 150;
+lighterGreenComponentMax = 255;
+lighterBlueComponentMin = 0;
+lighterBlueComponentMax = 0;
 </string>
           </argument>
         </arguments>

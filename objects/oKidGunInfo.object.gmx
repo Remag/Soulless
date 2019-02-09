@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weaponNormalSprite = sprGun;
+            <string>uniqueId = 6;
+name = "The Gun";
+description = "For all the good it will do to you"
+
+weaponNormalSprite = sprGun;
 weaponJumpSprite = sprGunTilted;
 weaponEffect = scrShootKidGun;
 </string>
