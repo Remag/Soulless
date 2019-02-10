@@ -22,6 +22,7 @@ void main()
 
 //uniform vec2 iResolution;
 uniform float iTime;
+uniform float uIntensity;
 uniform vec4 uvs;
 
 varying vec2 v_vTexcoord;
@@ -100,36 +101,28 @@ float noise(vec3 m) {
 void main()
 {
     vec2 uv = (v_vTexcoord - uvs.xy) * uvs.zw;
-    uv.y = uv.y * 0.1 + 0.45; 
-    uv.x = uv.x * 0.8 + 0.1; 
-    vec2 p = vec2( mod( uv.x * 5., 1.0 ), uv.y ); /// 16. * 9.;// * 736. / 32.;  
+    uv.y = uv.y * 0.2 + 0.4; 
+    uv.x = uv.x * 0.95 + 0.025; 
+    vec2 p = vec2( uv.x * 5., uv.y ); /// 16. * 9.;// * 736. / 32.;  
     uv = uv * 2. -1.;  
  
   vec3 p3 = vec3(p, iTime*0.4);    
     
-  float intensity = noise(vec3(p3*8.0+8.0)) * 1.5;
+  float intensity = noise(vec3(p3*8.0+8.0)) * uIntensity;
                           
   float t = clamp((uv.x * -uv.x * 0.16) + 0.15, 0., 1.);                         
   float y = abs(intensity * -t + uv.y );
     
   float g = pow(y, 0.2);
-  float colorProgress = mod( p.x * 3.0 - iTime * 20., 3.0 );
-  vec3 col;
-    if( colorProgress < 1.0 ) {
-        col = mix( vec3(1.48, 1.70, 1.70), vec3(1.70, 1.48, 1.70), colorProgress );
-    } else if( colorProgress < 2.0 ) {
-        col = mix( vec3(1.70, 1.48, 1.70), vec3(1.70, 1.70, 1.48), colorProgress - 1.0 );
-    } else {
-         col = mix( vec3(1.70, 1.70, 1.48), vec3(1.48, 1.70, 1.70), colorProgress - 2.0 );
-    }
+  //float colorProgress = mod( p.x * 3.0 - iTime * 20., 3.0 );
+  vec3 col = vec3( 1.48 ) + v_vColour.rgb * 0.22;
                           
   //vec3 col = vec3(1.48, 1.70, 1.70);
   col = col * -g + col;                    
   col = col * col;
   col = col * col;
   col = col * col;
-  
-    gl_FragColor = vec4( col, v_vColour.a);
+  gl_FragColor = vec4( col, v_vColour.a );
 }
 
 

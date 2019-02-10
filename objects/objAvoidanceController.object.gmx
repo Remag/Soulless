@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 5775;
+//t = 12290;
 
 segment = 1;
 
@@ -95,6 +95,65 @@ if( global.debugMode ) {
             <string>///Обнуление разного
 shake = 0;
 angle = lerp(angle, 0, 0.1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Блоки по гейтам.
+if( t &gt;= 0 ) {
+    if( !instance_exists( objCornerBlock ) ) {
+        instance_create( 0, 0, objCornerBlock );
+        instance_create( 768, 0, objCornerBlock );
+        instance_create( 0, 608 - 32, objCornerBlock );
+        instance_create( 768, 608 - 32, objCornerBlock );
+        instance_create( 32, 0, objGate3Block );
+        instance_create( 32, 608 - 32, objGate3Block );
+        var obj = instance_create( 0, 608 - 32, objGate3Block );
+        obj.image_xscale = ( 608 - 64 ) / 736;
+        obj.image_angle = 90;
+        obj = instance_create( 800 - 32, 608 - 32, objGate3Block );
+        obj.image_xscale = ( 608 - 64 ) / 736;
+        obj.image_angle = 90;
+    }
+} 
+// Gate 3.
+if( t &gt;= 11540 &amp;&amp; t &lt; 18545 ) {
+    if( !instance_exists( objGate3ShaderBlock ) ) {
+        instance_create( 16, 16, objGate3ShaderBlock );
+        instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_xscale = ( 608 - 32 ) / 32;
+        obj.image_angle = 90;
+        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_xscale = ( 608 - 32 ) / 32;
+        obj.image_angle = 90;
+        
+        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_angle = -135;
+        obj = instance_create( 800 - 16, 16, objGate3ShaderBlock );
+        obj.image_angle = 45;
+        obj = instance_create( 16, 16, objGate3ShaderBlock );
+        obj.image_angle = 135;
+        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_angle = -45;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -2176,6 +2235,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnYMax = 170;
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 0, 255, 255 );
+        with( objGate3ShaderBlock ) {
+            image_blend = other.seg19SpawnColor;
+        }
     } else if( tPhase == 192 ) {
         seg19SpawnXMin = 0;
         seg19SpawnXMax = 50;
@@ -2184,6 +2246,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19CircleCount = 35;
         seg19SpawnColor = make_colour_hsv( 125, 255, 255 );
         with( objAlgA19Knife ) {
+            image_blend = other.seg19SpawnColor;
+        }
+        with( objGate3ShaderBlock ) {
             image_blend = other.seg19SpawnColor;
         }
     } else if( tPhase == 192 * 2 ) {
@@ -2196,6 +2261,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         with( objAlgA19Knife ) {
             image_blend = other.seg19SpawnColor;
         }
+        with( objGate3ShaderBlock ) {
+            image_blend = other.seg19SpawnColor;
+        }
     } else if( tPhase == 192 * 3 ) {
         seg19SpawnXMin = 0;
         seg19SpawnXMax = 800;
@@ -2204,6 +2272,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19CircleCount = 40;
         seg19SpawnColor = make_colour_hsv( 190, 255, 255 );
         with( objAlgA19Knife ) {
+            image_blend = other.seg19SpawnColor;
+        }
+        with( objGate3ShaderBlock ) {
             image_blend = other.seg19SpawnColor;
         }
     }
@@ -2230,6 +2301,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
                     obj.image_xscale = scale;
                     obj.image_yscale = scale;
                 }
+                with( objGate3ShaderBlock ) {
+                    self.shaderIntensity = 1.5;
+                }
             }
         }
     } else {
@@ -2249,6 +2323,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
                     obj.image_blend = seg19SpawnColor;
                     obj.image_xscale = scale;
                     obj.image_yscale = scale;
+                }
+                with( objGate3ShaderBlock ) {
+                    self.shaderIntensity = 1.5;
                 }
             }
         }
@@ -2368,6 +2445,11 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    if( tPhase == 0 ) {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_rgb( 255, 255, 255 );
+        } 
+    }
     segment = 20;
 }
 </string>
@@ -2449,7 +2531,6 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.speed = random_range( 9, 10 );
         obj.direction = random_range( 180, 360 );
         obj.image_angle = obj.direction;
-        obj.image_blend = make_colour_hsv( 188, 255, 255 );
         
         var obj = instance_create( random_range( 0, 800 ), 608, objAlgSquareEffect );
         obj.direction = random_range( 60, 120 );
@@ -2459,6 +2540,11 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.image_index = 2;
         obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
     }
+    
+    with( objGate3ShaderBlock ) {
+        self.shaderIntensity = 1.5;
+        self.targetColor = make_colour_rgb( 255, 255, 255 );
+    } 
 }
 </string>
           </argument>
@@ -2548,6 +2634,31 @@ if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( 192, 255, random_range( 40, 50 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+        }
+    }
+    
+    if( phaseT == 0 ) {
+        with( objGate3ShaderBlock ) {
+            if( image_angle == 90 || image_angle == 45 || image_angle == -135 ) {
+                self.targetColor = make_colour_hsv( 192, 255, 255 );
+            } else {
+                self.targetColor = make_colour_hsv( 135, 255, 255 );
+            }
+        } 
+    }
+    if( phaseT % 48 == 0 ) {
+        with( objGate3ShaderBlock ) {
+            if( image_angle == 90 || image_angle == 45 || image_angle == -135 ) {
+                self.shaderIntensity = 1.5;
+                self.shaderSpeed = 1 / 50;
+            }
+        }
+    } else if( phaseT % 48 == 24 ) {
+        with( objGate3ShaderBlock ) {
+            if( image_angle != 90 &amp;&amp; image_angle != 45 &amp;&amp; image_angle != -135 ) {
+                self.shaderIntensity = 1.5;
+                self.shaderSpeed = 1 / 50;
+            }
         }
     }
 
@@ -2645,6 +2756,36 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( self.currentHue, 255, random_range( 30, 40 ) );
         }
     }
+    if( t == 13840 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 50;
+            self.shaderFriction = - 4 / 50 / ( 14035 - 13840 );
+        }
+    } else if( t == 14035 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderFriction *= -1;
+        }
+    } else if( t == 14224 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderFriction = 0;
+        }
+    }
+    var hue = 0;
+    with( oRedireS23CircleController ) {
+        hue = self.currentHue;
+    }
+    if( t &lt; 13890 ) {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_hsv( hue, 255, 255 );
+            self.shaderIntensity = 1.5;
+        }
+    } else {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = 0;
+            image_blend = make_colour_hsv( hue, 255, 255 );
+            self.shaderIntensity = 1.5;
+        }
+    }
 }
 </string>
           </argument>
@@ -2733,6 +2874,12 @@ if( t &gt;= 14225 &amp;&amp; t &lt; 14700 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( 166, 255, 40 );
         } else {
             obj.image_blend = make_colour_hsv( 138, 255, 40 );
+        }
+        
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 50;
+            self.targetColor = make_colour_hsv( colour_get_hue( obj.image_blend ), 255, 255 );
+            self.shaderIntensity = 1.5;
         }
     }
     
@@ -2832,6 +2979,24 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    if( phaseT &lt; 96 * 4 ) {
+        if( phaseT % 96 == 0 ) {
+            with( objGate3ShaderBlock ) {
+                self.shaderSpeed = 1 / 50;
+                self.targetColor = make_colour_hsv( random( 255 ), 255, 255 );
+                self.shaderIntensity = 1.25;
+            }
+        }
+    } else {
+        if( phaseT % 48 == 0 ) {
+            with( objGate3ShaderBlock ) {
+                self.shaderSpeed = 1 / 50;
+                self.targetColor = make_colour_hsv( random( 255 ), 255, 255 );
+                self.shaderIntensity = 1.25;
+            }
+        }
+    }
+    
     segment = 24;
 }
 </string>
@@ -2886,6 +3051,15 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = choose( make_colour_rgb( 40, 0, 0 ), make_colour_rgb( 0, 40, 0 ), make_colour_rgb( 0, 0, 40 ) );
             obj.image_index = 2;
             obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        }
+    }
+    
+    if( ( t - 15850 ) % 96 == 14 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 10;
+            self.targetColor = make_colour_hsv( choose( 0, 255 / 3, 510 / 3 ), 255, 255 );
+            self.shaderIntensity = 1.5;
+            self.shaderFadeTime = 250;
         }
     }
 }
@@ -2959,6 +3133,19 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( 0, 255, random_range( 40, 80 ) );
             obj.image_index = 1;
             obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+        }
+    }
+    if( t == 16240 ) {
+        with( objGate3ShaderBlock ) {
+            image_blend = make_colour_hsv( 0, 255, 255 );
+        }
+    }
+    if( t % 48 == 16 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 50;
+            self.targetColor = make_colour_hsv( 0, 255, 255 );
+            self.shaderIntensity = 1.5;
+            self.shaderFadeTime = 25;
         }
     }
     
@@ -3048,16 +3235,41 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( 135, 255, 255 );
         }
         obj.image_index = 1;
+        obj.image_angle = random( 360 );
         obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
     }
     if( t == 17755 ) {
         with( objAlgA27SquareEffect ) {
-            if( colour_get_hue( image_blend ) == 135 ) {
-                hspeed = -20;
+            instance_destroy();
+        }
+        repeat( 150 ) {
+            var obj = instance_create( 400, 304, objAlgA29SquareEffect );
+            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+            obj.speed = random_range( 0.1, 16 );
+            obj.friction = -0.25;
+            obj.image_index = 2;
+            obj.direction = random( 360 );
+            obj.image_blend = make_colour_hsv( choose( 135, 192 ), 255, random_range( 35, 60 ) );
+        }
+    }
+    
+    if( t &lt; 17401 ) {
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 50;
+            self.targetColor = make_colour_hsv( 160, 205, 255 );
+            self.shaderIntensity = 1.5;
+            self.shaderFadeTime = 25;
+        }
+    } else {
+        with( objGate3ShaderBlock ) {
+            self.shaderSpeed = 1 / 50;
+            self.shaderIntensity = 1.5;
+            self.shaderFadeTime = 25;
+            if( image_angle == 90 || image_angle == 45 || image_angle == -135 ) {
+                self.targetColor = make_colour_hsv( 0, 255, 255 );
             } else {
-                hspeed = 20;
+                self.targetColor = make_colour_hsv( 160, 205, 255 );
             }
-            vspeed = ( 304 - 32 - 96 ) / 20;
         }
     }
 }
@@ -3092,95 +3304,120 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
     var effectColorVal = random_range( 35, 60 );
     var scale = 0.85 * 15 / 18;
     seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
-    //if( t % 10 != 0 ) {
-        if( t &lt; 17967 ) {
-            var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
-            obj.dirInc = 2;
-            obj.image_blend = make_colour_hsv( 192, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-            
-            obj = instance_create( 0, random( 608 ), objAlgA29SquareEffect );
-            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
-            obj.speed = 6;
-            obj.friction = -0.5;
-            obj.image_index = 2;
-            obj.direction = random_range( -20, 20 );
-            obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
-            
-        } else if( t &lt; 18159 ) {
-            var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
-            obj.speed = seg29Speed;
-            obj.direction = 90;
-            obj.dirInc = -2;
-            obj.image_blend = make_colour_hsv( 135, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-            
-            obj = instance_create( 800, random( 608 ), objAlgA29SquareEffect );
-            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
-            obj.speed = 6;
-            obj.friction = -0.5;
-            obj.image_index = 2;
-            obj.direction = random_range( 160, 200 );
-            obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
-        }
-        if( t &gt;= 18130 &amp;&amp; t &lt; 18351 &amp;&amp; t % 5 != 0 ) {
-            var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18159 ) / ( 18351 - 18159 ) );
-            var spawnDir = 45;
-            var spawnFramePoint = 80;
-            var obj = instance_create( 800, spawnY, objAlgA29Frag );
-            obj.speed = seg29Speed;
-            obj.direction = spawnDir;
-            obj.framePoint = spawnFramePoint;
-            obj.dirInc = 180 / spawnFramePoint;
-            obj.image_blend = make_colour_hsv( 192, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-            
-            obj = instance_create( choose( 0, 800 ), random( 608 ), objAlgA29SquareEffect );
-            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
-            obj.speed = 6;
-            obj.friction = -0.5;
-            obj.image_index = 2;
-            if( obj.x &lt; 400 ) {
-                obj.direction = random_range( -20, 20 );
-                obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
-            } else {
-                obj.direction = random_range( 160, 200 );
-                obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
-            }
-        }
-        if( t &gt;= 18330 &amp;&amp; t &lt; 18480 &amp;&amp; t % 5 != 0 ) {
-            var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
-            var spawnDir = 135; 
-            var spawnFramePoint = 80;
-            var obj = instance_create( 0, spawnY, objAlgA29Frag );
-            obj.speed = seg29Speed;
-            obj.direction = spawnDir;
-            obj.framePoint = spawnFramePoint;
-            obj.dirInc = -180 / spawnFramePoint;
-            obj.image_blend = make_colour_hsv( 135, 255, 255 );
-            obj.image_xscale = scale;
-            obj.image_yscale = scale;
-            
-            obj = instance_create( choose( 0, 800 ), random( 608 ), objAlgA29SquareEffect );
-            obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
-            obj.speed = 6;
-            obj.friction = -0.5;
-            obj.image_index = 2;
-            if( obj.x &lt; 400 ) {
-                obj.direction = random_range( -20, 20 );
-                obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
-            } else {
-                obj.direction = random_range( 160, 200 );
-                obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
-            }
-        }
-    //}
+    if( t &lt; 17967 ) {
+        var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        obj.image_angle = obj.direction;
+        obj.dirInc = 2;
+        obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    } else if( t &lt; 18159 ) {
+        var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
+        obj.speed = seg29Speed;
+        obj.direction = 90;
+        obj.image_angle = obj.direction;
+        obj.dirInc = -2;
+        obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    }
+    if( t &gt;= 18130 &amp;&amp; t &lt; 18351 &amp;&amp; t % 5 != 0 ) {
+        var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18159 ) / ( 18351 - 18159 ) );
+        var spawnDir = 45;
+        var spawnFramePoint = 80;
+        var obj = instance_create( 800, spawnY, objAlgA29Frag );
+        obj.speed = seg29Speed;
+        obj.direction = spawnDir;
+        obj.image_angle = obj.direction;
+        obj.framePoint = spawnFramePoint;
+        obj.dirInc = 180 / spawnFramePoint;
+        obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    }
+    if( t &gt;= 18330 &amp;&amp; t &lt; 18480 &amp;&amp; t % 5 != 0 ) {
+        var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
+        var spawnDir = 135; 
+        var spawnFramePoint = 80;
+        var obj = instance_create( 0, spawnY, objAlgA29Frag );
+        obj.speed = seg29Speed;
+        obj.direction = spawnDir;
+        obj.image_angle = obj.direction;
+        obj.framePoint = spawnFramePoint;
+        obj.dirInc = -180 / spawnFramePoint;
+        obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
+    }
 
+    // Effects.
+    if( t &lt; 17967 ) {        
+        var obj = instance_create( random( 800 ), 0, objAlgA29SquareEffect );
+        obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        obj.speed = 6;
+        obj.friction = -0.5;
+        obj.image_index = 2;
+        obj.direction = -90 + random_range( -20, 20 );
+        obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
+    } else if( t &lt; 18159 ) {        
+        var obj = instance_create( random( 800 ), 0, objAlgA29SquareEffect );
+        obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        obj.speed = 6;
+        obj.friction = -0.5;
+        obj.image_index = 2;
+        obj.direction = -90 + random_range( -20, 20 );
+        obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
+    } else if( t &lt; 18351 ) {
+        var spawnX = random( 1408 );
+        var obj = instance_create( min( 800, spawnX ), max( 0, spawnX - 800 ), objAlgA29SquareEffect );
+        obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        obj.speed = 6;
+        obj.friction = -0.5;
+        obj.image_index = 2;
+        obj.direction = -135 + random_range( -20, 20 );
+        obj.image_blend = make_colour_hsv( 192, 255, effectColorVal );
+    } else if( t &lt; 18520 ) {
+        var spawnX = random( 1408 );
+        var obj = instance_create( max( spawnX - 608, 0 ), max( 608 - spawnX, 0 ), objAlgA29SquareEffect );
+        obj.rotationSpeed = random_range( 10, 20 ) * choose( -1, 1 );
+        obj.speed = 6;
+        obj.friction = -0.5;
+        obj.image_index = 2;
+        obj.direction = -45 + random_range( -20, 20 );
+        obj.image_blend = make_colour_hsv( 135, 255, effectColorVal );
+    }
+    
+    if( t == 17775  ) {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_hsv( 192, 255, 255 );
+        }
+    } else if( t == 17967 ) {        
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_hsv( 135, 255, 255 );
+        }
+    } else if( t == 18159 ) {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_hsv( 192, 255, 255 );
+        }
+    } else if( t == 18351 ) {
+        with( objGate3ShaderBlock ) {
+            self.targetColor = make_colour_hsv( 135, 255, 255 );
+        }
+    }
+    
+    with( objGate3ShaderBlock ) {
+        self.shaderSpeed = 1 / 10;
+        self.shaderIntensity = 1.5;
+    }
+    
+    
+    if( t == 18520 ) {
+        with( objGate3ShaderBlock ) {
+            self.alphaStep = -1 / 25;
+        }
+    }
     segment = 28;
 }
 </string>

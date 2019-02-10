@@ -151,7 +151,9 @@
       <sprite>sprites\sprSlideBlockR</sprite>
       <sprite>sprites\sprSlideBlockL</sprite>
       <sprite>sprites\sprSaveBlocker</sprite>
-      <sprite>sprites\sprGate3Block</sprite>
+      <sprite>sprites\sprCornerBlock</sprite>
+      <sprite>sprites\sprEdgeBlock</sprite>
+      <sprite>sprites\sprShaderBlock</sprite>
     </sprites>
     <sprites name="slopes">
       <sprite>sprites\sprSlopeBlock</sprite>
@@ -250,7 +252,6 @@
       <sprite>sprites\sprAlgCircle</sprite>
       <sprite>sprites\sprAlgLaser</sprite>
       <sprite>sprites\sprAlgSquare</sprite>
-      <sprite>sprites\sprAlgSquareLeehee</sprite>
     </sprites>
     <sprites name="Redire">
       <sprite>sprites\sprRedireSphereGrey</sprite>
@@ -266,7 +267,6 @@
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\spriteBackground</sprite>
-    <sprite>sprites\sprShaderBlock</sprite>
     <sprite>sprites\sprite135</sprite>
     <sprites name="MainMenu">
       <sprite>sprites\sprSoullessLabel</sprite>
@@ -530,6 +530,8 @@
       <object>objects\objBossBlock</object>
       <object>objects\objSaveBlocker</object>
       <object>objects\objGate3Block</object>
+      <object>objects\objCornerBlock</object>
+      <object>objects\objGate3ShaderBlock</object>
     </objects>
     <objects name="slopes">
       <object>objects\objSlope</object>
