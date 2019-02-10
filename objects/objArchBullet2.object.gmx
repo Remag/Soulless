@@ -187,6 +187,11 @@ if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 736 ) {
 if( createdTime &gt; 0 ) {
     createdTime--;
 }
+
+if( image_index == 3 ) {
+    var trail = instance_create( x, y, oRedireCardTrail );
+    trail.image_angle = image_angle;
+}
 </string>
           </argument>
         </arguments>

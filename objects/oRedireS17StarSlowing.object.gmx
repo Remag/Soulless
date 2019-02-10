@@ -30,6 +30,8 @@ var scale = random_range( 0.4, 1 ) * 8 / 15;
 image_xscale = scale;
 image_yscale = scale;
 image_angle = random( 360 );
+
+rightDir = false;
 </string>
           </argument>
         </arguments>
@@ -52,7 +54,11 @@ image_angle = random( 360 );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = lerp( 1, 14, x / 800 );
+            <string>if( rightDir ) {
+    speed = lerp( 14, 1, x / 800 );
+} else {
+    speed = lerp( 1, 14, x / 800 );
+}
 image_angle += 1;
 </string>
           </argument>

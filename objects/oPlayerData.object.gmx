@@ -45,6 +45,14 @@ itemUnlocks[2] = 0;
 itemUnlocks[3] = 0;
 itemUnlocks[4] = 0;
 itemUnlocks[5] = 0;
+
+// Weapons.
+itemUnlocks[6] = 1;
+itemUnlocks[7] = 0;
+itemUnlocks[8] = 0;
+itemUnlocks[9] = 0;
+itemUnlocks[10] = 0;
+itemUnlocks[11] = 0;
 </string>
           </argument>
         </arguments>

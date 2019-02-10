@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 12290;
+//t = 17775;
 
 segment = 1;
 
@@ -1196,9 +1196,9 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 96 * 6 ) {
         var s8LeftSpawner = instance_create( 0, 0, oRedireS8LeftWaveSpawner );
-        s8LeftSpawner.spawnPeriod = 2.2;
+        s8LeftSpawner.spawnPeriod = 2.3;
         var s8RightSpawner = instance_create( 0, 0, oRedireS8RightWaveSpawner );
-        s8RightSpawner.spawnPeriod = 2.2;
+        s8RightSpawner.spawnPeriod = 2.3;
     
     } else if( phaseT == 96 * 8 - 96 ) {
         with( oRedireSpawner ) { instance_destroy(); }
@@ -1943,14 +1943,28 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) 
     
     // Side spawners.
     if( t == 10380 ) {
-        instance_create( 800, 100, oRedireS16SideSpawner );
-        instance_create( 800, 300, oRedireS16SideSpawner );
-        instance_create( 800, 500, oRedireS16SideSpawner );
+        if( objPlayer.x &lt; 410 ) {
+            instance_create( 800, 100, oRedireS16SideSpawner );
+            instance_create( 800, 300, oRedireS16SideSpawner );
+            instance_create( 800, 500, oRedireS16SideSpawner );
+        } else {
+            var s16Spawner1 = instance_create( 0, 100, oRedireS16SideSpawner );
+            var s16Spawner2 = instance_create( 0, 300, oRedireS16SideSpawner );
+            var s16Spawner3 = instance_create( 0, 500, oRedireS16SideSpawner );
+            s16Spawner1.spawnDir = 0;
+            s16Spawner2.spawnDir = 0;
+            s16Spawner3.spawnDir = 0;
+        }
     }
     
     // Clean up.
+    if( t == 10715 ) {
+        with( oRedireS16SideSpawner ) {
+            instance_destroy();
+        }
+    }
     if( t == 10763 ) {
-        with( oRedireSpawner ) {
+        with( oRedireS16TopSpawner ) {
             instance_destroy();
         }
     }
@@ -2020,9 +2034,19 @@ if( t &gt;= 10764 &amp;&amp; t &lt; 11148 &amp;&amp; instance_exists(objPlayer) 
     
     segment = 17;
     if( t == 10764 ) {
-        instance_create( 800, 100, oRedireS17SideSpawner );
-        instance_create( 800, 300, oRedireS17SideSpawner );
-        instance_create( 800, 500, oRedireS17SideSpawner );
+        if( objPlayer.x &lt; 450 ) {
+            instance_create( 800, 100, oRedireS17SideSpawner );
+            instance_create( 800, 300, oRedireS17SideSpawner );
+            instance_create( 800, 500, oRedireS17SideSpawner );
+        } else {
+            var s17Spawner1 = instance_create( 0, 100, oRedireS17SideSpawner );
+            var s17Spawner2 = instance_create( 0, 300, oRedireS17SideSpawner );
+            var s17Spawner3 = instance_create( 0, 500, oRedireS17SideSpawner );
+            s17Spawner1.spawnDir = 0;
+            s17Spawner2.spawnDir = 0;
+            s17Spawner3.spawnDir = 0;
+        }
+        
         instance_create( objPlayer.x, 0, oRedireS17TopSpawner );
     }
     
@@ -3524,6 +3548,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
     if( t == 19686 ) {
         with( objAlgA30Sphere ) {
             self.despawn = true;
+            self.shouldKill = false;
         }
     } else if( t == 19696 ) {
         with( objAlgA30Sphere ) {

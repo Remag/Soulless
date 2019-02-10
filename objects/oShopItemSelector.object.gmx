@@ -26,20 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>var skinList = instance_create( 0, 0, oShopItemList );
-skinList.itemInfo[0] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[1] = instance_create( 0, 0, oGhostSkinInfo );
-skinList.itemInfo[2] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[3] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[4] = instance_create( 0, 0, oKidSkinInfo );
-skinList.itemInfo[5] = instance_create( 0, 0, oKidSkinInfo );
+for( var i = 0; i &lt; 6; i++ ) {
+    skinList.itemInfo[i] = instance_create( 0, 0, scrGetSkinInfoById( i ) );
+}
 itemLists[0] = skinList;
+
+var weaponList = instance_create( 0, 0, oShopItemList );
+for( var i = 0; i &lt; 6; i++ ) {
+    weaponList.itemInfo[i] = instance_create( 0, 0, scrGetWeaponInfoById( i + 6 ) );
+}
+itemLists[1] = weaponList;
 
 currentSection = oPlayerData.lastShopSection;
 currentItem = oPlayerData.lastShopItem;
 maxUnlockedItem = scrGetMaxUnlockedItem( currentSection );
 
-sectionNames[0] = "Skins";
-//sectionNames[1] = "Weapons";
+sectionNames[0] = "Characters";
+sectionNames[1] = "Weapons";
 
 isActive = true;
 
@@ -176,6 +179,17 @@ for( var i = 0; i &lt; itemCount; i++ ) {
         draw_rectangle( segmentX + 16, segmentY + 16, segmentX + 78, segmentY + 78, true );
         draw_set_alpha( 1 );
     }
+}
+
+// Price tag.
+if( currentItem != -1 ) {
+    var nameX = x + 96 * 1.5;
+    var nameY = y + 96 * 2 + 44;
+    draw_set_color( c_white ); 
+    draw_set_halign( fa_center );
+    draw_text( nameX, nameY, itemLists[currentSection].itemInfo[currentItem].name );
+    draw_set_font( fDescription );
+    draw_text( nameX, nameY + 32, itemLists[currentSection].itemInfo[currentItem].description );
 }
 
 draw_set_color( c_white );

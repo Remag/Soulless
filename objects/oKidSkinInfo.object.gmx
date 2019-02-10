@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>uniqueId = 0;
 name = "The Kid";
+description = "Burdened by immortality"
 
 // Sprites.
 idleSprite = sprPlayerIdle;
@@ -46,6 +47,35 @@ fallAnimationSpeed = 0.5;
 groundJumpEffect = scrKidGroundJumpEffect;
 airJumpEffect = scrKidAirJumpEffect;
 deathController = oKidDeathController;
+
+// Weapon offsets.
+weaponIdleOffsetX = 4;
+weaponIdleOffsetsY[0] = -3;
+weaponIdleOffsetsY[1] = -2;
+weaponIdleOffsetsY[2] = -3;
+weaponIdleOffsetsY[3] = -3;
+
+weaponRunOffsetX = 5;
+weaponRunOffsetY = -3;
+
+weaponJumpOffsetX = 3;
+weaponJumpOffsetY = -5;
+
+weaponFallOffsetX = 4;
+weaponFallOffsetY = -2;
+
+// Projectile sprites.
+bulletSprite = sprBullet;
+
+lighterFlashColor = c_yellow;
+lighterRedComponentMin = 255;
+lighterRedComponentMax = 255;
+lighterGreenComponentMin = 150;
+lighterGreenComponentMax = 255;
+lighterBlueComponentMin = 0;
+lighterBlueComponentMax = 0;
+lighterMajorDelta = 4;
+lighterMinorDelta = 2;
 </string>
           </argument>
         </arguments>

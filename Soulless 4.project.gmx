@@ -124,6 +124,11 @@
     <sound>sound\sndBoom</sound>
     <sound>sound\sndWoosh</sound>
     <sound>sound\sndGhostDeath</sound>
+    <sound>sound\sndDemonDeath</sound>
+    <sound>sound\sndMenuSelect</sound>
+    <sound>sound\sndLighterUse</sound>
+    <sound>sound\sndLighterUse2</sound>
+    <sound>sound\sndGlitchDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -137,7 +142,6 @@
       <sprite>sprites\sprPlayerMaskFlip</sprite>
       <sprite>sprites\sprPlayerSliding</sprite>
       <sprite>sprites\sprBow</sprite>
-      <sprite>sprites\sprBullet</sprite>
       <sprite>sprites\sprBlood</sprite>
     </sprites>
     <sprites name="blocks">
@@ -346,6 +350,30 @@
         <sprite>sprites\sprPlayerJump</sprite>
         <sprite>sprites\sprPlayerFall</sprite>
       </sprites>
+      <sprite>sprites\sprItemChangeParticle</sprite>
+      <sprites name="Demon">
+        <sprite>sprites\sprDemonIdle</sprite>
+        <sprite>sprites\sprDemonRun</sprite>
+        <sprite>sprites\sprDemonJump</sprite>
+        <sprite>sprites\sprDemonFall</sprite>
+        <sprite>sprites\sprDemonBlood</sprite>
+        <sprite>sprites\sprDemonFire</sprite>
+      </sprites>
+      <sprites name="Glitch">
+        <sprite>sprites\sprGlitchKidIdle</sprite>
+        <sprite>sprites\sprGlitchKidFall</sprite>
+        <sprite>sprites\sprGlitchKidRun</sprite>
+        <sprite>sprites\sprGlitchKidJump</sprite>
+        <sprite>sprites\sprGlitchBlood</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Weapons">
+      <sprite>sprites\sprGun</sprite>
+      <sprite>sprites\sprGunTilted</sprite>
+      <sprite>sprites\sprGadget</sprite>
+      <sprite>sprites\sprBullet</sprite>
+      <sprite>sprites\sprSpark</sprite>
+      <sprite>sprites\sprBigSpark</sprite>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
@@ -467,6 +495,9 @@
       <script>scripts\scrIsItemUnlocked.gml</script>
       <script>scripts\scrIsItemEquipped.gml</script>
       <script>scripts\scrEquipItem.gml</script>
+      <script>scripts\scrCreateItemChangeParticles.gml</script>
+      <script>scripts\scrSetCurrentSkin.gml</script>
+      <script>scripts\scrSetCurrentWeapon.gml</script>
     </scripts>
     <scripts name="Skins">
       <scripts name="JumpEffects">
@@ -478,7 +509,14 @@
       <script>scripts\scrGetSkinInfoById.gml</script>
     </scripts>
     <scripts name="Weapons">
+      <scripts name="ShootEffects">
+        <script>scripts\scrShootKidGun.gml</script>
+        <script>scripts\scrStrikeLighter.gml</script>
+        <script>scripts\scrChangeCurrentSkin.gml</script>
+      </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
+      <script>scripts\scrDrawWeapon.gml</script>
+      <script>scripts\scrGetNextOwnedSkinId.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -495,6 +533,7 @@
     <font>fonts\fNotifications</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fAttackNumber</font>
+    <font>fonts\fDescription</font>
     <font>fonts\fPracticeHint</font>
     <font>fonts\fDefault12</font>
     <font>fonts\fPracticeTitle</font>
@@ -515,7 +554,6 @@
       <object>objects\objPlayerStart</object>
       <object>objects\objPlayer</object>
       <object>objects\objBow</object>
-      <object>objects\objBullet</object>
       <object>objects\objBasePlayer</object>
     </objects>
     <objects name="blocks">
@@ -724,6 +762,16 @@
         <object>objects\oGhostDeathController</object>
         <object>objects\oGhostDeathParticle</object>
       </objects>
+      <objects name="Demon">
+        <object>objects\oDemonSkinInfo</object>
+        <object>objects\oDemonDeathController</object>
+        <object>objects\oDemonBlood</object>
+      </objects>
+      <objects name="Glitch">
+        <object>objects\oGlitchKidInfo</object>
+        <object>objects\oGlitchKidDeathController</object>
+        <object>objects\oGlitchBlood</object>
+      </objects>
       <object>objects\oWhiteSkinInfo</object>
       <object>objects\oOutlineSkinInfo</object>
     </objects>
@@ -731,13 +779,24 @@
       <object>objects\oWeaponInfo</object>
       <objects name="Gun">
         <object>objects\oKidGunInfo</object>
+        <object>objects\objBullet</object>
+      </objects>
+      <objects name="Lighter">
+        <object>objects\oOldLighterInfo</object>
+        <object>objects\oLighterSpark</object>
+        <object>objects\oLighterFlash</object>
+      </objects>
+      <objects name="Chameleon">
+        <object>objects\oChameleonDeviceInfo</object>
       </objects>
     </objects>
     <objects name="Shop">
       <object>objects\oShopTitle</object>
       <object>objects\oShopItemSelector</object>
       <object>objects\oShopViewKid</object>
+      <object>objects\oShopDummy</object>
       <object>objects\oShopItemList</object>
+      <object>objects\oItemChangeParticle</object>
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objAvatar</object>
@@ -843,6 +902,9 @@
         <object>objects\oRedireS8RightFountainSpawner</object>
         <object>objects\oRedireS8LeftWaveSpawner</object>
         <object>objects\oRedireS8RightWaveSpawner</object>
+      </objects>
+      <objects name="Segment11">
+        <object>objects\oRedireCardTrail</object>
       </objects>
     </objects>
     <objects name="Algeran">

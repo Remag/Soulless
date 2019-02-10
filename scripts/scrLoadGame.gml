@@ -48,7 +48,11 @@ if (loadFile)
         // Skin info.
         var vCurrentSkinId = ds_map_find_value( saveMap, "currentSkin" );
         if( !is_undefined( vCurrentSkinId ) ) {
-            oPlayerData.currentSkin = instance_create( 0, 0, scrGetSkinInfoById( vCurrentSkinId ) );
+            scrSetCurrentSkin( vCurrentSkinId );
+        }
+        var vCurrentWeaponId = ds_map_find_value( saveMap, "currentWeapon" );
+        if( !is_undefined( vCurrentWeaponId ) ) {
+            scrSetCurrentWeapon( vCurrentWeaponId );
         }
         var vItemCount = array_length_1d( oPlayerData.itemUnlocks );
         for( var i = 0; i < vItemCount; i++ ) {

@@ -68,7 +68,7 @@ circleY += circleSpeedY;
 
 var obj = instance_create( x, y, objAlgSphereDisappearing );
 obj.image_blend = image_blend;
-obj.image_alpha = 0.25;
+obj.image_alpha = 0.3;
 obj.image_xscale = 0.5;
 obj.image_yscale = 0.5;
 obj.hspeed = ( circleX + circleSpeedX * 4 - x ) / 5;
