@@ -158,6 +158,10 @@
       <sprite>sprites\sprCornerBlock</sprite>
       <sprite>sprites\sprEdgeBlock</sprite>
       <sprite>sprites\sprShaderBlock</sprite>
+      <sprite>sprites\sprGate5CornerBlock</sprite>
+      <sprite>sprites\sprGate5EdgeHBlock</sprite>
+      <sprite>sprites\sprGate5EdgeVBlock</sprite>
+      <sprite>sprites\sprGate5EdgeCBlock</sprite>
     </sprites>
     <sprites name="slopes">
       <sprite>sprites\sprSlopeBlock</sprite>
@@ -569,6 +573,11 @@
       <object>objects\objSaveBlocker</object>
       <object>objects\objGate3Block</object>
       <object>objects\objCornerBlock</object>
+      <object>objects\objGate5Block</object>
+      <object>objects\objGate5CornerBlock</object>
+      <object>objects\objGate5EdgeVBlock</object>
+      <object>objects\objGate5EdgeHBlock</object>
+      <object>objects\objGate5EdgeCBlock</object>
       <object>objects\objGate3ShaderBlock</object>
     </objects>
     <objects name="slopes">
