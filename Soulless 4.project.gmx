@@ -128,6 +128,7 @@
     <sound>sound\sndMenuSelect</sound>
     <sound>sound\sndLighterUse</sound>
     <sound>sound\sndLighterUse2</sound>
+    <sound>sound\sndGlitchDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -358,6 +359,13 @@
         <sprite>sprites\sprDemonBlood</sprite>
         <sprite>sprites\sprDemonFire</sprite>
       </sprites>
+      <sprites name="Glitch">
+        <sprite>sprites\sprGlitchKidIdle</sprite>
+        <sprite>sprites\sprGlitchKidFall</sprite>
+        <sprite>sprites\sprGlitchKidRun</sprite>
+        <sprite>sprites\sprGlitchKidJump</sprite>
+        <sprite>sprites\sprGlitchBlood</sprite>
+      </sprites>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprGun</sprite>
@@ -504,9 +512,11 @@
       <scripts name="ShootEffects">
         <script>scripts\scrShootKidGun.gml</script>
         <script>scripts\scrStrikeLighter.gml</script>
+        <script>scripts\scrChangeCurrentSkin.gml</script>
       </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
+      <script>scripts\scrGetNextOwnedSkinId.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -755,6 +765,11 @@
         <object>objects\oDemonDeathController</object>
         <object>objects\oDemonBlood</object>
       </objects>
+      <objects name="Glitch">
+        <object>objects\oGlitchKidInfo</object>
+        <object>objects\oGlitchKidDeathController</object>
+        <object>objects\oGlitchBlood</object>
+      </objects>
       <object>objects\oWhiteSkinInfo</object>
       <object>objects\oOutlineSkinInfo</object>
     </objects>
@@ -768,6 +783,9 @@
         <object>objects\oOldLighterInfo</object>
         <object>objects\oLighterSpark</object>
         <object>objects\oLighterFlash</object>
+      </objects>
+      <objects name="Chameleon">
+        <object>objects\oChameleonDeviceInfo</object>
       </objects>
     </objects>
     <objects name="Shop">

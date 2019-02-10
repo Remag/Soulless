@@ -74,6 +74,8 @@ lighterGreenComponentMin = 150;
 lighterGreenComponentMax = 255;
 lighterBlueComponentMin = 255;
 lighterBlueComponentMax = 255;
+lighterMajorDelta = 4;
+lighterMinorDelta = 2;
 </string>
           </argument>
         </arguments>

@@ -8,13 +8,13 @@ if( !scrIsItemUnlocked( section, item ) ) {
         oPlayerData.currencyCount -= currentPrice;
         oPlayerData.itemUnlocks[unlockId] = true;
         scrEquipItem( section, item );
-        scrCreateItemChangeParticles( section );
+        scrCreateItemChangeParticles( section, oShopViewKid );
     } else {
         return false;
     }
 } else if( !scrIsItemEquipped( section, item ) ) {
     scrEquipItem( section, item );
-    scrCreateItemChangeParticles( section );
+    scrCreateItemChangeParticles( section, oShopViewKid );
 }
 
 return true;

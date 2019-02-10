@@ -1137,9 +1137,9 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 96 * 6 ) {
         var s8LeftSpawner = instance_create( 0, 0, oRedireS8LeftWaveSpawner );
-        s8LeftSpawner.spawnPeriod = 2.2;
+        s8LeftSpawner.spawnPeriod = 2.3;
         var s8RightSpawner = instance_create( 0, 0, oRedireS8RightWaveSpawner );
-        s8RightSpawner.spawnPeriod = 2.2;
+        s8RightSpawner.spawnPeriod = 2.3;
     
     } else if( phaseT == 96 * 8 - 96 ) {
         with( oRedireSpawner ) { instance_destroy(); }
@@ -1899,8 +1899,13 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) 
     }
     
     // Clean up.
+    if( t == 10715 ) {
+        with( oRedireS16SideSpawner ) {
+            instance_destroy();
+        }
+    }
     if( t == 10763 ) {
-        with( oRedireSpawner ) {
+        with( oRedireS16TopSpawner ) {
             instance_destroy();
         }
     }

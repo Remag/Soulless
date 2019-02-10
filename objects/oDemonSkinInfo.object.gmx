@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>uniqueId = 2;
-name = "Half-Demon";
+name = "Half-Blood";
 description = "Wonders if he has a soul to begin with"
 
 // Sprites.
@@ -74,6 +74,8 @@ lighterGreenComponentMin = 100;
 lighterGreenComponentMax = 255;
 lighterBlueComponentMin = 0;
 lighterBlueComponentMax = 0;
+lighterMajorDelta = 4;
+lighterMinorDelta = 2;
 </string>
           </argument>
         </arguments>

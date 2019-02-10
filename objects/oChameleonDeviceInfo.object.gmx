@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>oSkinInfo</parentName>
+  <parentName>oWeaponInfo</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,57 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 0;
-name = "The Kid";
-description = "Burdened by immortality"
+            <string>uniqueId = 8;
+name = "Chameleon Device";
+description = "Change your vessel"
 
-// Sprites.
-idleSprite = sprPlayerIdle;
-runSprite = sprPlayerRunning;
-jumpSprite = sprPlayerJump;
-fallSprite = sprPlayerFall;
-
-shopIconSprite = sprPlayerIdle;
-
-// Animation speed.
-idleAnimationSpeed = 0.2;
-runAnimationSpeed = 0.5;
-jumpAnimationSpeed = 0.5;
-fallAnimationSpeed = 0.5;
-
-// Animations.
-groundJumpEffect = scrKidGroundJumpEffect;
-airJumpEffect = scrKidAirJumpEffect;
-deathController = oKidDeathController;
-
-// Weapon offsets.
-weaponIdleOffsetX = 4;
-weaponIdleOffsetsY[0] = -3;
-weaponIdleOffsetsY[1] = -2;
-weaponIdleOffsetsY[2] = -3;
-weaponIdleOffsetsY[3] = -3;
-
-weaponRunOffsetX = 5;
-weaponRunOffsetY = -3;
-
-weaponJumpOffsetX = 3;
-weaponJumpOffsetY = -5;
-
-weaponFallOffsetX = 4;
-weaponFallOffsetY = -2;
-
-// Projectile sprites.
-bulletSprite = sprBullet;
-
-lighterFlashColor = c_yellow;
-lighterRedComponentMin = 255;
-lighterRedComponentMax = 255;
-lighterGreenComponentMin = 150;
-lighterGreenComponentMax = 255;
-lighterBlueComponentMin = 0;
-lighterBlueComponentMax = 0;
-lighterMajorDelta = 4;
-lighterMinorDelta = 2;
+weaponNormalSprite = sprGadget;
+weaponJumpSprite = sprGadget;
+weaponEffect = scrChangeCurrentSkin;
 </string>
           </argument>
         </arguments>

@@ -5,7 +5,7 @@ if( weaponId == 6 ) {
 } else if( weaponId == 7 ) {
     return oOldLighterInfo;
 } else if( weaponId == 8 ) {
-    return oKidGunInfo;
+    return oChameleonDeviceInfo;
 } else if( weaponId == 9 ) {
     return oKidGunInfo;
 } else if( weaponId == 10 ) {

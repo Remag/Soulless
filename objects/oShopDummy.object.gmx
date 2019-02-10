@@ -29,6 +29,11 @@
 alphaDelta = 0;
 xScale = 1;
 step = 0;
+
+weaponInfo = oPlayerData.currentWeapon;
+playerInfo = oPlayerData.currentSkin;
+sprite_index = playerInfo.idleSprite;
+image_speed = playerInfo.idleAnimationSpeed;
 </string>
           </argument>
         </arguments>
@@ -68,14 +73,27 @@ if( section == 0 ) {
     sprite_index = playerInfo.idleSprite;
     image_speed = playerInfo.idleAnimationSpeed;
 } else if( section == 1 ) {
-    playerInfo = oPlayerData.currentSkin;
     weaponInfo = oShopItemSelector.itemLists[1].itemInfo[item];
-    sprite_index = oPlayerData.currentSkin.idleSprite;
-    image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
+    var chameleonId = 8;
+    if( weaponInfo.uniqueId != chameleonId ) {
+        playerInfo = oPlayerData.currentSkin;
+        sprite_index = playerInfo.idleSprite;
+        image_speed = playerInfo.idleAnimationSpeed;
+    }
     
     step++;
     if( step % 60 == 20 ) { 
-        script_execute( weaponInfo.weaponEffect, playerInfo );
+        if( weaponInfo.uniqueId != chameleonId ) {
+            script_execute( weaponInfo.weaponEffect, playerInfo );
+        } else {
+            var nextSkinId = scrGetNextOwnedSkinId( playerInfo );
+            playerInfo = oShopItemSelector.itemLists[0].itemInfo[nextSkinId];
+            sprite_index = playerInfo.idleSprite;
+            image_speed = playerInfo.idleAnimationSpeed;  
+            var selectSound = audio_play_sound( sndMenuSelect, 0, false );
+            audio_sound_gain( selectSound, 0.5, 0 );
+            scrCreateItemChangeParticles( 0, object_index );
+        }
     }
 } else {
     step = 00;

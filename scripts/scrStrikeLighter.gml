@@ -21,7 +21,9 @@ if( sparkCount < 40 ) {
         spark.redComponent = random_range( skin.lighterRedComponentMin, skin.lighterRedComponentMax );
         spark.greenComponent = random_range( skin.lighterGreenComponentMin, skin.lighterGreenComponentMax );
         spark.blueComponent = random_range( skin.lighterBlueComponentMin, skin.lighterBlueComponentMax );
-    }
+        spark.majorDelta = skin.lighterMajorDelta;
+        spark.minorDelta = skin.lighterMinorDelta;
+     }
     
     // Flash.
     var flash = instance_create( x, y, oLighterFlash );

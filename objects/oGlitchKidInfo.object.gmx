@@ -25,17 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 0;
-name = "The Kid";
-description = "Burdened by immortality"
+            <string>uniqueId = 3;
+name = "An Error";
+description = "On a journey to fix itself"
 
 // Sprites.
-idleSprite = sprPlayerIdle;
-runSprite = sprPlayerRunning;
-jumpSprite = sprPlayerJump;
-fallSprite = sprPlayerFall;
+idleSprite = sprGlitchKidIdle;
+runSprite = sprGlitchKidRun;
+jumpSprite = sprGlitchKidJump;
+fallSprite = sprGlitchKidFall;
 
-shopIconSprite = sprPlayerIdle;
+shopIconSprite = sprGlitchKidIdle;
 
 // Animation speed.
 idleAnimationSpeed = 0.2;
@@ -46,7 +46,7 @@ fallAnimationSpeed = 0.5;
 // Animations.
 groundJumpEffect = scrKidGroundJumpEffect;
 airJumpEffect = scrKidAirJumpEffect;
-deathController = oKidDeathController;
+deathController = oGlitchKidDeathController;
 
 // Weapon offsets.
 weaponIdleOffsetX = 4;
@@ -67,15 +67,15 @@ weaponFallOffsetY = -2;
 // Projectile sprites.
 bulletSprite = sprBullet;
 
-lighterFlashColor = c_yellow;
-lighterRedComponentMin = 255;
-lighterRedComponentMax = 255;
-lighterGreenComponentMin = 150;
+lighterFlashColor = make_color_rgb( 100, 255, 0 );
+lighterRedComponentMin = 150;
+lighterRedComponentMax = 240;
+lighterGreenComponentMin = 255;
 lighterGreenComponentMax = 255;
 lighterBlueComponentMin = 0;
 lighterBlueComponentMax = 0;
-lighterMajorDelta = 4;
-lighterMinorDelta = 2;
+lighterMajorDelta = 2;
+lighterMinorDelta = 4;
 </string>
           </argument>
         </arguments>
