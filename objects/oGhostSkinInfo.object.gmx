@@ -76,6 +76,8 @@ lighterBlueComponentMin = 255;
 lighterBlueComponentMax = 255;
 lighterMajorDelta = 4;
 lighterMinorDelta = 2;
+
+laserColor = make_color_rgb( 0, 255, 255 );
 </string>
           </argument>
         </arguments>

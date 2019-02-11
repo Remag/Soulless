@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>uniqueId = 6;
 name = "The Gun";
-description = "For all the good it will do to you"
+description = "Too bad there's nothing to shoot at";
+showcaseCooldown = 60;
 
 weaponNormalSprite = sprGun;
 weaponJumpSprite = sprGunTilted;

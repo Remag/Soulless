@@ -129,6 +129,9 @@
     <sound>sound\sndLighterUse</sound>
     <sound>sound\sndLighterUse2</sound>
     <sound>sound\sndGlitchDeath</sound>
+    <sound>sound\sndWhiteDeath</sound>
+    <sound>sound\sndLaserShot</sound>
+    <sound>sound\sndLaserCharge</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -142,7 +145,6 @@
       <sprite>sprites\sprPlayerMaskFlip</sprite>
       <sprite>sprites\sprPlayerSliding</sprite>
       <sprite>sprites\sprBow</sprite>
-      <sprite>sprites\sprBlood</sprite>
     </sprites>
     <sprites name="blocks">
       <sprite>sprites\sprBlockMask</sprite>
@@ -353,6 +355,7 @@
         <sprite>sprites\sprPlayerRunning</sprite>
         <sprite>sprites\sprPlayerJump</sprite>
         <sprite>sprites\sprPlayerFall</sprite>
+        <sprite>sprites\sprBlood</sprite>
       </sprites>
       <sprite>sprites\sprItemChangeParticle</sprite>
       <sprites name="Demon">
@@ -370,14 +373,25 @@
         <sprite>sprites\sprGlitchKidJump</sprite>
         <sprite>sprites\sprGlitchBlood</sprite>
       </sprites>
+      <sprites name="WhiteKid">
+        <sprite>sprites\sprWhiteKidRun</sprite>
+        <sprite>sprites\sprWhiteKidFall</sprite>
+        <sprite>sprites\sprWhiteKidIdle</sprite>
+        <sprite>sprites\sprWhiteKidJump</sprite>
+      </sprites>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprGun</sprite>
       <sprite>sprites\sprGunTilted</sprite>
       <sprite>sprites\sprGadget</sprite>
       <sprite>sprites\sprBullet</sprite>
+      <sprite>sprites\sprGreenBullet</sprite>
+      <sprite>sprites\sprWhiteBullet</sprite>
       <sprite>sprites\sprSpark</sprite>
       <sprite>sprites\sprBigSpark</sprite>
+      <sprite>sprites\sprLaserParticle</sprite>
+      <sprite>sprites\sprLaserBorder</sprite>
+      <sprite>sprites\sprLaserCore</sprite>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
   </sprites>
@@ -517,6 +531,7 @@
         <script>scripts\scrShootKidGun.gml</script>
         <script>scripts\scrStrikeLighter.gml</script>
         <script>scripts\scrChangeCurrentSkin.gml</script>
+        <script>scripts\scrShootLaser.gml</script>
       </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
@@ -529,6 +544,7 @@
     <shader type="GLSLES">shaders\sdrSpiral1.shader</shader>
     <shader type="GLSLES">shaders\sdrGate3Electro.shader</shader>
     <shader type="GLSLES">shaders\sdrDisco.shader</shader>
+    <shader type="GLSLES">shaders\sdrGreyscale.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -781,7 +797,11 @@
         <object>objects\oGlitchKidDeathController</object>
         <object>objects\oGlitchBlood</object>
       </objects>
-      <object>objects\oWhiteSkinInfo</object>
+      <objects name="White">
+        <object>objects\oWhiteKidSkinInfo</object>
+        <object>objects\oWhiteKidDeathController</object>
+        <object>objects\oKidPreDeathImage</object>
+      </objects>
       <object>objects\oOutlineSkinInfo</object>
     </objects>
     <objects name="Weapons">
@@ -798,6 +818,14 @@
       <objects name="Chameleon">
         <object>objects\oChameleonDeviceInfo</object>
       </objects>
+      <objects name="Laser">
+        <object>objects\oKidLaserInfo</object>
+        <object>objects\oLaserChargeController</object>
+        <object>objects\oLaserChargeParticle</object>
+        <object>objects\oLaserReleaseParticle</object>
+        <object>objects\oLaserShotParticle</object>
+        <object>objects\oLaserShot</object>
+      </objects>
     </objects>
     <objects name="Shop">
       <object>objects\oShopTitle</object>
@@ -808,6 +836,7 @@
       <object>objects\oItemChangeParticle</object>
     </objects>
     <object>objects\objAvoidanceController</object>
+    <object>objects\objBlockController</object>
     <object>objects\objAvatar</object>
     <objects name="Arch">
       <object>objects\objArchEffect1</object>

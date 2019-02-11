@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 8;
+            <string>uniqueId = 9;
 name = "Chameleon Device";
-description = "Change your vessel"
+description = "Change your vessel";
+showcaseCooldown = 60;
 
 weaponNormalSprite = sprGadget;
 weaponJumpSprite = sprGadget;

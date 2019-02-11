@@ -76,6 +76,8 @@ lighterBlueComponentMin = 0;
 lighterBlueComponentMax = 0;
 lighterMajorDelta = 4;
 lighterMinorDelta = 2;
+
+laserColor = c_orange;
 </string>
           </argument>
         </arguments>

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>uniqueId = 3;
-name = "An Error";
+name = "Error";
 description = "On a journey to fix itself"
 
 // Sprites.
@@ -65,7 +65,7 @@ weaponFallOffsetX = 4;
 weaponFallOffsetY = -2;
 
 // Projectile sprites.
-bulletSprite = sprBullet;
+bulletSprite = sprGreenBullet;
 
 lighterFlashColor = make_color_rgb( 100, 255, 0 );
 lighterRedComponentMin = 150;
@@ -76,6 +76,8 @@ lighterBlueComponentMin = 0;
 lighterBlueComponentMax = 0;
 lighterMajorDelta = 2;
 lighterMinorDelta = 4;
+
+laserColor = make_color_rgb( 100, 255, 0 );
 </string>
           </argument>
         </arguments>

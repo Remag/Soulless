@@ -67,22 +67,29 @@ if( item == -1 ) {
 
 visible = true;
 if( section == 0 ) {
-    step = 10;
+    step = 0;
     playerInfo = oShopItemSelector.itemLists[0].itemInfo[item];
     weaponInfo = oPlayerData.currentWeapon;
     sprite_index = playerInfo.idleSprite;
     image_speed = playerInfo.idleAnimationSpeed;
 } else if( section == 1 ) {
     weaponInfo = oShopItemSelector.itemLists[1].itemInfo[item];
-    var chameleonId = 8;
+    var chameleonId = 9;
     if( weaponInfo.uniqueId != chameleonId ) {
         playerInfo = oPlayerData.currentSkin;
         sprite_index = playerInfo.idleSprite;
         image_speed = playerInfo.idleAnimationSpeed;
     }
+    var laserId = 8;
+    if( weaponInfo.uniqueId != laserId ) {
+        with( oLaserChargeController ) {
+            instance_destroy();
+        }
+    }
     
-    step++;
-    if( step % 60 == 20 ) { 
+    step = min( step - 1, weaponInfo.showcaseCooldown );
+    if( step &lt;= 0 ) { 
+        step = weaponInfo.showcaseCooldown;
         if( weaponInfo.uniqueId != chameleonId ) {
             script_execute( weaponInfo.weaponEffect, playerInfo );
         } else {
@@ -96,7 +103,7 @@ if( section == 0 ) {
         }
     }
 } else {
-    step = 00;
+    step = 0;
     playerInfo = oPlayerData.currentSkin;
     weaponInfo = oPlayerData.currentWeapon;
     sprite_index = oPlayerData.currentSkin.idleSprite;

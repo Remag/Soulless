@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>uniqueId = 7;
 name = "Old Lighter";
-description = "Fuel not included"
+description = "Fuel not included";
+showcaseCooldown = 60;
 
 weaponNormalSprite = sprGadget;
 weaponJumpSprite = sprGadget;

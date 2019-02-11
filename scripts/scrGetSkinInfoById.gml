@@ -9,7 +9,7 @@ if( skinId == 0 ) {
 } else if( skinId == 3 ) {
     return oGlitchKidInfo;
 } else if( skinId == 4 ) {
-    return oKidSkinInfo;
+    return oWhiteKidSkinInfo;
 } else if( skinId == 5 ) {
     return oKidSkinInfo;
 } else {

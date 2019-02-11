@@ -24,4 +24,4 @@ if( sprite_index == skin.idleSprite ) {
     weaponSprite = weapon.weaponNormalSprite;
 }
 
-draw_sprite_ext( weaponSprite, skin.uniqueId, x + offsetX * scaleX, y + offsetY, scaleX, image_yscale, 0, c_white, alpha );
+draw_sprite_ext( weaponSprite, skin.uniqueId, x + offsetX * scaleX, y + offsetY, scaleX, image_yscale, 0, image_blend, alpha );
