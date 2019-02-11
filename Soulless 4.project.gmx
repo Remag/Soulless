@@ -394,6 +394,7 @@
       <sprite>sprites\sprLaserCore</sprite>
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
+    <sprite>sprites\sprPulse</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -885,6 +886,8 @@
       <object>objects\objArchBullet25</object>
       <object>objects\objArchBullet25_fade</object>
       <object>objects\objArchBullet26</object>
+      <object>objects\objArchS47_Sniper</object>
+      <object>objects\objArchS47_Trail</object>
       <object>objects\objArchEventWall1</object>
     </objects>
     <objects name="Redire">
@@ -1055,6 +1058,7 @@
     <object>objects\objThanks</object>
     <object>objects\objInverseCircle</object>
     <object>objects\objInverseCircleController</object>
+    <object>objects\objPulseController</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">

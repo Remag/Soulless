@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>wrap = false;
+
+type = 0;
 </string>
           </argument>
         </arguments>
@@ -49,6 +51,12 @@
           <argument>
             <kind>1</kind>
             <string>image_angle = direction;
+if( type == 1 ) {
+    if( bbox_top &lt;= 32 ) {
+        type = 0;
+        vspeed = -vspeed;
+    }
+}
 </string>
           </argument>
         </arguments>
