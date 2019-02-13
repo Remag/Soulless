@@ -50,10 +50,10 @@ curve = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a = instance_create(x, y, objArchBullet25_fade);
-a.sprite_index = sprite_index;
-a.image_speed = 0;
-a.image_angle = image_angle;
+            <string>//a = instance_create(x, y, objArchBullet25_fade);
+//a.sprite_index = sprite_index;
+//a.image_speed = 0;
+//a.image_angle = image_angle;
 direction += curve;
 image_angle = direction;
 </string>
