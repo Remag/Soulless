@@ -37,6 +37,8 @@ shaderMod2 = 1.0;
 shaderMod3 = 1.0;
 shaderMod4 = 1.0;
 
+maxRadius = 100000;
+
 maxAlpha = 0.1;
 alphaStep = 0.1 / 48;
 image_blend = make_color_rgb( 20, 20, 0 );
@@ -118,6 +120,9 @@ image_blend = make_color_hsv( shaderHue, 230, colorValue );
     shader_set_uniform_f( uModifiersPos, shaderMod1, shaderMod2, shaderMod3, shaderMod4 );
     //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );
     shader_set_uniform_f( iTimePos, iTime );
+    
+    var uRadius = shader_get_uniform( sdrSpiral1, "radius" );
+    shader_set_uniform_f( uRadius, maxRadius );
     //shader_set_uniform_f( iResolutionPos, iResolutionX, iResolutionY );
     draw_self();
     shader_reset();

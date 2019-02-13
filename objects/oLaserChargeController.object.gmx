@@ -26,7 +26,19 @@
           <argument>
             <kind>1</kind>
             <string>chargeSound = audio_play_sound( sndLaserCharge, 0, false );
-alarm[0] = 50;
+
+if( instance_exists( objAvoidanceController ) ) {
+    var musicPeriod = 48;
+    var musicPhase = ( objAvoidanceController.t - 19 ) % musicPeriod;
+    if( musicPhase &lt;= 30 ) {
+        musicPhase += musicPeriod;
+    }
+    alarm[0] = musicPhase;
+
+} else {
+    alarm[0] = 48;
+}
+
 </string>
           </argument>
         </arguments>

@@ -59,7 +59,9 @@ pat = choose(0,1);
             <kind>1</kind>
             <string>if( t % 2 == 0 ) {
     a = instance_create(x, y, objArchBullet5_2);
-    a.direction = 270 + random_range(-35, 35);
+    var maxRangeT = 1 - abs( 1 - x / 400 );
+    var maxRange = lerp( 35, 20, maxRangeT );
+    a.direction = 270 + random_range(-maxRange, maxRange);
     a.special = 1;
     a.speed = random_range(4,5);
 }

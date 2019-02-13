@@ -25,6 +25,8 @@ uniform float iTime;
 uniform vec4 uvs;
 uniform vec4 uModifiers;
 
+uniform float radius;
+
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
@@ -40,7 +42,10 @@ return abs(mod(scl*(r-1.0/scl*a) - phase*2.0,TAU)-1.)/2.0;
 
 void main()
 {
-    vec2 uv = (v_vTexcoord - uvs.xy) * uvs.zw;
+    vec2 uv = ( v_vTexcoord - uvs.xy ) * uvs.zw;
+    float centerDistance = length( uv * vec2( 1600.0 ) - vec2( 800.0 ) );
+    float alpha = 1.0 - smoothstep( radius - 200.0, radius, centerDistance );
+    
     uv -= 0.5;
     float modifier1 = uModifiers.x / spiral(uv, 1.0, iTime + 2.3);
     float modifier2 = uModifiers.y / spiral(uv, 2.0, iTime);
@@ -51,7 +56,7 @@ void main()
                 * (modifier1 +
                    modifier2 +
                    modifier3 + 
-                   modifier4)/4.0, v_vColour.a);
+                   modifier4)/4.0, alpha * v_vColour.a);
 }
 
 

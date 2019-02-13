@@ -1076,7 +1076,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 0 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8RightFountainSpawner );
-        s8Spawner.spawnPeriod = 0.45;
+        s8Spawner.spawnPeriod = 0.5;
     } else if( phaseT == 96 ) {
         with( oRedireS8RightFountainSpawner ) { instance_destroy(); }
     }
@@ -1119,7 +1119,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 384 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8LeftFountainSpawner );
-        s8Spawner.spawnPeriod = 0.5;
+        s8Spawner.spawnPeriod = 0.52;
     } else if( phaseT == 480 ) {
         with( oRedireS8LeftFountainSpawner ) { instance_destroy(); }
     }
@@ -3651,7 +3651,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.image_xscale = 0.66;
         obj.image_yscale = 0.66;
     }
-    if( phaseT &gt; 96 * 2 &amp;&amp; phaseT &lt; 96 * 5 ) {        
+    if( phaseT &gt; 96 * 4 &amp;&amp; phaseT &lt; 96 * 5 ) {        
         var obj = instance_create( 0, 504, objAlgSphereAppearing );
         obj.image_blend = make_color_hsv( 230, 255, 255 );
         obj.direction = random( 360 );
@@ -3665,13 +3665,14 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( phaseT == 0 ) {
-        var obj = instance_create( 800, 404, objAlgShaderBackground );
+        var obj = instance_create( seg31FirstSpawnX, 404, objAlgShaderBackground );
         obj.shaderHue = 66;
-        obj.shaderSpeed = -1 / 50;
-        obj.shaderFriction = 1 / 50 / 48;
+        obj.shaderSpeed = 1 / 45;
+        obj.shaderFriction = -1 / 50 / 48;
         obj.shaderMod1 = 0;
         obj.shaderMod2 = 0;
         obj.shaderMod3 = 0;
+        obj.maxRadius = 770;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
     } else if( phaseT == 96 ) {
@@ -3679,18 +3680,19 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
             self.shaderSpeed = 0;
             self.shaderFriction = 0;
         }
-        var obj = instance_create( 100, 0, objAlgShaderBackground );
+        var obj = instance_create( seg31SecondSpawnX, 0, objAlgShaderBackground );
         obj.shaderHue = 127;
-        obj.shaderSpeed = -1 / 50;
-        obj.shaderFriction = 1 / 50 / 48;
+        obj.shaderSpeed = 1 / 50;
+        obj.shaderFriction = -1 / 50 / 48;
         obj.shaderMod1 = 0;
         obj.shaderMod2 = 0;
         obj.shaderMod3 = 0;
+        obj.maxRadius = 790;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
     } else if( phaseT == 96 * 2 ) {
         with( objAlgShaderBackground ) {
-            self.shaderSpeed = -1 / 50;
+            self.shaderSpeed = 1 / 50;
             self.shaderFriction = 0;
         }
     } else if( phaseT == 96 * 3 + 48 ) {
@@ -3705,6 +3707,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod1 = 0;
         obj.shaderMod2 = 0;
         obj.shaderMod3 = 0;
+        obj.maxRadius = 780;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
     } else if( phaseT == 96 * 5 ) {
@@ -3719,6 +3722,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod1 = 0;
         obj.shaderMod2 = 0;
         obj.shaderMod3 = 0;
+        obj.maxRadius = 600;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
     } else if( phaseT == 96 * 6 ) {
@@ -4308,7 +4312,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             }
         }
         
-        if( tPhase &gt;= 364 &amp;&amp; tPhase % 5 == 0 ) { 
+        if( tPhase &gt;= 364 &amp;&amp; tPhase % 7 == 0 ) { 
             var obj = instance_create( random( 800 ), 0, objAlgA37Sphere3 );
             obj.hspeed = random_range( -1.5, 1.5 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
@@ -4823,7 +4827,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    if( tPhase &gt;= 364 &amp;&amp; tPhase % 10 == 0 ) { 
+    if( tPhase &gt;= 364 &amp;&amp; tPhase % 11 == 0 ) { 
         var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
         obj.hspeed = random_range( -2, 2 );
         obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
@@ -4909,7 +4913,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.hspeed = random_range( -2, 2 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
-        if( tPhase % 10 == 5 ) { 
+        if( tPhase % 15 == 5 ) { 
             var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
             obj.hspeed = random_range( -2, 2 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
