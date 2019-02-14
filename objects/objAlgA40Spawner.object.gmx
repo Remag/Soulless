@@ -84,8 +84,8 @@ counter = 1;
         case 3: {
             repeat( maxFrame ) {
                 var obj = instance_create( x, y, objAlgSphereGrad );
-                obj.speed = random_range( 3, 6 );
-                obj.friction = -0.15;
+                obj.speed = random_range( 5, 8 );
+                //obj.friction = -0.15;
                 obj.direction = spawnDir;
                 obj.image_blend = spawnColor;
                 spawnDir += 360 / maxFrame;
