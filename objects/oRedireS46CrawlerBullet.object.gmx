@@ -30,6 +30,8 @@
 var scale = 0.75;
 image_xscale = scale;
 image_yscale = scale;
+
+vspeed = 8;
 </string>
           </argument>
         </arguments>
@@ -54,12 +56,6 @@ image_yscale = scale;
             <kind>1</kind>
             <string>event_inherited();
 
-var step = objAvoidanceController.t;
-if( step % 25 == 0 &amp;&amp; step &lt; 28530 ) {
-    vspeed = 0;
-} else if( step == 28530 || ( step % 50 == 12 &amp;&amp; step &lt; 28450 ) ) {
-    vspeed = 14.70;
-}
 </string>
           </argument>
         </arguments>

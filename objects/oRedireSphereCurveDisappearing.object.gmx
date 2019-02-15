@@ -3,9 +3,9 @@
   <spriteName>sprAlgSphereColored</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objAlg</parentName>
+  <parentName>objAlgSphereDisappearing</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-depth = -1;
-image_alpha = 0;
-alphaStep = 0.1;
+
+dirDelta = choose( -5, 5 );
+
 </string>
           </argument>
         </arguments>
@@ -52,13 +52,8 @@ alphaStep = 0.1;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( image_alpha &lt; 1 ) {
-    image_alpha += alphaStep;
-}
 
-var trail = instance_create( x, y, oRedireS43SphereTrail );
-trail.image_xscale = image_xscale;
-trail.image_yscale = image_yscale;
+direction += dirDelta;
 </string>
           </argument>
         </arguments>

@@ -932,6 +932,7 @@
       <object>objects\oRedireProjectile</object>
       <object>objects\oRedireBoundProjectile</object>
       <object>objects\oRedireSpawner</object>
+      <object>objects\oRedireSphereCurveDisappearing</object>
       <objects name="Segment1">
         <object>objects\oRedireS1Effect</object>
       </objects>
@@ -946,6 +947,9 @@
       </objects>
       <objects name="Segment11">
         <object>objects\oRedireCardTrail</object>
+      </objects>
+      <objects name="Segment43">
+        <object>objects\oRedireS43SphereTrail</object>
       </objects>
     </objects>
     <objects name="Algeran">
