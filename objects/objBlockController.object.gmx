@@ -86,16 +86,16 @@ if( t &gt;= 0 &amp;&amp; t &lt; 26230 ) {
 } else if( t &gt;= 33525 ) {
     if( instance_exists( objGate5CornerBlock ) ) {
         with( objGate5CornerBlock ) {
-            instance_destroy();
+            self.alphaStep = -1 / 24;
         }
         with( objGate5EdgeCBlock ) {
-            instance_destroy();
+            self.alphaStep = -1 / 24;
         }
         with( objGate5EdgeHBlock ) {
-            instance_destroy();
+            self.alphaStep = -1 / 24;
         }
         with( objGate5EdgeVBlock ) {
-            instance_destroy();
+            self.alphaStep = -1 / 24;
         }
     }
     if( !instance_exists( objCornerBlock ) ) {

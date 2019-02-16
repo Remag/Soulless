@@ -25,9 +25,85 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>iTime = random( 20 );
+frame = 0;
+
+shaderSpeed = 1 / 25;
+
+alphaStep = 1 / 24;
+image_alpha = 0;
 image_index = irandom( 2 );
 image_speed = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>iTime += shaderSpeed;
+
+if( image_alpha &lt; 1 || alphaStep &lt; 0 ) {
+    image_alpha += alphaStep;
+    if( alphaStep &lt; 0 &amp;&amp; image_alpha &lt;= 0 ) {
+        instance_destroy();
+    }
+}
+frame++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( shader_is_compiled( sdrGate5Movement ) ) {
+    shader_set(sdrGate5Movement);
+    var iTimePos = shader_get_uniform( sdrGate5Movement, "iTime" );
+    var uvsPos = shader_get_uniform( sdrGate5Movement, "uvs" );
+    var uMarginPos = shader_get_uniform( sdrGate5Movement, "uMargin" );
+    var _uvs = sprite_get_uvs( sprite_index, image_index );
+    shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
+    shader_set_uniform_f( uMarginPos, 0.12, 0., 0.88, 1. );
+    //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );
+    shader_set_uniform_f( iTimePos, iTime );
+    //shader_set_uniform_f( iResolutionPos, iResolutionX, iResolutionY );
+    draw_self();
+    shader_reset();
+} else {
+    show_debug_message("Shader failed");
+}
 </string>
           </argument>
         </arguments>
