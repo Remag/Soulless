@@ -6069,20 +6069,21 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
+    var phaseT = t - 29680;
     var obj = instance_create( random_range( 350, 450 ), 0, objAlgA49Wave );
     obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
     obj.phase = random( 2 * pi );
     obj.image_alpha = 0;
     
-    if( t - 29680 &lt; 192 ) {
+    if( phaseT &lt; 192 ) {
         obj.direction = random_range( 180, 360 );
         obj.speed = random_range( 8, 10 );
-    } else if( t - 29680 &lt; 192 * 2 ) {
+    } else if( phaseT &lt; 192 * 2 ) {
         obj.minAlpha = 0;
         obj.maxAlpha = 0.75;
         obj.direction = random_range( 195, 345 );
         obj.speed = random_range( 7, 9 );
-    } else if( t - 29680 &lt; 192 * 3 ) {
+    } else if( phaseT &lt; 192 * 3 ) {
         obj.minAlpha = 0;
         obj.maxAlpha = 0.5;
         obj.direction = random_range( 205, 335 );
@@ -6093,6 +6094,28 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         obj.direction = random_range( 215, 325 );
         obj.speed = random_range( 5, 7 );
     }
+    
+    var seg48Angle = lerp( 90, 20, phaseT / ( 30450 - 29680 ) );
+    var seg48MaxAlpha = obj.maxAlpha;
+    var seg48MinAlpha = obj.minAlpha;
+    if( obj.direction &gt; 270 + seg48Angle ) {
+        obj.direction = 270 + seg48Angle;
+    } else if( obj.direction &lt; 270 - seg48Angle ) {
+        obj.direction = 270 - seg48Angle;
+    }
+    
+    obj = instance_create( random_range( 350, 450 ), 0, objAlgA49Wave );
+    obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+    obj.phase = random( 2 * pi );
+    obj.image_alpha = 0;
+    if( phaseT % 2 == 0 ) {
+        obj.direction = 270 + seg48Angle;
+    } else {
+        obj.direction = 270 - seg48Angle;    
+    }
+    obj.speed = 10;
+    obj.minAlpha = seg48MinAlpha;
+    obj.maxAlpha = seg48MaxAlpha;
     
     if( t == 30449 ) {
         with( objAlgA49Wave ) {
