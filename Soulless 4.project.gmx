@@ -132,6 +132,7 @@
     <sound>sound\sndWhiteDeath</sound>
     <sound>sound\sndLaserShot</sound>
     <sound>sound\sndLaserCharge</sound>
+    <sound>sound\sndOutlineDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -348,7 +349,6 @@
         <sprite>sprites\sprGhostGroundJump</sprite>
         <sprite>sprites\sprGhostAirJump</sprite>
         <sprite>sprites\sprGhostDeathParticle</sprite>
-        <sprite>sprites\sprGhostBullet</sprite>
       </sprites>
       <sprites name="Kid">
         <sprite>sprites\sprPlayerIdle</sprite>
@@ -379,6 +379,18 @@
         <sprite>sprites\sprWhiteKidIdle</sprite>
         <sprite>sprites\sprWhiteKidJump</sprite>
       </sprites>
+      <sprites name="Outline">
+        <sprite>sprites\sprDemonOutlineFall</sprite>
+        <sprite>sprites\sprDemonOutlineIdle</sprite>
+        <sprite>sprites\sprDemonOutlineJump</sprite>
+        <sprite>sprites\sprDemonOutlineRun</sprite>
+        <sprite>sprites\sprGhostOutlineIdle</sprite>
+        <sprite>sprites\sprOutlineFall</sprite>
+        <sprite>sprites\sprOutlineIdle</sprite>
+        <sprite>sprites\sprOutlineJump</sprite>
+        <sprite>sprites\sprOutlineRun</sprite>
+        <sprite>sprites\sprOutlineDeathSprite</sprite>
+      </sprites>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprGun</sprite>
@@ -387,6 +399,8 @@
       <sprite>sprites\sprBullet</sprite>
       <sprite>sprites\sprGreenBullet</sprite>
       <sprite>sprites\sprWhiteBullet</sprite>
+      <sprite>sprites\sprGhostBullet</sprite>
+      <sprite>sprites\sprOutlineBullet</sprite>
       <sprite>sprites\sprSpark</sprite>
       <sprite>sprites\sprBigSpark</sprite>
       <sprite>sprites\sprLaserParticle</sprite>
@@ -526,6 +540,7 @@
         <script>scripts\scrGhostAirJumpEffect.gml</script>
       </scripts>
       <script>scripts\scrGetSkinInfoById.gml</script>
+      <script>scripts\scrGetOutlineSprite.gml</script>
     </scripts>
     <scripts name="Weapons">
       <scripts name="ShootEffects">
@@ -803,7 +818,13 @@
         <object>objects\oWhiteKidDeathController</object>
         <object>objects\oKidPreDeathImage</object>
       </objects>
-      <object>objects\oOutlineSkinInfo</object>
+      <objects name="Outline">
+        <object>objects\oOutlineSkinInfo</object>
+        <object>objects\oOutlineDeathController</object>
+        <object>objects\oOutlineDeathBall</object>
+        <object>objects\oOutlineDeathTrail</object>
+        <object>objects\oOutlineDeathParticle</object>
+      </objects>
     </objects>
     <objects name="Weapons">
       <object>objects\oWeaponInfo</object>

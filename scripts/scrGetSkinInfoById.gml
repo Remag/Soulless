@@ -11,7 +11,7 @@ if( skinId == 0 ) {
 } else if( skinId == 4 ) {
     return oWhiteKidSkinInfo;
 } else if( skinId == 5 ) {
-    return oKidSkinInfo;
+    return oOutlineSkinInfo;
 } else {
     return oKidSkinInfo;
 }

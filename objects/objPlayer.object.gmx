@@ -42,6 +42,8 @@ xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is 
 sprite_index = oPlayerData.currentSkin.idleSprite;
 scrSetPlayerMask(); //set the player's hitbox
 
+outlineValue = 0;
+
 </string>
           </argument>
         </arguments>
@@ -623,7 +625,13 @@ var drawY = y;
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
-draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+if( outlineValue == 0 ) {    
+    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+} else {
+    var outlineSprite = scrGetOutlineSprite( sprite_index );
+    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, 1 - outlineValue);
+    draw_sprite_ext(outlineSprite,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, outlineValue);
+}
 
 //draw the player's hitbox
 if( global.debugShowHitbox ) {
@@ -631,7 +639,12 @@ if( global.debugShowHitbox ) {
 }
     
 // Draw the gun.
-scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, image_alpha );
+if( outlineValue == 0 ) {
+    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, image_alpha, false );
+} else {
+    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, 1 - outlineValue, false );
+    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue, true );
+}
 </string>
           </argument>
         </arguments>

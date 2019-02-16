@@ -2,6 +2,7 @@ var weapon = argument0;
 var skin = argument1;
 var scaleX = argument2;
 var alpha = argument3;
+var drawOutline = argument4;
 
 var offsetX;
 var offsetY;
@@ -24,4 +25,11 @@ if( sprite_index == skin.idleSprite ) {
     weaponSprite = weapon.weaponNormalSprite;
 }
 
-draw_sprite_ext( weaponSprite, skin.uniqueId, x + offsetX * scaleX, y + offsetY, scaleX, image_yscale, 0, image_blend, alpha );
+var weaponIndex;
+if( drawOutline ) {
+    weaponIndex = 5;
+} else {
+    weaponIndex = skin.uniqueId;
+}
+
+draw_sprite_ext( weaponSprite, weaponIndex, x + offsetX * scaleX, y + offsetY, scaleX, image_yscale, 0, image_blend, alpha );

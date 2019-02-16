@@ -37,6 +37,11 @@ fallSprite = sprWhiteKidFall;
 
 shopIconSprite = sprWhiteKidIdle;
 
+outlineIdleSprite = sprOutlineIdle;
+outlineRunSprite = sprOutlineRun;
+outlineJumpSprite = sprOutlineJump;
+outlineFallSprite = sprOutlineFall;
+
 // Animation speed.
 idleAnimationSpeed = 0.2;
 runAnimationSpeed = 0.5;

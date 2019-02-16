@@ -129,7 +129,7 @@ if( moveLeft ) {
           <argument>
             <kind>1</kind>
             <string>draw_self();
-scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale, image_alpha );
+scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale, image_alpha, false );
 </string>
           </argument>
         </arguments>
