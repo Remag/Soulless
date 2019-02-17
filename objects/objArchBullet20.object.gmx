@@ -49,7 +49,7 @@ frame = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( y &lt; 352 ) {
+            <string>if( y &lt; 302 ) {
     x += hspeed * 3;
     y += vspeed * 3;
     
@@ -61,7 +61,7 @@ frame = 0;
     }
 }
 
-if( y &gt;= 448 &amp;&amp; image_index == 1 ) {
+if( y &gt;= 398 &amp;&amp; image_index == 1 ) {
     direction = 270;
 }
 
