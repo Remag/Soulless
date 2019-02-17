@@ -275,6 +275,7 @@
       <sprite>sprites\sprRedireStar</sprite>
       <sprite>sprites\sprRedireS18Backdrop</sprite>
       <sprite>sprites\sprRedireSphereEffect</sprite>
+      <sprite>sprites\sprRedireDoubleBullet</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>

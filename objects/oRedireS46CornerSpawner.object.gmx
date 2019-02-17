@@ -29,6 +29,11 @@
 bullet.speed = random_range( 8, 12 );
 bullet.direction = spawnDir + random_range( -45, 45 );
 bullet.image_angle = bullet.direction;
+if( spawnIndex = -1 ) {
+    bullet.image_index = choose( 0, 1, 2 );
+} else {
+    bullet.image_index = spawnIndex;
+}
 </string>
           </argument>
         </arguments>

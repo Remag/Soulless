@@ -74,6 +74,9 @@ if( t == 96 ) {
         a.image_xscale = random_range(0.1, 0.5);
         a.image_yscale = a.image_xscale;
         a.image_index = 0;
+        if( firstBlast ) {
+            a.image_alpha = 0.5;
+        }
     }
     
     instance_destroy();
