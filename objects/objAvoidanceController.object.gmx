@@ -6492,6 +6492,11 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
     }
     
     var phaseT = t - 33525;
+    if( phaseT &lt; 100 ) {
+        with( objPlayer ) {
+            self.outlineValue += 0.01;
+        }
+    }
     if( phaseT % 24 == 0 
         || ( phaseT &gt;= 96 * 4 + 48 &amp;&amp; phaseT &lt; 96 * 4 + 72 &amp;&amp; phaseT % 6 == 0 )  
         || ( phaseT &gt;= 96 * 5 + 48 &amp;&amp; phaseT &lt; 96 * 5 + 72 &amp;&amp; phaseT % 6 == 0 )  
@@ -6506,8 +6511,9 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         var spawnY = random_range( 32, 64 );
         var circle = scrMakeCircle( spawnX, spawnY, random( 360 ), 8, 3, objAlgA54FullCircle );
         var color = random( 255 );
+        var saturation = max( 0, lerp( 255, 0, phaseT / 96 / 8 ) );
         for( var i = 0; i &lt; 8; i++ ) {
-            circle[i].image_blend = make_colour_hsv( color, 255, 255 );
+            circle[i].image_blend = make_colour_hsv( color, saturation, 255 );
         }
         
         var obj = instance_create( spawnX, spawnY, objAlgA54CircleBounce );
@@ -6515,9 +6521,13 @@ if( t &gt;= 33525 &amp;&amp; t &lt; 34670 &amp;&amp; instance_exists(objPlayer) 
         obj.image_yscale = 0.75;
         obj.direction = random( 360 );
         obj.speed = 5;
-        obj.image_blend = make_colour_hsv( color, 255, 255 );
+        obj.image_blend = make_colour_hsv( color, 255, 0 );
         obj.image_alpha = 1;
         obj.friction = 5 / 400;
+    }
+    
+    if( phaseT != 0 &amp;&amp; phaseT % ( 96 * 2 ) ) {
+        
     }
     segment = 53;
 }
@@ -6641,7 +6651,6 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    var satValue = lerp( 255, 0, ( t - 35825 ) / ( 36550 - 35825 ) );
     var phaseT = t - 35825 + 50;
     if( phaseT == 48 + 24
         || phaseT == 48 * 3 + 24
@@ -6672,9 +6681,9 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( t &lt; 36550 ) {
+        var rgbValue = lerp( 0, 255, ( t - 35825 ) / ( 36550 - 35825 ) );
         with( objAlgA55CircleWrap ) {
-            var hue = colour_get_hue( image_blend );
-            image_blend = make_colour_hsv( hue, satValue, 255 );
+            image_blend = make_colour_rgb( rgbValue, rgbValue, rgbValue );
         }
     }
     

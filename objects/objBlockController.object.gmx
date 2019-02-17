@@ -105,32 +105,37 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
 } else if( t &gt;= 33525 ) {
     if( instance_exists( objGate5CornerBlock ) ) {
         with( objGate5CornerBlock ) {
-            self.alphaStep = -1 / 24;
+            self.alphaStep = -1 / 100;
         }
         with( objGate5EdgeCBlock ) {
-            self.alphaStep = -1 / 24;
+            self.alphaStep = -1 / 100;
         }
         with( objGate5EdgeHBlock ) {
-            self.alphaStep = -1 / 24;
+            self.alphaStep = -1 / 100;
         }
         with( objGate5EdgeVBlock ) {
-            self.alphaStep = -1 / 24;
+            self.alphaStep = -1 / 100;
         }
     }
-    if( !instance_exists( objCornerBlock ) ) {
-        instance_create( 0, 0, objCornerBlock );
-        instance_create( 768, 0, objCornerBlock );
-        instance_create( 0, 608 - 32, objCornerBlock );
-        instance_create( 768, 608 - 32, objCornerBlock );
-        instance_create( 32, 0, objGate3Block );
-        instance_create( 32, 608 - 32, objGate3Block );
-        var obj = instance_create( 0, 608 - 32, objGate3Block );
-        obj.image_xscale = ( 608 - 64 ) / 736;
-        obj.image_angle = 90;
-        obj = instance_create( 800 - 32, 608 - 32, objGate3Block );
-        obj.image_xscale = ( 608 - 64 ) / 736;
-        obj.image_angle = 90;
+    if( !instance_exists( objGate6CornerBlock ) ) {
+        instance_create( 0, 0, objGate6CornerBlock );
+        instance_create( 768, 0, objGate6CornerBlock );
+        instance_create( 0, 608 - 32, objGate6CornerBlock );
+        instance_create( 768, 608 - 32, objGate6CornerBlock );
+        
+        for( var i = 32; i &lt; 768; i += 32 ) {
+            instance_create( i, 0, objGate6EdgeBlock );  
+            instance_create( i, 608 - 32, objGate6EdgeBlock );    
+        }
+        for( var i = 64; i &lt; 608; i += 32 ) {
+            var obj = instance_create( 0, i, objGate6EdgeBlock );  
+            obj.image_angle = 90;
+            obj = instance_create( 768, i, objGate6EdgeBlock );
+            obj.image_angle = 90;    
+        }
+        instance_create( 0, 0, objGate6BlockHider );
     }
+    
 }
 // Gate 3.
 if( t &gt;= 11540 &amp;&amp; t &lt; 18545 ) {

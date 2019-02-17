@@ -166,6 +166,8 @@
       <sprite>sprites\sprGate5EdgeHBlock</sprite>
       <sprite>sprites\sprGate5EdgeVBlock</sprite>
       <sprite>sprites\sprGate5EdgeCBlock</sprite>
+      <sprite>sprites\sprGate6CornerBlock</sprite>
+      <sprite>sprites\sprGate6EdgeBlock</sprite>
     </sprites>
     <sprites name="slopes">
       <sprite>sprites\sprSlopeBlock</sprite>
@@ -261,7 +263,6 @@
       <sprite>sprites\sprAlgRice</sprite>
       <sprite>sprites\sprAlgSphereGrad</sprite>
       <sprite>sprites\sprAlgFullCircle</sprite>
-      <sprite>sprites\sprAlgCircle</sprite>
       <sprite>sprites\sprAlgLaser</sprite>
       <sprite>sprites\sprAlgSquare</sprite>
     </sprites>
@@ -609,12 +610,15 @@
       <object>objects\objGate3Block</object>
       <object>objects\objCornerBlock</object>
       <object>objects\objGate1CornerBlock</object>
-      <object>objects\objGate5Block</object>
       <object>objects\objGate3ShaderBlock</object>
+      <object>objects\objGate5Block</object>
       <object>objects\objGate5CornerBlock</object>
       <object>objects\objGate5EdgeVBlock</object>
       <object>objects\objGate5EdgeCBlock</object>
       <object>objects\objGate5EdgeHBlock</object>
+      <object>objects\objGate6CornerBlock</object>
+      <object>objects\objGate6EdgeBlock</object>
+      <object>objects\objGate6BlockHider</object>
     </objects>
     <objects name="slopes">
       <object>objects\objSlope</object>
