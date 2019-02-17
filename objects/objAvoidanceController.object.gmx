@@ -3454,11 +3454,8 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
     if( phaseT == 48 * 7 ) {
         var hueVal = random( 255 );
         seg30Color = make_color_hsv( hueVal, 255, 255 );
-        seg30Side = 0;
-        if( scrGetPlayerX() &lt; 400 ) {
-            seg30Side = 800;
-        }
-        seg30Dir = point_direction( seg30Side, 0, scrGetPlayerX(), scrGetPlayerY() );
+        seg30Side = 400;
+        seg30Dir = point_direction( 400, 0, scrGetPlayerX(), scrGetPlayerY() );
         with( objAlgShaderBackground ) {
             self.shaderHue = hueVal;
         }
@@ -4589,12 +4586,12 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
             //wrap = true;
         }
     }
-    if( t == 23614 || t == 23675 || t == 23730 ) {
+    if( t == 23614 || t == 23665 || t == 23720 ) {
         with(objArchBullet10) {
             speed = 1;
         }
     }
-    if( t &gt; 23542 &amp;&amp; t &lt; 23734 ) {
+    if( t &gt; 23542 &amp;&amp; t &lt; 23724 ) {
         if( t &lt; 23614 &amp;&amp; t % 3 == 0 ) {
             a = instance_create(0, 0, objArchBullet10);
             a.direction = irandom_range(260, 360);
@@ -4614,13 +4611,13 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
             a.speed = random_range(9,12);
         }
     }
-    if( t == 23734 ) {
+    if( t == 23724 ) {
         with(objArchBullet10) {
             //image_alpha = 0.2;
             speed = 1;
         }
     }
-    if( t &gt; 23734 &amp;&amp; t &lt; 23924 ) {
+    if( t &gt; 23724 &amp;&amp; t &lt; 23924 ) {
         tt = (t - 23734)/(23924-23734);
         repeat( 1 ) {
             a = instance_create(400 + random_range(-10,10), 0, objArchBullet11);
@@ -6197,7 +6194,8 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
     if( phaseT &lt; 48 * 3 ) {
         if( phaseT % 24 == 0 ) {
             if( phaseT == 0 ) {
-                segment50Variant = choose( 3, 4 );
+                segment50Variant = irandom_range( 1, 4 );
+                segment50Variant2 = 0;
                 segment50Color = 30;
                 var color = make_colour_hsv( segment50Color, 255, 255 );
                 scrA50Spawn( segment50Variant, 24, 0.5, color ); 
@@ -6207,8 +6205,14 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
                 segment50Color = ( segment50Color + 256 / 3 ) % 256;
                 color = make_colour_hsv( segment50Color, 255, 255 );
                 
-                segment50Variant = ( 4 - segment50Variant ) + 3;
+                var newVar = irandomNoRepeat( 1, 4, segment50Variant, segment50Variant2 );
+                segment50Variant2 = segment50Variant;
+                segment50Variant = newVar;
                 scrA50Spawn( segment50Variant, 24, 0.5, color ); 
+            }
+            with( objAlgA50Sphere ) {
+                shouldKill = false;
+                image_alpha = 0.5;
             }
         }
     } else if( phaseT &gt;= 48 * 4 &amp;&amp; phaseT &lt; 48 * 7
@@ -6217,7 +6221,11 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
     {
         if( phaseT % 24 == 0 ) {
             if( phaseT % 192 == 0 ) {
-                segment50Variant = irandom( 3 ) + 1;
+                if( phaseT &lt; 192 * 2 ) {
+                    segment50Variant = choose( 3, 4 );
+                } else {
+                    segment50Variant = irandom( 3 ) + 1;
+                }
                 segment50Variant2 = 0;
                 segment50Color = 30;
                 var color = make_colour_hsv( segment50Color, 255, 255 );
@@ -6228,12 +6236,16 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
                 
                 segment50Color = ( segment50Color + 256 / 3 ) % 256;
                 color = make_colour_hsv( segment50Color, 255, 255 );
-                var newVar = irandom( 4 );
-                while( newVar == segment50Variant 
-                    || newVar == segment50Variant2
-                    || ( newVar == 0 &amp;&amp; phaseT &lt; 384 ) ) 
-                {
-                    newVar = irandom( 4 );
+                var newVar;
+                if( phaseT &lt; 192 * 2 ) {
+                    newVar = 7 - segment50Variant;
+                } else if( phaseT &lt; 192 * 3 ) {
+                    newVar = irandomNoRepeat( 1, 4, segment50Variant, segment50Variant2 );
+                } else {
+                    newVar = irandomNoRepeat( 0, 4, segment50Variant, segment50Variant2 );
+                }
+                if( phaseT == 192 * 3 - 72 ) {
+                    newVar = 0;
                 }
                 segment50Variant2 = segment50Variant;
                 segment50Variant = newVar;

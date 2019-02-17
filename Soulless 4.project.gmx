@@ -476,6 +476,7 @@
       <script>scripts\scrA41SpawnLine.gml</script>
       <script>scripts\scrA43CircleSpawn.gml</script>
       <script>scripts\scrA50Spawn.gml</script>
+      <script>scripts\irandomNoRepeat.gml</script>
     </scripts>
     <scripts name="MainMenu">
       <script>scripts\scrLoadLastSlot.gml</script>

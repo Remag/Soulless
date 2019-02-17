@@ -61,6 +61,7 @@ if( frame &lt; 10 &amp;&amp; ( x &lt; -sprite_width / 2 || x &gt; 800 + sprite_w
 if( frame % 3 == 0 ) {
     var obj = instance_create( x, y, objAlgSphereTrail );
     obj.image_blend = image_blend;
+    obj.image_alpha = image_alpha;
 }
 </string>
           </argument>
