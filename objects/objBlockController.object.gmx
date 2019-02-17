@@ -27,7 +27,26 @@
             <kind>1</kind>
             <string>var t = objAvoidanceController.t;
 ///Блоки по гейтам.
-if( t &gt;= 0 &amp;&amp; t &lt; 26230 ) {
+// Gate 1.
+
+if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
+    if( !instance_exists( objGate1CornerBlock ) ) {
+    
+        for( var i = 0; i &lt; 800; i += 32 ) {
+            instance_create( i, 0, objGate1CornerBlock );  
+            instance_create( i, 608 - 32, objGate1CornerBlock );    
+        }
+        for( var i = 32; i &lt; 608 - 32; i += 32 ) {
+            instance_create( 0, i, objGate1CornerBlock );  
+            instance_create( 768, i, objGate1CornerBlock );    
+        }
+    }
+} else if( t &gt;= 6545 &amp;&amp; t &lt; 26230 ) {
+    if( instance_exists( objGate1CornerBlock ) ) {
+        with( objGate1CornerBlock ) {
+            instance_destroy();
+        }
+    }
     if( !instance_exists( objCornerBlock ) ) {
         instance_create( 0, 0, objCornerBlock );
         instance_create( 768, 0, objCornerBlock );
