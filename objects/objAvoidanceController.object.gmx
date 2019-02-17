@@ -2995,6 +2995,7 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
         a.direction = point_direction(objPlayer.x, objPlayer.y, 400, 304);
         a.speed = 3;
         a.hspeed = -a.hspeed;
+        a.firstBlast = ( t == 15864 );
     }
     if( t == 16239 ) {
         with(objArchBullet6) {
@@ -5763,7 +5764,7 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( tPhase % 96 &lt; 48 ) { 
-        repeat( 6 ) {
+        repeat( choose( 5, 6 ) ) {
             var obj = instance_create( seg45X, 32, objAlgA45Sphere );
             if( tPhase &lt; 96 ) {
                 obj.speed = 12;
@@ -5818,24 +5819,34 @@ if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) 
     segment = 45;
     
     // Corner bursts.
-    if( t == 28145 || t == 28340 ) {
+    if( t == 28145 ) {
         var spawner = instance_create( 800, 0, oRedireS46CornerSpawner );
         spawner.spawnDir = 225;
         spawner.spawnPeriod = 2;
+        spawner.spawnIndex = 0;
     }
     if( t == 28235 ) {
         var spawner = instance_create( 0, 0, oRedireS46CornerSpawner );
         spawner.spawnDir = -45;        
         spawner.spawnPeriod = 2;
+        spawner.spawnIndex = 1;
+    }
+    if( t == 28340 ) {
+        var spawner = instance_create( 800, 0, oRedireS46CornerSpawner );
+        spawner.spawnDir = 225;
+        spawner.spawnPeriod = 2;
+        spawner.spawnIndex = 0;
     }
     if( t == 28430 ) {
         var spawner1 = instance_create( 0, 0, oRedireS46CornerSpawner );
         spawner1.spawnDir = -45;        
         spawner1.spawnPeriod = 3;
+        spawner1.spawnIndex = 1;
         
         var spawner2 = instance_create( 800, 0, oRedireS46CornerSpawner );
         spawner2.spawnDir = 225;        
         spawner2.spawnPeriod = 3;
+        spawner2.spawnIndex = 0;
     }
     if( t == 28195 || t == 28290 || t == 28385 || t == 28480 ) {
         with( oRedireS46CornerSpawner ) {
@@ -6001,13 +6012,16 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
             <string>///Arch. Segment 47 (9:46 - 9:54) Mosh Solo
 if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) ) {
 
+    if( t == 29300 ) {
+        s47CircleImage = 0;
+    }
     var phaseT = (t - 29300)%(48*4);
     if( phaseT &lt; 48 * 3 &amp;&amp; phaseT % 48 == 0 ) {
         var xx = random_range(100, 700);
         if( t &lt; 29492 ) {
-            var yy = random_range(64, 192);
+            var yy = random_range(64, 128);
         } else {
-            var yy = random_range(192, 288);
+            var yy = random_range(128, 192);
         }
         for( i = 0; i &lt; 360; i+= 22.5 ) {
             a = instance_create(xx, yy, objArchBullet19);
@@ -6015,9 +6029,12 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
             a.gravity_direction = i + 180;
             a.speed = 12;
             a.gravity = a.speed / 48;
+            a.image_index = s47CircleImage + 1;
+            with( a ) { event_user( 0 ); }
         }
+        s47CircleImage = !s47CircleImage;
     }
-    
+        
     if ( t == 29374 ||
          t == 29380 ||
          t == 29386 ||
@@ -6029,11 +6046,15 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
          t == 29582 ||
          t == 29665 ||
          t == 29670 ||
-         t == 29677 ) {
+         t == 29677 ) 
+    {
         a = instance_create(400, 0, objArchS47_Sniper);
         a.direction = point_direction(a.x, a.y, objPlayer.x, objPlayer.y);
         a.image_angle = a.direction;
         a.speed = 20;
+        if( t == 29374 || t == 29380 || t == 29386 ) {
+            a.image_alpha = 0.5;        
+        }
     }
     
     // Effects.
@@ -6070,38 +6091,53 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
     }
     
     var phaseT = t - 29680;
-    var obj = instance_create( random_range( 350, 450 ), 0, objAlgA49Wave );
-    obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-    obj.phase = random( 2 * pi );
-    obj.image_alpha = 0;
-    
-    if( phaseT &lt; 192 ) {
-        obj.direction = random_range( 180, 360 );
-        obj.speed = random_range( 8, 10 );
-    } else if( phaseT &lt; 192 * 2 ) {
-        obj.minAlpha = 0;
-        obj.maxAlpha = 0.75;
-        obj.direction = random_range( 195, 345 );
-        obj.speed = random_range( 7, 9 );
-    } else if( phaseT &lt; 192 * 3 ) {
-        obj.minAlpha = 0;
-        obj.maxAlpha = 0.5;
-        obj.direction = random_range( 205, 335 );
-        obj.speed = random_range( 6, 8 );
-    } else {
-        obj.minAlpha = 0;
-        obj.maxAlpha = 0.25;
-        obj.direction = random_range( 215, 325 );
-        obj.speed = random_range( 5, 7 );
-    }
-    
     var seg48Angle = lerp( 90, 20, phaseT / ( 30450 - 29680 ) );
-    var seg48MaxAlpha = obj.maxAlpha;
-    var seg48MinAlpha = obj.minAlpha;
-    if( obj.direction &gt; 270 + seg48Angle ) {
-        obj.direction = 270 + seg48Angle;
-    } else if( obj.direction &lt; 270 - seg48Angle ) {
-        obj.direction = 270 - seg48Angle;
+    var seg48MinAlpha;
+    var seg48MaxAlpha;
+    if( phaseT &lt; 192 ) {
+        seg48MinAlpha = 0;
+        seg48MaxAlpha = 1;
+    } else if( phaseT &lt; 192 * 2 ) {
+        seg48MinAlpha = 0;
+        seg48MaxAlpha = 0.75;    
+    } else if( phaseT &lt; 192 * 3 ) {
+        seg48MinAlpha = 0;
+        seg48MaxAlpha = 0.5;    
+    } else {
+        seg48MinAlpha = 0;
+        seg48MaxAlpha = 0.25;    
+    }
+    if( phaseT % 4 != 0 ) {
+        var obj = instance_create( random_range( 350, 450 ), 0, objAlgA49Wave );
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        obj.phase = random( 2 * pi );
+        obj.image_alpha = 0;
+        
+        if( phaseT &lt; 192 ) {
+            obj.direction = random_range( 180, 360 );
+            obj.speed = random_range( 8, 10 );
+        } else if( phaseT &lt; 192 * 2 ) {
+            obj.minAlpha = seg48MinAlpha;
+            obj.maxAlpha = seg48MaxAlpha;
+            obj.direction = random_range( 195, 345 );
+            obj.speed = random_range( 7, 9 );
+        } else if( phaseT &lt; 192 * 3 ) {
+            obj.minAlpha = seg48MinAlpha;
+            obj.maxAlpha = seg48MaxAlpha;
+            obj.direction = random_range( 205, 335 );
+            obj.speed = random_range( 6, 8 );
+        } else {
+            obj.minAlpha = seg48MinAlpha;
+            obj.maxAlpha = seg48MaxAlpha;
+            obj.direction = random_range( 215, 325 );
+            obj.speed = random_range( 5, 7 );
+        }
+        
+        if( obj.direction &gt; 270 + seg48Angle ) {
+            obj.direction = 270 + seg48Angle;
+        } else if( obj.direction &lt; 270 - seg48Angle ) {
+            obj.direction = 270 - seg48Angle;
+        }
     }
     
     obj = instance_create( random_range( 350, 450 ), 0, objAlgA49Wave );
@@ -6241,16 +6277,16 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
             <string>///Arch. Segment 50 (10:24 - 10:40) Q Solo
 if( t &gt;= 31215 &amp;&amp; t &lt; 31985 &amp;&amp; instance_exists(objPlayer) ) {
     var s51_part = floor((t - 31215)/192)
-    if( t%2 == 0 ) {
+    if( t%4 == 0 ) {
         a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
-        if( s51_part == 0 || s51_part == 1 ) {
+        if( s51_part == 0 || s51_part == 2 || s51_part == 3 ) {
             a.direction = 270 + 40;
         } else {
             a.direction = 270 - 40;
         }
         a.speed = 4;
         a = instance_create(random_range(-400, 1200), 0, objArchBullet20);
-        if( s51_part == 1 || s51_part == 2 ) {
+        if( s51_part == 0 || s51_part == 2 ) {
             a.direction = 270 + 40;
         } else {
             a.direction = 270 - 40;
@@ -6295,7 +6331,7 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
     var s51_dir = random(360);
     var s51_x = random_range(100, 700);
     var s51_y = random_range(32, 160);
-    var s51_count = 8;
+    var s51_count = 7;
     if( t &gt; 32650 ) {
         s51_count = 5;
     }
@@ -6320,10 +6356,20 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
         for( i = 0; i &lt; 360; i += 24 ) {
             a = instance_create(s51_x, s51_y, objArchBullet23);
             a.direction = s51_dir + i;
+            a.dirDelta = i;
             a.curve = 360/20;
             a.speed = 12;
             a.alarm[0] = 24;
             a.image_blend = c_red;
+        }
+    }
+    
+    if( t == 32730 ) {
+        with( objArchBullet23 ) {
+            fade = true;
+        }
+        with( objArchBullet24 ) {
+            fade = true;
         }
     }
 
@@ -6369,7 +6415,7 @@ if( t &gt;= 32750 &amp;&amp; t &lt; 33525 &amp;&amp; instance_exists(objPlayer) 
         a = instance_create(400, 128, objArchBullet13);
         a.t = 48;
     }
-    if( t%24 == 0 &amp;&amp; t &lt; 33086 ) {
+    if( t%48 == 0 &amp;&amp; t &lt; 33086 ) {
         var s53_xx = random_range( 32, 768 );
         a = instance_create(s53_xx, 128, objArchBullet14);
         a.vspeed = 6;

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objPlayerKiller</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,11 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//fade = 0;
+            <string>fade = 0;
 
 curve = 0;
 
 tag = 0;
+
+spawnX = x;
+spawnY = y;
 </string>
           </argument>
         </arguments>
@@ -52,10 +55,14 @@ tag = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for( i = 1.5; i &lt;= 7; i+=0.6 ) {
+            <string>for( i = 1.5; i &lt;= 7; i+=0.8 ) {
     var clr_t = (i - 1.5)/(7-1.5);
     a = instance_create(x, y, objArchBullet23);
-    a.direction = direction;
+    if( instance_exists( objPlayer ) ) {
+        a.direction = dirDelta + point_direction( x, y, objPlayer.x, objPlayer.y );
+    } else {
+        a.direction = direction;
+    }
     a.speed = i;
     a.tag = 1;
     a.image_blend = merge_colour(c_red, c_yellow, clr_t);
@@ -86,8 +93,33 @@ instance_destroy();
             <string>direction += curve;
 image_angle = direction;
 
-/*if( fade ) {
+if( fade ) {
     image_alpha -= 0.05;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objPlayer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( image_alpha &gt;= 1 ) {
+    scrKillPlayer();
 }
 </string>
           </argument>
