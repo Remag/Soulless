@@ -3431,6 +3431,12 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
                 self.shaderSpeed = 2 / 50;
                 self.shaderFriction = self.shaderSpeed * 2 / 3 / 48;
             }
+            with( objGate4CornerBlock ) {
+                image_blend = color;
+            }
+            with( objGate4EdgeBlock ) {
+                image_blend = color;
+            }
             var spawnX = random_range( 150, 650 );
             var spawnY = random( 150 );
             repeat( 85 ) {
@@ -3459,26 +3465,32 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         with( objAlgShaderBackground ) {
             self.shaderHue = hueVal;
         }
+        with( objGate4CornerBlock ) {
+            image_blend = other.seg30Color;
+        }
+        with( objGate4EdgeBlock ) {
+            image_blend = other.seg30Color;
+        }
     }
-    if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 36 ) {
+    if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 48 ) {
         var obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir;
-        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir + 25;
-        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir - 25;
-        obj.speed = lerp( 3, 15, ( phaseT - 48 * 7 ) / 36 );
+        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
     }

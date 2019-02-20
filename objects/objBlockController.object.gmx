@@ -34,19 +34,53 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
     
         for( var i = 0; i &lt; 800; i += 32 ) {
             instance_create( i, 0, objGate1CornerBlock );  
-            instance_create( i, 608 - 32, objGate1CornerBlock );    
+            instance_create( i, 608 - 32, objGate1CornerBlock );
+            if( i &gt; 0 &amp;&amp; i &lt; 800 - 32 ) {
+                instance_create( i, 608 - 32, objGate1SnowBlock );     
+            }
         }
         for( var i = 32; i &lt; 608 - 32; i += 32 ) {
             instance_create( 0, i, objGate1CornerBlock );  
             instance_create( 768, i, objGate1CornerBlock );    
         }
     }
-} else if( t &gt;= 6545 &amp;&amp; t &lt; 26230 ) {
+} else if( t &gt;= 6545 &amp;&amp; t &lt; 11540 ) {
     if( instance_exists( objGate1CornerBlock ) ) {
         with( objGate1CornerBlock ) {
             instance_destroy();
         }
+        with( objGate1SnowBlock ) {
+            instance_destroy();
+        }
     }
+    if( !instance_exists( objGate2CornerBlock ) ) {
+        instance_create( 0, 0, objGate2CornerBlock );
+        instance_create( 768, 0, objGate2CornerBlock );
+        instance_create( 0, 608 - 32, objGate2CornerBlock );
+        instance_create( 768, 608 - 32, objGate2CornerBlock );
+        
+        for( var i = 32; i &lt; 800 - 32; i += 32 ) {
+            //instance_create( i, 0, objGate2EdgeBlock );  
+            instance_create( i, 608 - 32, objGate2EdgeBlock );
+        }
+        
+        for( var i = 64; i &lt; 608; i += 32 ) {
+            var obj = instance_create( 0, i, objGate2EdgeBlock );  
+            obj.image_angle = 90;
+            obj = instance_create( 800 - 32, i, objGate2EdgeBlock );
+            obj.image_angle = 90;
+        }
+    }
+} else if( t &gt;= 11540 &amp;&amp; t &lt; 18545 ) {
+    if( instance_exists( objGate2CornerBlock ) ) {
+        with( objGate2CornerBlock ) {
+            instance_destroy();
+        }
+        with( objGate2EdgeBlock ) {
+            instance_destroy();
+        }
+    }
+    
     if( !instance_exists( objCornerBlock ) ) {
         instance_create( 0, 0, objCornerBlock );
         instance_create( 768, 0, objCornerBlock );
@@ -60,6 +94,52 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         obj = instance_create( 800 - 32, 608 - 32, objGate3Block );
         obj.image_xscale = ( 608 - 64 ) / 736;
         obj.image_angle = 90;
+        
+        instance_create( 16, 16, objGate3ShaderBlock );
+        instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_xscale = ( 608 - 32 ) / 32;
+        obj.image_angle = 90;
+        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_xscale = ( 608 - 32 ) / 32;
+        obj.image_angle = 90;
+        
+        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_angle = -135;
+        obj = instance_create( 800 - 16, 16, objGate3ShaderBlock );
+        obj.image_angle = 45;
+        obj = instance_create( 16, 16, objGate3ShaderBlock );
+        obj.image_angle = 135;
+        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
+        obj.image_angle = -45;
+    }
+} else if( t &gt;= 18545 &amp;&amp; t &lt; 26230 ) {
+    if( instance_exists( objCornerBlock ) ) {
+        with( objCornerBlock ) {
+            instance_destroy();
+        }
+        with( objGate3Block ) {
+            instance_destroy();
+        }
+    }
+    
+    if( !instance_exists( objGate4CornerBlock ) ) {
+        instance_create( 0, 0, objGate4CornerBlock );
+        instance_create( 768, 0, objGate4CornerBlock );
+        instance_create( 0, 608 - 32, objGate4CornerBlock );
+        instance_create( 768, 608 - 32, objGate4CornerBlock );
+        
+        for( var i = 32; i &lt; 800 - 32; i += 32 ) {
+            instance_create( i, 0, objGate4EdgeBlock );  
+            instance_create( i, 608 - 32, objGate4EdgeBlock );
+        }
+        
+        for( var i = 64; i &lt; 608; i += 32 ) {
+            var obj = instance_create( 0, i, objGate4EdgeBlock );  
+            obj.image_angle = 90;
+            obj = instance_create( 800 - 32, i, objGate4EdgeBlock );
+            obj.image_angle = 90;
+        }
     }
 } else if( t &gt;= 26230 &amp;&amp; t &lt; 33525 ) {
     if( instance_exists( objCornerBlock ) ) {
@@ -136,28 +216,6 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         instance_create( 0, 0, objGate6BlockHider );
     }
     
-}
-// Gate 3.
-if( t &gt;= 11540 &amp;&amp; t &lt; 18545 ) {
-    if( !instance_exists( objGate3ShaderBlock ) ) {
-        instance_create( 16, 16, objGate3ShaderBlock );
-        instance_create( 16, 608 - 16, objGate3ShaderBlock );
-        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
-        obj.image_xscale = ( 608 - 32 ) / 32;
-        obj.image_angle = 90;
-        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
-        obj.image_xscale = ( 608 - 32 ) / 32;
-        obj.image_angle = 90;
-        
-        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
-        obj.image_angle = -135;
-        obj = instance_create( 800 - 16, 16, objGate3ShaderBlock );
-        obj.image_angle = 45;
-        obj = instance_create( 16, 16, objGate3ShaderBlock );
-        obj.image_angle = 135;
-        obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
-        obj.image_angle = -45;
-    }
 }
 </string>
           </argument>
