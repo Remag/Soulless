@@ -467,6 +467,8 @@
       <script>scripts\scrTargetPlayer.gml</script>
       <script>scripts\scrGetPlayerX.gml</script>
       <script>scripts\scrGetPlayerY.gml</script>
+      <script>scripts\srcGate4BlockColor.gml</script>
+      <script>scripts\srcGate4BlockHorizontalColor.gml</script>
     </scripts>
     <script>scripts\scrKennySnekAddBodyPart.gml</script>
     <scripts name="Redire">

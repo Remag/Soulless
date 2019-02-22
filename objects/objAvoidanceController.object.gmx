@@ -3431,12 +3431,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
                 self.shaderSpeed = 2 / 50;
                 self.shaderFriction = self.shaderSpeed * 2 / 3 / 48;
             }
-            with( objGate4CornerBlock ) {
-                image_blend = color;
-            }
-            with( objGate4EdgeBlock ) {
-                image_blend = color;
-            }
+            srcGate4BlockColor( color );
             var spawnX = random_range( 150, 650 );
             var spawnY = random( 150 );
             repeat( 85 ) {
@@ -3465,12 +3460,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         with( objAlgShaderBackground ) {
             self.shaderHue = hueVal;
         }
-        with( objGate4CornerBlock ) {
-            image_blend = other.seg30Color;
-        }
-        with( objGate4EdgeBlock ) {
-            image_blend = other.seg30Color;
-        }
+        srcGate4BlockColor( seg30Color );
     }
     if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 48 ) {
         var obj = instance_create( seg30Side, 0, objAlgRice );
@@ -3685,6 +3675,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.maxRadius = 770;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        srcGate4BlockColor( make_color_hsv( 66, 255, 255 ) );
     } else if( phaseT == 96 ) {
         with( objAlgShaderBackground ) {
             self.shaderSpeed = 0;
@@ -3700,6 +3691,20 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.maxRadius = 790;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        with( objGate4EdgeBlock ) {
+            var dist1 = point_distance( x, y, other.seg31FirstSpawnX, 404 );
+            var dist2 = point_distance( x, y, other.seg31SecondSpawnX, 0 );
+            var color1 = make_color_hsv( 66, 255, 255 );
+            var color2 = make_color_hsv( 127, 255, 255 );
+            self.targetColor = merge_colour( color1, color2, dist1 / ( dist1 + dist2 ) );
+        }
+        with( objGate4CornerBlock ) {
+            var dist1 = point_distance( x, y, other.seg31FirstSpawnX, 404 );
+            var dist2 = point_distance( x, y, other.seg31SecondSpawnX, 0 );
+            var color1 = make_color_hsv( 66, 255, 255 );
+            var color2 = make_color_hsv( 127, 255, 255 );
+            self.targetColor = merge_colour( color1, color2, dist1 / ( dist1 + dist2 ) );
+        }
     } else if( phaseT == 96 * 2 ) {
         with( objAlgShaderBackground ) {
             self.shaderSpeed = 1 / 50;
@@ -3720,6 +3725,7 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.maxRadius = 780;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        srcGate4BlockColor( make_color_hsv( 166, 187, 255 ) );
     } else if( phaseT == 96 * 5 ) {
         with( objAlgShaderBackground ) {
             self.shaderSpeed = 0;
@@ -3735,6 +3741,20 @@ if( t &gt;= 19697 &amp;&amp; t &lt; 20465 &amp;&amp; instance_exists(objPlayer) 
         obj.maxRadius = 600;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        with( objGate4CornerBlock ) {
+            var dist1 = point_distance( x, y, 700, 0 );
+            var dist2 = point_distance( x, y, 0, 504 );
+            var color1 = make_color_hsv( 166, 187, 255 );
+            var color2 = make_color_hsv( 230, 255, 255 );
+            self.targetColor = merge_colour( color1, color2, dist1 / ( dist1 + dist2 ) );
+        }
+        with( objGate4EdgeBlock ) {
+            var dist1 = point_distance( x, y, 700, 0 );
+            var dist2 = point_distance( x, y, 0, 504 );
+            var color1 = make_color_hsv( 166, 187, 255 );
+            var color2 = make_color_hsv( 230, 255, 255 );
+            self.targetColor = merge_colour( color1, color2, dist1 / ( dist1 + dist2 ) );
+        }
     } else if( phaseT == 96 * 6 ) {
         with( objAlgShaderBackground ) {
             self.shaderSpeed = 1 / 50;
@@ -3826,6 +3846,17 @@ if( t &gt;= 20465 &amp;&amp; t &lt; 20850 &amp;&amp; instance_exists(objPlayer) 
             obj.shaderMod3 = 0;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            
+            with( objGate4CornerBlock ) {
+                var dist1 = point_distance( x, y, spawnX, spawnY );
+                var color1 = make_colour_hsv( other.seg32EffectsColor, 255, 255 );
+                self.targetColor = merge_colour( self.targetColor, color1, 400 / ( dist1 + 400 ) );
+            }
+            with( objGate4EdgeBlock ) {
+                var dist1 = point_distance( x, y, spawnX, spawnY );
+                var color1 = make_colour_hsv( other.seg32EffectsColor, 255, 255 );
+                self.targetColor = merge_colour( self.targetColor, color1, 400 / ( dist1 + 400 ) );
+            }
         }
     }
 }
@@ -3903,6 +3934,22 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod3 = 0;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        
+        with( objGate4CornerBlock ) {
+            if( y &lt; 32 ) {
+                self.targetColor = make_colour_hsv( 25, 255, 255 );
+            } else {
+                self.targetColor = make_colour_hsv( 166, 127, 255 );
+            }
+        }
+        with( objGate4EdgeBlock ) {
+            if( y &lt; 32 ) {
+                self.targetColor = make_colour_hsv( 25, 255, 255 );
+            } else {
+                self.targetColor = make_colour_hsv( 166, 127, 255 );
+            }
+        }
+        
     } else if( t == 21229 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep = -0.1 / 24;
@@ -3986,6 +4033,16 @@ if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) 
     } else if( t == 21614 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep = -0.1 / 24;
+        }
+    }
+    
+    if( t % 24 == 0 ) {
+        with( objGate4CornerBlock ) {
+            self.targetColor = make_colour_hsv( 25, 255, 255 );
+        }
+        var color = choose( 0, 25, 255 / 3, 510 / 3 );
+        with( objGate4EdgeBlock ) {
+            self.targetColor = make_colour_hsv( color, 255, 255 );
         }
     }
     segment = 33;
@@ -4081,7 +4138,7 @@ if( t &gt;= 21615 &amp;&amp; t &lt; 21999 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod4 = 0;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
-        
+        srcGate4BlockHorizontalColor( make_color_hsv( 90, 255, 255 ), make_color_hsv( 150, 255, 255 ) );
     } else if( t == 21998 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep = -0.1 / 24;
@@ -4211,6 +4268,62 @@ if( t &gt;= 22000 &amp;&amp; t &lt; 22380 &amp;&amp; instance_exists(objPlayer) 
     } else if( t == 22379 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep = -0.1 / 24;
+        }
+    }
+    var blockColorValue = 0;
+    if( phaseT &lt; 192 ) {
+        blockColorValue = phaseT * 14;
+    } else {
+        blockColorValue = 192 * 14 + ( phaseT - 192 ) * 7;
+    }
+    with( objGate4CornerBlock ) {
+        var currentValue = 0;
+        if( x &lt; 400 ) {
+            currentValue += 400 - x - 32;
+        } else {
+            currentValue += x - 400;
+        }
+        currentValue += y;
+        if( y == 608 - 32 ) {
+            if( x &lt; 400 ) {
+                currentValue += x;
+            } else {
+                currentValue += 800 - x - 32;
+            }    
+        }
+        if( currentValue &lt; blockColorValue ) {
+            var colorHue = ( blockColorValue - currentValue ) / 1400 * 255;
+            self.targetColor = make_colour_hsv( colorHue, 255, 255 );
+            image_blend = self.targetColor;
+        } else {
+            self.targetColor = make_colour_rgb( 255, 255, 255 );
+        }
+    }
+    with( objGate4EdgeBlock ) {
+        var currentValue = 0;
+        if( y == 0 ) {
+            if( x &lt; 400 ) {
+                currentValue += 400 - x - 32;
+            } else {
+                currentValue += x - 400;
+            }
+        } else {
+            currentValue += 400;
+        }
+        currentValue += y;
+        if( y == 608 - 32 ) {
+            if( x &lt; 400 ) {
+                currentValue += x;
+            } else {
+                currentValue += 800 - x - 32;
+            }    
+        }
+        if( currentValue &lt; blockColorValue ) {
+            var colorHue = ( blockColorValue - currentValue ) / 1400 * 255;
+            self.targetColor = make_colour_hsv( colorHue, 255, 255 );
+            image_blend = self.targetColor;
+        } else {
+            self.targetColor = make_colour_rgb( 255, 255, 255 );
         }
     }
     segment = 35;
@@ -4424,6 +4537,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( seg37ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 24 ) {
             var obj = instance_create( 400, 250, objAlgShaderBackground );
             obj.iTime = random( 20 );
@@ -4433,6 +4547,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( seg37ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -1 / 50 / 6;
@@ -4450,7 +4565,9 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( seg37ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 + 24 ) {
+            var colorHue = objAlgShaderBackground.shaderHue;
             var obj = instance_create( 600, 250, objAlgShaderBackground );
             obj.iTime = random( 20 );
             obj.shaderHue = seg37ColorHue;
@@ -4459,6 +4576,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockHorizontalColor( make_color_hsv( colorHue, 255, 255 ), make_color_hsv( seg37ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -1 / 50 / 6;
@@ -4478,6 +4596,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( obj.shaderHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 * 2 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -2 / 50 / 12;
@@ -4496,6 +4615,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( obj.shaderHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 * 3 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -2 / 50 / 12;
@@ -4719,6 +4839,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         obj.alphaStep = 0.1 / 24;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        srcGate4BlockColor( make_colour_hsv( 0, 255, 255 ) );
     } else if( t == 23350 ) {
         with( objAlgShaderBackground ) {
             image_alpha *= 0.4;
@@ -4735,6 +4856,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         obj.alphaStep = 0.1 / 24;
         obj.image_xscale = 1.5;
         obj.image_yscale = 1.5;
+        srcGate4BlockColor( make_colour_hsv( 23, 255, 255 ) );
     } else if( t == 23542 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep *= -1;
@@ -4758,6 +4880,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         obj.alphaStep = 0.1 / 24;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        srcGate4BlockColor( make_colour_hsv( 0, 255, 255 ) );
     } else if( t == 23734 ) {
         with( objAlgShaderBackground ) {
             image_alpha *= 0.4;
@@ -4775,6 +4898,7 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
         obj.alphaStep = 0.1 / 24;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
+        srcGate4BlockColor( make_colour_hsv( 23, 255, 255 ) );
     } else if( t == 23924 ) {
         with( objAlgShaderBackground ) {
             self.alphaStep *= -1;
@@ -4997,7 +5121,9 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( seg39ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 24 ) {
+            var colorHue = objAlgShaderBackground.shaderHue;
             var obj = instance_create( 0, seg39PosY, objAlgShaderBackground );
             obj.iTime = random( 20 );
             obj.shaderHue = seg39ColorHue;
@@ -5006,6 +5132,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockHorizontalColor( make_color_hsv( seg39ColorHue, 255, 255 ), make_color_hsv( colorHue, 255, 255 ) );
         } else if( tPhase % 384 == 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -1 / 50 / 6;
@@ -5023,7 +5150,9 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( seg39ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 + 24 ) {
+            var colorHue = objAlgShaderBackground.shaderHue;
             var obj = instance_create( 800, seg39PosY, objAlgShaderBackground );
             obj.iTime = random( 20 );
             obj.shaderHue = seg39ColorHue;
@@ -5032,6 +5161,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockHorizontalColor( make_color_hsv( colorHue, 255, 255 ), make_color_hsv( seg39ColorHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -1 / 50 / 6;
@@ -5051,6 +5181,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( obj.shaderHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 * 2 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -2 / 50 / 12;
@@ -5069,6 +5200,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.alphaStep = 0.1 / 24;
             obj.image_xscale = 2;
             obj.image_yscale = 2;
+            srcGate4BlockColor( make_colour_hsv( obj.shaderHue, 255, 255 ) );
         } else if( tPhase % 384 == 96 * 3 + 48 ) {
             with( objAlgShaderBackground ) {
                 self.shaderFriction = -2 / 50 / 12;
@@ -5199,11 +5331,26 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         obj.alphaStep = 0.1 / 24;
         obj.image_xscale = -2;
         obj.image_yscale = 2;
+        
     } else if( phaseT % 48 == 0 ) {
         with( objAlgShaderBackground ) {
             self.shaderHue = random( 255 );
         }
-        
+    }
+    
+    if( phaseT % 384 &gt;= 192 ) {
+        if( phaseT % 12 == 0 ) {
+            with( objGate4CornerBlock ) {
+                self.targetColor = make_colour_hsv( random( 255 ), 255, 255 )
+            }
+            with( objGate4EdgeBlock ) {
+                self.targetColor = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        }
+    } else {
+        if( phaseT % 48 == 0 ) {
+            srcGate4BlockColor( make_colour_hsv( random( 255 ), 255, 255 ) );
+        }
     }
     
     if( phaseT % 384 == 192 ) {
@@ -5327,6 +5474,36 @@ if( t &gt;= 25460 &amp;&amp; t &lt; 26230 &amp;&amp; instance_exists(objPlayer) 
                 self.shaderHue = 155;
             } else {
                 self.shaderHue = 15;
+            }
+        }
+        with( objGate4CornerBlock ) {
+            var mode = 0;
+            if( x &gt;= 400 ) {
+                mode = other.seg40RightLineMode;
+            } else {
+                mode = other.seg40LeftLineMode;
+            }
+            if( mode == 0 ) {
+                self.targetColor = make_colour_hsv( 85, 255, 255 );
+            } else if( mode == 1 ) {
+                self.targetColor = make_colour_hsv( 155, 255, 255 );
+            } else {
+                self.targetColor = make_colour_hsv( 15, 255, 255 );
+            }
+        }
+        with( objGate4EdgeBlock ) {
+            var mode = 0;
+            if( x &gt;= 400 ) {
+                mode = other.seg40RightLineMode;
+            } else {
+                mode = other.seg40LeftLineMode;
+            }
+            if( mode == 0 ) {
+                self.targetColor = make_colour_hsv( 85, 255, 255 );
+            } else if( mode == 1 ) {
+                self.targetColor = make_colour_hsv( 155, 255, 255 );
+            } else {
+                self.targetColor = make_colour_hsv( 15, 255, 255 );
             }
         }
     }

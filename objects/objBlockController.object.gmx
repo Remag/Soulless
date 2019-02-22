@@ -142,11 +142,11 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         }
     }
 } else if( t &gt;= 26230 &amp;&amp; t &lt; 33525 ) {
-    if( instance_exists( objCornerBlock ) ) {
-        with( objCornerBlock ) {
+    if( instance_exists( objGate4CornerBlock ) ) {
+        with( objGate4CornerBlock ) {
             instance_destroy();
         }
-        with( objGate3Block ) {
+        with( objGate4EdgeBlock ) {
             instance_destroy();
         }
     }
