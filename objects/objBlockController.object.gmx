@@ -31,17 +31,21 @@
 
 if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
     if( !instance_exists( objGate1CornerBlock ) ) {
-    
         for( var i = 0; i &lt; 800; i += 32 ) {
             instance_create( i, 0, objGate1CornerBlock );  
             instance_create( i, 608 - 32, objGate1CornerBlock );
-            if( i &gt; 0 &amp;&amp; i &lt; 800 - 32 ) {
-                instance_create( i, 608 - 32, objGate1SnowBlock );     
-            }
+            //instance_create( i - snowOffset, 608 - 32, objGate1SnowBlock );     
+        }
+        var snowOffset = random_range( 10, 20 );
+        for( var snowX = -snowOffset; snowX &lt; 800; snowX += 0 ) {
+            var snowBlock = instance_create( snowX, 608 - 32, objGate1SnowBlock ); 
+            var snowScaleX = random_range( 1, 2 );
+            snowBlock.image_xscale = snowScaleX;
+            snowX += snowScaleX * 32;
         }
         for( var i = 32; i &lt; 608 - 32; i += 32 ) {
-            instance_create( 0, i, objGate1CornerBlock );  
-            instance_create( 768, i, objGate1CornerBlock );    
+            //instance_create( 0, i, objGate1CornerBlock );  
+            //instance_create( 768, i, objGate1CornerBlock );    
         }
     }
 } else if( t &gt;= 6545 &amp;&amp; t &lt; 11540 ) {
