@@ -114,5 +114,5 @@ switch( segment ) {
     case 56:
         return 37075;
     default:
-        return -1;
+        return 0;
 }

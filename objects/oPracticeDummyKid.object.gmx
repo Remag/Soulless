@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Do nothing.
 xScale = 1;
+outlineValue = 0;
 </string>
           </argument>
         </arguments>
