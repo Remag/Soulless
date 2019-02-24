@@ -59,16 +59,38 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         instance_create( 0, 608 - 32, objGate2CornerBlock );
         instance_create( 768, 608 - 32, objGate2CornerBlock );
         
-        for( var i = 32; i &lt; 800 - 32; i += 32 ) {
-            //instance_create( i, 0, objGate2EdgeBlock );  
-            instance_create( i, 608 - 32, objGate2EdgeBlock );
-        }
+        instance_create( 32, 608 - 32, objGate2EdgeBlock );
+        var obj = instance_create( 0, 608 - 32, objGate2EdgeBlock );  
+        obj.image_angle = 90;
+        obj.image_xscale = ( 608 - 64 ) / 736;
+        obj = instance_create( 800 - 32, 608 - 32, objGate2EdgeBlock );
+        obj.image_angle = 90;
+        obj.image_xscale = ( 608 - 64 ) / 736;
         
-        for( var i = 64; i &lt; 608; i += 32 ) {
-            var obj = instance_create( 0, i, objGate2EdgeBlock );  
-            obj.image_angle = 90;
-            obj = instance_create( 800 - 32, i, objGate2EdgeBlock );
-            obj.image_angle = 90;
+        for( var i = 16; i &lt; 608 - 16; i += 48 ) {
+            instance_create( 16, i, objGate2Bulb );
+            var obj = instance_create( 16, i + 24, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = 0.5;
+            obj.image_yscale = 1.5;
+        }
+        for( var i = 16; i &lt; 800; i += 48 ) {
+            var obj = instance_create( i, 608 - 16, objGate2Bulb );
+            obj.bulbType = 2;
+            
+            if( i &lt; 800 - 16 ) {
+                var obj = instance_create( i + 24, 608 - 16, objGate2Bulb );
+                obj.bulbType = 3;
+                obj.image_xscale = 1.5;
+                obj.image_yscale = 0.5;
+            }
+        }
+        for( var i = 16 + 48; i &lt;= 608 - 16; i += 48 ) {
+            instance_create( 800 - 16, 608 - i, objGate2Bulb );
+            var obj = instance_create( 800 - 16, 608 - i + 24, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = 0.5;
+            obj.image_yscale = 1.5;
         }
     }
 } else if( t &gt;= 11540 &amp;&amp; t &lt; 18545 ) {
@@ -77,6 +99,9 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             instance_destroy();
         }
         with( objGate2EdgeBlock ) {
+            instance_destroy();
+        }
+        with( objGate2Bulb ) {
             instance_destroy();
         }
     }

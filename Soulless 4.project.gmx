@@ -146,6 +146,7 @@
       <sprite>sprites\sprPlayerMaskFlip</sprite>
       <sprite>sprites\sprPlayerSliding</sprite>
       <sprite>sprites\sprBow</sprite>
+      <sprite>sprites\sprParticle</sprite>
     </sprites>
     <sprites name="blocks">
       <sprite>sprites\sprBlockMask</sprite>
@@ -164,6 +165,7 @@
       <sprite>sprites\sprGate1SnowBlock</sprite>
       <sprite>sprites\sprGate2CornerBlock</sprite>
       <sprite>sprites\sprGate2EdgeBlock</sprite>
+      <sprite>sprites\sprGate2Bulb</sprite>
       <sprite>sprites\sprShaderBlock</sprite>
       <sprite>sprites\sprGate4CornerBlock</sprite>
       <sprite>sprites\sprGate4EdgeBlock</sprite>
@@ -567,6 +569,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\hsvShader.shader</shader>
+    <shader type="GLSLES">shaders\sdrLight.shader</shader>
     <shader type="GLSLES">shaders\backgroundShader.shader</shader>
     <shader type="GLSLES">shaders\sdrSpiral1.shader</shader>
     <shader type="GLSLES">shaders\sdrGate3Electro.shader</shader>
@@ -603,6 +606,7 @@
       <object>objects\objPlayer</object>
       <object>objects\objBow</object>
       <object>objects\objBasePlayer</object>
+      <object>objects\objParticle</object>
     </objects>
     <objects name="blocks">
       <object>objects\objBlock</object>
@@ -621,6 +625,7 @@
       <object>objects\objGate1SnowBlock</object>
       <object>objects\objGate2CornerBlock</object>
       <object>objects\objGate2EdgeBlock</object>
+      <object>objects\objGate2Bulb</object>
       <object>objects\objGate3ShaderBlock</object>
       <object>objects\objGate4CornerBlock</object>
       <object>objects\objGate4EdgeBlock</object>

@@ -28,7 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 
 t = 0;
-//t = 26230;
+//t = 6545;
 
 segment = 1;
 
@@ -1327,6 +1327,14 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             alphaStep = image_alpha / 5;
         }
     }
+    
+    with( objGate2Bulb ) {
+        bulbBehaviour = false;
+        image_blend = make_color_rgb( 255, 255, 0 );
+        if( self.bulbType == 1 || self.bulbType == 3 ) {
+            self.bulbPhase = 12;
+        }
+    }
     segment = 9;
 }
 </string>
@@ -1372,6 +1380,9 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
                 obj.image_blend = make_colour_rgb( 0, 0, 255 );
                 break;
         }
+        with( objGate2Bulb ) {
+            image_blend = obj.image_blend;
+        }
     } else if( phaseT == 96 + 48 ) {
         a = instance_create(0,0,objArchEventWall1);
         a.hspeed = 800 / 48;
@@ -1395,6 +1406,32 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
     if( t == 7681 ) {
         with(objArchEventWall1) {
             instance_destroy();
+        }
+    }
+    
+    if( phaseT == 0 ) {
+        seg10BulletX = -200;
+        seg10BulletY = -200;
+    }
+    var wallX = -200;
+    with( objArchEventWall1 ) {
+        wallX = x;
+    }
+    with( objArchBullet3 ) {
+        other.seg10BulletX = x;
+        other.seg10BulletY = y;
+    }
+    with( objGate2Bulb ) {
+        self.bulbBehaviour = true;
+        self.bulbPhase = 0;
+        if( bulbType = 0 || self.bulbType == 1 ) {
+            self.bulbTrackingPos = other.seg10BulletY;
+            self.innerTrackingPos = other.seg10BulletY;
+        } else if( wallX != -200 ) {
+            self.bulbTrackingPos = wallX;
+            self.innerTrackingPos = wallX;
+        } else {
+            self.bulbTrackingPos = other.seg10BulletX;
         }
     }
     segment = 10;
@@ -1506,6 +1543,23 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_blend = color;
             obj.rotationSpeed = -effectsRotationSpeed;
         }
+        
+        with( objGate2Bulb ) {
+            image_blend = color;
+            self.bulbBehaviour = true;
+            if( self.bulbType = 0 || self.bulbType == 1 ) {
+                self.innerTrackingPos = 608;
+                self.bulbTrackingPos = a_yy;
+            } else {
+                if( x &lt; 400 ) {
+                    self.innerTrackingPos = 0;
+                    self.bulbTrackingPos = a_xx;
+                } else {
+                    self.innerTrackingPos = 800;
+                    self.bulbTrackingPos = 800 - a_xx;
+                }
+            }
+        }
     }
     segment = 11;
 }
@@ -1553,6 +1607,21 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
                     break;
             }
             obj.rotationSpeed = -1;
+        }
+        var i = 0;
+        with( objGate2Bulb ) {
+            switch( i % 3 ) {
+                case 0:
+                    image_blend = make_colour_rgb( 255, 0, 0 );
+                    break;
+                case 1:
+                    image_blend = make_colour_rgb( 0, 255, 0 );
+                    break;
+                case 2:
+                    image_blend = make_colour_rgb( 0, 0, 255 );
+                    break;
+            }
+            i++;
         }
     }
     if( t &lt; 9100 ) {
@@ -1629,6 +1698,26 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             alphaStep = image_alpha / 10;
         }
     }
+    var trackingPosX = ( t - 8465 ) * 4 * 800 / 785;
+    var trackingPosY = ( t - 8465 ) * 4 * 608 / 785;
+    trackingPosX = abs( trackingPosX % 1600 - 800 );
+    trackingPosY = abs( trackingPosY % 1216 - 608 );
+    with( objGate2Bulb ) {
+        if( self.bulbType == 2 || self.bulbType == 3 ) {
+            self.bulbTrackingPos = trackingPosX;
+        } else {
+            if( x &lt; 400 ) {
+                self.bulbTrackingPos = 608 - trackingPosY;
+            } else {
+                self.bulbTrackingPos = trackingPosY;
+            }
+        }
+    }
+    if( t == 8465 ) {
+       with( objGate2Bulb ) {
+            self.innerTrackingPos = self.bulbTrackingPos;
+       } 
+    }
     segment = 12;
 }
 </string>
@@ -1686,6 +1775,22 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
             obj.rotationSpeedMax = 10;
         }
     }
+    
+    with( objGate2Bulb ) {
+        self.bulbBehaviour = false;
+        self.bulbPeriod = 48;
+        if( self.bulbType == 1 || self.bulbType == 3 ) {
+            self.bulbPhase = 24;
+            if( phaseT % 96 == 24 ) {
+                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        } else {
+            self.bulbPhase = 72;
+            if( phaseT % 96 == 72 ) {
+                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        }
+    } 
 
     segment = 13;
 }
@@ -1774,6 +1879,22 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         obj.image_yscale = 1;
         obj.image_blend = make_colour_hsv( 0, 255, 255 );
     }
+    
+    with( objGate2Bulb ) {
+        self.bulbBehaviour = false;
+        self.bulbPeriod = 48;
+        if( self.bulbType == 1 || self.bulbType == 3 ) {
+            self.bulbPhase = 24;
+            if( phaseT % 96 == 24 ) {
+                image_blend = make_colour_hsv( 0, 255, 255 );
+            }
+        } else {
+            self.bulbPhase = 72;
+            if( phaseT % 96 == 72 ) {
+                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        }
+    } 
 
     segment = 14;
 }
@@ -1843,6 +1964,22 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 0, lerp( 608, 0, ( tPhase - 48 ) / 48 ), objAlgLaserBackEffect );
         obj.image_yscale = 1;
         obj.image_blend = make_colour_hsv( 100, 255, 255 );
+    }
+    
+    with( objGate2Bulb ) {
+        self.bulbBehaviour = false;
+        self.bulbPeriod = 48;
+        if( self.bulbType == 1 || self.bulbType == 3 ) {
+            self.bulbPhase = 72;
+            if( tPhase % 96 == 72 ) {
+                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        } else {
+            self.bulbPhase = 24;
+            if( tPhase % 96 == 24 ) {
+                image_blend = make_colour_hsv( 0, 255, 255 );
+            }
+        }
     }
     
     segment = 15;
@@ -1945,6 +2082,32 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) 
         obj.spawnAngle = 0;
         obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
+    
+    with( objGate2Bulb ) {
+        self.bulbPeriod = 48;
+        if( self.bulbType == 2 || self.bulbType == 3 ) {
+            self.bulbBehaviour = true;
+            self.bulbTrackingPos = scrGetPlayerX();
+            self.bulbPhase = 0;
+            var dist = abs( x - self.innerTrackingPos );
+            if( dist &gt; 96 ) {
+                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        } else {
+            self.bulbBehaviour = false;
+            if( self.bulbType == 1 ) {
+                self.bulbPhase = 72;
+            } else {
+                self.bulbPhase = 24;
+            }
+            image_blend =  make_colour_rgb( 0, 0, 255 );
+        }
+    }
+    if( t == 10380 ) {
+       with( objGate2Bulb ) {
+            self.innerTrackingPos = scrGetPlayerX();
+       } 
+    }
 }
 </string>
           </argument>
@@ -2037,6 +2200,32 @@ if( t &gt;= 10764 &amp;&amp; t &lt; 11148 &amp;&amp; instance_exists(objPlayer) 
         obj.spawnAngle = 135;
         obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
+    
+    with( objGate2Bulb ) {
+        self.bulbPeriod = 48;
+        if( self.bulbType == 2 || self.bulbType == 3 ) {
+            self.bulbBehaviour = true;
+            self.bulbTrackingPos = scrGetPlayerX();
+            self.bulbPhase = 0;
+            var dist = abs( x - self.innerTrackingPos );
+            image_blend = make_colour_hsv( 0, 255, 255 );
+        } else {
+            self.bulbBehaviour = false;
+            if( self.bulbType == 1 ) {
+                self.bulbPhase = 72;
+            } else {
+                self.bulbPhase = 24;
+            }
+            if( phaseT % 96 == self.bulbPhase ) {
+                image_blend =  make_colour_hsv( random( 255 ), 255, 255 );
+            }
+        }
+    }
+    if( t == 10764 ) {
+       with( objGate2Bulb ) {
+            self.innerTrackingPos = scrGetPlayerX();
+       } 
+    }
 }
 </string>
           </argument>
@@ -2101,6 +2290,16 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
     
     // Effects by Algeran.
     var phaseT = ( t - 11148 );
+    var color;
+    if( phaseT &lt;= 24 ) {
+        color = make_colour_hsv( 80, 255, 255 );
+    } else if( phaseT &lt;= 120 ) {
+        color = make_colour_hsv( 33, 255, 255 );
+    } else if( phaseT &lt;= 216 ) {
+        color = make_colour_hsv( 20, 255, 255 );
+    } else {
+        color = make_colour_hsv( 0, 255, 255 );        
+    }
     if( phaseT == 20 || phaseT == 72 || phaseT == 115 || phaseT == 165 || phaseT == 205 || phaseT == 248 || phaseT == 290 ) {
         var spawnIndex = 0;
         repeat( 3 ) {
@@ -2150,18 +2349,53 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
                         break;
                 }
             }
-            if( phaseT &lt;= 24 ) {
-                obj.spawnBlend = make_colour_hsv( 80, 255, 255 );
-            } else if( phaseT &lt;= 120 ) {
-                obj.spawnBlend = make_colour_hsv( 33, 255, 255 );
-            } else if( phaseT &lt;= 216 ) {
-                obj.spawnBlend = make_colour_hsv( 20, 255, 255 );
-            } else {
-                obj.spawnBlend = make_colour_hsv( 0, 255, 255 );        
-            }
+            obj.spawnBlend = color;
             obj.maxFrame = 48;
             spawnIndex++;
         }
+    }
+    
+    // Bulb color.
+    if( t &lt; 11250 ) {
+        color = make_colour_hsv( 80, 255, 255 );
+    } else if( t &lt; 11350 ) {
+        color = make_colour_hsv( 33, 255, 255 );
+    } else if( t &lt; 11440 ) {
+        color = make_colour_hsv( 20, 255, 255 );
+    } else {
+        color = make_colour_hsv( 0, 255, 255 );        
+    }
+    var trackingPosY = ( t - 11148 ) * 8 * 800 / 384;
+    trackingPosY = abs( trackingPosY % 800 ) - 96;
+    with( objGate2Bulb ) {
+        self.bulbPeriod = 48;
+        image_blend = color;
+        self.bulbBehaviour = true;
+        if( self.bulbType == 2 || self.bulbType == 3 ) {
+            self.bulbBehaviour = true;
+            self.bulbTrackingPos = scrGetPlayerX();
+            self.bulbPhase = 0;
+        } else {
+            self.bulbBehaviour = true;
+            self.bulbTrackingPos = trackingPosY;
+            if( self.bulbType == 1 ) {
+                self.bulbPhase = 72;
+            } else {
+                self.bulbPhase = 24;
+            }
+        }
+    }
+    if( ( t - 11148 ) % 48 == 0 ) {
+       with( objGate2Bulb ) {
+            if( y == 608 - 16 &amp;&amp; ( x == 16 || x == 800 - 16 ) ) {
+                self.bulbType = 0;
+            }
+            if( self.bulbType == 2 || self.bulbType == 3 ) {
+                self.innerTrackingPos = scrGetPlayerX();
+            } else {
+                self.innerTrackingPos = trackingPosY;
+            }
+       } 
     }
 }
 </string>
@@ -3462,27 +3696,35 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         }
         srcGate4BlockColor( seg30Color );
     }
-    if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt;= 48 * 7 + 48 ) {
+    if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt; 48 * 7 + 48 ) {
+        var targetSpeed = lerp( 0.1, 15, ( phaseT - 48 * 7 ) / 48 );
         var obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir;
-        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
+        obj.image_angle = obj.direction;
+        obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir + 25;
-        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
+        obj.image_angle = obj.direction;
+        obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
         obj.direction = seg30Dir - 25;
-        obj.speed = lerp( 2, 15, ( phaseT - 48 * 7 ) / 48 );
+        obj.image_angle = obj.direction;
+        obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
         obj.image_yscale = 1.33;
+    } else if( phaseT == 48 * 7 + 48 ) {
+        with( objAlgRice ) {
+            friction = -0.01;
+        }
     }
     
     if( t == 19686 ) {
