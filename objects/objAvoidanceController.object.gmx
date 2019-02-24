@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
-t = 0;
+//t = 0;
 //t = 26230;
 
 segment = 1;

@@ -399,6 +399,11 @@ if (keyboard_check(vk_control) &amp;&amp; keyboard_check_pressed(ord("M")) &amp;
     
     scrSaveConfig();    //save mute setting
 }
+
+if( global.debugMode &amp;&amp; keyboard_check_pressed( 192 ) ) {
+    global.StartSegment = get_integer( "Segment number", global.StartSegment );
+    global.start_time = scrGetSegmentOffset( global.StartSegment );
+}
 </string>
           </argument>
         </arguments>
