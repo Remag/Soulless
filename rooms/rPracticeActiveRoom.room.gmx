@@ -59,6 +59,7 @@
     <instance objName="oCurrencyDisplayView" x="35" y="38" name="inst_770A8355" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticeAvoidanceController" x="32" y="32" name="inst_846238D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oRefundNotification" x="0" y="592" name="inst_BDFFE2CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlockController" x="-32" y="16" name="inst_8C8843CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="0" y="576" w="32" h="32" xo="0" yo="0" id="10002824" name="inst_44CA963D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
