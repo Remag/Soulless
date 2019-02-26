@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>phase = irandom_range( 0, 200 );
 period = irandom_range( 180, 200 );
+fadeOut = false;
 </string>
           </argument>
         </arguments>
@@ -52,6 +53,13 @@ period = irandom_range( 180, 200 );
             <string>phase++;
 var color = 205 + 50 * sin( phase * pi / period );
 image_blend = make_colour_rgb( color, color, color );
+
+if( fadeOut ) {
+    image_alpha -= 0.05;
+    if( image_alpha &lt;= 0 ) {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>

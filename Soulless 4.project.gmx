@@ -419,6 +419,18 @@
     </sprites>
     <sprite>sprites\sprWhiteCircle</sprite>
     <sprite>sprites\sprPulse</sprite>
+    <sprites name="TileEffects">
+      <sprites name="BlackShards">
+        <sprite>sprites\sprBlackShard1</sprite>
+        <sprite>sprites\sprBlackShard2</sprite>
+        <sprite>sprites\sprBlackShard3</sprite>
+        <sprite>sprites\sprBlackShard4</sprite>
+        <sprite>sprites\sprBlackShard5</sprite>
+        <sprite>sprites\sprBlackShard6</sprite>
+        <sprite>sprites\sprBlackShard7</sprite>
+        <sprite>sprites\sprBlackShard8</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -998,6 +1010,9 @@
       <objects name="Segment43">
         <object>objects\oRedireS43SphereTrail</object>
       </objects>
+      <objects name="Effects">
+        <object>objects\oSnowDissapearParticle</object>
+      </objects>
     </objects>
     <objects name="Algeran">
       <object>objects\objAlgBlackScreen</object>
@@ -1110,6 +1125,21 @@
     <object>objects\objInverseCircle</object>
     <object>objects\objInverseCircleController</object>
     <object>objects\objPulseController</object>
+    <objects name="TileEffects">
+      <objects name="BlockShard1">
+        <object>objects\oBlockShardBase0</object>
+        <object>objects\oBlockShard01</object>
+        <object>objects\oBlockShard02</object>
+        <object>objects\oBlockShard03</object>
+        <object>objects\oBlockShard04</object>
+        <object>objects\oBlockShard05</object>
+        <object>objects\oBlockShard06</object>
+        <object>objects\oBlockShard07</object>
+        <object>objects\oBlockShard08</object>
+      </objects>
+      <object>objects\oBlockShardSerializer</object>
+      <object>objects\oBlockShardBase</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
