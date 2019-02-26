@@ -3668,7 +3668,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
             srcGate4BlockColor( color );
             var spawnX = random_range( 150, 650 );
             var spawnY = random( 150 );
-            repeat( 85 ) {
+            repeat( 80 ) {
                 var obj = instance_create( spawnX, spawnY, objAlgA30Sphere );
                 //obj.image_xscale = 4.0;
                 //obj.image_yscale = 0.25;
@@ -4636,7 +4636,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         } else if( tPhase == 96 ) { 
             seg37ColorHue = random( 255 );
             var color = make_colour_hsv( seg37ColorHue, 255, 255 );
-            scrMakeCircle( 200, 250, random( 360 ), 30, 15, objAlgA37Sphere );
+            scrMakeCircle( 200, 250, random( 360 ), 28, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
                     image_blend = color;
@@ -4647,7 +4647,7 @@ if( t &gt;= 22380 &amp;&amp; t &lt; 23150 &amp;&amp; instance_exists(objPlayer) 
         } else if( tPhase == 96 + 24 ) { 
             seg37ColorHue = random( 255 );
             var color = make_colour_hsv( seg37ColorHue, 255, 255 );
-            scrMakeCircle( 600, 250, random( 360 ), 30, 15, objAlgA37Sphere );
+            scrMakeCircle( 600, 250, random( 360 ), 28, 15, objAlgA37Sphere );
             with( objAlgA37Sphere ) {
                 if( friction == 0 ) {
                     image_blend = color;
@@ -5438,8 +5438,10 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
     }
     
     var phaseT = t - 24690;
-    if( phaseT &lt; 192 ) {
-        if( phaseT % 6 == 0 ) {
+    if( phaseT &lt;= 6 ) {
+        // Do nothing.
+    } else if( phaseT &lt; 192 ) {
+        if( phaseT % 7 == 0 ) {
             var targetX = max( 0, min( 800, scrGetPlayerX() + random_range( -100, 100 ) ) );
             var obj = instance_create( targetX, lerp( 0, 208, phaseT / 192  ), objAlgA40Spawner );
             obj.spawnMode = irandom( 3 );
