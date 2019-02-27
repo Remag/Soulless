@@ -33,6 +33,10 @@ tag = 0;
 
 spawnX = x;
 spawnY = y;
+
+var scale = 0.95;
+image_xscale = scale;
+image_yscale = scale;
 </string>
           </argument>
         </arguments>

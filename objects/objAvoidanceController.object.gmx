@@ -6123,12 +6123,8 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             obj.speed = random_range( 3, 6 );
             obj.image_xscale = s47WarningScale;
             obj.image_yscale = s47WarningScale;
-            obj.image_blend = choose( seg45Color1, seg45Color2, seg45Color3 );
-            if( obj.image_blend == seg45Color3 ) {
-                obj.alphaStep = 0.025;
-            } else {
-                obj.alphaStep = 0.07;            
-            }
+            obj.image_blend = seg45Color3;
+            obj.alphaStep = 0.04;
         }
     } else if( tPhase &gt; 96 &amp;&amp; tPhase &lt;= 96 + 96 ) {
         repeat( 3 ) {
@@ -6138,12 +6134,8 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             obj.speed = random_range( 3, 6 );
             obj.image_xscale = s47WarningScale;
             obj.image_yscale = s47WarningScale;
-            obj.image_blend = choose( seg45Color1, seg45Color2, seg45Color3 );
-            if( obj.image_blend == seg45Color3 ) {
-                obj.alphaStep = 0.025;
-            } else {
-                obj.alphaStep = 0.07;            
-            }
+            obj.image_blend = seg45Color3;
+            obj.alphaStep = 0.04;
         }
     } else if( tPhase &gt; 96 * 2 &amp;&amp; tPhase &lt; 96 * 2 + 96 ) {
         repeat( 3 ) {
@@ -6153,12 +6145,8 @@ if( t &gt;= 27760 &amp;&amp; t &lt; 28144 &amp;&amp; instance_exists(objPlayer) 
             obj.speed = random_range( 3, 6 );
             obj.image_xscale = s47WarningScale;
             obj.image_yscale = s47WarningScale;
-            obj.image_blend = choose( seg45Color1, seg45Color2, seg45Color3 );
-            if( obj.image_blend == seg45Color3 ) {
-                obj.alphaStep = 0.025;
-            } else {
-                obj.alphaStep = 0.07;            
-            }
+            obj.image_blend = seg45Color3;
+            obj.alphaStep = 0.04;
         }
     }
     
@@ -6231,30 +6219,30 @@ if( t &gt;= 28145 &amp;&amp; t &lt; 28525 &amp;&amp; instance_exists(objPlayer) 
     if( t == 28145 ) {
         var spawner = instance_create( 800, 0, oRedireS46CornerSpawner );
         spawner.spawnDir = 225;
-        spawner.spawnPeriod = 2;
+        spawner.spawnPeriod = 2.2;
         spawner.spawnIndex = 0;
     }
     if( t == 28235 ) {
         var spawner = instance_create( 0, 0, oRedireS46CornerSpawner );
         spawner.spawnDir = -45;        
-        spawner.spawnPeriod = 2;
+        spawner.spawnPeriod = 2.2;
         spawner.spawnIndex = 1;
     }
     if( t == 28340 ) {
         var spawner = instance_create( 800, 0, oRedireS46CornerSpawner );
         spawner.spawnDir = 225;
-        spawner.spawnPeriod = 2;
+        spawner.spawnPeriod = 2.2;
         spawner.spawnIndex = 0;
     }
     if( t == 28430 ) {
         var spawner1 = instance_create( 0, 0, oRedireS46CornerSpawner );
         spawner1.spawnDir = -45;        
-        spawner1.spawnPeriod = 3;
+        spawner1.spawnPeriod = 3.3;
         spawner1.spawnIndex = 1;
         
         var spawner2 = instance_create( 800, 0, oRedireS46CornerSpawner );
         spawner2.spawnDir = 225;        
-        spawner2.spawnPeriod = 3;
+        spawner2.spawnPeriod = 3.3;
         spawner2.spawnIndex = 0;
     }
     if( t == 28195 || t == 28290 || t == 28385 || t == 28480 ) {
@@ -6331,7 +6319,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( t &gt; 28525 &amp;&amp; t &lt; 28920 ) {
-        if( t%24 == 0 ) {
+        if( t%26 == 0 ) {
             with(objArchBullet21) {
                 if( self.mode == 1 ) {
                     for( i = random(90); i &lt; 360; i += 90 ) {
