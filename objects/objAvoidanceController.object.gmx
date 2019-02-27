@@ -5202,14 +5202,14 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     } else if( tPhase &gt;= 192 &amp;&amp; tPhase &lt; 364 ) { 
-        if( tPhase % 2 == 0 ) {
+        if( tPhase % 7 &lt; 3 ) {
             var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
             obj.hspeed = random_range( -2, 2 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
     }
     
-    if( tPhase &gt;= 364 &amp;&amp; tPhase % 11 == 0 ) { 
+    if( tPhase &gt;= 364 &amp;&amp; tPhase % 14 == 0 ) { 
         var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
         obj.hspeed = random_range( -2, 2 );
         obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
@@ -5291,11 +5291,6 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
         }
     } else if( tPhase &gt;= 576 &amp;&amp; tPhase &lt; 768 - 24 ) { 
         if( tPhase % 2 == 0 ) {
-            var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
-            obj.hspeed = random_range( -2, 2 );
-            obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-        }
-        if( tPhase % 15 == 5 ) { 
             var obj = instance_create( random( 800 ), 0, objAlgA39Sphere2 );
             obj.hspeed = random_range( -2, 2 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );

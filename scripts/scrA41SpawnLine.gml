@@ -29,7 +29,7 @@ switch( variant ) {
     }
     case 1: {
         // constant speed, various distance, constant count.
-        var count = ceil( 14 * countMultiplier );
+        var count = ceil( 12 * countMultiplier );
         var step = ( 1000 - 32 ) / count;
         for( var i = 0; i < count; i++ ) {
             var spawnY = 608 - 32 - random_range( i * step, ( i + 1 ) * step );
