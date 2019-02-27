@@ -5216,6 +5216,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.speed = lerp(20, 15, s38_tt)
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.gravity = 0.3;
+            obj.bounce = true;
         }
     }
     
@@ -5300,12 +5301,12 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     } else if( tPhase &gt;= 576 &amp;&amp; tPhase &lt; 768 - 24 ) {
-        if( tPhase % 3 == 0 ) {
+        if( tPhase % 5 &lt; 2 ) {
             var s38_tt = (tPhase - 192)/(364 - 192);
             var obj = instance_create( 400, 608, objAlgA39SphereArch );        
             obj.hspeed = random_range( -6, 6 );
             obj.vspeed = -random_range(8, 20);
-            obj.speed = lerp(6, 12, s38_tt)
+            obj.speed = lerp(6, 10, s38_tt)
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.bounce = true;
             //obj.gravity = 0.2;

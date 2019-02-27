@@ -54,8 +54,8 @@ bounce = false;
 var obj = instance_create( x, y, objAlgSphereTrail );
 obj.image_blend = image_blend;
 
-if( bounce &amp;&amp; y &lt;= 304 ) {
-    move_bounce_solid(false);
+if( bounce &amp;&amp; y &lt;= 32 ) {
+    vspeed = -vspeed;
 }
 </string>
           </argument>
