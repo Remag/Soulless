@@ -4928,28 +4928,17 @@ if( t &gt;= 23150 &amp;&amp; t &lt; 23925 &amp;&amp; instance_exists(objPlayer) 
             }
             s37SpiralDir += random_range( 7, 30 );
         }
-        var progress = 1 - tt;
-        with(objArchBullet10) {
-            if( image_alpha &lt; 1 &amp;&amp; ( x &lt; progress * 200 || x &gt; 800 - progress * 200 ) ) {
-                instance_destroy();
-                repeat(5) {
-                    var obj = instance_create(x, y, objArchBullet10);
-                    obj.image_alpha = 1;
-                    obj.vspeed = random_range( -5, -1 );
-                    obj.hspeed = sign( x - 400 ) * random_range( 0.5, 2 );
-                    obj.gravity = 0.5;
-                }
-            }
-        }
     }
     if( t == 23542 || t == 23920 ) {
         var playerX = scrGetPlayerX();
         var playerY = scrGetPlayerY();
         with(objArchBullet10) {
-            image_alpha = 1;
             direction = point_direction( x, y, playerX, playerY ) + 180;
             speed = random_range(7, 10);
-            gravity = 0;
+        }
+        with( objArchBullet11 ) {
+            direction = point_direction( x, y, playerX, playerY ) + 180;
+            speed = random_range(7, 10);
         }
     }
     if( t == 23614 || t == 23665 || t == 23720 ) {
