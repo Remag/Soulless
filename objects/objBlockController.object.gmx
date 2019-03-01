@@ -156,6 +156,26 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             obj.image_xscale = 0.5;
             obj.image_yscale = 1.5;
         }
+        
+        // Move blocks.
+        with( objBlock ) {
+            if( BlockId == 1 ) {
+                x = 0;
+            } else if( BlockId == 2 ) {
+                x = 768;
+            }
+        }
+        with( objPlayer ) {
+            if( bbox_right &gt; 768 ) {
+                x = 768 - 15;
+                xprevious = x;
+                scrSpawnTeleportParticles();
+            } else if( bbox_left &lt; 32 ) {
+                x = 32 + 17;
+                xprevious = x;
+                scrSpawnTeleportParticles();
+            }
+        }
     }
     if( t &lt; 6600 ) {
         with( objGate2CornerBlock ) {
@@ -209,6 +229,15 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         obj.image_angle = 135;
         obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
         obj.image_angle = -45;
+        
+        // Move blocks.
+        with( objBlock ) {
+            if( BlockId == 1 ) {
+                x = 0;
+            } else if( BlockId == 2 ) {
+                x = 768;
+            }
+        }
     }
 } else if( t &gt;= 18545 &amp;&amp; t &lt; 26230 ) {
     if( instance_exists( objCornerBlock ) ) {
@@ -236,6 +265,14 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             obj.image_angle = 90;
             obj = instance_create( 800 - 32, i, objGate4EdgeBlock );
             obj.image_angle = 90;
+        }
+        // Move blocks.
+        with( objBlock ) {
+            if( BlockId == 1 ) {
+                x = 0;
+            } else if( BlockId == 2 ) {
+                x = 768;
+            }
         }
     }
 } else if( t &gt;= 26230 &amp;&amp; t &lt; 33525 ) {
@@ -278,6 +315,14 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             instance_create( 0, i, objGate5EdgeVBlock );  
             instance_create( 768, i, objGate5EdgeVBlock );    
         }
+        // Move blocks.
+        with( objBlock ) {
+            if( BlockId == 1 ) {
+                x = 0;
+            } else if( BlockId == 2 ) {
+                x = 768;
+            }
+        }
     }
 } else if( t &gt;= 33525 ) {
     if( instance_exists( objGate5CornerBlock ) ) {
@@ -311,6 +356,15 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             obj.image_angle = 90;    
         }
         instance_create( 0, 0, objGate6BlockHider );
+        
+        // Move blocks.
+        with( objBlock ) {
+            if( BlockId == 1 ) {
+                x = 0;
+            } else if( BlockId == 2 ) {
+                x = 768;
+            }
+        }
     }
     
 }

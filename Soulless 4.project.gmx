@@ -541,6 +541,7 @@
       <script>scripts\scrTweenValue.gml</script>
       <script>scripts\scrOnPortalButton.gml</script>
       <script>scripts\scrOnPlayerRestart.gml</script>
+      <script>scripts\scrSpawnTeleportParticles.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -820,6 +821,7 @@
       <object>objects\oFadeIn</object>
       <object>objects\oMusicContainer</object>
       <object>objects\oGameOverController</object>
+      <object>objects\oKidTeleportParticle</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

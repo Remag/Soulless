@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var obj = instance_create( 800, 204, objAlgA8Wave );
-obj.direction = random_range(-10, 10) + 180;
+            <string>var obj = instance_create( 800, 608, objAlgA8Wave );
+obj.direction = random_range(90, 125);
 obj.image_angle = obj.direction;
-obj.speed = random_range(0,800) / 24;
+obj.speed = random_range(400,700) / 24;
 obj.image_blend = make_color_hsv( 192, 255, 255 );
 obj.alarm[0] = 24;
 </string>

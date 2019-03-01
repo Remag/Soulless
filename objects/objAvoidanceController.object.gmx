@@ -1076,7 +1076,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 0 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8RightFountainSpawner );
-        s8Spawner.spawnPeriod = 0.52;
+        s8Spawner.spawnPeriod = 0.55;
     } else if( phaseT == 96 ) {
         with( oRedireS8RightFountainSpawner ) { instance_destroy(); }
     }
@@ -1119,7 +1119,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 384 ) {
         var s8Spawner = instance_create( 0, 0, oRedireS8LeftFountainSpawner );
-        s8Spawner.spawnPeriod = 0.54;
+        s8Spawner.spawnPeriod = 0.57;
     } else if( phaseT == 480 ) {
         with( oRedireS8LeftFountainSpawner ) { instance_destroy(); }
     }
@@ -1137,12 +1137,17 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( phaseT == 96 * 6 ) {
         var s8LeftSpawner = instance_create( 0, 0, oRedireS8LeftWaveSpawner );
-        s8LeftSpawner.spawnPeriod = 2.3;
+        s8LeftSpawner.spawnPeriod = 1.1;
         var s8RightSpawner = instance_create( 0, 0, oRedireS8RightWaveSpawner );
-        s8RightSpawner.spawnPeriod = 2.3;
+        s8RightSpawner.spawnPeriod = 1.1;
     
-    } else if( phaseT == 96 * 8 - 96 ) {
+    } else if( phaseT == 96 * 8 - 120 ) {
         with( oRedireSpawner ) { instance_destroy(); }
+    } else if( t == 6544 ) {
+        with( objAlgA8Wave ) {
+            fadeOut = true;
+            shouldKill = false;
+        }
     }
     
     // Effects
