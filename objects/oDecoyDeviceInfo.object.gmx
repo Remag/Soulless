@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>oSkinInfo</parentName>
+  <parentName>oWeaponInfo</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,68 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 4;
-name = "Binary Entity";
-description = "Yearns for change"
+            <string>uniqueId = 10;
+name = "Decoy Launcher";
+description = "It's not very effective";
+showcaseCooldown = 60;
 
-// Sprites.
-idleSprite = sprWhiteKidIdle;
-runSprite = sprWhiteKidRun;
-jumpSprite = sprWhiteKidJump;
-fallSprite = sprWhiteKidFall;
-
-shopIconSprite = sprWhiteKidIdle;
-
-outlineIdleSprite = sprOutlineIdle;
-outlineRunSprite = sprOutlineRun;
-outlineJumpSprite = sprOutlineJump;
-outlineFallSprite = sprOutlineFall;
-
-decoyIdleSprite = sprGhostDecoyIdle;
-
-// Animation speed.
-idleAnimationSpeed = 0.2;
-runAnimationSpeed = 0.5;
-jumpAnimationSpeed = 0.5;
-fallAnimationSpeed = 0.5;
-
-decoyIdleAnimationSpeed = 0.2;
-
-// Animations.
-groundJumpEffect = scrKidGroundJumpEffect;
-airJumpEffect = scrKidAirJumpEffect;
-deathController = oWhiteKidDeathController;
-
-// Weapon offsets.
-weaponIdleOffsetX = 4;
-weaponIdleOffsetsY[0] = -3;
-weaponIdleOffsetsY[1] = -2;
-weaponIdleOffsetsY[2] = -3;
-weaponIdleOffsetsY[3] = -3;
-
-weaponRunOffsetX = 5;
-weaponRunOffsetY = -3;
-
-weaponJumpOffsetX = 3;
-weaponJumpOffsetY = -5;
-
-weaponFallOffsetX = 4;
-weaponFallOffsetY = -2;
-
-// Projectile sprites.
-bulletSprite = sprWhiteBullet;
-
-lighterFlashColor = c_white;
-lighterRedComponentMin = 255;
-lighterRedComponentMax = 255;
-lighterGreenComponentMin = 255;
-lighterGreenComponentMax = 255;
-lighterBlueComponentMin = 255;
-lighterBlueComponentMax = 255;
-lighterMajorDelta = 4;
-lighterMinorDelta = 4;
-
-laserColor = c_white;
+weaponNormalSprite = sprGun;
+weaponJumpSprite = sprGunTilted;
+weaponEffect = scrLaunchDecoy;
 </string>
           </argument>
         </arguments>

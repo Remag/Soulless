@@ -42,11 +42,15 @@ outlineRunSprite = sprGhostOutlineIdle;
 outlineJumpSprite = sprGhostOutlineIdle;
 outlineFallSprite = sprGhostOutlineIdle;
 
+decoyIdleSprite = sprGhostDecoyIdle;
+
 // Animation speed.
 idleAnimationSpeed = 0.15;
 runAnimationSpeed = 0.15;
 jumpAnimationSpeed = 0.15;
 fallAnimationSpeed = 0.15;
+
+decoyIdleAnimationSpeed = 0.15;
 
 // Animations.
 groundJumpEffect = scrGhostGroundJumpEffect;
@@ -83,6 +87,8 @@ lighterMajorDelta = 4;
 lighterMinorDelta = 2;
 
 laserColor = make_color_rgb( 0, 255, 255 );
+
+decoyParticleColor = c_white;
 </string>
           </argument>
         </arguments>

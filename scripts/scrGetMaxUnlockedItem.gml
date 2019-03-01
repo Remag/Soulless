@@ -12,5 +12,5 @@ if( section == 0 ) {
         return 4;
     }
 } else {
-    return 3;
+    return 4;
 }

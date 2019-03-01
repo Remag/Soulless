@@ -133,6 +133,11 @@
     <sound>sound\sndLaserShot</sound>
     <sound>sound\sndLaserCharge</sound>
     <sound>sound\sndOutlineDeath</sound>
+    <sound>sound\sndDecoyAppear1</sound>
+    <sound>sound\sndDecoyAppear2</sound>
+    <sound>sound\sndDecoyAppear5</sound>
+    <sound>sound\sndDecoyAppear4</sound>
+    <sound>sound\sndDecoyAppear3</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -401,6 +406,9 @@
         <sprite>sprites\sprOutlineRun</sprite>
         <sprite>sprites\sprOutlineDeathSprite</sprite>
       </sprites>
+      <sprites name="Decoys">
+        <sprite>sprites\sprGhostDecoyIdle</sprite>
+      </sprites>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprGun</sprite>
@@ -577,6 +585,7 @@
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
       <script>scripts\scrGetNextOwnedSkinId.gml</script>
+      <script>scripts\scrLaunchDecoy.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -885,6 +894,11 @@
         <object>objects\oLaserReleaseParticle</object>
         <object>objects\oLaserShotParticle</object>
         <object>objects\oLaserShot</object>
+      </objects>
+      <objects name="Decoy">
+        <object>objects\oDecoyDeviceInfo</object>
+        <object>objects\oDecoyParticle</object>
+        <object>objects\oKidDecoy</object>
       </objects>
     </objects>
     <objects name="Shop">

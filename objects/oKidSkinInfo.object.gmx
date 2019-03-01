@@ -42,11 +42,15 @@ outlineRunSprite = sprOutlineRun;
 outlineJumpSprite = sprOutlineJump;
 outlineFallSprite = sprOutlineFall;
 
+decoyIdleSprite = sprGhostDecoyIdle;
+
 // Animation speed.
 idleAnimationSpeed = 0.2;
 runAnimationSpeed = 0.5;
 jumpAnimationSpeed = 0.5;
 fallAnimationSpeed = 0.5;
+
+decoyIdleAnimationSpeed = 0.15;
 
 // Animations.
 groundJumpEffect = scrKidGroundJumpEffect;
