@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2000</depth>
+  <depth>-10000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,12 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>r = 1;
-
-rspd = 400/50;
-
-if( !instance_exists(objInverseCircleController) ) {
-    instance_create(0, 0, objInverseCircleController);
-}
+rspd = 3;
+step = 0;
 </string>
           </argument>
         </arguments>
@@ -56,18 +52,9 @@ if( !instance_exists(objInverseCircleController) ) {
             <kind>1</kind>
             <string>r += rspd;
 
-/*if( r &gt; 1200 ) {
-    var found = false;
-    with(objInverseCircle) {
-        if( r &gt; 1200 &amp;&amp; !found ) {
-            found = true;
-            instance_destroy();
-            break;
-        }
-    }
-    if(found) {
-        instance_destroy();
-    }
+step++;
+if( step &gt; 350 ) {
+    instance_destroy();
 }
 </string>
           </argument>
@@ -91,16 +78,17 @@ if( !instance_exists(objInverseCircleController) ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_circle_precision(ceil(r/64)*24);
-draw_set_colour(c_white);
+            <string>draw_set_circle_precision( ceil( r / 64 ) * 24 );
+draw_set_colour( c_white );
+draw_set_blend_mode_ext( bm_inv_dest_color, bm_zero );
 
-draw_set_blend_mode_ext(bm_inv_dest_color, bm_zero);
-draw_circle(x, y, r, false);
-//draw_sprite_ext(sprWhiteCircle, 01, x, y, r/128, r/128, 0, c_white, 1);
-draw_set_blend_mode(bm_normal);
+draw_circle( x, y, r, false );
+if( r &gt; 24 ) {
+    draw_circle( x, y, r - 20, false );
+}
 
-
-draw_set_circle_precision(24);
+draw_set_blend_mode( bm_normal );
+draw_set_circle_precision( 24 );
 </string>
           </argument>
         </arguments>

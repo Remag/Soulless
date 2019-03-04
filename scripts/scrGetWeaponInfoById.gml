@@ -11,7 +11,7 @@ if( weaponId == 6 ) {
 } else if( weaponId == 10 ) {
     return oChameleonDeviceInfo;
 }else if( weaponId == 11 ) {
-    return oKidGunInfo;
+    return oBellInfo;
 }else {
     return oKidGunInfo;
 }

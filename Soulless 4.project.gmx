@@ -134,6 +134,15 @@
     <sound>sound\sndLaserCharge</sound>
     <sound>sound\sndOutlineDeath</sound>
     <sound>sound\sndDecoyAppear1</sound>
+    <sound>sound\sndBell1</sound>
+    <sound>sound\sndBell2</sound>
+    <sound>sound\sndBell3</sound>
+    <sound>sound\sndBell4</sound>
+    <sound>sound\sndBell5</sound>
+    <sound>sound\sndBell6</sound>
+    <sound>sound\sndBell7</sound>
+    <sound>sound\sndBell8</sound>
+    <sound>sound\sndBell9</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -435,7 +444,6 @@
       <sprite>sprites\sprLaserBorder</sprite>
       <sprite>sprites\sprLaserCore</sprite>
     </sprites>
-    <sprite>sprites\sprWhiteCircle</sprite>
     <sprite>sprites\sprPulse</sprite>
     <sprites name="TileEffects">
       <sprites name="BlackShards">
@@ -595,6 +603,7 @@
         <script>scripts\scrShootLaser.gml</script>
         <script>scripts\scrLaunchDecoy.gml</script>
         <script>scripts\scrLaunchDummyDecoy.gml</script>
+        <script>scripts\scrRingBell.gml</script>
       </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
@@ -914,6 +923,10 @@
         <object>objects\oDecoyParticle</object>
         <object>objects\oKidDecoy</object>
       </objects>
+      <objects name="Bell">
+        <object>objects\oBellInfo</object>
+        <object>objects\oBellCircle</object>
+      </objects>
     </objects>
     <objects name="Shop">
       <object>objects\oShopTitle</object>
@@ -1151,8 +1164,6 @@
     <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
-    <object>objects\objInverseCircle</object>
-    <object>objects\objInverseCircleController</object>
     <object>objects\objPulseController</object>
     <objects name="TileEffects">
       <objects name="BlockShard1">

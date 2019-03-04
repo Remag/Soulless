@@ -7,7 +7,7 @@ with( oKidDecoy ) {
 var decoyX = x + 32;
 var decoyScaleX = -xScale;
 // Particles.
-audio_play_sound( choose( sndDecoyAppear1, sndDecoyAppear2, sndDecoyAppear3, sndDecoyAppear4, sndDecoyAppear5 ), 0, false );
+audio_play_sound( sndDecoyAppear1, 0, false );
 repeat( 30 ) {
     var particleDir = random( 360 );
     var particleX = decoyX - 1 * decoyScaleX + lengthdir_x( 7, particleDir );
