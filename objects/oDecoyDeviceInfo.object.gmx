@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 10;
+            <string>uniqueId = 9;
 name = "Decoy Launcher";
 description = "It's not very effective";
-showcaseCooldown = 60;
+showcaseCooldown = 100;
 
-weaponNormalSprite = sprGun;
-weaponJumpSprite = sprGunTilted;
+weaponNormalSprite = sprGadget;
+weaponJumpSprite = sprGadget;
 weaponEffect = scrLaunchDecoy;
 </string>
           </argument>

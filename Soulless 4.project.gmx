@@ -134,10 +134,6 @@
     <sound>sound\sndLaserCharge</sound>
     <sound>sound\sndOutlineDeath</sound>
     <sound>sound\sndDecoyAppear1</sound>
-    <sound>sound\sndDecoyAppear2</sound>
-    <sound>sound\sndDecoyAppear5</sound>
-    <sound>sound\sndDecoyAppear4</sound>
-    <sound>sound\sndDecoyAppear3</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -408,6 +404,20 @@
       </sprites>
       <sprites name="Decoys">
         <sprite>sprites\sprGhostDecoyIdle</sprite>
+        <sprite>sprites\sprAngelKidIdle</sprite>
+        <sprite>sprites\sprAngelKidJump</sprite>
+        <sprite>sprites\sprAngelKidFall</sprite>
+        <sprite>sprites\sprCrimsonKidIdle</sprite>
+        <sprite>sprites\sprCrimsonKidJump</sprite>
+        <sprite>sprites\sprCrimsonKidFall</sprite>
+        <sprite>sprites\sprGlitchShadowIdle</sprite>
+        <sprite>sprites\sprGlitchShadowJump</sprite>
+        <sprite>sprites\sprWhiteShadowIdle</sprite>
+        <sprite>sprites\sprWhiteShadowFall</sprite>
+        <sprite>sprites\sprWhiteShadowJump</sprite>
+        <sprite>sprites\sprOutlineShadowIdle</sprite>
+        <sprite>sprites\sprOutlineShadowJump</sprite>
+        <sprite>sprites\sprOutlineShadowFall</sprite>
       </sprites>
     </sprites>
     <sprites name="Weapons">
@@ -439,6 +449,7 @@
         <sprite>sprites\sprBlackShard8</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\sprGlitchShadowFall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -582,11 +593,12 @@
         <script>scripts\scrStrikeLighter.gml</script>
         <script>scripts\scrChangeCurrentSkin.gml</script>
         <script>scripts\scrShootLaser.gml</script>
+        <script>scripts\scrLaunchDecoy.gml</script>
+        <script>scripts\scrLaunchDummyDecoy.gml</script>
       </scripts>
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
       <script>scripts\scrGetNextOwnedSkinId.gml</script>
-      <script>scripts\scrLaunchDecoy.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

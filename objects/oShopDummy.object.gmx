@@ -74,7 +74,8 @@ if( section == 0 ) {
     image_speed = playerInfo.idleAnimationSpeed;
 } else if( section == 1 ) {
     weaponInfo = oShopItemSelector.itemLists[1].itemInfo[item];
-    var chameleonId = 9;
+    var chameleonId = 10;
+    var decoyId = 9;
     if( weaponInfo.uniqueId != chameleonId ) {
         playerInfo = oPlayerData.currentSkin;
         sprite_index = playerInfo.idleSprite;
@@ -90,9 +91,7 @@ if( section == 0 ) {
     step = min( step - 1, weaponInfo.showcaseCooldown );
     if( step &lt;= 0 ) { 
         step = weaponInfo.showcaseCooldown;
-        if( weaponInfo.uniqueId != chameleonId ) {
-            script_execute( weaponInfo.weaponEffect, playerInfo );
-        } else {
+        if( weaponInfo.uniqueId == chameleonId ) {
             var nextSkinId = scrGetNextOwnedSkinId( playerInfo );
             playerInfo = oShopItemSelector.itemLists[0].itemInfo[nextSkinId];
             sprite_index = playerInfo.idleSprite;
@@ -100,6 +99,10 @@ if( section == 0 ) {
             var selectSound = audio_play_sound( sndMenuSelect, 0, false );
             audio_sound_gain( selectSound, 0.5, 0 );
             scrCreateItemChangeParticles( 0, object_index );
+        } else if( weaponInfo.uniqueId == decoyId ) {
+            scrLaunchDummyDecoy( playerInfo );
+        } else {
+            script_execute( weaponInfo.weaponEffect, playerInfo );
         }
     }
 } else {

@@ -42,7 +42,9 @@ outlineRunSprite = sprDemonOutlineRun;
 outlineJumpSprite = sprDemonOutlineJump;
 outlineFallSprite = sprDemonOutlineFall;
 
-decoyIdleSprite = sprGhostDecoyIdle;
+decoyIdleSprite = sprAngelKidIdle;
+decoyJumpSprite = sprAngelKidJump;
+decoyFallSprite = sprAngelKidFall;
 
 // Animation speed.
 idleAnimationSpeed = 0.2;
@@ -51,6 +53,8 @@ jumpAnimationSpeed = 0.5;
 fallAnimationSpeed = 0.5;
 
 decoyIdleAnimationSpeed = 0.2;
+decoyJumpAnimationSpeed = 0.5;
+decoyFallAnimationSpeed = 0.5;
 
 // Animations.
 groundJumpEffect = scrKidGroundJumpEffect;
@@ -87,6 +91,8 @@ lighterMajorDelta = 4;
 lighterMinorDelta = 2;
 
 laserColor = c_orange;
+
+decoyParticleColor = make_color_rgb( 0, 255, 255 );
 </string>
           </argument>
         </arguments>

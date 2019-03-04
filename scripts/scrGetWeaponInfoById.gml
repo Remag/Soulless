@@ -7,9 +7,9 @@ if( weaponId == 6 ) {
 } else if( weaponId == 8 ) {
     return oKidLaserInfo;
 } else if( weaponId == 9 ) {
-    return oChameleonDeviceInfo;
-} else if( weaponId == 10 ) {
     return oDecoyDeviceInfo;
+} else if( weaponId == 10 ) {
+    return oChameleonDeviceInfo;
 }else if( weaponId == 11 ) {
     return oKidGunInfo;
 }else {

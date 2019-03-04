@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>uniqueId = 9;
+            <string>uniqueId = 10;
 name = "Chameleon Device";
 description = "Change your vessel";
 showcaseCooldown = 60;
