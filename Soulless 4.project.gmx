@@ -1180,10 +1180,12 @@
       <object>objects\oBlockShardSerializer</object>
       <object>objects\oBlockShardBase</object>
     </objects>
+    <object>objects\objLogin</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
       <room>rooms\rInit</room>
+      <room>rooms\room13</room>
       <room>rooms\rTitle</room>
       <room>rooms\rMenu</room>
       <room>rooms\rOptions</room>
