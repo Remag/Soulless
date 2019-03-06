@@ -74,7 +74,7 @@ post_id = 0;
         ds_map_add(data, "password", string(password));
         ds_map_add(data, "rng", rng);
         json = json_encode(data);
-        post_id = http_post_string(url + "api/login/", json);
+        post_id = http_post_string(url, json);
         ds_map_destroy(data);
         state = 3;
         break;
