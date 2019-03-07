@@ -1,4 +1,4 @@
-var slotId = scrLoadLastSlot();
+var slotId = oMetaInfo.LastSlotId;
 var saveSlotName = "Data\save" + string( slotId + 1 );
 
 if( !file_exists( saveSlotName ) ) {

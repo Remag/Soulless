@@ -29,7 +29,7 @@
 baseX = x;
 
 // Load data from save files.
-currentSelection = scrLoadLastSlot();
+currentSelection = oMetaInfo.LastSlotId;
 
 for( var i = 0; i &lt; 3; i++ )
 {
@@ -147,7 +147,7 @@ if( isSelect ) {
         case 1:
         case 2:
             global.savenum = currentSelection + 1;
-            scrSaveLastSlot( currentSelection );
+            oMetaInfo.LastSlotId = currentSelection;
             if( exists[currentSelection] ) {
                 scrLoadGame( true );
             } else {

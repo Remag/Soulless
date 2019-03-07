@@ -527,8 +527,6 @@
       <script>scripts\irandomNoRepeat.gml</script>
     </scripts>
     <scripts name="MainMenu">
-      <script>scripts\scrLoadLastSlot.gml</script>
-      <script>scripts\scrSaveLastSlot.gml</script>
       <script>scripts\scrChooseMainMenuMusic.gml</script>
       <script>scripts\scrDrawInputRow.gml</script>
     </scripts>
@@ -757,6 +755,7 @@
       <object>objects\objGameClear</object>
     </objects>
     <objects name="MainMenu">
+      <object>objects\oMetaInfo</object>
       <object>objects\oSoullessTitle</object>
       <object>objects\oBaseMenu</object>
       <object>objects\oMainMenu</object>

@@ -60,7 +60,7 @@ post_id = 0;
             <kind>1</kind>
             <string>switch(state) {
     case 0: //Entering login/password
-        login_id = get_login_async("", "");
+        login_id = get_login_async(oMetaInfo.LastLogin, oMetaInfo.LastPassword);
         state = 1;
         break;
     case 1: //Waiting for response
@@ -113,6 +113,9 @@ post_id = 0;
             <string>if( ds_map_find_value(async_load, "id") == login_id ) {
     login = ds_map_find_value(async_load, "username");
     password = ds_map_find_value(async_load, "password");
+    
+    oMetaInfo.LastLogin = login;
+    oMetaInfo.LastPassword = password;
     
     state = 2;
 }
