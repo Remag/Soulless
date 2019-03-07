@@ -43,7 +43,10 @@ strSelect[5] = "Back";
 
 optionsNum = array_length_1d( strSelect );
 
-playerIndex = 0;
+animationIndex = 0;
+animationStep = 0;
+fireOffset = 0;
+fireDelta = 0.1;
 </string>
           </argument>
         </arguments>
@@ -93,8 +96,13 @@ playerIndex = 0;
     exit;
 }
 
-//animate player sprite
-playerIndex = (playerIndex + 1/5) mod 4;
+// Animate the selector.
+animationIndex += 0.2;
+animationStep++;
+fireOffset += fireDelta;
+if( fireOffset &gt; 2 || fireOffset &lt; -2 ) {
+    fireDelta = -fireDelta;
+}
 
 if (scrButtonCheckPressed(global.menuUpButton))
 {
@@ -214,8 +222,9 @@ if (global.vsyncMode)
 else
     draw_text(xSelector+xSeperation,ySelector+(ySeperation*2),"Off");
 
-draw_sprite(sprPlayerIdle,playerIndex,xSelector-16,ySelector+(ySeperation*select)+26);
-
+texture_set_interpolation( true );
+draw_sprite( sprSoulFire, animationIndex, xSelector-10,ySelector+(ySeperation*select)+16 + fireOffset);
+texture_set_interpolation( false );
 </string>
           </argument>
         </arguments>

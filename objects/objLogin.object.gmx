@@ -114,8 +114,16 @@ post_id = 0;
     login = ds_map_find_value(async_load, "username");
     password = ds_map_find_value(async_load, "password");
     
-    oMetaInfo.LastLogin = login;
-    oMetaInfo.LastPassword = password;
+    if( !is_undefined( login ) ) {
+        oMetaInfo.LastLogin = login;
+    } else {
+        oMetaInfo.LastLogin = "";
+    }
+    if( !is_undefined( login ) &amp;&amp; login != "" &amp;&amp; !is_undefined( password ) ) {
+        oMetaInfo.LastPassword = password;
+    } else {
+        oMetaInfo.LastPassword = "";
+    }
     
     state = 2;
 }

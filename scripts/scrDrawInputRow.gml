@@ -17,7 +17,7 @@ if( keyIndex == select ) {
         fireX += 194;
     }
     draw_sprite( sprSoulFire, animationIndex, fireX, y + rowIndex * ySeparation + 18 + fireOffset );
-    texture_set_interpolation( true );
+    texture_set_interpolation( false );
     
     if (settingKey && animationStep % 46 < 23 ) { // key prompt
         draw_text( keyX, rowY, "???" );
