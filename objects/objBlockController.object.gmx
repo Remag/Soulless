@@ -132,19 +132,29 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         obj.image_xscale = ( 608 - 64 ) / 736;
         
         instance_create( 0, 0, objGate2BulbLightDrawer );
-        var rectLightScaleX = 1.2;
+        var rectLightScaleX = 0.6;
         var rectLightScaleY = 0.3;
         var circleLightScale = 0.8;
         for( var i = 16; i &lt; 608 - 16; i += 48 ) {
             var obj = instance_create( 16, i, objGate2Bulb );
             obj.image_xscale = circleLightScale;
             obj.image_yscale = circleLightScale;
-            obj = instance_create( 10, i + 24, objGate2Bulb );
+            obj = instance_create( 10, i + 16, objGate2Bulb );
             obj.bulbType = 1;
             obj.image_xscale = rectLightScaleY;
             obj.image_yscale = rectLightScaleX;
             
-            obj = instance_create( 22, i + 24, objGate2Bulb );
+            obj = instance_create( 22, i + 16, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = rectLightScaleY;
+            obj.image_yscale = rectLightScaleX;
+            
+            obj = instance_create( 10, i + 32, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = rectLightScaleY;
+            obj.image_yscale = rectLightScaleX;
+            
+            obj = instance_create( 22, i + 32, objGate2Bulb );
             obj.bulbType = 1;
             obj.image_xscale = rectLightScaleY;
             obj.image_yscale = rectLightScaleX;
@@ -156,12 +166,22 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             obj.image_yscale = circleLightScale;
             
             if( i &lt; 800 - 16 ) {
-                var obj = instance_create( i + 24, 608 - 10, objGate2Bulb );
+                var obj = instance_create( i + 16, 608 - 10, objGate2Bulb );
                 obj.bulbType = 3;
                 obj.image_xscale = rectLightScaleX;
                 obj.image_yscale = rectLightScaleY;
                 
-                obj = instance_create( i + 24, 608 - 22, objGate2Bulb );
+                obj = instance_create( i + 16, 608 - 22, objGate2Bulb );
+                obj.bulbType = 3;
+                obj.image_xscale = rectLightScaleX;
+                obj.image_yscale = rectLightScaleY;
+                
+                obj = instance_create( i + 32, 608 - 10, objGate2Bulb );
+                obj.bulbType = 3;
+                obj.image_xscale = rectLightScaleX;
+                obj.image_yscale = rectLightScaleY;
+                
+                obj = instance_create( i + 32, 608 - 22, objGate2Bulb );
                 obj.bulbType = 3;
                 obj.image_xscale = rectLightScaleX;
                 obj.image_yscale = rectLightScaleY;
@@ -171,12 +191,22 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
             var obj = instance_create( 800 - 16, 608 - i, objGate2Bulb );
             obj.image_xscale = circleLightScale;
             obj.image_yscale = circleLightScale;
-            obj = instance_create( 800 - 10, 608 - i + 24, objGate2Bulb );
+            obj = instance_create( 800 - 10, 608 - i + 16, objGate2Bulb );
             obj.bulbType = 1;
             obj.image_xscale = rectLightScaleY;
             obj.image_yscale = rectLightScaleX;
             
-            obj = instance_create( 800 - 22, 608 - i + 24, objGate2Bulb );
+            obj = instance_create( 800 - 22, 608 - i + 16, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = rectLightScaleY;
+            obj.image_yscale = rectLightScaleX;
+            
+            obj = instance_create( 800 - 10, 608 - i + 32, objGate2Bulb );
+            obj.bulbType = 1;
+            obj.image_xscale = rectLightScaleY;
+            obj.image_yscale = rectLightScaleX;
+            
+            obj = instance_create( 800 - 22, 608 - i + 32, objGate2Bulb );
             obj.bulbType = 1;
             obj.image_xscale = rectLightScaleY;
             obj.image_yscale = rectLightScaleX;

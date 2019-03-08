@@ -1408,7 +1408,7 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
     }
-    if( t == 7681 ) {
+    if( t == 7692 ) {
         with(objArchEventWall1) {
             instance_destroy();
         }
@@ -1433,8 +1433,18 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
             self.bulbTrackingPos = other.seg10BulletY;
             self.innerTrackingPos = other.seg10BulletY;
         } else if( wallX != -200 ) {
-            self.bulbTrackingPos = wallX;
-            self.innerTrackingPos = wallX;
+            if( phaseT &gt;= 96 * 7 + 48 ) {
+                if( x &lt; 400 ) {
+                    self.bulbTrackingPos = 400 - abs( wallX - 400 );
+                    self.innerTrackingPos = 400 - abs( wallX - 400 );
+                } else {
+                    self.bulbTrackingPos = 400 + abs( wallX - 400 );
+                    self.innerTrackingPos = 400 + abs( wallX - 400 );
+                }
+            } else {
+                self.bulbTrackingPos = wallX;
+                self.innerTrackingPos = wallX;
+            }
         } else {
             self.bulbTrackingPos = other.seg10BulletX;
         }

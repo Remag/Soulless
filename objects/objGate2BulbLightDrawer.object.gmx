@@ -37,9 +37,9 @@
             shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
             shader_set_uniform_f( uIntensity, self.bulbIntensity );
             if( self.bulbType == 1 ) {
-                shader_set_uniform_f( uSquareModifier, -0.66 );
+                shader_set_uniform_f( uSquareModifier, -0.34 );
             } else if( self.bulbType == 3 ) {
-                shader_set_uniform_f( uSquareModifier, 0.66 );
+                shader_set_uniform_f( uSquareModifier, 0.34 );
             } else {
                 shader_set_uniform_f( uSquareModifier, 0 );
             }
