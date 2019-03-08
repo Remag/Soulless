@@ -24,6 +24,7 @@ void main()
 
 uniform vec4 uvs;
 uniform float uIntensity;
+uniform float uSquareModifier;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
@@ -32,6 +33,11 @@ void main()
 {
     vec2 uv = (v_vTexcoord - uvs.xy) * uvs.zw;
     uv = ( uv - 0.5 ) * 2.0;
+    if( uSquareModifier > 0. ) {
+        uv.x = max( abs( uv.x ) - uSquareModifier, 0. ) / ( 1.0 - uSquareModifier );
+    } else {
+        uv.y = max( abs( uv.y ) + uSquareModifier, 0. ) / ( 1.0 + uSquareModifier );
+    }
     float posIntensity = 1.0 - dot( uv, uv );
     vec3 colorVal = v_vColour.rgb * posIntensity * uIntensity;
     float baseVal = max( colorVal.r, max( colorVal.g, colorVal.b ) );

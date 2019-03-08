@@ -666,6 +666,7 @@
       <object>objects\objGate1SnowBlock</object>
       <object>objects\objGate2CornerBlock</object>
       <object>objects\objGate2EdgeBlock</object>
+      <object>objects\objGate2BulbLightDrawer</object>
       <object>objects\objGate2Bulb</object>
       <object>objects\objGate3ShaderBlock</object>
       <object>objects\objGate4CornerBlock</object>

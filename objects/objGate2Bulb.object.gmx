@@ -106,20 +106,6 @@ var blend = image_blend;
 image_blend = c_white;
 draw_self();
 image_blend = blend;
-if( shader_is_compiled( sdrLight ) ) {
-    shader_set(sdrLight);
-    var uvsPos = shader_get_uniform( sdrLight, "uvs" );
-    var uIntensity = shader_get_uniform( sdrLight, "uIntensity" );
-    var _uvs = sprite_get_uvs( sprite_index, image_index );
-    shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
-    shader_set_uniform_f( uIntensity, bulbIntensity );
-    draw_set_blend_mode(bm_add);
-    draw_self();
-    draw_set_blend_mode(bm_normal);
-    shader_reset();
-} else {
-    draw_self();
-}
 </string>
           </argument>
         </arguments>
