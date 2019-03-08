@@ -1,6 +1,23 @@
 //kills the player
+var needKillPlayer = true;
+var wasHitRegistered = false;
+with( objPlayer ) {
+    if( invulFrames == 0 ) {
+        needKillPlayer = playerHP <= 1;
+        playerHP--;
+        invulFrames = 50;
+        wasHitRegistered = true;
+    } else {
+        needKillPlayer = false;
+        wasHitRegistered = false;
+    }
+}
 
-if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
+if( !needKillPlayer && wasHitRegistered ) {
+    global.deathSound = audio_play_sound( sndGhostDeath, 0, false );
+}
+
+if (instance_exists(objPlayer) && needKillPlayer && (!global.noDeath && !global.debugNoDeath))
 {
     if (global.gameStarted) //normal death
     {        

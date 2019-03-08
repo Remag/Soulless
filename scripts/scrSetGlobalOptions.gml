@@ -6,6 +6,7 @@ global.debugOverlay = false;    //enables showing the debug text overlay (shows 
 global.debugNoDeath = false;    //enables god mode (toggle with Home key)
 global.debugInfJump = false;    //enables infinite jump (toggle with End key)
 global.debugShowHitbox = false; //enables showing the player's hitbox (toggle with Del key)
+global.debugStartHp = 1;
 
 global.roomCaptionDef = "Soulless 4";  //sets default window caption (only works with the Professional version of Studio)
 global.roomCaptionLast = global.roomCaptionDef;
