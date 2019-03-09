@@ -29,6 +29,7 @@
 frame = 0;
 lastPlayerX = scrGetPlayerX();
 lastPlayerY = scrGetPlayerY();
+platformWidth = 32;
 </string>
           </argument>
         </arguments>
@@ -84,11 +85,11 @@ with( objPlayer ) {
 draw_set_blend_mode(bm_subtract);
 draw_set_colour(blendColor);
 
-draw_rectangle(0, 0, 800, lastPlayerY - 32, false);
+draw_rectangle(0, 0, 800, lastPlayerY - platformWidth, false);
 draw_rectangle(0, 608 - 16, 800, 608, false);
 
-draw_rectangle(0, 0, lastPlayerX - 32, 608, false);
-draw_rectangle(lastPlayerX + 32, 0, 800, 608, false);
+draw_rectangle(0, 0, lastPlayerX - platformWidth, 608, false);
+draw_rectangle(lastPlayerX + platformWidth, 0, 800, 608, false);
 draw_set_blend_mode(bm_normal);
 </string>
           </argument>

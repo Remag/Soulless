@@ -662,8 +662,8 @@ if( global.debugShowHitbox ) {
 if( outlineValue == 0 ) {
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, image_alpha, false );
 } else {
-    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, 1 - outlineValue, false );
-    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue, true );
+    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, ( 1 - outlineValue ) * image_alpha, false );
+    scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue * image_alpha, true );
 }
 image_alpha = currentAlpha;
 </string>
