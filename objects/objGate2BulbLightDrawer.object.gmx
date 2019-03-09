@@ -28,17 +28,18 @@
             <string>if( shader_is_compiled( sdrLight ) ) {
     shader_set(sdrLight);
     draw_set_blend_mode(bm_add);
-    with( objGate2Bulb ) {
-        if( self.bulbIntensity &gt; 0.02 ) {
+    with( oGate2Bulb ) {
+        var intensity = self.CurrentIntensity;
+        if( intensity &gt; 0.02 ) {
             var uvsPos = shader_get_uniform( sdrLight, "uvs" );
             var uIntensity = shader_get_uniform( sdrLight, "uIntensity" );
             var uSquareModifier = shader_get_uniform( sdrLight, "uSquareModifier" );
             var _uvs = sprite_get_uvs( sprite_index, image_index );
             shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
-            shader_set_uniform_f( uIntensity, self.bulbIntensity );
-            if( self.bulbType == 1 ) {
+            shader_set_uniform_f( uIntensity, intensity );
+            if( object_index == oGate2WallRectBulb ) {
                 shader_set_uniform_f( uSquareModifier, -0.34 );
-            } else if( self.bulbType == 3 ) {
+            } else if( object_index == oGate2FloorRectBulb ) {
                 shader_set_uniform_f( uSquareModifier, 0.34 );
             } else {
                 shader_set_uniform_f( uSquareModifier, 0 );

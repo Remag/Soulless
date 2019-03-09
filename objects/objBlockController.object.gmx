@@ -136,34 +136,36 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         var rectLightScaleY = 0.3;
         var circleLightScale = 0.8;
         // Corner bulbs.
-        scrCreateRoundBulb( 16, 16 );
-        scrCreateRoundBulb( 16, 608 - 16 );
-        scrCreateRoundBulb( 800 - 16, 16 );
-        scrCreateRoundBulb( 800 - 16, 608 - 16 );
+        scrCreateRoundBulb( 16, 16, oGate2WallRoundBulb, 1 );
+        scrCreateRoundBulb( 800 - 16, 16, oGate2WallRoundBulb, 2 );
+        scrCreateRoundBulb( 16, 608 - 16, oGate2FloorRoundBulb, 0 );
+        scrCreateRoundBulb( 800 - 16, 608 - 16, oGate2FloorRoundBulb, 0 );
         // Left side bulbs.
         for( var i = 44; i &lt; 608 - 48; i += 54 ) {
-            scrCreateVerticalBulb( 10, i );
-            scrCreateVerticalBulb( 22, i );
-            scrCreateRoundBulb( 16, i + 18 );
-            scrCreateVerticalBulb( 10, i + 36 );
-            scrCreateVerticalBulb( 22, i + 36 );
+            scrCreateVerticalBulb( 10, i, 1 );
+            scrCreateVerticalBulb( 22, i, 1 );
+            scrCreateRoundBulb( 16, i + 18, oGate2WallRoundBulb, 1 );
+            scrCreateVerticalBulb( 10, i + 36, 1 );
+            scrCreateVerticalBulb( 22, i + 36, 1 );
         }
         // Bottom side bulbs.
         for( var i = 41; i &lt; 800 - 48; i += 52.5 ) {
             scrCreateHorizontalBulb( i, 608 - 10 );
             scrCreateHorizontalBulb( i, 608 - 22 );
-            scrCreateRoundBulb( i + 17.5, 608 - 16 );
+            scrCreateRoundBulb( i + 17.5, 608 - 16, oGate2FloorRoundBulb, 0 );
             scrCreateHorizontalBulb( i + 35, 608 - 10 );
             scrCreateHorizontalBulb( i + 35, 608 - 22 );
         }
         // Right side bulbs.
         for( var i = 44; i &lt; 608 - 48; i += 54 ) {
-            scrCreateVerticalBulb( 800 - 10, i );
-            scrCreateVerticalBulb( 800 - 22, i );
-            scrCreateRoundBulb( 800 - 16, i + 18 );
-            scrCreateVerticalBulb( 800 - 10, i + 36 );
-            scrCreateVerticalBulb( 800 - 22, i + 36 );
+            scrCreateVerticalBulb( 800 - 10, i, 2 );
+            scrCreateVerticalBulb( 800 - 22, i, 2 );
+            scrCreateRoundBulb( 800 - 16, i + 18, oGate2WallRoundBulb, 2 );
+            scrCreateVerticalBulb( 800 - 10, i + 36, 2 );
+            scrCreateVerticalBulb( 800 - 22, i + 36, 2 );
         }
+        // Bulb controller.
+        instance_create( 0, 0, objBulbLightController );
         
         // Move blocks.
         with( objBlock ) {
@@ -201,7 +203,7 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         with( objGate2EdgeBlock ) {
             instance_destroy();
         }
-        with( objGate2Bulb ) {
+        with( oGate2Bulb ) {
             instance_destroy();
         }
         with( objGate2BulbLightDrawer ) {

@@ -559,9 +559,6 @@
       <script>scripts\scrOnPortalButton.gml</script>
       <script>scripts\scrOnPlayerRestart.gml</script>
       <script>scripts\scrSpawnTeleportParticles.gml</script>
-      <script>scripts\scrCreateRoundBulb.gml</script>
-      <script>scripts\scrCreateVerticalBulb.gml</script>
-      <script>scripts\scrCreateHorizontalBulb.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -609,6 +606,19 @@
       <script>scripts\scrGetWeaponInfoById.gml</script>
       <script>scripts\scrDrawWeapon.gml</script>
       <script>scripts\scrGetNextOwnedSkinId.gml</script>
+    </scripts>
+    <scripts name="Bulbs">
+      <script>scripts\scrCreateRoundBulb.gml</script>
+      <script>scripts\scrCreateVerticalBulb.gml</script>
+      <script>scripts\scrCreateHorizontalBulb.gml</script>
+      <script>scripts\scrClearAllBulbs.gml</script>
+      <script>scripts\scrBulbDrawWallPos.gml</script>
+      <script>scripts\scrBulbDrawLeftPos.gml</script>
+      <script>scripts\scrBulbDrawRightPos.gml</script>
+      <script>scripts\scrBulbDrawFloorPos.gml</script>
+      <script>scripts\scrBulbTrackFloorPos.gml</script>
+      <script>scripts\scrBulbTrackWallPos.gml</script>
+      <script>scripts\scrSetBulbDistanceIntensity.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -669,8 +679,6 @@
       <object>objects\objGate1SnowBlock</object>
       <object>objects\objGate2CornerBlock</object>
       <object>objects\objGate2EdgeBlock</object>
-      <object>objects\objGate2BulbLightDrawer</object>
-      <object>objects\objGate2Bulb</object>
       <object>objects\objGate3ShaderBlock</object>
       <object>objects\objGate4CornerBlock</object>
       <object>objects\objGate4EdgeBlock</object>
@@ -941,7 +949,17 @@
     </objects>
     <object>objects\objAvoidanceController</object>
     <object>objects\objBlockController</object>
-    <object>objects\objAvatar</object>
+    <objects name="Bulbs">
+      <object>objects\oGate2Bulb</object>
+      <object>objects\oGate2FloorBulb</object>
+      <object>objects\oGate2FloorRoundBulb</object>
+      <object>objects\oGate2FloorRectBulb</object>
+      <object>objects\oGate2WallBulb</object>
+      <object>objects\oGate2WallRoundBulb</object>
+      <object>objects\oGate2WallRectBulb</object>
+      <object>objects\objBulbLightController</object>
+      <object>objects\objGate2BulbLightDrawer</object>
+    </objects>
     <objects name="Arch">
       <object>objects\objArchEffect1</object>
       <object>objects\objArchEffect2</object>

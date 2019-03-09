@@ -25,15 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-image_index = irandom( 2 );
-bulbType = 0;
-bulbPhase = 0;
-bulbPeriod = 24;
-bulbBehaviour = true;
-bulbTrackingPos = 0;
-innerTrackingPos = 0;
-bulbIntensity = 1;
+            <string>FlickerIntensity = 1;
+CurrentIntensity = 1;
+
+BulbPhase = 0;
+BulbPeriod = 24;
 </string>
           </argument>
         </arguments>
@@ -56,29 +52,8 @@ bulbIntensity = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bulbIntensity = 1.25 + sin( ( objAvoidanceController.t + bulbPhase ) / bulbPeriod  * pi );
-if( bulbBehaviour ) {
-    if( abs( bulbTrackingPos - innerTrackingPos ) &lt; 10 ) {
-        innerTrackingPos = bulbTrackingPos;
-    } else {
-        innerTrackingPos += ( bulbTrackingPos - innerTrackingPos ) * 0.1 + 9 * sign( bulbTrackingPos - innerTrackingPos );
-    }
-    if( bulbType == 2 || bulbType == 3 ) {
-        var dist = abs( x - innerTrackingPos );
-        if( dist &lt;= 96 ) {
-            bulbIntensity = lerp( bulbIntensity + 1, 0, dist / 96 );
-        } else {
-            bulbIntensity = 0;
-        }
-    } else {
-        var dist = abs( y - innerTrackingPos );
-        if( dist &lt;= 96 ) {
-            bulbIntensity = lerp( bulbIntensity + 1, 0, dist / 96 );
-        } else {
-            bulbIntensity = 0;
-        }
-    }
-}
+            <string>FlickerIntensity = 1.25 + sin( ( objAvoidanceController.t + BulbPhase ) / BulbPeriod  * pi );
+CurrentIntensity = FlickerIntensity;
 </string>
           </argument>
         </arguments>

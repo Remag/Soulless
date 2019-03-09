@@ -1331,15 +1331,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             instance_change( objAlgLaserDisappearing, true );
             alphaStep = image_alpha / 5;
         }
-    }
-    
-    with( objGate2Bulb ) {
-        bulbBehaviour = false;
-        image_blend = make_color_rgb( 255, 255, 0 );
-        if( self.bulbType == 1 || self.bulbType == 3 ) {
-            self.bulbPhase = 12;
-        }
-    }
+    }    
     segment = 9;
 }
 </string>
@@ -1369,7 +1361,7 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
     }
     var phaseT = t - 6925;
     if( phaseT % 192 == 0 || phaseT % 192 == 48 || phaseT % 192 == 96 ) {
-         a = instance_create(objPlayer.x, 608-32, objArchBullet3);
+        a = instance_create(objPlayer.x, 608-32, objArchBullet3);
         a.vspeed = -random_range(20,30);
         a.gravity = -a.vspeed/36;
         
@@ -1384,9 +1376,6 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
             case 2:
                 obj.image_blend = make_colour_rgb( 0, 0, 255 );
                 break;
-        }
-        with( objGate2Bulb ) {
-            image_blend = obj.image_blend;
         }
     } else if( phaseT == 96 + 48 ) {
         a = instance_create(0,0,objArchEventWall1);
@@ -1418,36 +1407,13 @@ if( t &gt;= 6925 &amp;&amp; t &lt; 7693 &amp;&amp; instance_exists(objPlayer) ) 
         seg10BulletX = -200;
         seg10BulletY = -200;
     }
-    var wallX = -200;
+    seg10WallX = -200;
     with( objArchEventWall1 ) {
-        wallX = x;
+        other.seg10WallX = x;
     }
     with( objArchBullet3 ) {
         other.seg10BulletX = x;
         other.seg10BulletY = y;
-    }
-    with( objGate2Bulb ) {
-        self.bulbBehaviour = true;
-        self.bulbPhase = 0;
-        if( bulbType = 0 || self.bulbType == 1 ) {
-            self.bulbTrackingPos = other.seg10BulletY;
-            self.innerTrackingPos = other.seg10BulletY;
-        } else if( wallX != -200 ) {
-            if( phaseT &gt;= 96 * 7 + 48 ) {
-                if( x &lt; 400 ) {
-                    self.bulbTrackingPos = 400 - abs( wallX - 400 );
-                    self.innerTrackingPos = 400 - abs( wallX - 400 );
-                } else {
-                    self.bulbTrackingPos = 400 + abs( wallX - 400 );
-                    self.innerTrackingPos = 400 + abs( wallX - 400 );
-                }
-            } else {
-                self.bulbTrackingPos = wallX;
-                self.innerTrackingPos = wallX;
-            }
-        } else {
-            self.bulbTrackingPos = other.seg10BulletX;
-        }
     }
     segment = 10;
 }
@@ -1478,14 +1444,14 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
     }
     var cardBorderIndex = 20;
     if( t % 48 == 15 &amp;&amp; t &lt; 8440 ) {
-        var a_xx = random_range(128, 256);
-        var a_yy = random_range(64, 192);
+        seg11a_xx = random_range(128, 256);
+        seg11a_yy = random_range(64, 192);
         var a_image_index = irandom(2);
         
-        var a_dir = point_direction(a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        var a_dir = point_direction(seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y) + 11.25;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
-                a = instance_create(a_xx, a_yy, objArchBullet2);
+                a = instance_create(seg11a_xx, seg11a_yy, objArchBullet2);
                 a.direction = i + j + a_dir;
                 a.speed = 6;
                 a.alarm[0] = 10;
@@ -1505,33 +1471,32 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         
-        var color;
         switch( a_image_index ) {
             case 0:
-                color = make_colour_rgb( 255, 0, 0 );
+                seg11Color = make_colour_rgb( 255, 0, 0 );
                 break;
             case 1:
-                color = make_colour_rgb( 0, 255, 0 );
+                seg11Color = make_colour_rgb( 0, 255, 0 );
                 break;
             case 2:
-                color = make_colour_rgb( 0, 0, 255 );
+                seg11Color = make_colour_rgb( 0, 0, 255 );
                 break;
         }
         var count = irandom_range( 6, 9 );
         var effectsRotationSpeed = choose( -1, 1 );
         var effectsAngle = random( 360 );
         for( var i = 0; i &lt; count; i++ ) {
-            var obj = instance_create( a_xx, a_yy, objAlgA11LaserEffect );
+            var obj = instance_create( seg11a_xx, seg11a_yy, objAlgA11LaserEffect );
             obj.image_angle = a_dir + effectsAngle + i * 180 / count;
             obj.image_yscale = 0.5;
-            obj.image_blend = color;
+            obj.image_blend = seg11Color;
             obj.rotationSpeed = effectsRotationSpeed;
         }
         
-        var a_dir = point_direction(800-a_xx, a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        var a_dir = point_direction(800-seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y) + 11.25;
         for( i = 0; i &lt; 360; i+=45 ) {
             for( j = 0; j &lt; 45; j+=3 ) {
-                a = instance_create(800-a_xx, a_yy, objArchBullet2);
+                a = instance_create(800-seg11a_xx, seg11a_yy, objArchBullet2);
                 a.direction = i + j + a_dir;
                 a.speed = 6;
                 a.alarm[0] = 10;
@@ -1552,28 +1517,11 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
         }
         
         for( var i = 0; i &lt; count; i++ ) {
-            var obj = instance_create( 800 - a_xx, a_yy, objAlgA11LaserEffect );
+            var obj = instance_create( 800 - seg11a_xx, seg11a_yy, objAlgA11LaserEffect );
             obj.image_angle = a_dir - ( effectsAngle + i * 180 / count );
             obj.image_yscale = 0.5;
-            obj.image_blend = color;
+            obj.image_blend = seg11Color;
             obj.rotationSpeed = -effectsRotationSpeed;
-        }
-        
-        with( objGate2Bulb ) {
-            image_blend = color;
-            self.bulbBehaviour = true;
-            if( self.bulbType = 0 || self.bulbType == 1 ) {
-                self.innerTrackingPos = 608;
-                self.bulbTrackingPos = a_yy;
-            } else {
-                if( x &lt; 400 ) {
-                    self.innerTrackingPos = 0;
-                    self.bulbTrackingPos = a_xx;
-                } else {
-                    self.innerTrackingPos = 800;
-                    self.bulbTrackingPos = 800 - a_xx;
-                }
-            }
         }
     }
     segment = 11;
@@ -1622,21 +1570,6 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
                     break;
             }
             obj.rotationSpeed = -1;
-        }
-        var i = 0;
-        with( objGate2Bulb ) {
-            switch( i % 3 ) {
-                case 0:
-                    image_blend = make_colour_rgb( 255, 0, 0 );
-                    break;
-                case 1:
-                    image_blend = make_colour_rgb( 0, 255, 0 );
-                    break;
-                case 2:
-                    image_blend = make_colour_rgb( 0, 0, 255 );
-                    break;
-            }
-            i++;
         }
     }
     if( t &lt; 9100 ) {
@@ -1713,26 +1646,6 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             alphaStep = image_alpha / 10;
         }
     }
-    var trackingPosX = ( t - 8465 ) * 4 * 800 / 785;
-    var trackingPosY = ( t - 8465 ) * 4 * 608 / 785;
-    trackingPosX = abs( trackingPosX % 1600 - 800 );
-    trackingPosY = abs( trackingPosY % 1216 - 608 );
-    with( objGate2Bulb ) {
-        if( self.bulbType == 2 || self.bulbType == 3 ) {
-            self.bulbTrackingPos = trackingPosX;
-        } else {
-            if( x &lt; 400 ) {
-                self.bulbTrackingPos = 608 - trackingPosY;
-            } else {
-                self.bulbTrackingPos = trackingPosY;
-            }
-        }
-    }
-    if( t == 8465 ) {
-       with( objGate2Bulb ) {
-            self.innerTrackingPos = self.bulbTrackingPos;
-       } 
-    }
     segment = 12;
 }
 </string>
@@ -1790,22 +1703,6 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
             obj.rotationSpeedMax = 10;
         }
     }
-    
-    with( objGate2Bulb ) {
-        self.bulbBehaviour = false;
-        self.bulbPeriod = 48;
-        if( self.bulbType == 1 || self.bulbType == 3 ) {
-            self.bulbPhase = 24;
-            if( phaseT % 96 == 24 ) {
-                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        } else {
-            self.bulbPhase = 72;
-            if( phaseT % 96 == 72 ) {
-                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        }
-    } 
 
     segment = 13;
 }
@@ -1894,22 +1791,6 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         obj.image_yscale = 1;
         obj.image_blend = make_colour_hsv( 0, 255, 255 );
     }
-    
-    with( objGate2Bulb ) {
-        self.bulbBehaviour = false;
-        self.bulbPeriod = 48;
-        if( self.bulbType == 1 || self.bulbType == 3 ) {
-            self.bulbPhase = 24;
-            if( phaseT % 96 == 24 ) {
-                image_blend = make_colour_hsv( 0, 255, 255 );
-            }
-        } else {
-            self.bulbPhase = 72;
-            if( phaseT % 96 == 72 ) {
-                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        }
-    } 
 
     segment = 14;
 }
@@ -1979,22 +1860,6 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 0, lerp( 608, 0, ( tPhase - 48 ) / 48 ), objAlgLaserBackEffect );
         obj.image_yscale = 1;
         obj.image_blend = make_colour_hsv( 100, 255, 255 );
-    }
-    
-    with( objGate2Bulb ) {
-        self.bulbBehaviour = false;
-        self.bulbPeriod = 48;
-        if( self.bulbType == 1 || self.bulbType == 3 ) {
-            self.bulbPhase = 72;
-            if( tPhase % 96 == 72 ) {
-                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        } else {
-            self.bulbPhase = 24;
-            if( tPhase % 96 == 24 ) {
-                image_blend = make_colour_hsv( 0, 255, 255 );
-            }
-        }
     }
     
     segment = 15;
@@ -2098,31 +1963,6 @@ if( t &gt;= 10380 &amp;&amp; t &lt; 10764 &amp;&amp; instance_exists(objPlayer) 
         obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
     
-    with( objGate2Bulb ) {
-        self.bulbPeriod = 48;
-        if( self.bulbType == 2 || self.bulbType == 3 ) {
-            self.bulbBehaviour = true;
-            self.bulbTrackingPos = scrGetPlayerX();
-            self.bulbPhase = 0;
-            var dist = abs( x - self.innerTrackingPos );
-            if( dist &gt; 96 ) {
-                image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        } else {
-            self.bulbBehaviour = false;
-            if( self.bulbType == 1 ) {
-                self.bulbPhase = 72;
-            } else {
-                self.bulbPhase = 24;
-            }
-            image_blend =  make_colour_rgb( 0, 0, 255 );
-        }
-    }
-    if( t == 10380 ) {
-       with( objGate2Bulb ) {
-            self.innerTrackingPos = scrGetPlayerX();
-       } 
-    }
 }
 </string>
           </argument>
@@ -2216,31 +2056,7 @@ if( t &gt;= 10764 &amp;&amp; t &lt; 11148 &amp;&amp; instance_exists(objPlayer) 
         obj.spawnBlend = make_colour_rgb( 0, 0, 255 );
     }
     
-    with( objGate2Bulb ) {
-        self.bulbPeriod = 48;
-        if( self.bulbType == 2 || self.bulbType == 3 ) {
-            self.bulbBehaviour = true;
-            self.bulbTrackingPos = scrGetPlayerX();
-            self.bulbPhase = 0;
-            var dist = abs( x - self.innerTrackingPos );
-            image_blend = make_colour_hsv( 0, 255, 255 );
-        } else {
-            self.bulbBehaviour = false;
-            if( self.bulbType == 1 ) {
-                self.bulbPhase = 72;
-            } else {
-                self.bulbPhase = 24;
-            }
-            if( phaseT % 96 == self.bulbPhase ) {
-                image_blend =  make_colour_hsv( random( 255 ), 255, 255 );
-            }
-        }
-    }
-    if( t == 10764 ) {
-       with( objGate2Bulb ) {
-            self.innerTrackingPos = scrGetPlayerX();
-       } 
-    }
+    
 }
 </string>
           </argument>
@@ -2368,49 +2184,6 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
             obj.maxFrame = 48;
             spawnIndex++;
         }
-    }
-    
-    // Bulb color.
-    if( t &lt; 11250 ) {
-        color = make_colour_hsv( 80, 255, 255 );
-    } else if( t &lt; 11350 ) {
-        color = make_colour_hsv( 33, 255, 255 );
-    } else if( t &lt; 11440 ) {
-        color = make_colour_hsv( 20, 255, 255 );
-    } else {
-        color = make_colour_hsv( 0, 255, 255 );        
-    }
-    var trackingPosY = ( t - 11148 ) * 8 * 800 / 384;
-    trackingPosY = abs( trackingPosY % 800 ) - 96;
-    with( objGate2Bulb ) {
-        self.bulbPeriod = 48;
-        image_blend = color;
-        self.bulbBehaviour = true;
-        if( self.bulbType == 2 || self.bulbType == 3 ) {
-            self.bulbBehaviour = true;
-            self.bulbTrackingPos = scrGetPlayerX();
-            self.bulbPhase = 0;
-        } else {
-            self.bulbBehaviour = true;
-            self.bulbTrackingPos = trackingPosY;
-            if( self.bulbType == 1 ) {
-                self.bulbPhase = 72;
-            } else {
-                self.bulbPhase = 24;
-            }
-        }
-    }
-    if( ( t - 11148 ) % 48 == 0 ) {
-       with( objGate2Bulb ) {
-            if( y == 608 - 16 &amp;&amp; ( x == 16 || x == 800 - 16 ) ) {
-                self.bulbType = 0;
-            }
-            if( self.bulbType == 2 || self.bulbType == 3 ) {
-                self.innerTrackingPos = scrGetPlayerX();
-            } else {
-                self.innerTrackingPos = trackingPosY;
-            }
-       } 
     }
 }
 </string>
