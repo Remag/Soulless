@@ -34,6 +34,10 @@ floorCurrentPos = 0;
 wallCurrentPos = 0;
 leftCurrentPos = 0;
 rightCurrentPos = 0;
+
+baseLightIntensity = 0;
+
+explosionCount = 0;
 </string>
           </argument>
         </arguments>
@@ -59,9 +63,37 @@ rightCurrentPos = 0;
             <string>var t = objAvoidanceController.t - 1;
 
 if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
-    with( oGate2Bulb ) {
-        image_blend = make_color_rgb( 255, 255, 0 );
-    }       
+    if( t == 6545 || t == 6546 ) {
+        with( oGate2Bulb ) {
+            image_blend = make_color_rgb( 255, 255, 0 );
+        }       
+    }
+    with( oGate2WallRoundBulb ) {
+        CurrentIntensity = 0;
+    }
+    with( oGate2FloorRoundBulb ) {
+        CurrentIntensity = 0;
+    }
+    wallCurrentPos += 8;
+    if( t &lt; 6912 ) {
+        with( oGate2WallBulb ) {
+            var dist = max( 0, other.wallCurrentPos - y ) % 192; 
+            dist = min( dist, 192 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+        }
+        with( oGate2FloorBulb ) {
+            var dist = max( other.wallCurrentPos - 608 - x, other.wallCurrentPos - 608 - 800 + x );
+            dist = max( 0, dist ) % 192;   
+            dist = min( dist, 192 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+        }
+    } else {
+        baseLightIntensity += 0.25;
+        with( oGate2Bulb ) {
+            CurrentIntensity = other.baseLightIntensity;
+        }
+    }
+    
 } else if( t &gt;= 6925 &amp;&amp; t &lt; 7693 ) { // Segment 10.
     var phaseT = t - 6925;
     if( phaseT == 0 ) {
@@ -76,7 +108,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
             image_blend = c_white;
         }
     }
-    scrClearAllBulbs();
+    scrDimAllBulbs();
     scrBulbDrawWallPos( objAvoidanceController.seg10BulletY );
     var wallX = objAvoidanceController.seg10WallX;
     if( phaseT &gt;= 96 * 7 + 48 ) {
@@ -99,7 +131,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
         floorTargetPos = 0;
     }
     if( t % 48 == 15 &amp;&amp; t &lt; 8440 ) {
-        floorTargetPos = objAvoidanceController.seg11a_xx;
+        floorTargetPos = scrGetPlayerX();
         wallTargetPos = objAvoidanceController.seg11a_yy;
         with( oGate2Bulb ) {
             image_blend = objAvoidanceController.seg11Color;
@@ -112,15 +144,13 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
     scrBulbDrawFloorPos( 800 - floorCurrentPos );
     
 } else if( t &gt;= 8465 &amp;&amp; t &lt; 9250 ) { // Segment 12.
-    var trackingPosX = ( t - 8465 ) * 4 * 800 / 785;
     var trackingPosY = ( t - 8465 ) * 4 * 608 / 785;
-    trackingPosX = abs( trackingPosX % 1600 - 800 );
     trackingPosY = abs( trackingPosY % 1216 - 608 );
-    floorTargetPos = trackingPosX;
     wallTargetPos = trackingPosY;
     if( t == 8465 ) {
-        floorCurrentPos = floorTargetPos;
+        floorCurrentPos = 768;
         wallCurrentPos = wallTargetPos;
+        floorTargetPos = 800;
         var i = 0;
         with( oGate2Bulb ) {
             switch( i % 3 ) {
@@ -137,8 +167,60 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
             i++;
         }
     }
-    scrClearAllBulbs();
-    scrBulbTrackFloorPos();
+    scrClearWallBulbs();
+    if( t &lt; 8657 ) {
+        if( t &lt; 8637 ) {
+            baseLightIntensity = 0;
+        } else {
+            baseLightIntensity += 0.05;
+        }
+        floorTargetPos -= 16;
+        with( oGate2FloorBulb ) {
+            var dist = x - other.floorTargetPos;
+            dist = max( 0, dist ) % 192;   
+            dist = min( dist, 192 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+        }
+    } else if( t &lt; 8849 ) {
+        scrClearFloorBulbs();
+        floorTargetPos = 0;
+        floorCurrentPos = objAvoidanceController.arch_xx;
+        scrBulbDrawFloorPos( floorCurrentPos );
+    } else if( t &lt; 9041 ) {
+        if( t &lt; 9021 ) {
+            baseLightIntensity = 0;
+        } else {
+            baseLightIntensity += 0.05;
+        }
+        flootCurrentPos = 32;
+        floorTargetPos += 16;
+        with( oGate2FloorBulb ) {
+            var dist = other.floorTargetPos - x;
+            dist = max( 0, dist ) % 192;   
+            dist = min( dist, 192 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+        }
+    } else {
+        if( t &lt; 9230 ) {
+            baseLightIntensity = 0;
+        } else {
+            baseLightIntensity += 0.05;
+        }
+        scrClearFloorBulbs();
+        if( t == 9137 || t == 9163 || t == 9184 || t == 9191 || t == 9197 || t == 9204 || t == 9210 ) {
+            explosionPosList[explosionCount] = objAvoidanceController.arch_xx;
+            explosionCount++;
+        }
+        with( oGate2FloorBulb ) {
+            for( var i = 0; i &lt; other.explosionCount; i++ ) {
+                scrSetBulbDistanceIntensity( x, other.explosionPosList[i] );
+            }
+            scrSetBulbDistanceIntensity( x, other.floorCurrentPos );
+            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+        }
+    }
     scrBulbTrackWallPos();
     scrBulbDrawWallPos( 608 - wallCurrentPos );
 

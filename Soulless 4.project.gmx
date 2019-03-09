@@ -612,6 +612,9 @@
       <script>scripts\scrCreateVerticalBulb.gml</script>
       <script>scripts\scrCreateHorizontalBulb.gml</script>
       <script>scripts\scrClearAllBulbs.gml</script>
+      <script>scripts\scrClearWallBulbs.gml</script>
+      <script>scripts\scrClearFloorBulbs.gml</script>
+      <script>scripts\scrDimAllBulbs.gml</script>
       <script>scripts\scrBulbDrawWallPos.gml</script>
       <script>scripts\scrBulbDrawLeftPos.gml</script>
       <script>scripts\scrBulbDrawRightPos.gml</script>
