@@ -135,81 +135,34 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         var rectLightScaleX = 0.6;
         var rectLightScaleY = 0.3;
         var circleLightScale = 0.8;
-        for( var i = 16; i &lt; 608 - 16; i += 48 ) {
-            var obj = instance_create( 16, i, objGate2Bulb );
-            obj.image_xscale = circleLightScale;
-            obj.image_yscale = circleLightScale;
-            obj = instance_create( 10, i + 16, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 22, i + 16, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 10, i + 32, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 22, i + 32, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
+        // Corner bulbs.
+        scrCreateRoundBulb( 16, 16 );
+        scrCreateRoundBulb( 16, 608 - 16 );
+        scrCreateRoundBulb( 800 - 16, 16 );
+        scrCreateRoundBulb( 800 - 16, 608 - 16 );
+        // Left side bulbs.
+        for( var i = 44; i &lt; 608 - 48; i += 54 ) {
+            scrCreateVerticalBulb( 10, i );
+            scrCreateVerticalBulb( 22, i );
+            scrCreateRoundBulb( 16, i + 18 );
+            scrCreateVerticalBulb( 10, i + 36 );
+            scrCreateVerticalBulb( 22, i + 36 );
         }
-        for( var i = 16; i &lt; 800; i += 48 ) {
-            var obj = instance_create( i, 608 - 16, objGate2Bulb );
-            obj.bulbType = 2;
-            obj.image_xscale = circleLightScale;
-            obj.image_yscale = circleLightScale;
-            
-            if( i &lt; 800 - 16 ) {
-                var obj = instance_create( i + 16, 608 - 10, objGate2Bulb );
-                obj.bulbType = 3;
-                obj.image_xscale = rectLightScaleX;
-                obj.image_yscale = rectLightScaleY;
-                
-                obj = instance_create( i + 16, 608 - 22, objGate2Bulb );
-                obj.bulbType = 3;
-                obj.image_xscale = rectLightScaleX;
-                obj.image_yscale = rectLightScaleY;
-                
-                obj = instance_create( i + 32, 608 - 10, objGate2Bulb );
-                obj.bulbType = 3;
-                obj.image_xscale = rectLightScaleX;
-                obj.image_yscale = rectLightScaleY;
-                
-                obj = instance_create( i + 32, 608 - 22, objGate2Bulb );
-                obj.bulbType = 3;
-                obj.image_xscale = rectLightScaleX;
-                obj.image_yscale = rectLightScaleY;
-            }
+        // Bottom side bulbs.
+        for( var i = 41; i &lt; 800 - 48; i += 52.5 ) {
+            scrCreateHorizontalBulb( i, 608 - 10 );
+            scrCreateHorizontalBulb( i, 608 - 22 );
+            scrCreateRoundBulb( i + 17.5, 608 - 16 );
+            scrCreateHorizontalBulb( i + 35, 608 - 10 );
+            scrCreateHorizontalBulb( i + 35, 608 - 22 );
         }
-        for( var i = 16 + 48; i &lt;= 608 - 16; i += 48 ) {
-            var obj = instance_create( 800 - 16, 608 - i, objGate2Bulb );
-            obj.image_xscale = circleLightScale;
-            obj.image_yscale = circleLightScale;
-            obj = instance_create( 800 - 10, 608 - i + 16, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 800 - 22, 608 - i + 16, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 800 - 10, 608 - i + 32, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
-            
-            obj = instance_create( 800 - 22, 608 - i + 32, objGate2Bulb );
-            obj.bulbType = 1;
-            obj.image_xscale = rectLightScaleY;
-            obj.image_yscale = rectLightScaleX;
+        // Right side bulbs.
+        for( var i = 44; i &lt; 608 - 48; i += 54 ) {
+            scrCreateVerticalBulb( 800 - 10, i );
+            scrCreateVerticalBulb( 800 - 22, i );
+            scrCreateRoundBulb( 800 - 16, i + 18 );
+            scrCreateVerticalBulb( 800 - 10, i + 36 );
+            scrCreateVerticalBulb( 800 - 22, i + 36 );
         }
         
         // Move blocks.

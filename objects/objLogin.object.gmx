@@ -27,7 +27,11 @@
             <kind>1</kind>
             <string>url = global.server_url + "api/login/";
 
-state = 0;
+if( global.debugMode ) {
+    state = 5;
+} else {
+    state = 0;
+}
 
 login = "";
 password = "";

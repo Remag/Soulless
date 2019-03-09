@@ -559,6 +559,9 @@
       <script>scripts\scrOnPortalButton.gml</script>
       <script>scripts\scrOnPlayerRestart.gml</script>
       <script>scripts\scrSpawnTeleportParticles.gml</script>
+      <script>scripts\scrCreateRoundBulb.gml</script>
+      <script>scripts\scrCreateVerticalBulb.gml</script>
+      <script>scripts\scrCreateHorizontalBulb.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
