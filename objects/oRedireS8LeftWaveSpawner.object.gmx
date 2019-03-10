@@ -28,7 +28,7 @@
             <string>var obj = instance_create( 800, 608, objAlgA8Wave );
 obj.direction = random_range(90, 125);
 obj.image_angle = obj.direction;
-obj.speed = random_range(400,700) / 24;
+obj.speed = random_range(400,650) / 24;
 obj.image_blend = make_color_hsv( 192, 255, 255 );
 obj.alarm[0] = 24;
 </string>

@@ -393,7 +393,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
     }
     if( t == 11148 ) {
         baseLightFade = 0;
-        if( objPlayer.x &lt;= 400 ) {
+        if( scrGetPlayerX() &lt;= 400 ) {
             sideModifier = 1;
         } else {
             sideModifier = -1;

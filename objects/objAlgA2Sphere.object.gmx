@@ -51,11 +51,11 @@ bounceHorizontally = true;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( bounceHorizontally &amp;&amp; ( x + sprite_width / 2 + hspeed &gt; 800 - 32 &amp;&amp; hspeed &gt; 0 || x - sprite_width / 2 + hspeed &lt; 32 &amp;&amp; hspeed &lt; 0 ) ) {
+if( bounceHorizontally &amp;&amp; ( x + sprite_width / 2 + hspeed &gt; 800 - 0 &amp;&amp; hspeed &gt; 0 || x - sprite_width / 2 + hspeed &lt; 0 &amp;&amp; hspeed &lt; 0 ) ) {
     scrMakeCircle( x, y, random( 360 ), 5, 3, objAlgA2SphereEffect );
     hspeed *= -1;
 }
-if( y - sprite_height / 2 + vspeed &lt; 32 &amp;&amp; vspeed &lt; 0 ) {
+if( y - sprite_height / 2 + vspeed &lt; 0 &amp;&amp; vspeed &lt; 0 ) {
     scrMakeCircle( x, y, random( 360 ), 5, 3, objAlgA2SphereEffect );
     vspeed *= -1;
 }
@@ -63,7 +63,7 @@ if( image_alpha &lt; 1 ) {
     image_alpha += 0.04;
 }
 
-if( y &lt; 10 || y &gt; 618 ) {
+if( y &lt; -16 || y &gt; 618 ) {
     instance_destroy();
 }
 if( ( x &lt; -400 &amp;&amp; hspeed &lt; 0 ) || ( x &gt; 1200 &amp;&amp; hspeed &gt; 0 ) ) {
