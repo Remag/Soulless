@@ -36,6 +36,8 @@ leftCurrentPos = 0;
 rightCurrentPos = 0;
 
 baseLightIntensity = 0;
+baseLightFade = 0;
+sideModifier = 1;
 
 explosionCount = 0;
 </string>
@@ -170,9 +172,9 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
     scrClearWallBulbs();
     if( t &lt; 8657 ) {
         if( t &lt; 8637 ) {
-            baseLightIntensity = 0;
+            baseLightFade = 0;
         } else {
-            baseLightIntensity += 0.05;
+            baseLightFade += 0.05;
         }
         floorTargetPos -= 16;
         with( oGate2FloorBulb ) {
@@ -180,7 +182,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
             dist = max( 0, dist ) % 192;   
             dist = min( dist, 192 - dist );
             CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
-            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+            CurrentIntensity -= CurrentIntensity * other.baseLightFade;
         }
     } else if( t &lt; 8849 ) {
         scrClearFloorBulbs();
@@ -189,9 +191,9 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
         scrBulbDrawFloorPos( floorCurrentPos );
     } else if( t &lt; 9041 ) {
         if( t &lt; 9021 ) {
-            baseLightIntensity = 0;
+            baseLightFade = 0;
         } else {
-            baseLightIntensity += 0.05;
+            baseLightFade += 0.05;
         }
         flootCurrentPos = 32;
         floorTargetPos += 16;
@@ -200,13 +202,13 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
             dist = max( 0, dist ) % 192;   
             dist = min( dist, 192 - dist );
             CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
-            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+            CurrentIntensity -= CurrentIntensity * other.baseLightFade;
         }
     } else {
         if( t &lt; 9230 ) {
-            baseLightIntensity = 0;
+            baseLightFade = 0;
         } else {
-            baseLightIntensity += 0.05;
+            baseLightFade += 0.05;
         }
         scrClearFloorBulbs();
         if( t == 9137 || t == 9163 || t == 9184 || t == 9191 || t == 9197 || t == 9204 || t == 9210 ) {
@@ -218,7 +220,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
                 scrSetBulbDistanceIntensity( x, other.explosionPosList[i] );
             }
             scrSetBulbDistanceIntensity( x, other.floorCurrentPos );
-            CurrentIntensity -= CurrentIntensity * other.baseLightIntensity;
+            CurrentIntensity -= CurrentIntensity * other.baseLightFade;
         }
     }
     scrBulbTrackWallPos();
@@ -288,39 +290,60 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
     var phaseT = ( t - 10000 ) % 96;
     with( oGate2WallRoundBulb ) {
         self.BulbPeriod = 48;
-        self.BulbPhase = 24;
+        self.BulbPhase = 72;
         if( phaseT == 24 || t == 10000 ) {
-            image_blend = make_colour_hsv( 0, 255, 255 );
+            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
     }
     with( oGate2FloorRoundBulb ) {
         self.BulbPeriod = 48;
-        self.BulbPhase = 24;
+        self.BulbPhase = 72;
         if( phaseT == 24 || t == 10000 ) {
+            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        }
+    }
+    if( phaseT &gt;= 48 ) {
+        if( phaseT &lt; 76 ) {
+            baseLightFade = 0;
+        } else {
+            baseLightFade += 0.05;
+        }
+        with( oGate2FloorRectBulb ) {
+            var pos = 400 * ( phaseT - 48 ) / 48;
+            var dist = 1.3 * pos - abs( 400 - x );
+            dist = max( 0, dist );   
+            dist = min( 2 * dist, 400 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 200 );
+            CurrentIntensity -= other.baseLightFade * CurrentIntensity;
             image_blend = make_colour_hsv( 0, 255, 255 );
         }
-    }
-    with( oGate2WallRectBulb ) {
-        self.BulbPeriod = 48;
-        self.BulbPhase = 72;
-        if( phaseT == 72 || t == 10000 ) {
-            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+        with( oGate2WallRectBulb ) {
+            var pos = 304 * ( phaseT - 48 ) / 48;
+            var dist = 1.3 * pos - abs( 304 - y );
+            dist = max( 0, dist );   
+            dist = min( 2 * dist, 304 - dist );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 152 );
+            CurrentIntensity -= other.baseLightFade * CurrentIntensity;
+            image_blend = make_colour_hsv( 0, 255, 255 );
         }
-    }
-    with( oGate2FloorRectBulb ) {
-        self.BulbPeriod = 48;
-        self.BulbPhase = 72;
-        if( phaseT == 72 || t == 10000 ) {
-            image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-        }
+    } else {
+        scrClearRectBulbs();
     }
 } else if( t &gt;= 10380 &amp;&amp; t &lt; 10764 ) { // Segment 16.
+    if( t == 10380 ) {
+        baseLightFade = 1.0;
+    }
+    baseLightFade = max( 0, baseLightFade - 0.03 );
     with( oGate2FloorBulb ) {
-        CurrentIntensity = 0;
         BulbPeriod = 48;
         BulbPhase = 0;
         var dist = abs( x - scrGetPlayerX() );
+        if( dist &lt;= 96 ) {
+            CurrentIntensity = lerp( FlickerIntensity + 1, 0, dist / 96 );
+            CurrentIntensity -= other.baseLightFade * CurrentIntensity;
+        }
         if( dist &gt; 96 || t == 10380 ) {
+            CurrentIntensity = 0;
             image_blend = make_colour_hsv( random( 255 ), 255, 255 );
         }
     }
@@ -334,7 +357,6 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
         BulbPhase = 24;
         image_blend = make_colour_rgb( 0, 0, 255 );
     }
-    scrBulbDrawFloorPos( scrGetPlayerX() );
 } else if( t &gt;= 10764 &amp;&amp; t &lt; 11148 ) { // Segment 17.
    var phaseT = ( t - 10764 ) % 96;
    with( oGate2FloorBulb ) {
@@ -358,7 +380,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
         }
    }
     scrBulbDrawFloorPos( scrGetPlayerX() );
-} else if( t &gt;= 11148 &amp;&amp; t &lt; 11530 ) { // Segment 18.
+} else if( t &gt;= 11148 &amp;&amp; t &lt; 11540 ) { // Segment 18.
     var color;
     if( t &lt; 11250 ) {
         color = make_colour_hsv( 80, 255, 255 );
@@ -369,26 +391,40 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 ) { // Segment 9.
     } else {
         color = make_colour_hsv( 0, 255, 255 );        
     }
-    var trackingPosY = ( t - 11148 ) * 8 * 800 / 384;
-    trackingPosY = abs( trackingPosY % 800 ) - 96;
-    with( oGate2FloorBulb ) {
-        CurrentIntensity = 0;
-        BulbPeriod = 48;
-        BulbPhase = 0;
-        image_blend = color;
+    if( t == 11148 ) {
+        baseLightFade = 0;
+        if( objPlayer.x &lt;= 400 ) {
+            sideModifier = 1;
+        } else {
+            sideModifier = -1;
+        }
+    } else if( t &gt; 11520 ) {
+        baseLightFade += 0.05;
     }
-    with( oGate2WallRoundBulb ) {
-        BulbPeriod = 48;
-        BulbPhase = 72;
-        image_blend = color;
-    } 
-    with( oGate2WallRectBulb ) {
-        BulbPeriod = 48;
-        BulbPhase = 24;
-        image_blend = color;
     
+    var posX = 800 * ( t - 11148 ) / ( 11530 - 11148 );
+    if( sideModifier == 1 ) {
+        posX = 800 - posX;
     }
-    scrBulbDrawFloorPos( scrGetPlayerX() );
+    var posY = 608 * ( t - 11148 ) / ( 11530 - 11148 );
+    with( oGate2FloorBulb ) {
+        var dist = other.sideModifier * ( x - posX );
+        dist = clamp( dist, 0, 96 );
+        CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+        CurrentIntensity -= other.baseLightFade * CurrentIntensity;
+        image_blend = color;
+    }
+    with( oGate2WallBulb ) {
+        if( ( other.sideModifier == 1 &amp;&amp; EdgeId == 1 ) || ( other.sideModifier == -1 &amp;&amp; EdgeId == 2 ) ) {
+            var dist = posY - y;
+            dist = clamp( dist, 0, 96 );
+            CurrentIntensity = lerp( 0, FlickerIntensity + 1, dist / 96 );
+            CurrentIntensity -= other.baseLightFade * CurrentIntensity;
+            image_blend = color;
+        } else {
+            CurrentIntensity = 0;
+        }
+    } 
 } else {
     scrClearAllBulbs();
     instance_destroy();

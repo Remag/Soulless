@@ -5,7 +5,7 @@ var avgSpeed = argument3;
 
 var centerX = 32;
 var backdropX = 0;
-if( objPlayer.x > 400 ) {
+if( s18SideX > 400 ) {
     centerX = 768;
     backdropX = 800;
 }

@@ -30,6 +30,8 @@ CurrentIntensity = 1;
 
 BulbPhase = 0;
 BulbPeriod = 24;
+
+BulbRng = random_range( 0, 1 );
 </string>
           </argument>
         </arguments>
