@@ -241,9 +241,6 @@
       <sprite>sprites\sprSecretItem</sprite>
       <sprite>sprites\sprBossItem</sprite>
     </sprites>
-    <sprites name="avatars">
-      <sprite>sprites\sprAvatarAll</sprite>
-    </sprites>
     <sprites name="Arch">
       <sprite>sprites\sprArchBullet1</sprite>
       <sprite>sprites\sprArchBullet2</sprite>
@@ -377,7 +374,6 @@
         <sprite>sprites\sprPlayerFall</sprite>
         <sprite>sprites\sprBlood</sprite>
       </sprites>
-      <sprite>sprites\sprItemChangeParticle</sprite>
       <sprites name="Demon">
         <sprite>sprites\sprDemonIdle</sprite>
         <sprite>sprites\sprDemonRun</sprite>
@@ -421,6 +417,7 @@
         <sprite>sprites\sprCrimsonKidFall</sprite>
         <sprite>sprites\sprGlitchShadowIdle</sprite>
         <sprite>sprites\sprGlitchShadowJump</sprite>
+        <sprite>sprites\sprGlitchShadowFall</sprite>
         <sprite>sprites\sprWhiteShadowIdle</sprite>
         <sprite>sprites\sprWhiteShadowFall</sprite>
         <sprite>sprites\sprWhiteShadowJump</sprite>
@@ -428,6 +425,7 @@
         <sprite>sprites\sprOutlineShadowJump</sprite>
         <sprite>sprites\sprOutlineShadowFall</sprite>
       </sprites>
+      <sprite>sprites\sprItemChangeParticle</sprite>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprGun</sprite>
@@ -456,8 +454,15 @@
         <sprite>sprites\sprBlackShard7</sprite>
         <sprite>sprites\sprBlackShard8</sprite>
       </sprites>
+      <sprites name="Gate2Shards">
+        <sprite>sprites\sprBlockShard21</sprite>
+        <sprite>sprites\sprBlockShard22</sprite>
+        <sprite>sprites\sprBlockShard23</sprite>
+        <sprite>sprites\sprBlockShard24</sprite>
+        <sprite>sprites\sprBlockShard25</sprite>
+        <sprite>sprites\sprBlockShard26</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\sprGlitchShadowFall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -559,6 +564,10 @@
       <script>scripts\scrOnPortalButton.gml</script>
       <script>scripts\scrOnPlayerRestart.gml</script>
       <script>scripts\scrSpawnTeleportParticles.gml</script>
+      <script>scripts\scrExplodeBlockShards.gml</script>
+      <script>scripts\scrCreateWallShards.gml</script>
+      <script>scripts\scrCreateFloorShards.gml</script>
+      <script>scripts\scrCreateCeilingShards.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -1205,8 +1214,18 @@
         <object>objects\oBlockShard07</object>
         <object>objects\oBlockShard08</object>
       </objects>
+      <objects name="BlockShard2">
+        <object>objects\oBlockShardBase2</object>
+        <object>objects\oBlockShard21</object>
+        <object>objects\oBlockShard22</object>
+        <object>objects\oBlockShard23</object>
+        <object>objects\oBlockShard24</object>
+        <object>objects\oBlockShard25</object>
+        <object>objects\oBlockShard26</object>
+      </objects>
       <object>objects\oBlockShardSerializer</object>
       <object>objects\oBlockShardBase</object>
+      <object>objects\oGate3SparkParticle</object>
     </objects>
     <object>objects\objLogin</object>
   </objects>

@@ -84,40 +84,14 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         }
     }
     if( !instance_exists( objGate2CornerBlock ) ) {
-        audio_play_sound( sndBoom, 0, false );
         for( var i = 0; i &lt; 800; i += 32 ) {
             repeat( 30 ) {
                 instance_create( random_range( i, i + 32 ), random_range( 608 - 16, 608 - 32 ), oSnowDissapearParticle );
             }
         }
-        for( var i = 0; i &lt; 608 - 32; i += 32 ) {
-            with( oBlockShardSerializer ) {
-                CreateX = 0;
-                CreateY = i;
-                CreateId = ( 608 - 32 - i ) / 32 + 1;
-                event_user( 0 );
-                
-                CreateX = 768;
-                CreateId = -( 608 - 32 - i ) / 32 - 1;
-                event_user( 0 );
-            }
-        }
         
-        with( oBlockShardBase0 ) {
-            if( random_range( 0, 1 ) &lt; 0.04 ) {
-                instance_destroy();
-            }
-            if( BlockId &gt; 0 ) {
-                var majorDir = point_direction( 150, 304, x, y );
-                direction = majorDir + random_range( -5, 5 );
-            } else {
-                var majorDir = point_direction( 650, 304, x, y );
-                direction = majorDir + random_range( -5, 5 );
-            }
-            speed = random_range( 0.75, 1.5 );
-            AngleDelta = random_range( -5, 5 );
-        }
-        
+        scrCreateWallShards( 1 );
+        scrExplodeBlockShards();
         instance_create( 0, 0, objGate2CornerBlock );
         instance_create( 768, 0, objGate2CornerBlock );
         instance_create( 0, 608 - 32, objGate2CornerBlock );
@@ -212,6 +186,10 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
     }
     
     if( !instance_exists( objCornerBlock ) ) {
+        scrCreateWallShards( 2 );
+        scrCreateCeilingShards( 1 );
+        scrCreateFloorShards( 2 );
+        scrExplodeBlockShards();
         instance_create( 0, 0, objCornerBlock );
         instance_create( 768, 0, objCornerBlock );
         instance_create( 0, 608 - 32, objCornerBlock );
@@ -226,7 +204,8 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         obj.image_angle = 90;
         
         instance_create( 16, 16, objGate3ShaderBlock );
-        instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.BlockId = 1;
         obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
         obj.image_xscale = ( 608 - 32 ) / 32;
         obj.image_angle = 90;
@@ -235,12 +214,14 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         obj.image_angle = 90;
         
         obj = instance_create( 16, 608 - 16, objGate3ShaderBlock );
+        obj.BlockId = 1;
         obj.image_angle = -135;
         obj = instance_create( 800 - 16, 16, objGate3ShaderBlock );
         obj.image_angle = 45;
         obj = instance_create( 16, 16, objGate3ShaderBlock );
         obj.image_angle = 135;
         obj = instance_create( 800 - 16, 608 - 16, objGate3ShaderBlock );
+        obj.BlockId = 1;
         obj.image_angle = -45;
         
         // Move blocks.
@@ -267,6 +248,15 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         instance_create( 768, 0, objGate4CornerBlock );
         instance_create( 0, 608 - 32, objGate4CornerBlock );
         instance_create( 768, 608 - 32, objGate4CornerBlock );
+        
+        for( var i = 16; i &lt; 800 - 16; i += 2 ) {
+            instance_create( i, 608 - 16, oGate3SparkParticle );
+            instance_create( i, 16, oGate3SparkParticle );
+        }
+        for( var i = 16; i &lt; 608 - 16; i += 2 ) {
+            instance_create( 16, i, oGate3SparkParticle );
+            instance_create( 800 - 16, i, oGate3SparkParticle );
+        }
         
         for( var i = 32; i &lt; 800 - 32; i += 32 ) {
             instance_create( i, 0, objGate4EdgeBlock );  

@@ -39,6 +39,8 @@ targetColor = 0;
 image_xscale = ( 800 - 32 ) / 32;
 image_alpha = 0;
 
+BlockId = 0;
+
 </string>
           </argument>
         </arguments>
