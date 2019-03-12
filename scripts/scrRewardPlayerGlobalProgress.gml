@@ -15,4 +15,5 @@ oPlayerData.currencyCount += payoutCount;
 if( global.pb < objAvoidanceController.t ) {
     global.pb = objAvoidanceController.t;
     global.pb_segment = objAvoidanceController.segment;
+    scrSendPbResultsToServer();
 }
