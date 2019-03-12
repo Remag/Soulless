@@ -33,5 +33,4 @@ global.autosaveSecretItems = false; //sets whether to save secret items immediat
 
 global.controllerDelayLength = 5;   //sets the delay in frames in which the player can switch between keyboard/controller (can be set to 0 to disable delay)
 
-global.server_url = "http://157.230.99.228:4444/";
 global.api_url = "http://157.230.99.228:4444/api/";
