@@ -6580,10 +6580,10 @@ if( t &gt;= 31985 &amp;&amp; t &lt; 32750 &amp;&amp; instance_exists(objPlayer) 
     
     if( t == 32730 ) {
         with( objArchBullet23 ) {
-            fade = true;
+            self.fade = true;
         }
         with( objArchBullet24 ) {
-            fade = true;
+            self.fade = true;
         }
     }
 
