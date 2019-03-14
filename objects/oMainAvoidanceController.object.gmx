@@ -48,7 +48,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// Pre-intro.
+if( t == 0 ) {
+    var fade = instance_create( 0, 0, oFadeIn );
+    fade.fadeDelta = 0.004;
+}
+
+event_inherited();
 
 if( instance_exists(objPlayer) ) {
     scrApplyMusicCorrection( global.currentMusic );
