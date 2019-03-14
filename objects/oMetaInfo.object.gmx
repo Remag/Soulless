@@ -32,6 +32,7 @@
     LastLogin = file_text_read_string( fileId );
     file_text_readln( fileId );
     LastPassword = file_text_read_string( fileId );
+    file_text_close( fileId );
 } else {
     LastSlotId = 0;
     LastLogin = "";

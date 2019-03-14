@@ -10,6 +10,8 @@ var saveMap = json_decode( base64_decode( file_text_read_string( f ) ) );
 file_text_close( f );
 
 var pbSegment = ds_map_find_value( saveMap, "pb_segment" );
+ds_map_destroy(saveMap);
+
 if( is_undefined( pbSegment ) ) {
     return 'music/musMenu1.ogg'
 }
