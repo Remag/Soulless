@@ -63,6 +63,7 @@ counter = 1;
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.image_xscale = 0.5;
             obj.image_yscale = 0.5;
+            obj.friction = random_range(0, 0.1);
             break;
         }
         case 1: {
@@ -71,6 +72,7 @@ counter = 1;
             obj.gravity = 0.075;
             obj.direction = random_range( 0, 180 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
+            obj.friction = random_range(0, 0.1);
             break;
         }
         case 2: {
@@ -78,6 +80,7 @@ counter = 1;
             obj.speed = 7;
             obj.direction = spawnDir;
             obj.image_blend = spawnColor;
+            obj.friction = random_range(0, 0.1);
             spawnDir += 360 / maxFrame;
             break;
         }
@@ -88,6 +91,7 @@ counter = 1;
                 //obj.friction = -0.15;
                 obj.direction = spawnDir;
                 obj.image_blend = spawnColor;
+                obj.friction = random_range(0, 0.1);
                 spawnDir += 360 / maxFrame;
             }
             maxFrame = 0;

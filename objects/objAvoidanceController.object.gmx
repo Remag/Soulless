@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
 
+t_delta = global.start_time;
+
 //t = 0;
 //t = 6500;
 
@@ -71,6 +73,7 @@ if( global.debugMode ) {
     if( keyboard_check_pressed( vk_space ) ) {
         show_debug_message( string( t ) );
     }
+    t_delta += delta_time * 50 / 1000000;
 }
 </string>
           </argument>
@@ -5281,6 +5284,20 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             obj.spawnMode = irandom( 3 );
         }
     } else if( phaseT &lt; 192 * 2 ) {
+        if( phaseT % 6 == 0 ) {
+            var s39_tt = (phaseT - 192 * 2) / 48;
+            var s39_xx = lerp(100, 700, abs(sin(s39_tt*pi/2)));
+            
+            var circle = scrMakeCircle( s39_xx, 128, 270 + phaseT, 6, 4.5, objAlgStar );
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = c_red;
+            }
+            var circle = scrMakeCircle( 800 - s39_xx, 128, 270 - phaseT, 6, 9, objAlgStar );
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = c_red;
+            }
+        }
+        /*
         if( phaseT % 3 == 0 ) {
             var targetX = scrGetPlayerX();
             var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 ) / 192 ) );
@@ -5293,6 +5310,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
                 circle[i].image_blend = color;
             }
         }
+        */
     } else if( phaseT &lt; 192 * 3 ) {
         if( phaseT % 7 == 0 ) {
             var mode = irandom( 3 );
@@ -5304,6 +5322,20 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     } else if( phaseT &lt; 192 * 4 ) {
+        if( phaseT % 6 == 0 ) {
+            var s39_tt = (phaseT - 192 * 3) / 48;
+            var s39_xx = lerp(100, 700, abs(sin(s39_tt*pi/2)));
+            
+            var circle = scrMakeCircle( s39_xx, 128, phaseT, 6, 9, objAlgStar );
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = c_red;
+            }
+            var circle = scrMakeCircle( 800 - s39_xx, 128, -phaseT, 6, 4.5, objAlgStar );
+            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
+                circle[i].image_blend = c_red;
+            }
+        }
+        /*
         if( phaseT % 3 == 0 ) {
             var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 * 3 ) / 192 ) );
             var spawnY = random( 208 );
@@ -5316,6 +5348,18 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
                 circle[i].image_blend = color;
             }
+        }
+        */
+    }
+    
+    if( phaseT &gt; 0 &amp;&amp; phaseT % 192 == 0 ) {
+        with(objAlgA40Spawner) {
+            instance_destroy();
+        }
+        with(objAlg) { 
+            direction = scrTargetPlayer(x, y) + 180;
+            friction = 0;
+            speed = 12;
         }
     }
     
@@ -7070,114 +7114,6 @@ if( global.segment &gt; 0 &amp;&amp; global.segment != segment ) {
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Deadsplit DansGame
-
-if( instance_exists(objPlayer) ) {
-    global.playeralive = true;
-} else {
-    global.playeralive = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Warnings
-/*
-if( instance_exists(objPlayer) ) {
-    if( t == 2396 ) {
-        a = instance_create(32, 32, objWarning);
-        a.image_yscale = 8.5;
-    }
-    if( t == 2496 ) {
-        a = instance_create(768, 32, objWarning);
-        a.image_xscale = -1;
-        a.image_yscale = 8.5;
-    }
-    if( t == 3706 ) {
-        a = instance_create(32, 32, objWarning);
-        a.image_yscale = 8.5;
-        
-        a = instance_create(768, 32, objWarning);
-        a.image_xscale = -1;
-        a.image_yscale = 8.5;
-    }
-    if( t == 7189 ) {
-        a = instance_create(32, 32, objWarning);
-        a.image_yscale = 8.5;
-        
-        a = instance_create(768, 32, objWarning);
-        a.image_xscale = -1;
-        a.image_yscale = 8.5;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>119</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_path</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>8</kind>
-            <path>-1</path>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -7228,9 +7164,10 @@ if( shake ) {
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 scrDrawTextOutline(645, 40, "Segment: " + string(segment), c_white, c_black);
-scrDrawTextOutline(645, 56, "Frame: " + string(t), c_white, c_black);
+scrDrawTextOutline(645, 56, "Frame: " + string(t) + "(" + string(t_delta) + ")", c_white, c_black);
 scrDrawTextOutline(645, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
 scrDrawTextOutline(645, 88, "Instances: " + string(instance_count), c_white, c_black);
+scrDrawTextOutline(645, 104, "D: " + string(audio_sound_get_track_position(global.currentMusic)*50 - t), c_white, c_black);
 </string>
           </argument>
         </arguments>

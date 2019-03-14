@@ -51,7 +51,7 @@
             <string>event_inherited();
 
 if( instance_exists(objPlayer) ) {
-    scrApplyMusicCorrection( global.currentMusic );
+    //scrApplyMusicCorrection( global.currentMusic );
     t++;
 } else {
     scrStopMusic();
