@@ -80,8 +80,7 @@ event_inherited();
             <string>if( !performTotalCleanup ) {
     // Usual avoidance advance.
     event_inherited();
-    scrApplyMusicCorrection( practiceMusicId );
-    t++;
+    scrAdvanceT( practiceMusicId );
   
     // Check for loops.
     var nextSegmentPos = scrGetSegmentOffset( segment + 1 );

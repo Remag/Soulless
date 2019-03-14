@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
-
-t_delta = global.start_time;
+realT = global.start_time;
+adjustCount = 0;
 
 //t = 0;
 //t = 6500;
@@ -73,7 +73,6 @@ if( global.debugMode ) {
     if( keyboard_check_pressed( vk_space ) ) {
         show_debug_message( string( t ) );
     }
-    t_delta += delta_time * 50 / 1000000;
 }
 </string>
           </argument>
@@ -7139,10 +7138,10 @@ if( shake ) {
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 scrDrawTextOutline(645, 40, "Segment: " + string(segment), c_white, c_black);
-scrDrawTextOutline(645, 56, "Frame: " + string(t) + "(" + string(t_delta) + ")", c_white, c_black);
+scrDrawTextOutline(645, 56, "Frame: " + string(t) + "(" + string(realT) + ")", c_white, c_black);
 scrDrawTextOutline(645, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
 scrDrawTextOutline(645, 88, "Instances: " + string(instance_count), c_white, c_black);
-scrDrawTextOutline(645, 104, "D: " + string(audio_sound_get_track_position(global.currentMusic)*50 - t), c_white, c_black);
+//scrDrawTextOutline(645, 104, "D: " + string(audio_sound_get_track_position(global.currentMusic)*50 - t), c_white, c_black);
 </string>
           </argument>
         </arguments>
