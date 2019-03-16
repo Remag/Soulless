@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10000000</depth>
   <persistent>0</persistent>
-  <parentName>objAlgSquareEffect</parentName>
+  <parentName>objAlgEffect</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-frame = 0;
-framePoint1 = 20;
-image_alpha = 0;
+rotationSpeed = 0;
+shouldUseShader = false;
+image_speed = 0;
+image_index = 0;
+alphaDelta = 0;
 </string>
           </argument>
         </arguments>
@@ -52,17 +54,12 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-frame++;
-if( frame &lt; framePoint1 ) {
-    image_alpha = min( 1, image_alpha + 1.0 / framePoint1 );
-} else if( frame == framePoint1 ) {
-    vspeed = random_range( 6, 10 );
-    hspeed = random_range( -2, 2 );
-} else if( frame &gt; framePoint1 ) {
-    image_alpha -= 0.05;
-    if( image_alpha &lt;= 0 ) {
-        instance_destroy();
-    }
+image_angle += rotationSpeed;
+
+image_alpha -= alphaDelta;
+alphaDelta += 0.001;
+if( image_alpha &lt;= 0 ) {
+    instance_destroy();
 }
 </string>
           </argument>

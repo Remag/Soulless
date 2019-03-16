@@ -1047,6 +1047,9 @@
         <object>objects\oRedireS18CircleBullet</object>
         <object>objects\oRedireS18Backdrop</object>
       </objects>
+      <objects name="Segment20">
+        <object>objects\oRedireS20SquareEffect</object>
+      </objects>
       <objects name="Segment22">
         <object>objects\oRedireS23CircleController</object>
         <object>objects\oRedireS23CircleBullet</object>

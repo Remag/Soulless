@@ -2439,6 +2439,16 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
+    if( ( t - 12290 ) % 2 == 0 ) {
+        var obj = instance_create( random_range( 0, 800 ), 0, oRedireS20SquareEffect );
+        obj.direction = random_range( 240, 300 );
+        obj.speed = 1;
+        obj.friction = -0.5;
+        obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 40, 50 ) );
+        obj.image_index = 2;
+        obj.rotationSpeed = random_range( 20, 40 ) * choose( -1, 1 );
+    }
+    
     if( tPhase == 0 ) {
         with( objGate3ShaderBlock ) {
             self.targetColor = make_colour_rgb( 255, 255, 255 );
@@ -2526,8 +2536,8 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         obj.direction = random_range( 180, 360 );
         obj.image_angle = obj.direction;
         
-        var obj = instance_create( random_range( 0, 800 ), 608, objAlgSquareEffect );
-        obj.direction = random_range( 60, 120 );
+        var obj = instance_create( random_range( 0, 800 ), 0, objAlgSquareEffect );
+        obj.direction = random_range( 240, 300 );
         obj.speed = 1;
         obj.friction = -0.5;
         obj.image_blend = make_colour_hsv( random( 255 ), 255, random_range( 40, 50 ) );
@@ -6150,7 +6160,7 @@ if( t &gt;= 28525 &amp;&amp; t &lt; 29300 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     
-    if( t &gt; 28525 &amp;&amp; t &lt; 28920 ) {
+    if( t &gt; 28525 &amp;&amp; t &lt; 28900 ) {
         if( t%26 == 0 ) {
             with(objArchBullet21) {
                 if( self.mode == 1 ) {
