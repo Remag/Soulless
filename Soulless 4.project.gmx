@@ -540,7 +540,6 @@
       <script>scripts\scrGetSegmentOffset.gml</script>
       <script>scripts\scrGetSegmentGate.gml</script>
       <script>scripts\scrFindCurrencyDelta.gml</script>
-      <script>scripts\scrShowCurrency.gml</script>
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrGetGateOpenReward.gml</script>
       <script>scripts\scrGetGateSegmentReward.gml</script>
@@ -569,6 +568,7 @@
       <script>scripts\scrCreateCeilingShards.gml</script>
       <script>scripts\scrSendPbResultsToServer.gml</script>
       <script>scripts\scrAdvanceT.gml</script>
+      <script>scripts\scrIsAvoidanceDowntime.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
