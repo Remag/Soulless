@@ -568,6 +568,7 @@
       <script>scripts\scrCreateCeilingShards.gml</script>
       <script>scripts\scrSendPbResultsToServer.gml</script>
       <script>scripts\scrAdvanceT.gml</script>
+      <script>scripts\scrIsAvoidanceDowntime.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>

@@ -28,6 +28,7 @@
             <string>t = global.start_time; //Это счетчик кадров
 realT = global.start_time;
 adjustCount = 0;
+downtimeAdjustCount = 0;
 
 //t = 0;
 //t = 6500;

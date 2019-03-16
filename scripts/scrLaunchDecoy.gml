@@ -1,9 +1,5 @@
 var skin = argument0;
 
-with( oKidDecoy ) {
-    fadeOut = true;
-}
-
 // Particles.
 audio_play_sound( sndDecoyAppear1, 0, false );
 repeat( 30 ) {
