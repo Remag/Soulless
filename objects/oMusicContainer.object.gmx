@@ -73,8 +73,7 @@ audio_destroy_stream( menuMusic );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_destroy_stream( avoidanceMusic );
-audio_destroy_stream( menuMusic );
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
