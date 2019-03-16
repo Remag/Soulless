@@ -5252,41 +5252,34 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
     if( phaseT &lt;= 6 ) {
         // Do nothing.
     } else if( phaseT &lt; 192 ) {
-        if( phaseT % 7 == 0 ) {
+        if( phaseT % 8 == 0 ) {
             var targetX = max( 0, min( 800, scrGetPlayerX() + random_range( -100, 100 ) ) );
             var obj = instance_create( targetX, lerp( 0, 208, phaseT / 192  ), objAlgA40Spawner );
             obj.spawnMode = irandom( 3 );
         }
     } else if( phaseT &lt; 192 * 2 ) {
-        if( phaseT % 6 == 0 ) {
-            var s39_tt = (phaseT - 192 * 2) / 48;
-            var s39_xx = lerp(100, 700, abs(sin(s39_tt*pi/2)));
-            
-            var circle = scrMakeCircle( s39_xx, 128, 270 + phaseT, 6, 4.5, objAlgStar );
-            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
-                circle[i].image_blend = c_red;
-            }
-            var circle = scrMakeCircle( 800 - s39_xx, 128, 270 - phaseT, 6, 9, objAlgStar );
-            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
-                circle[i].image_blend = c_red;
+        if( phaseT == 192 ) {
+            seg40Angle = scrTargetPlayer( 400, 100 ) + 180 / 10;
+            seg40AngleIncrement = 45 / 192;
+            if( scrGetPlayerX() &gt; 400 ) {
+                seg40AngleIncrement *= -1;
             }
         }
-        /*
+        if( phaseT % 10 == 0 ) {
+            var targetX = max( 0, min( 800, scrGetPlayerX() + random_range( -100, 100 ) ) );
+            var obj = instance_create( targetX, random_range( 0, 208 ), objAlgA40Spawner );
+            obj.spawnMode = irandom( 3 );
+        }
         if( phaseT % 3 == 0 ) {
-            var targetX = scrGetPlayerX();
-            var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 ) / 192 ) );
-            var spawnY = random( 208 );
-            var bullet = objAlgStar;
             var color = make_colour_hsv( random( 255 ), 255, 255 );
-            var dir = scrTargetPlayer( targetX, spawnY ) + 180 / spawnCount;
-            var circle = scrMakeCircle( targetX, spawnY, dir, spawnCount, 9, bullet ); 
+            var circle = scrMakeCircle( 400, 100, seg40Angle, 10, 9, objAlgStar ); 
             for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
                 circle[i].image_blend = color;
             }
         }
-        */
+        seg40Angle += seg40AngleIncrement;
     } else if( phaseT &lt; 192 * 3 ) {
-        if( phaseT % 7 == 0 ) {
+        if( phaseT % 8 == 0 ) {
             var mode = irandom( 3 );
             var spawnY =  lerp( 32, 108, ( phaseT - 192 * 2 ) / 192  );
             repeat( 2 ) {
@@ -5296,37 +5289,32 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             }
         }
     } else if( phaseT &lt; 192 * 4 ) {
-        if( phaseT % 6 == 0 ) {
-            var s39_tt = (phaseT - 192 * 3) / 48;
-            var s39_xx = lerp(100, 700, abs(sin(s39_tt*pi/2)));
-            
-            var circle = scrMakeCircle( s39_xx, 128, phaseT, 6, 9, objAlgStar );
-            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
-                circle[i].image_blend = c_red;
-            }
-            var circle = scrMakeCircle( 800 - s39_xx, 128, -phaseT, 6, 4.5, objAlgStar );
-            for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
-                circle[i].image_blend = c_red;
+        if( phaseT == 192 * 3 ) {
+            seg40Angle = scrTargetPlayer( 400, 100 ) + 180 / 12;
+            seg40AngleIncrement = 55 / 192;
+            if( scrGetPlayerX() &gt; 400 ) {
+                seg40AngleIncrement *= -1;
             }
         }
-        /*
+        if( phaseT % 10 == 0 ) {
+            var mode = irandom( 3 );
+            repeat( 2 ) {
+                var obj = instance_create( random_range( 32, 768 ), random_range( 32, 108 ), objAlgA40Spawner );
+                obj.spawnMode = mode;
+                obj.maxFrame /= 2;
+            }
+        }
         if( phaseT % 3 == 0 ) {
-            var spawnCount = ceil( lerp( 10, 25, ( phaseT - 192 * 3 ) / 192 ) );
-            var spawnY = random( 208 );
-            var bullet = objAlgStar;
             var color = make_colour_hsv( random( 255 ), 255, 255 );
-            
-            var spawnX = random_range( 32, 768 );
-            var dir = scrTargetPlayer( spawnX, spawnY ) + 180 / spawnCount;
-            var circle = scrMakeCircle( spawnX, spawnY, dir, spawnCount, 9, bullet ); 
+            var circle = scrMakeCircle( 400, 100, seg40Angle, 12, 9, objAlgStar ); 
             for( var i = 0; i &lt; array_length_1d( circle ); i++ ) {
                 circle[i].image_blend = color;
             }
         }
-        */
+        seg40Angle += seg40AngleIncrement;
     }
     
-    if( phaseT &gt; 0 &amp;&amp; phaseT % 192 == 0 ) {
+    if( phaseT &gt; 0 &amp;&amp; phaseT % 384 == 0 ) {
         with(objAlgA40Spawner) {
             instance_destroy();
         }
@@ -5334,6 +5322,11 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
             direction = scrTargetPlayer(x, y) + 180;
             friction = 0;
             speed = 12;
+        }
+    }
+    with(objAlg) { 
+        if( friction &gt; 0 &amp;&amp; speed &lt; 1.5 ) {
+            friction = 0;
         }
     }
     
@@ -7030,8 +7023,6 @@ if( t &gt;= 37075 ) {
     }
     
     if( t == 37075 ) {
-        a = instance_create(384, 512, objWarp);
-        a.roomTo = rGG;
         
         global.pb = t;
         global.pb_segment = segment;
@@ -7060,30 +7051,6 @@ if( t &gt;= 37075 ) {
             <kind>1</kind>
             <string>///Эффекты камеры
 view_angle = angle;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Exit segment practice
-if( global.segment &gt; 0 &amp;&amp; global.segment != segment ) {
-    instance_create(0,0,objExitPractice);
-}
 </string>
           </argument>
         </arguments>

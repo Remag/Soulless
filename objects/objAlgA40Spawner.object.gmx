@@ -72,7 +72,6 @@ counter = 1;
             obj.gravity = 0.075;
             obj.direction = random_range( 0, 180 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
-            obj.friction = random_range(0, 0.1);
             break;
         }
         case 2: {

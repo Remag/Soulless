@@ -53,6 +53,7 @@ counter = 12;
             <kind>1</kind>
             <string>if( frame % counter == 0 ) {
     var obj = instance_create( x, y, objAlgLaserDisappearing );
+    obj.sprite_index = sprAlgLaserBig;
     obj.image_angle = 90;
     obj.image_blend = image_blend;
     obj.image_yscale = 0;
@@ -61,7 +62,7 @@ counter = 12;
         obj.image_alpha = 0.35;
     }
     obj.alphaStep = obj.image_alpha / 36;
-    obj.scaleStep = 0.1 + 0.05 * frame / counter;
+    obj.scaleStep = 0.025 + 0.0125 * frame / counter;
 }
 
 if( frame &gt;= maxFrame ) {

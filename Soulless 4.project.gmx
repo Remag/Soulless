@@ -278,6 +278,7 @@
       <sprite>sprites\sprAlgSphereGrad</sprite>
       <sprite>sprites\sprAlgFullCircle</sprite>
       <sprite>sprites\sprAlgLaser</sprite>
+      <sprite>sprites\sprAlgLaserBig</sprite>
       <sprite>sprites\sprAlgSquare</sprite>
     </sprites>
     <sprites name="Redire">
@@ -516,7 +517,6 @@
       <script>scripts\srcGate4BlockColor.gml</script>
       <script>scripts\srcGate4BlockHorizontalColor.gml</script>
     </scripts>
-    <script>scripts\scrKennySnekAddBodyPart.gml</script>
     <scripts name="Redire">
       <script>scripts\scrRedireS3CreateCircle.gml</script>
       <script>scripts\scrRedireS18CreateFuzzyCircle.gml</script>
@@ -540,7 +540,6 @@
       <script>scripts\scrGetSegmentOffset.gml</script>
       <script>scripts\scrGetSegmentGate.gml</script>
       <script>scripts\scrFindCurrencyDelta.gml</script>
-      <script>scripts\scrShowCurrency.gml</script>
       <script>scripts\scrRestartAttempt.gml</script>
       <script>scripts\scrGetGateOpenReward.gml</script>
       <script>scripts\scrGetGateSegmentReward.gml</script>
@@ -1196,10 +1195,8 @@
       <object>objects\objAlgFlower</object>
       <object>objects\objAlgButterfly</object>
     </objects>
-    <object>objects\objSelect</object>
     <object>objects\objSelectArrow</object>
     <object>objects\objAvatars</object>
-    <object>objects\objExitPractice</object>
     <object>objects\objWarning</object>
     <object>objects\objThanks</object>
     <object>objects\objPulseController</object>
@@ -1246,7 +1243,6 @@
     <room>rooms\rShopRoom</room>
     <room>rooms\rPracticeActiveRoom</room>
     <room>rooms\rAvoidanceMainRoom</room>
-    <room>rooms\rGG</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
