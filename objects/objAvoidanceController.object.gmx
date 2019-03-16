@@ -5256,7 +5256,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         if( phaseT % 8 == 0 ) {
             var targetX = max( 0, min( 800, scrGetPlayerX() + random_range( -100, 100 ) ) );
             var obj = instance_create( targetX, lerp( 0, 208, phaseT / 192  ), objAlgA40Spawner );
-            obj.spawnMode = irandom( 3 );
+            obj.spawnMode = choose( 0, 1, 2, 3, 3 );
         }
     } else if( phaseT &lt; 192 * 2 ) {
         if( phaseT == 192 ) {
@@ -5266,10 +5266,10 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
                 seg40AngleIncrement *= -1;
             }
         }
-        if( phaseT % 10 == 0 ) {
+        if( phaseT % 16 == 0 ) {
             var targetX = max( 0, min( 800, scrGetPlayerX() + random_range( -100, 100 ) ) );
             var obj = instance_create( targetX, random_range( 0, 208 ), objAlgA40Spawner );
-            obj.spawnMode = irandom( 3 );
+            obj.spawnMode = choose( 0, 1, 2 );
         }
         if( phaseT % 3 == 0 ) {
             var color = make_colour_hsv( random( 255 ), 255, 255 );
@@ -5280,8 +5280,8 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         }
         seg40Angle += seg40AngleIncrement;
     } else if( phaseT &lt; 192 * 3 ) {
-        if( phaseT % 8 == 0 ) {
-            var mode = irandom( 3 );
+        if( phaseT % 10 == 0 ) {
+            var mode = choose( 0, 1, 2, 3, 3 );
             var spawnY =  lerp( 32, 108, ( phaseT - 192 * 2 ) / 192  );
             repeat( 2 ) {
                 var obj = instance_create( random_range( 32, 768 ), spawnY, objAlgA40Spawner );
@@ -5297,13 +5297,11 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
                 seg40AngleIncrement *= -1;
             }
         }
-        if( phaseT % 10 == 0 ) {
-            var mode = irandom( 3 );
-            repeat( 2 ) {
-                var obj = instance_create( random_range( 32, 768 ), random_range( 32, 108 ), objAlgA40Spawner );
-                obj.spawnMode = mode;
-                obj.maxFrame /= 2;
-            }
+        if( phaseT % 9 == 0 ) {
+            var mode = choose( 0, 1, 2 );
+            var obj = instance_create( random_range( 32, 768 ), random_range( 32, 108 ), objAlgA40Spawner );
+            obj.spawnMode = mode;
+            obj.maxFrame /= 2;
         }
         if( phaseT % 3 == 0 ) {
             var color = make_colour_hsv( random( 255 ), 255, 255 );
