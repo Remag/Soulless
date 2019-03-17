@@ -5349,6 +5349,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod2 = 0;
         obj.shaderMod4 = 0;
         obj.alphaStep = 0.1 / 24;
+        obj.maxAlpha = 0.075;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
         
@@ -5360,6 +5361,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod2 = 0;
         obj.shaderMod4 = 0;
         obj.alphaStep = 0.1 / 24;
+        obj.maxAlpha = 0.075;
         obj.image_xscale = -2;
         obj.image_yscale = 2;
         
@@ -5371,6 +5373,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod2 = 0;
         obj.shaderMod4 = 0;
         obj.alphaStep = 0.1 / 24;
+        obj.maxAlpha = 0.075;
         obj.image_xscale = 2;
         obj.image_yscale = 2;
         
@@ -5382,6 +5385,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         obj.shaderMod2 = 0;
         obj.shaderMod4 = 0;
         obj.alphaStep = 0.1 / 24;
+        obj.maxAlpha = 0.075;
         obj.image_xscale = -2;
         obj.image_yscale = 2;
         

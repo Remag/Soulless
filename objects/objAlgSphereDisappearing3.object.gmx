@@ -52,11 +52,10 @@ scaleStep = 0.2;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+image_xscale -= scaleStep;
+image_yscale -= scaleStep;
 if( image_xscale &lt;= 0 ) {
     instance_destroy();
-} else {
-    image_xscale -= scaleStep;
-    image_yscale -= scaleStep;
 }
 </string>
           </argument>
