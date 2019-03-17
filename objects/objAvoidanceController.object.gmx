@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>t = global.start_time; //Это счетчик кадров
-realT = global.start_time;
+realT = 0;
 adjustCount = 0;
 downtimeAdjustCount = 0;
 

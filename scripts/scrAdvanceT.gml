@@ -6,14 +6,14 @@ if( room_speed < 100 ) {
     if( abs( deltaT ) > 5 ) {
         // A big lag spike, adjust music to game time.
        audio_sound_set_track_position( musId, t / 50 );
-       show_debug_message( "Music sync" );
+       //show_debug_message( "Music sync" );
        realT = t;
     } else if( deltaT > 0 && scrIsAvoidanceDowntime() ) {
         // Speed up the game to keep up with the music.
-        show_debug_message( "Downtime sync" );
+       // show_debug_message( "Downtime sync" );
         room_speed = 51;    
     } else if( deltaT > 3 ) {
-        show_debug_message( "Bad sync" );
+        //show_debug_message( "Bad sync" );
         room_speed = 51;
     } else {
         // All is good.
@@ -22,7 +22,7 @@ if( room_speed < 100 ) {
 }
 
 if( t % 500 == 0 ) {
-    show_debug_message( "Regular update: " + string( t ) + "/" + string( realT ) );
+   // show_debug_message( "Regular update: " + string( t ) + "/" + string( realT ) );
 }
 
 realT += 50 * delta_time / 1000000; 
