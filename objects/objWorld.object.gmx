@@ -289,11 +289,6 @@ if (global.gameStarted)
 
 if (global.debugMode &amp;&amp; global.gameStarted &amp;&amp; !global.gamePaused)
 {
-    if( keyboard_check(ord("s")) ) {
-        room_speed = 150;
-    } else {
-        room_speed = 50;
-    }
     if (keyboard_check(vk_tab))             //drags player with mouse
     {
         with (objPlayer)
