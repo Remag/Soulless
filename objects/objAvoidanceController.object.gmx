@@ -30,9 +30,6 @@ realT = global.start_time;
 adjustCount = 0;
 downtimeAdjustCount = 0;
 
-//t = 0;
-//t = 6500;
-
 segment = 1;
 
 angle = 0;
