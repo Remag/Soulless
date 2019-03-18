@@ -9,6 +9,7 @@ ds_map_add( saveMap, "time", global.time );
 ds_map_add( saveMap, "timeMicro", global.timeMicro );
 ds_map_add( saveMap, "tournamentTime", global.TournamentTime );
 ds_map_add( saveMap, "tournamentTimeMicro", global.TournamentTimeMicro );
+ds_map_add( saveMap, "tournamentPb", global.TournamentPb );
 
 ds_map_add( saveMap, "pb", global.pb );
 ds_map_add( saveMap, "pb_segment", global.pb_segment );

@@ -464,6 +464,7 @@
         <sprite>sprites\sprBlockShard26</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\sprEntranceGrad</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -547,6 +548,7 @@
       <script>scripts\scrGetTotalPbReward.gml</script>
       <script>scripts\scrGetTotalGateReward.gml</script>
       <script>scripts\scrRewardPlayerGlobalProgress.gml</script>
+      <script>scripts\scrUpdatePersonalBest.gml</script>
       <script>scripts\scrChangeRoom.gml</script>
       <script>scripts\scrGetSegmentCount.gml</script>
       <script>scripts\scrGetGateSegmentCount.gml</script>
@@ -570,6 +572,7 @@
       <script>scripts\scrAdvanceT.gml</script>
       <script>scripts\scrIsAvoidanceDowntime.gml</script>
       <script>scripts\scrGetTimeString.gml</script>
+      <script>scripts\scrGetPbTimeString.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -872,6 +875,7 @@
       <object>objects\oTournamentTimeCounter</object>
       <object>objects\oTournamentTitle</object>
       <object>objects\oTournamentTimeView</object>
+      <object>objects\oPortalRoomGradient</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>
@@ -1247,6 +1251,7 @@
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTemplate</room>
     <room>rooms\rPortalRoom</room>
+    <room>rooms\rTournamentFinalRoom</room>
     <room>rooms\rPracticeChoiceRoom</room>
     <room>rooms\rShopRoom</room>
     <room>rooms\rPracticeActiveRoom</room>

@@ -60,7 +60,7 @@
     <instance objName="objBlock" x="-32" y="448" name="inst_9F430C64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="-32" y="576" name="inst_8F5138C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPlayerEntrance" x="-14" y="544" name="inst_EDAAD694" locked="0" code="kidObject = oPracticeViewKid;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCurrencyDisplayView" x="35" y="38" name="inst_770A8355" locked="0" code="alwaysShow = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oCurrencyDisplayView" x="35" y="38" name="inst_770A8355" locked="0" code="alwaysShow = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticeTitle" x="400" y="64" name="inst_3800B26D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticePriceView" x="240" y="352" name="inst_601BAFBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPracticeControlTooltip" x="38" y="445" name="inst_4B37E859" locked="0" code="actionDescription = &quot;Select&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

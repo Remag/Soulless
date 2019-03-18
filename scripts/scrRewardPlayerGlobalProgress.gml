@@ -12,8 +12,4 @@ payoutCount += scrGetTotalGateReward( pbSegment, segment );
 oPlayerData.currencyCount += payoutCount;
 
 // Set new pb segments.
-if( global.pb < objAvoidanceController.t ) {
-    global.pb = objAvoidanceController.t;
-    global.pb_segment = objAvoidanceController.segment;
-    scrSendPbResultsToServer();
-}
+scrUpdatePersonalBest();

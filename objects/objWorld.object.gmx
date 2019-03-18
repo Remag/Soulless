@@ -157,7 +157,7 @@ if (global.controllerIndex != -1)
 if (global.gameStarted)
 {
     //handle pausing
-    if (global.pauseDelay &lt;= 0) //check if pause delay is active
+    if(global.pauseDelay &lt;= 0 &amp;&amp; room == rPortalRoom ) //check if pause delay is active
     {
         if (scrButtonCheckPressed(global.pauseButton))
         {
@@ -228,9 +228,11 @@ if (global.gameStarted)
         }
         
         //increment timer
-        global.timeMicro += delta_time;
-        global.time += global.timeMicro div 1000000;
-        global.timeMicro = global.timeMicro mod 1000000;        
+        if( room == rAvoidanceMainRoom || room == rPracticeActiveRoom ) {
+            global.timeMicro += delta_time;
+            global.time += global.timeMicro div 1000000;
+            global.timeMicro = global.timeMicro mod 1000000;        
+        }
     }
     else    //game is paused, check for volume controls
     {
@@ -449,6 +451,32 @@ if (!instance_exists(objPlayMusic))  //make sure the play music object isn't in 
 
 room_speed = 50;    //make sure game is running at the correct frame rate
 scrSetRoomCaption();    //make sure window caption stays updated
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( room == rAvoidanceMainRoom ) {
+    scrRewardPlayerGlobalProgress();
+    scrSaveGame();
+}
 </string>
           </argument>
         </arguments>

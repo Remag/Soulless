@@ -82,6 +82,8 @@ global.unlockEntirePractice = false;
 global.StartSegment = 0;
 global.TournamentTime = 0;
 global.TournamentTimeMicro = 0;
-global.TournamentLength = 4 * 3600;
+global.TournamentLength = 5 * 60;//4 * 3600;
+global.TournamentPb = 0;
+global.TournamentComplete = false;
 
 randomize();    //make sure the game starts with a random seed for RNG

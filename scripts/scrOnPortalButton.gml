@@ -1,11 +1,22 @@
-if( room == rAvoidanceMainRoom ) {
+if( room == rAvoidanceMainRoom ) {    
     if( !instance_exists( objPlayer ) || objAvoidanceController.segment == 1 ) {
+        scrUpdatePersonalBest();
         scrOnPlayerRestart();
-        scrChangeRoom( rPortalRoom, 0 );
+        var targetEntranceId = 0;
+        if( global.TournamentMode && global.TournamentTime > global.TournamentLength && !global.TournamentComplete ) {
+            global.TournamentComplete = true;
+            targetEntranceId = 3;    
+        }
+        scrChangeRoom( rPortalRoom, targetEntranceId );
     } else if( global.debugMode ) {
         scrRewardPlayerGlobalProgress();
         scrSaveGame();
-        scrChangeRoom( rPortalRoom, 0 );
+        var targetEntranceId = 0;
+        if( global.TournamentMode && global.TournamentTime > global.TournamentLength && !global.TournamentComplete ) {
+            global.TournamentComplete = true;
+            targetEntranceId = 3;    
+        }
+        scrChangeRoom( rPortalRoom, targetEntranceId );
     }
 } else if( room == rPracticeActiveRoom ) {
     if( instance_exists( objPlayer ) && instance_exists( oRefundNotification ) ) {

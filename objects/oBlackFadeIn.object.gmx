@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( oPlayerData.targetEntranceId != 0 &amp;&amp; oPlayerData.targetEntranceId != 2 ) {
+            <string>if( oPlayerData.targetEntranceId == 1 ) {
     instance_destroy();
 }
 </string>

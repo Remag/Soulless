@@ -1,5 +1,10 @@
 if( room == rAvoidanceMainRoom ) {
-    scrChangeRoom( rAvoidanceMainRoom, 0 );
+    if( global.TournamentMode && global.TournamentTime > global.TournamentLength && !global.TournamentComplete ) {
+        global.TournamentComplete = true;
+        scrChangeRoom( rPortalRoom, 3 );    
+    } else {
+        scrChangeRoom( rAvoidanceMainRoom, 0 );
+    }
 } else if( room == rPracticeChoiceRoom ) {
     scrChangeRoom( rPracticeChoiceRoom, 1 );
 } else if( room == rPortalRoom ) {

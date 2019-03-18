@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -59,12 +59,40 @@ if( t == 0 ) {
     t = max( 0, t );
 }
 
+var isTournamentComplete = global.TournamentComplete;
+
 draw_set_color( c_white );
 draw_set_font( fNotifications );
+draw_set_halign( fa_left );
+var timeLeftPrefix = "Time left  ";
+var pbPrefix = "Best Result  ";
+var timeLeftStr = scrGetTimeString( t );
+var pbStr = scrGetPbTimeString( global.TournamentPb );
+var timeLeftTotalWidth = string_width( timeLeftPrefix + timeLeftStr );
+var timeLeftPrefixWidth = string_width( timeLeftPrefix );
+var pbTotalWidth = string_width( pbPrefix + pbStr );
+var pbPrefixWidth = string_width( pbPrefix );
+if( !isTournamentComplete ) {
+    draw_text( x - timeLeftTotalWidth / 2, y, timeLeftPrefix );
+}
+draw_text( x - pbTotalWidth / 2, y - 38, pbPrefix );
+draw_set_halign( fa_left );
+if( !isTournamentComplete ) {
+    draw_text( x - timeLeftTotalWidth / 2 + timeLeftPrefixWidth, y, timeLeftStr );
+}
+draw_set_color( c_yellow );
+draw_text( x - pbTotalWidth / 2 + pbPrefixWidth, y - 38, pbStr );
+draw_set_color( c_white );
 draw_set_halign( fa_center );
-draw_text( x, y, "Time left: " + scrGetTimeString( t ) );
+if( isTournamentComplete ) {
+   // draw_text( x, y, "Further attempts will not count towards your result" );
+}
 draw_set_font( fPracticeTitle );
-draw_text( x, y - 48, "Soulless Tournament" );
+if( isTournamentComplete ) {
+    draw_text( x, y - 96, "Tournament Complete!" );
+} else {
+    draw_text( x, y - 96, "Soulless Tournament" );
+}
 draw_set_halign( fa_left );
 draw_set_font( fDefault24 );
 </string>

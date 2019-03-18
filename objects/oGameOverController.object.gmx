@@ -31,6 +31,9 @@ portalAlpha = 0;
 survivalPayoutAlpha = 0;
 pbPayoutAlpha = 0;
 
+attemptLength = 0;
+pbMark = false;
+
 step = 0;
 payoutComplete = false;
 
@@ -42,8 +45,12 @@ if( room == rAvoidanceMainRoom &amp;&amp; !global.TournamentMode ) {
     survivalPayout = 0;
     pbPayout = 0;
 }
+if( global.TournamentMode ) {
+    attemptLength = objAvoidanceController.t;
+    pbMark = attemptLength &gt; global.pb;
+}
 
-if( survivalPayout &gt; 0 ) {
+if( survivalPayout &gt; 0 || attemptLength &gt; 0 ) {
     gameOverY = 250;
     returnTooltipDelay = 150;
 } else {
@@ -165,6 +172,22 @@ if( survivalPayout &gt; 0 ) {
     texture_set_interpolation( true );
     draw_sprite_ext( sprSoulCrystal, 3, lineX + 30 + string_width( payoutString ), lineY - 8, crystalScale, crystalScale, 0, c_white, survivalPayoutAlpha );
     texture_set_interpolation( false );
+}
+if( attemptLength &gt; 0 ) {
+    var lineX = 397;
+    var lineY = gameOverY + 100;
+    draw_set_halign( fa_right );
+    draw_set_alpha( survivalPayoutAlpha );
+    if( pbMark ) {
+        draw_set_color( c_yellow );
+        draw_text( lineX, lineY, "New Best" ); 
+    } else {
+        draw_text( lineX, lineY, "Duration" ); 
+    }
+    draw_set_halign( fa_left );
+    var attemptLengthString = scrGetPbTimeString( attemptLength );
+    draw_text( lineX + 25, lineY, attemptLengthString );
+    draw_set_color( c_white );
 }
 
 if( pbPayout &gt; 0 ) {
