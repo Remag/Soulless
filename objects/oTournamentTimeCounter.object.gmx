@@ -2,9 +2,9 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,13 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>displayedCurrency = oPlayerData.currencyCount;
-maxHideDelay = 50;
-hideDelay = maxHideDelay;
-currencyDelta = 0;
-displayAlpha = 0;
-
-shouldShow = !global.TournamentMode;
+            <string>if( !global.TournamentMode ) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -54,32 +50,10 @@ shouldShow = !global.TournamentMode;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( currencyDelta != 0 ) {
-    var realDelta = oPlayerData.currencyCount - displayedCurrency;
-    if( sign( realDelta ) != sign( currencyDelta ) ) {
-        currencyDelta = scrFindCurrencyDelta( realDelta );
-    }
-    if( abs( realDelta ) &lt; abs( currencyDelta ) ) {
-        displayedCurrency = oPlayerData.currencyCount;
-        currencyDelta = 0;
-    } else {
-        displayedCurrency += currencyDelta;
-    }
-} else {
-    if( oPlayerData.currencyCount != displayedCurrency ) {
-        currencyDelta = scrFindCurrencyDelta( oPlayerData.currencyCount - displayedCurrency );
-        hideDelay = maxHideDelay;
-        displayAlpha = 1.0;
-    }
-    if( displayAlpha &gt; 0 ) {
-        hideDelay--;
-        if( hideDelay &lt;= 0 ) {
-            displayAlpha -= 0.05;
-            if( displayAlpha &lt;= 0 ) {
-                displayAlpha = 0;
-            }
-        }
-    }
+            <string>if( instance_exists( objPlayer ) ) {
+    global.TournamentTimeMicro += delta_time;
+    global.TournamentTime += global.TournamentTimeMicro div 1000000;
+    global.TournamentTimeMicro = global.TournamentTimeMicro mod 1000000;
 }
 </string>
           </argument>

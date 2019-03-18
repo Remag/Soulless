@@ -569,6 +569,7 @@
       <script>scripts\scrSendPbResultsToServer.gml</script>
       <script>scripts\scrAdvanceT.gml</script>
       <script>scripts\scrIsAvoidanceDowntime.gml</script>
+      <script>scripts\scrGetTimeString.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -868,6 +869,9 @@
       <object>objects\oMusicContainer</object>
       <object>objects\oGameOverController</object>
       <object>objects\oKidTeleportParticle</object>
+      <object>objects\oTournamentTimeCounter</object>
+      <object>objects\oTournamentTitle</object>
+      <object>objects\oTournamentTimeView</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

@@ -22,6 +22,12 @@ if (loadFile)
         global.death = ds_map_find_value(saveMap,"death");
         global.time = ds_map_find_value(saveMap,"time");
         global.timeMicro = ds_map_find_value(saveMap,"timeMicro");
+        global.TournamentTime = ds_map_find_value(saveMap,"tournamentTime");
+        global.TournamentTimeMicro = ds_map_find_value(saveMap,"tournamentTimeMicro");
+        if( is_undefined( global.TournamentTime ) ) {
+            global.TournamentTime = 0;
+            global.TournamentTimeMicro = 0;
+        }
 
         global.gameClear = ds_map_find_value(saveMap,"saveGameClear");
         

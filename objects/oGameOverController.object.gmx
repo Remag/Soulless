@@ -34,7 +34,7 @@ pbPayoutAlpha = 0;
 step = 0;
 payoutComplete = false;
 
-if( room == rAvoidanceMainRoom ) {
+if( room == rAvoidanceMainRoom &amp;&amp; !global.TournamentMode ) {
     var segment = objAvoidanceController.segment;
     survivalPayout = scrGetTotalAttackReward( segment );
     pbPayout = scrGetTotalPbReward( global.pb_segment, segment );

@@ -2,9 +2,9 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,19 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>displayedCurrency = oPlayerData.currencyCount;
-maxHideDelay = 50;
-hideDelay = maxHideDelay;
-currencyDelta = 0;
-displayAlpha = 0;
-
-shouldShow = !global.TournamentMode;
+            <string>if( !global.TournamentMode ) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,33 +50,23 @@ shouldShow = !global.TournamentMode;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( currencyDelta != 0 ) {
-    var realDelta = oPlayerData.currencyCount - displayedCurrency;
-    if( sign( realDelta ) != sign( currencyDelta ) ) {
-        currencyDelta = scrFindCurrencyDelta( realDelta );
-    }
-    if( abs( realDelta ) &lt; abs( currencyDelta ) ) {
-        displayedCurrency = oPlayerData.currencyCount;
-        currencyDelta = 0;
-    } else {
-        displayedCurrency += currencyDelta;
-    }
+            <string>var t = global.TournamentLength - global.TournamentTime;
+// Display 1 second if exactly 0 seconds left. 
+// Display 0 if negative seconds left (shouldn't happen).
+if( t == 0 ) {
+    t = 1;
 } else {
-    if( oPlayerData.currencyCount != displayedCurrency ) {
-        currencyDelta = scrFindCurrencyDelta( oPlayerData.currencyCount - displayedCurrency );
-        hideDelay = maxHideDelay;
-        displayAlpha = 1.0;
-    }
-    if( displayAlpha &gt; 0 ) {
-        hideDelay--;
-        if( hideDelay &lt;= 0 ) {
-            displayAlpha -= 0.05;
-            if( displayAlpha &lt;= 0 ) {
-                displayAlpha = 0;
-            }
-        }
-    }
+    t = max( 0, t );
 }
+
+draw_set_color( c_white );
+draw_set_font( fNotifications );
+draw_set_halign( fa_center );
+draw_text( x, y, "Time left: " + scrGetTimeString( t ) );
+draw_set_font( fPracticeTitle );
+draw_text( x, y - 48, "Soulless Tournament" );
+draw_set_halign( fa_left );
+draw_set_font( fDefault24 );
 </string>
           </argument>
         </arguments>

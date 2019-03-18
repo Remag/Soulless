@@ -64,7 +64,11 @@ currentDir = startDir + phase;
 x = centerX + lengthdir_x( radius, currentDir );
 y = centerY + lengthdir_y( radius, currentDir );
 
-image_alpha += 0.05;
+if( controller.fadeOut ) {
+    image_alpha -= 0.02;
+} else {
+    image_alpha = min( 1, image_alpha + 0.05 );
+}
 
 event_inherited();
 </string>

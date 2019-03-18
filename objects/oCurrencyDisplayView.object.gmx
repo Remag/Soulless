@@ -30,6 +30,10 @@ crystalIndex = 3;
 crystalOffset = 0;
 crystalDelta = 0.05;
 step = 0;
+
+if( !oCurrencyDisplayController.shouldShow ) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

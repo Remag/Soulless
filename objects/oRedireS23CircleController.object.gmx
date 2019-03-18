@@ -31,6 +31,8 @@ phaseAccel = 0.015;
 
 currentHue = 120;
 hueDelta = -0.6;
+
+fadeOut = false;
 </string>
           </argument>
         </arguments>

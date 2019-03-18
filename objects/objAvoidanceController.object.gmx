@@ -2735,7 +2735,13 @@ if( t &gt;= 13840 &amp;&amp; t &lt; 14225 &amp;&amp; instance_exists(objPlayer) 
         }
     }
      
-    // Delete the cirlce.
+    // Fade the circles.
+    if( t == 14174 ) {
+        with( oRedireS23CircleController ) {
+            fadeOut = true;
+        }
+    }
+    // Delete the cirlces.
     if( t == 14224 ) {
         with( oRedireS23CircleController ) {
             instance_destroy();

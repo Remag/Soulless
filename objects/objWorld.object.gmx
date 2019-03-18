@@ -30,19 +30,6 @@
 if( instance_number(object_index) &gt; 1 ) {
     instance_destroy();
 }
-
-if( !instance_exists( oPlayerData ) ) {
-    instance_create( 0, 0, oPlayerData );
-    instance_create( 0, 0, oCurrencyDisplayController );
-}
-
-if( !instance_exists( oMetaInfo ) ) {
-    instance_create( 0, 0, oMetaInfo );
-}
-    
-if( !instance_exists( oMusicContainer ) ) {
-    instance_create( 0, 0, oMusicContainer );
-}
 </string>
           </argument>
         </arguments>
@@ -240,12 +227,10 @@ if (global.gameStarted)
             scrOnPortalButton();
         }
         
-        if (global.timeWhenDead || instance_exists(objPlayer))  //increment timer
-        {
-            global.timeMicro += delta_time;
-            global.time += global.timeMicro div 1000000;
-            global.timeMicro = global.timeMicro mod 1000000;
-        }
+        //increment timer
+        global.timeMicro += delta_time;
+        global.time += global.timeMicro div 1000000;
+        global.timeMicro = global.timeMicro mod 1000000;        
     }
     else    //game is paused, check for volume controls
     {
@@ -493,6 +478,19 @@ scrInitializeGlobals();
 
 //load the current config file, sets default config if it doesn't exist
 scrLoadConfig();
+
+if( !instance_exists( oPlayerData ) ) {
+    instance_create( 0, 0, oPlayerData );
+    instance_create( 0, 0, oCurrencyDisplayController );
+}
+
+if( !instance_exists( oMetaInfo ) ) {
+    instance_create( 0, 0, oMetaInfo );
+}
+    
+if( !instance_exists( oMusicContainer ) ) {
+    instance_create( 0, 0, oMusicContainer );
+}
 
 room_goto_next();
 </string>

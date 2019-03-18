@@ -8,7 +8,13 @@ if (global.gameStarted)
     roomCaption += " Deaths: " + string(global.death);
     roomCaption += " Time: ";
     
-    var t = floor(global.time);
+    var t;
+    if( global.TournamentMode ) {
+        t = floor(global.TournamentTime);
+    } else {
+        t = floor(global.time);
+    }
+    
     
     roomCaption += string(t div 3600) + ":";
     t = t mod 3600;
