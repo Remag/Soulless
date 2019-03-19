@@ -3108,6 +3108,7 @@ if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) 
         repeat(2) {
             a = instance_create(random_range(100, 700), random_range(32,256), objArchBullet5_2);
             a.direction = 270 + random_range(-30, 30);
+            a.image_angle = a.direction;
             a.speed = random_range(1,3);
             a.special = 1;
         }
@@ -6267,7 +6268,7 @@ if( t &gt;= 29300 &amp;&amp; t &lt; 29680 &amp;&amp; instance_exists(objPlayer) 
         if( t &lt; 29492 ) {
             var yy = random_range(64, 128);
         } else {
-            var yy = random_range(128, 192);
+            var yy = random_range(208, 240);
         }
         for( i = 0; i &lt; 360; i+= 22.5 ) {
             a = instance_create(xx, yy, objArchBullet19);
