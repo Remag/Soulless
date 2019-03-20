@@ -4036,6 +4036,7 @@ if( t &gt;= 20850 &amp;&amp; t &lt; 21230 &amp;&amp; instance_exists(objPlayer) 
             <kind>1</kind>
             <string>///Arch. Segment 33 (7:05 - 7:12) Savagery Of Angels
 if( t &gt;= 21230 &amp;&amp; t &lt; 21615 &amp;&amp; instance_exists(objPlayer) ) {
+
     if( t % 24 == 0 &amp;&amp; t &lt; 21519 ) {
         for( i = 0; i &lt; 360; i += 40 ) {
             a = instance_create(random_range(128, 800-128), 128, objArchBullet12);

@@ -67,7 +67,6 @@
     <instance objName="oBlockShard04" x="43" y="-115" name="inst_71ED307A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShard03" x="53" y="-119" name="inst_491CD2B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShard02" x="48" y="-123" name="inst_1C928549" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWorld" x="-160" y="448" name="inst_5EFB42AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="32" y="0" name="inst_18F354E0" locked="0" code="BlockId = 0;&#xA;" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShard21" x="126" y="-108" name="inst_F24FCA6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBlockShard25" x="109" y="-125" name="inst_F0EAA73C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

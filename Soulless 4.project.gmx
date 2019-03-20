@@ -259,6 +259,7 @@
       <sprite>sprites\sprArchBullet15</sprite>
       <sprite>sprites\sprArchBullet16</sprite>
       <sprite>sprites\sprArchBullet17</sprite>
+      <sprite>sprites\sprArchRainbowExplosion</sprite>
     </sprites>
     <sprites name="Algeran">
       <sprite>sprites\sprAlgRing</sprite>
@@ -1005,6 +1006,7 @@
       <object>objects\objArchBullet12</object>
       <object>objects\objArchBullet12_2</object>
       <object>objects\objArchBullet12_3</object>
+      <object>objects\oRedireRainbowExplosion</object>
       <object>objects\objArchBullet13</object>
       <object>objects\objArchBullet13_2</object>
       <object>objects\objArchBullet13_3</object>
