@@ -450,6 +450,9 @@ if (!instance_exists(objPlayMusic))  //make sure the play music object isn't in 
     scrGetMusic();  //find and play the proper music for the current room
 
 room_speed = 50;    //make sure game is running at the correct frame rate
+totalRealFps = 0;
+frameCount = 0;
+minRealFps = 1000;
 scrSetRoomCaption();    //make sure window caption stays updated
 </string>
           </argument>
@@ -559,15 +562,18 @@ if (global.debugOverlay)
         drawAlign = objPlayer.x mod 3;
     }
     
+    totalRealFps += fps_real;
+    if( frameCount &gt; 50 ) {
+        minRealFps = min( fps_real, minRealFps );
+    }
+    frameCount++;
     scrDrawTextOutline(20,20,"X: "+string(drawX),c_black,c_white);
     scrDrawTextOutline(20,40,"Y: "+string(drawY),c_black,c_white);
     scrDrawTextOutline(20,60,"Align: "+string(drawAlign),c_black,c_white);
-    scrDrawTextOutline(20,80,"Room name: "+room_get_name(room),c_black,c_white);
-    scrDrawTextOutline(20,100,"Room number: "+string(room),c_black,c_white);
-    scrDrawTextOutline(20,120,"God mode: "+string(global.debugNoDeath),c_black,c_white);
-    scrDrawTextOutline(20,140,"Infinite jump: "+string(global.debugInfJump),c_black,c_white);
-    scrDrawTextOutline(20,160,"FPS: "+string(fps),c_black,c_white);
-    scrDrawTextOutline(20,180,"Real FPS: "+string(fps_real),c_black,c_white);
+    scrDrawTextOutline(20,80,"Average FPS: "+string(totalRealFps / frameCount),c_black,c_white);
+    scrDrawTextOutline(20,100,"Min FPS: "+string(minRealFps),c_black,c_white);
+    scrDrawTextOutline(20,120,"Current FPS: "+string(fps_real),c_black,c_white);
+    scrDrawTextOutline(20,140,"Game Speed: "+string(fps),c_black,c_white);
 }
 </string>
           </argument>

@@ -62,9 +62,10 @@ obj.speed = random_range( speedMin, speedMax );
 obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
 obj.trailTime = 0.4;
 
-repeat( 5 ) {
+repeat( 3 ) {
     var obj = instance_create( spawnX, 50, objAlgSphereDisappearing );
-    obj.image_blend = make_colour_rgb( 255, random_range( 0, 128 ), random_range( 0, 128 ) );
+    obj.shouldUseShader = false;
+    obj.image_speed = 0;
     obj.direction = random( 360 );
     obj.speed = random_range( 3, 10 );
     obj.image_xscale = 0.66;

@@ -28,6 +28,7 @@
             <string>event_inherited();
 maxSpeed = 15;
 canWarp = false;
+image_speed = 0;
 </string>
           </argument>
         </arguments>
@@ -51,9 +52,7 @@ canWarp = false;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 736 ) {
-    instance_destroy();
-}
+
 if( speed &gt; maxSpeed ) {
     speed = maxSpeed;
 }
@@ -64,15 +63,15 @@ if( canWarp ) {
     } else if( x + sprite_width &lt; 0 ) {
         x += 800 + sprite_width * 2;
         y = random( 608 );
-    }
-    
-    if( y - sprite_height &gt; 608 ) {
+    } else if( y - sprite_height &gt; 608 ) {
         y -= 608 + sprite_height * 2;
         x = random( 800 );
     } else if( y + sprite_height &lt; 0 ) {
         y += 608 + sprite_height * 2;
         x = random( 800 );
     }
+} else if( x &lt; -128 || x &gt; 928 || y &lt; -128 || y &gt; 736 ) {
+    instance_destroy();
 }
 </string>
           </argument>
@@ -96,7 +95,8 @@ if( canWarp ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>// Override parent.
+</string>
           </argument>
         </arguments>
       </action>

@@ -28,6 +28,8 @@
             <string>event_inherited();
 trigger = false;
 fadeOut = false;
+image_speed = 0;
+shouldUseShader = false;
 </string>
           </argument>
         </arguments>
@@ -76,8 +78,8 @@ speed = random_range(3,7);
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if( trigger &amp;&amp; speed &gt; 6 ) {
-    speed = 6;
+if( trigger ) {
+    speed = min( 6, speed );
 }
 
 if( fadeOut ) {

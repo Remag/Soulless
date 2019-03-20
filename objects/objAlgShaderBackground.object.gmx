@@ -46,6 +46,13 @@ image_blend = make_color_rgb( 20, 20, 0 );
 image_alpha = 0;
 image_xscale = 1;
 image_yscale = 1;
+
+
+iTimePos = shader_get_uniform( sdrSpiral1, "iTime" );
+uvsPos = shader_get_uniform( sdrSpiral1, "uvs" );
+uModifiersPos = shader_get_uniform( sdrSpiral1, "uModifiers" );
+_uvs = sprite_get_uvs( sprite_index, image_index );
+uRadius = shader_get_uniform( sdrSpiral1, "radius" );
 </string>
           </argument>
         </arguments>
@@ -112,16 +119,11 @@ image_blend = make_color_hsv( shaderHue, 230, colorValue );
             <kind>1</kind>
             <string>if( shader_is_compiled( sdrSpiral1 ) ) {
     shader_set(sdrSpiral1);
-    var iTimePos = shader_get_uniform( sdrSpiral1, "iTime" );
-    var uvsPos = shader_get_uniform( sdrSpiral1, "uvs" );
-    var uModifiersPos = shader_get_uniform( sdrSpiral1, "uModifiers" );
-    var _uvs = sprite_get_uvs( sprite_index, image_index );
     shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
     shader_set_uniform_f( uModifiersPos, shaderMod1, shaderMod2, shaderMod3, shaderMod4 );
     //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );
     shader_set_uniform_f( iTimePos, iTime );
     
-    var uRadius = shader_get_uniform( sdrSpiral1, "radius" );
     shader_set_uniform_f( uRadius, maxRadius );
     //shader_set_uniform_f( iResolutionPos, iResolutionX, iResolutionY );
     draw_self();

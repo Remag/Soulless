@@ -31,7 +31,6 @@ obj.direction = random_range(90, lerp( 120, 90, ( phaseT ) / 96 ) );
 obj.image_angle = obj.direction;
 obj.speed = random_range(10,30);
 obj.gravity = obj.speed / 55;
-obj.image_blend = make_color_hsv( 0, 255, 255 );
 var scale = 0.85;
 obj.image_xscale = scale;
 obj.image_yscale = scale;
