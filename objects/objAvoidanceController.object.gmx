@@ -688,8 +688,8 @@ if( t &gt;= 4240 &amp;&amp; t &lt; 5003 &amp;&amp; instance_exists(objPlayer) ) 
             direction = random_range( -10, 10 );
             speed = random_range( 10, 15 );
             image_alpha = random_range( 0.01, 0.3 );
-            a.image_index = 5;
-            a.shouldUseShader = false;
+            image_index = 5;
+            shouldUseShader = false;
         }
     }
     if( phaseT &lt; 96 ) {
