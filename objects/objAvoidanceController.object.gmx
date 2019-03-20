@@ -4935,6 +4935,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
     }
     
     var tPhase = t - 23925;
+    var seg39TrailSpeed = 1.5;
     if( tPhase == 0 ) { 
         seg39Angle = random( 360 );
         seg39Rotation = 17;
@@ -4967,6 +4968,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
                 direction = other.seg39Angle;
                 speed = 0.1;
                 isMarked = true;
+                trailSpeed = seg39TrailSpeed;
                 counted--;
                 other.seg39Angle += other.seg39Rotation;
             }
@@ -5002,6 +5004,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
                 direction = other.seg39Angle;
                 speed = 0.1;
                 isMarked = true;
+                trailSpeed = seg39TrailSpeed;
                 counted--;
                 other.seg39Angle += other.seg39Rotation;
             }
@@ -5022,6 +5025,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.gravity = 0.3;
             obj.bounce = true;
+            obj.trailSpeed = seg39TrailSpeed;
         }
     }
     
@@ -5065,6 +5069,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
                 direction = other.seg39Angle;
                 speed = random_range( 0.1, 2 );
                 isMarked = true;
+                trailSpeed = seg39TrailSpeed;
                 counted--;
                 other.seg39Angle += other.seg39Rotation;
             }
@@ -5101,6 +5106,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
                 direction = other.seg39Angle;
                 speed = random_range( 0.1, 2 );
                 isMarked = true;
+                trailSpeed = seg39TrailSpeed;
                 counted--;
                 other.seg39Angle += other.seg39Rotation;
             }
@@ -5114,6 +5120,7 @@ if( t &gt;= 23925 &amp;&amp; t &lt; 24690 &amp;&amp; instance_exists(objPlayer) 
             obj.speed = lerp(6, 10, s38_tt)
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.bounce = true;
+            obj.trailSpeed = seg39TrailSpeed;
             //obj.gravity = 0.2;
         }
         /*if( tPhase % 2 == 0 ) {
@@ -5275,7 +5282,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
     } else if( phaseT &lt; 192 * 2 ) {
         if( phaseT == 192 ) {
             seg40Angle = scrTargetPlayer( 400, 100 ) + 180 / 10;
-            seg40AngleIncrement = 45 / 192;
+            seg40AngleIncrement = 45 / 168;
             if( scrGetPlayerX() &gt; 400 ) {
                 seg40AngleIncrement *= -1;
             }
@@ -5292,7 +5299,9 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
                 circle[i].image_blend = color;
             }
         }
-        seg40Angle += seg40AngleIncrement;
+        if( phaseT &gt; 192 + 24 ) {
+            seg40Angle += seg40AngleIncrement;
+        }
     } else if( phaseT &lt; 192 * 3 ) {
         if( phaseT % 10 == 0 ) {
             var mode = choose( 0, 1, 2, 3, 3 );
@@ -5306,7 +5315,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
     } else if( phaseT &lt; 192 * 4 ) {
         if( phaseT == 192 * 3 ) {
             seg40Angle = scrTargetPlayer( 400, 100 ) + 180 / 12;
-            seg40AngleIncrement = 55 / 192;
+            seg40AngleIncrement = 55 / 168;
             if( scrGetPlayerX() &gt; 400 ) {
                 seg40AngleIncrement *= -1;
             }
@@ -5324,7 +5333,9 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
                 circle[i].image_blend = color;
             }
         }
-        seg40Angle += seg40AngleIncrement;
+        if( phaseT &gt; 192 * 3 + 24 ) {
+            seg40Angle += seg40AngleIncrement;
+        }
     }
     
     if( phaseT &gt; 0 &amp;&amp; phaseT % 384 == 0 ) {
@@ -5338,7 +5349,7 @@ if( t &gt;= 24690 &amp;&amp; t &lt; 25460 &amp;&amp; instance_exists(objPlayer) 
         }
     }
     with(objAlg) { 
-        if( friction &gt; 0 &amp;&amp; speed &lt; 1.5 ) {
+        if( friction &gt; 0 &amp;&amp; speed &lt; 2.5 ) {
             friction = 0;
         }
     }
@@ -7118,14 +7129,16 @@ if( shake ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fDefault12);
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-scrDrawTextOutline(645, 40, "Segment: " + string(segment), c_white, c_black);
-scrDrawTextOutline(645, 56, "Frame: " + string(t) + "(" + string(realT) + ")", c_white, c_black);
-scrDrawTextOutline(645, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
-scrDrawTextOutline(645, 88, "Instances: " + string(instance_count), c_white, c_black);
-//scrDrawTextOutline(645, 104, "D: " + string(audio_sound_get_track_position(global.currentMusic)*50 - t), c_white, c_black);
+            <string>if( global.debugMode ) {
+    draw_set_font(fDefault12);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    scrDrawTextOutline(645, 40, "Segment: " + string(segment), c_white, c_black);
+    scrDrawTextOutline(645, 56, "Frame: " + string(t) + "(" + string(realT) + ")", c_white, c_black);
+    scrDrawTextOutline(645, 72, "Time: " + string(floor(t/50/60)) + ":" + string(floor(t/50 mod 60)), c_white, c_black);
+    scrDrawTextOutline(645, 88, "Instances: " + string(instance_count), c_white, c_black);
+    //scrDrawTextOutline(645, 104, "D: " + string(audio_sound_get_track_position(global.currentMusic)*50 - t), c_white, c_black);
+}
 </string>
           </argument>
         </arguments>
