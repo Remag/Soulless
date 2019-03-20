@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oRedireProjectile</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,6 +29,10 @@
 image_speed = 1;
 image_angle = random( 360 );
 alarm[0] = 16;
+
+killRadius = global.s33RainbowRadius[0];
+step = 0;
+isActive = true;
 </string>
           </argument>
         </arguments>
@@ -57,6 +61,38 @@ alarm[0] = 16;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( isActive &amp;&amp; instance_exists( objPlayer ) ) {
+    step = min( step + 1, array_length_1d( global.s33RainbowRadius ) - 1 );
+    killRadius = global.s33RainbowRadius[step];
+    var deltaX = x - objPlayer.x;
+    var deltaY = y - objPlayer.y;
+    var sqDist = deltaX * deltaX + deltaY * deltaY;
+    if( sqDist &lt; killRadius * killRadius ) {
+        scrKillPlayer();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
@@ -75,6 +111,32 @@ alarm[0] = 16;
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_blend_mode( true );
+draw_self();
+draw_set_blend_mode( false );
+
 </string>
           </argument>
         </arguments>

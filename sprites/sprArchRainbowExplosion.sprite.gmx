@@ -3,14 +3,14 @@
   <type>0</type>
   <xorig>54</xorig>
   <yorigin>54</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>161</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>107</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>107</bbox_bottom>
+  <bbox_bottom>108</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>108</width>
-  <height>108</height>
+  <height>109</height>
   <frames>
     <frame index="0">images\sprArchRainbowExplosion_0.png</frame>
     <frame index="1">images\sprArchRainbowExplosion_1.png</frame>

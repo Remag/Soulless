@@ -53,10 +53,10 @@ image_yscale = 2;
           <argument>
             <kind>1</kind>
             <string>if( t%3 == 0 ) {
-    a = instance_create(x, y, objArchBullet12_2);
-    a.image_single = image_single;
-    a.image_xscale = random_range(1.5, 2);
-    a.image_yscale = a.image_xscale;
+   a = instance_create(x, y, objArchBullet12_2);
+   a.image_single = image_single;
+   a.image_xscale = random_range(1.5, 2);
+   a.image_yscale = a.image_xscale;
 }
 direction += dirspd;
 if( t%24 == 0 ) {

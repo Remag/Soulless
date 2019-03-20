@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>step = 0;
+
+drawList = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -48,29 +50,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var surf = surface_create( 800, 608 );
-
-var found = false;
+            <string>var surf = surface_create( 108, 109 );
 surface_set_target( surf );
-draw_clear_alpha( c_black, 0 );
-with( objArchBullet12_2 ) {
-    found = true;
-    y -= 100;
-    draw_self();
-    y += 100;
-}
-with( objArchBullet12_3 ) {
-    found = true;
-    y -= 100;
-    draw_self();
-    y += 100;
+
+draw_clear_alpha( c_black, 1 );
+if( ds_list_empty( drawList ) ) {
+    ds_list_destroy( drawList );
+    instance_destroy();
+} else {
+    for( var i = 0; i &lt; ds_list_size( drawList ); i++ ) {
+        with( drawList[|i] ) {
+            if( object_index == objArchBullet12_2 ) {
+                draw_set_blend_mode( bm_add );   
+            }
+            previousX = x;
+            previousY = y;
+            x -= other.explosionCenterX;
+            x += 54;
+            y -= other.explosionCenterY;
+            y += 54.5;
+            draw_self();
+            x = previousX;
+            y = previousY;
+            draw_set_blend_mode( bm_normal );
+        }
+    }  
+    ds_list_clear( drawList );
+    step++;
+    surface_save( surf, "explosion" + string( step ) + ".png" );
 }
 
-if( !found ) {
-    instance_destroy();
-}
-step++;
-surface_save( surf, "explosion" + string( step ) + ".png" );
 
 surface_reset_target();
 surface_free( surf );

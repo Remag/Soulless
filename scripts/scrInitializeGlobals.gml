@@ -86,4 +86,18 @@ global.TournamentLength = 5 * 60;//4 * 3600;
 global.TournamentPb = 0;
 global.TournamentComplete = false;
 
+global.s33RainbowRadius[0] = 11;
+global.s33RainbowRadius[1] = 16;
+global.s33RainbowRadius[2] = 21;
+global.s33RainbowRadius[3] = 26;
+global.s33RainbowRadius[4] = 31;
+global.s33RainbowRadius[5] = 36;
+global.s33RainbowRadius[6] = 40;
+global.s33RainbowRadius[7] = 44;
+global.s33RainbowRadius[8] = 47;
+global.s33RainbowRadius[9] = 48;
+global.s33RainbowRadius[10] = 49;
+global.s33RainbowRadius[11] = 50;
+global.s33RainbowRadius[12] = 51;
+
 randomize();    //make sure the game starts with a random seed for RNG
