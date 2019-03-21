@@ -25,44 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currencyCount = 0;
-targetEntranceId = 0;
-lastPracticeSegment = -1;
-lastPracticeGate = 1;
-practicePrice = 0;
-isFirstPracticeAttempt = false;
-
-lastShopItem = -1;
-lastShopSection = 0;
-
-currentSkin = instance_create( 0, 0, oKidSkinInfo );
-if( global.TournamentMode ) {
-    currentWeapon = instance_create( 0, 0, oOldLighterInfo );
-} else {
-    currentWeapon = instance_create( 0, 0, oKidGunInfo );
-}
-
-// Skins.
-itemUnlocks[0] = 1;
-itemUnlocks[1] = 0;
-itemUnlocks[2] = 0;
-itemUnlocks[3] = 0;
-itemUnlocks[4] = 0;
-itemUnlocks[5] = 0;
-
-// Weapons.
-itemUnlocks[6] = 1;
-itemUnlocks[7] = 0;
-itemUnlocks[8] = 0;
-itemUnlocks[9] = 0;
-itemUnlocks[10] = 0;
-itemUnlocks[11] = 0;
+            <string>screenshotSurface = surface_create( 800, 608 );
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,9 +48,46 @@ itemUnlocks[11] = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with( currentSkin ) { 
-    instance_destroy();
+            <string>if( !surface_exists( screenshotSurface ) ) {
+    screenshotSurface = surface_create( 800, 608 );
 }
+
+surface_set_target( screenshotSurface );
+draw_clear_alpha( c_black, 1 );
+draw_set_blend_mode( bm_add );
+draw_surface( application_surface, 0, 0 );
+draw_set_blend_mode( bm_normal );
+surface_reset_target();
+
+var screenshotName = "pb_" + string( objAvoidanceController.t ) + ".png";
+
+surface_save( screenshotSurface, game_save_id + screenshotName );
+external_call( "MoveFileToDirectory", game_save_id + screenshotName, program_directory + "pb_screenshots/" );
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>surface_free( screenshotSurface );
 </string>
           </argument>
         </arguments>

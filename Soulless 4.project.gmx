@@ -592,6 +592,7 @@
       <script>scripts\scrIsAvoidanceDowntime.gml</script>
       <script>scripts\scrGetTimeString.gml</script>
       <script>scripts\scrGetPbTimeString.gml</script>
+      <script>scripts\scrCreateScreenshot.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -895,6 +896,7 @@
       <object>objects\oTournamentTitle</object>
       <object>objects\oTournamentTimeView</object>
       <object>objects\oPortalRoomGradient</object>
+      <object>objects\oScreenshotTaker</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

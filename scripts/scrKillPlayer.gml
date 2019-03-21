@@ -35,6 +35,11 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
                 }
             }
             
+            // PB screenshot.
+            if( global.TournamentMode && room == rAvoidanceMainRoom && objAvoidanceController.t > global.pb ) {
+                scrCreateScreenshot();
+            }
+            
             with (objPlayer)
             {
                 var controller = instance_create(x,y,oPlayerData.currentSkin.deathController);

@@ -480,6 +480,8 @@ scrSetRoomCaption();    //make sure window caption stays updated
     scrRewardPlayerGlobalProgress();
     scrSaveGame();
 }
+
+external_free( "MoveFileToDirectory.dll" );
 </string>
           </argument>
         </arguments>
@@ -510,6 +512,8 @@ scrInitializeGlobals();
 //load the current config file, sets default config if it doesn't exist
 scrLoadConfig();
 
+external_define( "MoveFileToDirectory.dll", "MoveFileToDirectory", dll_cdecl, ty_real, 2, ty_string, ty_string );
+
 if( !instance_exists( oPlayerData ) ) {
     instance_create( 0, 0, oPlayerData );
     instance_create( 0, 0, oCurrencyDisplayController );
@@ -521,6 +525,10 @@ if( !instance_exists( oMetaInfo ) ) {
     
 if( !instance_exists( oMusicContainer ) ) {
     instance_create( 0, 0, oMusicContainer );
+}
+
+if( !instance_exists( oScreenshotTaker ) ) {
+    instance_create( 0, 0, oScreenshotTaker );
 }
 
 room_goto_next();
