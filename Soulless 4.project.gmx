@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="18" name="datafiles">
-    <datafiles number="18" name="music">
+  <datafiles number="19" name="datafiles">
+    <datafiles number="19" name="music">
       <datafile>
         <name>musAvoidance.ogg</name>
         <exists>-1</exists>
@@ -111,7 +111,7 @@
     <datafile>
       <name>MoveFileToDirectory.dll</name>
       <exists>-1</exists>
-      <size>7680</size>
+      <size>5120</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
