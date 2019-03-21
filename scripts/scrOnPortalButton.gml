@@ -1,6 +1,7 @@
 if( room == rAvoidanceMainRoom ) {    
     if( !instance_exists( objPlayer ) || objAvoidanceController.segment == 1 ) {
         scrUpdatePersonalBest();
+        scrSendDeathToServer();
         scrOnPlayerRestart();
         var targetEntranceId = 0;
         if( global.TournamentMode && global.TournamentTime > global.TournamentLength && !global.TournamentComplete ) {

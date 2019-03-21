@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="17" name="datafiles">
-    <datafiles number="17" name="music">
+  <datafiles number="18" name="datafiles">
+    <datafiles number="18" name="music">
       <datafile>
         <name>musAvoidance.ogg</name>
         <exists>-1</exists>
@@ -111,7 +111,7 @@
     <datafile>
       <name>MoveFileToDirectory.dll</name>
       <exists>-1</exists>
-      <size>5120</size>
+      <size>7680</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -588,6 +588,7 @@
       <script>scripts\scrCreateFloorShards.gml</script>
       <script>scripts\scrCreateCeilingShards.gml</script>
       <script>scripts\scrSendPbResultsToServer.gml</script>
+      <script>scripts\scrSendDeathToServer.gml</script>
       <script>scripts\scrAdvanceT.gml</script>
       <script>scripts\scrIsAvoidanceDowntime.gml</script>
       <script>scripts\scrGetTimeString.gml</script>

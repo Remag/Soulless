@@ -13,3 +13,4 @@ oPlayerData.currencyCount += payoutCount;
 
 // Set new pb segments.
 scrUpdatePersonalBest();
+scrSendDeathToServer();
