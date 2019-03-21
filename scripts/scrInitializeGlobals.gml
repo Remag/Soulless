@@ -84,6 +84,8 @@ global.TournamentTime = 0;
 global.TournamentTimeMicro = 0;
 global.TournamentLength = 4 * 3600;
 global.TournamentPb = 0;
+global.TournamentSegmentPb = 0;
+global.TournamentGameClear = false;
 global.TournamentComplete = false;
 
 global.s33RainbowRadius[0] = 11;

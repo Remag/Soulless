@@ -60,39 +60,70 @@ if( t == 0 ) {
 }
 
 var isTournamentComplete = global.TournamentComplete;
+var tournamentGameClear = global.TournamentGameClear;
 
 draw_set_color( c_white );
 draw_set_font( fNotifications );
 draw_set_halign( fa_left );
-var timeLeftPrefix = "Time left  ";
-var pbPrefix = "Best Result  ";
-var timeLeftStr = scrGetTimeString( t );
-var pbStr = scrGetPbTimeString( global.TournamentPb );
-var timeLeftTotalWidth = string_width( timeLeftPrefix + timeLeftStr );
-var timeLeftPrefixWidth = string_width( timeLeftPrefix );
-var pbTotalWidth = string_width( pbPrefix + pbStr );
-var pbPrefixWidth = string_width( pbPrefix );
-if( !isTournamentComplete ) {
-    draw_text( x - timeLeftTotalWidth / 2, y, timeLeftPrefix );
-}
-draw_text( x - pbTotalWidth / 2, y - 38, pbPrefix );
-draw_set_halign( fa_left );
-if( !isTournamentComplete ) {
-    draw_text( x - timeLeftTotalWidth / 2 + timeLeftPrefixWidth, y, timeLeftStr );
-}
-draw_set_color( c_yellow );
-draw_text( x - pbTotalWidth / 2 + pbPrefixWidth, y - 38, pbStr );
-draw_set_color( c_white );
-draw_set_halign( fa_center );
-if( isTournamentComplete ) {
-   // draw_text( x, y, "Further attempts will not count towards your result" );
-}
-draw_set_font( fPracticeTitle );
-if( isTournamentComplete ) {
-    draw_text( x, y - 96, "Tournament Complete!" );
+
+if( tournamentGameClear ) {
+    var timeClearPrefix = "Game Clear in ";
+    var clearTimeStr = scrGetTimeString( global.TournamentPb );
+    var timeClearTotalWidth = string_width( timeClearPrefix + clearTimeStr );
+    var timeClearPrefixWidth = string_width( timeClearPrefix );
+    draw_text( x - timeClearTotalWidth / 2, y - 38, timeClearPrefix );
+    draw_set_color( c_yellow );
+    draw_text( x - timeClearTotalWidth / 2 + timeClearPrefixWidth, y - 38, clearTimeStr );
+    
+    draw_set_color( c_white );
+    draw_set_halign( fa_center );
+    draw_set_font( fPracticeTitle );
+    draw_text( x, y - 96, "Impossible..." );
 } else {
-    draw_text( x, y - 96, "Soulless Tournament" );
+    var timeLeftPrefix = "Time left  ";
+    var timeLeftStr = scrGetTimeString( t );
+    var timeLeftPrefixWidth = string_width( timeLeftPrefix );
+    var timeLeftTotalWidth = string_width( timeLeftPrefix + timeLeftStr );
+    
+    var pbPrefix;
+    var pbSuffix;
+    if( global.TournamentSegmentPb == 0 ) {
+        pbPrefix = "Best Result  ";
+        pbSuffix = "";
+    } else {
+        pbPrefix = "Best Result:  Attack " + string( global.TournamentSegmentPb ) + "  (";
+        pbSuffix = ")";
+    }
+    var pbStr = scrGetPbTimeString( global.TournamentPb );
+    var pbPrefixWidth = string_width( pbPrefix );
+    var pbNoSuffixWidth = string_width( pbPrefix + pbStr );
+    var pbTotalWidth = string_width( pbPrefix + pbStr + pbSuffix );
+    
+    if( !isTournamentComplete ) {
+        draw_text( x - timeLeftTotalWidth / 2, y, timeLeftPrefix );
+    }
+    draw_text( x - pbTotalWidth / 2, y - 38, pbPrefix );
+    draw_set_halign( fa_left );
+    if( !isTournamentComplete ) {
+        draw_text( x - timeLeftTotalWidth / 2 + timeLeftPrefixWidth, y, timeLeftStr );
+    }
+    draw_set_color( c_yellow );
+    draw_text( x - pbTotalWidth / 2 + pbPrefixWidth, y - 38, pbStr );
+    draw_set_color( c_white );
+    if( global.TournamentSegmentPb != 0 ) {
+        draw_text( x - pbTotalWidth / 2 + pbNoSuffixWidth, y - 38, pbSuffix );
+    }
+    draw_set_halign( fa_center );
+    
+    draw_set_font( fPracticeTitle );
+    if( isTournamentComplete ) {
+        draw_text( x, y - 96, "Tournament Complete!" );
+    } else {
+        draw_text( x, y - 96, "Soulless Tournament" );
+    }
 }
+
+draw_set_color( c_white );
 draw_set_halign( fa_left );
 draw_set_font( fDefault24 );
 </string>

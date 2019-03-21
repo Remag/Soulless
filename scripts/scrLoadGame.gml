@@ -32,6 +32,12 @@ if (loadFile)
         if( is_undefined( global.TournamentPb ) ) {
             global.TournamentPb = 0;
         }
+        global.TournamentSegmentPb = ds_map_find_value( saveMap, "tournamentSegmentPb" );
+        global.TournamentGameClear = ds_map_find_value( saveMap, "tournamentGameClear" );
+        if( is_undefined( global.TournamentGameClear ) ) {
+            global.TournamentGameClear = false;
+            global.TournamentSegmentPb = 0;
+        }
         global.TournamentComplete = global.TournamentTime > global.TournamentLength;
 
 
