@@ -1,6 +1,6 @@
 ///sets configurable global options
 
-global.debugMode = false;       //enables debug keys (check objWorld step to see all of them), make sure to set this to "false" before releasing your game
+global.debugMode = true;       //enables debug keys (check objWorld step to see all of them), make sure to set this to "false" before releasing your game
 global.debugVisuals = false;    //enables changing the color/alpha of player when infjump/god mode are toggled, make sure to disable this if you want to change the player's image_alpha or image_blend
 global.debugOverlay = false;    //enables showing the debug text overlay (shows player location, align, etc.)
 global.debugNoDeath = false;    //enables god mode (toggle with Home key)
@@ -34,4 +34,4 @@ global.controllerDelayLength = 5;   //sets the delay in frames in which the play
 
 global.api_url = "http://157.230.99.228:4444/api/";
 
-global.TournamentMode = true;
+global.TournamentMode = false;

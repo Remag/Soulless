@@ -992,6 +992,7 @@
       <object>objects\oItemChangeParticle</object>
     </objects>
     <object>objects\objAvoidanceController</object>
+    <object>objects\objAvoidanceControllerHardMode</object>
     <object>objects\objBlockController</object>
     <objects name="Bulbs">
       <object>objects\oGate2Bulb</object>

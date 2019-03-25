@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
+if( global.hardMode ) {
+    instance_change(objAvoidanceControllerHardMode, false);
+}
 </string>
           </argument>
         </arguments>
