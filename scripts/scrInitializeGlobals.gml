@@ -13,6 +13,8 @@ global.savePlayerY = 0;
 global.grav = 1;
 global.saveGrav = 1;
 
+global.hardMode = 1; //Debug
+
 for (var i = global.secretItemTotal-1; i >= 0; i--)
 {
     global.secretItem[i] = false;

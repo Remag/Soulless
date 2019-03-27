@@ -135,6 +135,9 @@ if( random_range( 0, 1 ) &lt; relevanceProbability ) {
 }
 //direction += 180;
 speed = random_range(3,6);
+if( global.hardMode ) {
+    speed *= 1.5;
+}
 </string>
           </argument>
         </arguments>
