@@ -145,8 +145,10 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         with( objBlock ) {
             if( BlockId == 1 ) {
                 x = 0;
+                xprevious = x;
             } else if( BlockId == 2 ) {
                 x = 768;
+                xprevious = x;
             }
         }
         with( objPlayer ) {

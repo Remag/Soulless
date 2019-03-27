@@ -34,4 +34,4 @@ global.controllerDelayLength = 5;   //sets the delay in frames in which the play
 
 global.api_url = "http://157.230.99.228:4444/api/";
 
-global.TournamentMode = true;
+global.TournamentMode = false;
