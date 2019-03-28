@@ -62,14 +62,14 @@ image_alpha = 0;
 image_alpha += 1/36;
 
 if( image_alpha &gt;= 1 ) {
-    repeat(15) {
+    repeat(14) {
         a = instance_create(x + random_range(-16,16), y + random_range(-16,16), objArchBullet1_S10)
         a.direction = random(360);
-        a.speed = random_range(3, 10);
+        a.speed = random_range(3, 9);
         a.vspeed -= 3;
         a.gravity = 0.2;
         a.image_index = image_index;
-        a.image_xscale = random_range(0.25,0.8);
+        a.image_xscale = random_range(0.3,0.8);
         a.image_yscale = a.image_xscale;
     }
     repeat(10) {

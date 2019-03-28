@@ -311,6 +311,7 @@
       <sprite>sprites\sprRedireS18Backdrop</sprite>
       <sprite>sprites\sprRedireSphereEffect</sprite>
       <sprite>sprites\sprRedireDoubleBullet</sprite>
+      <sprite>sprites\sprS23TrailBlue</sprite>
     </sprites>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
@@ -1091,7 +1092,9 @@
       <objects name="Segment23">
         <object>objects\oRedireS23ExplosionBullet</object>
         <object>objects\oRedireS23BulletTrail</object>
+        <object>objects\oTrailSerializer</object>
         <object>objects\oRedireS23WallBullet</object>
+        <object>objects\oRedireS23Trail</object>
       </objects>
       <objects name="Segment46">
         <object>objects\oRedireS46CornerSpawner</object>

@@ -25,15 +25,53 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = choose( 1, 5 );
+            <string>direction = -90;
+speed = random_range( 6, 7 );
+
+image_index = choose( 1, 5 );
 
 var scale = 1;
 image_xscale = scale;
 image_yscale = scale;
-trailFreq = 2;
-trailAlpha = 0.7;
 
 event_inherited();
+
+trail = instance_create( x, y, oRedireS23Trail );
+trail.speed = speed;
+trail.direction = direction;
+
+if( image_index == 1 ) {
+    trail.image_blend = make_color_rgb( 0, 0, 190 );
+} else {
+    trail.image_blend = make_color_rgb( 4, 132, 175 );
+}
+
+step = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with( trail ) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -57,20 +95,60 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-
-if( !fadeOut ) {
-    repeat( trailFreq ) {
-        var trail = instance_create( x, y, oRedireS23BulletTrail );
-        trail.image_index = image_index;
-        trail.direction = random_range( 60, 120 );
-        trail.speed = random_range( 1, 2 );
-        trail.x += random_range( -6, 6 );
-        var scale = 0.5;
-        trail.image_xscale = scale;
-        trail.image_yscale = scale;
-        trail.image_alpha = trailAlpha;
-    }
+with( self.trail ) {
+    image_alpha = other.image_alpha;
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( y &gt; 608 + 150 ) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw_set_blend_mode( bm_add );
+draw_self();
+draw_set_blend_mode( bm_normal );
 </string>
           </argument>
         </arguments>

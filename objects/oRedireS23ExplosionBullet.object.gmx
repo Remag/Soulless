@@ -3,7 +3,7 @@
   <spriteName>sprRedireBall</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>oRedireBoundProjectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -55,6 +55,17 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
+var trail = instance_create( x, y, oRedireS23BulletTrail );
+trail.sprite_index = sprite_index;
+trail.image_index = image_index;
+trail.direction = random_range( 60, 120 );
+trail.speed = random_range( 1, 2 );
+trail.image_xscale = image_xscale;
+trail.image_yscale = image_yscale;
+trail.image_alpha = 0.9;
+trail.despawnOnScale = true;
+
 </string>
           </argument>
         </arguments>

@@ -5905,10 +5905,10 @@ if( t &gt;= 26605 &amp;&amp; t &lt; 27375 &amp;&amp; instance_exists(objPlayer) 
             radius = 100;
         }
         var count = ceil( radius / 2 );
-        scrA43CircleSpawn( playerX, 608 - choose( 32, 64, 96, 128 ), radius, 24, count );
+        scrA43CircleSpawn( playerX, 608 - choose( 32, 64, 96, 128 ), radius, 24, count, phaseT == 0 );
     } else if( phaseT &gt;= 96 * 6 &amp;&amp; phaseT &lt; 96 * 7 + 24 &amp;&amp; phaseT % 24 == 0 ) {
     
-        scrA43CircleSpawn( 400, 608 - 32, seg43FinalRadius, 24, seg43FinalCount );
+        scrA43CircleSpawn( 400, 608 - 32, seg43FinalRadius, 24, seg43FinalCount, false );
         seg43FinalRadius -= 75;
         seg43FinalCount -= 14;
     }

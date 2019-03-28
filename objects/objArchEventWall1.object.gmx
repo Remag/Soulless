@@ -75,7 +75,7 @@
             <kind>1</kind>
             <string>var verticalCutoff;
 if( instance_exists( objPlayer ) ) {
-    verticalCutoff = objPlayer.y + 9;
+    verticalCutoff = objPlayer.y + 3;
 } else {
     verticalCutoff = 608 - 32   
 }

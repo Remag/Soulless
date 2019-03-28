@@ -64,6 +64,10 @@ if( frame % 12 == 0 ) {
 if( frame == startDelay ) {
     speed = 0;
     var obj = instance_create( x, y, objAlgA43Circle2 );
+    if( !shouldSpawnKill ) {
+        obj.shouldKill = false;
+        obj.image_alpha = 0.15;
+    }
     obj.image_blend = image_blend;
     obj.speed = 20;
     obj.direction = savedDirection;

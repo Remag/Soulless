@@ -57,9 +57,9 @@ counter = 12;
     obj.image_angle = 90;
     obj.image_blend = image_blend;
     obj.image_yscale = 0;
-    obj.image_alpha = 0.25;
+    obj.image_alpha = 0.1;
     if( frame / counter == 3 ) {
-        obj.image_alpha = 0.35;
+        obj.image_alpha = 0.2;
     }
     obj.alphaStep = obj.image_alpha / 36;
     obj.scaleStep = 0.025 + 0.0125 * frame / counter;

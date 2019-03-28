@@ -5,6 +5,7 @@ var spawnY = argument1;
 var spawnRadius = argument2;
 var spawnStartDelay = argument3;
 var count = argument4;
+var isActive = argument5;
 
 var angle = random( 360 );
 var dirValue = choose( -90, 90 );
@@ -24,4 +25,5 @@ for( var i = 0; i < count; i++ ) {
     obj.savedDirection = spawnAngle + dirValue; 
     obj.startDelay = spawnStartDelay;
     obj.image_blend = color;
+    obj.shouldSpawnKill = !isActive;
 }

@@ -4,11 +4,11 @@
   <xorig>16</xorig>
   <yorigin>9</yorigin>
   <colkind>0</colkind>
-  <coltolerance>229</coltolerance>
+  <coltolerance>252</coltolerance>
   <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>2</bbox_left>
-  <bbox_right>30</bbox_right>
+  <bbox_right>29</bbox_right>
   <bbox_top>3</bbox_top>
   <bbox_bottom>14</bbox_bottom>
   <HTile>0</HTile>
