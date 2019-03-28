@@ -32,4 +32,4 @@ global.autosaveSecretItems = false; //sets whether to save secret items immediat
 
 global.controllerDelayLength = 5;   //sets the delay in frames in which the player can switch between keyboard/controller (can be set to 0 to disable delay)
 
-global.TournamentMode = true;
+global.TournamentMode = false;

@@ -62,7 +62,7 @@ surface_reset_target();
 var screenshotName = "pb_" + string( objAvoidanceController.t ) + ".png";
 
 surface_save( screenshotSurface, game_save_id + screenshotName );
-external_call( "MoveFileToDirectory", game_save_id + screenshotName, program_directory + "pb_screenshots/" );
+external_call( "MoveFileToDirectory", game_save_id + screenshotName, program_directory + "/pb_screenshots/" );
 
 
 </string>

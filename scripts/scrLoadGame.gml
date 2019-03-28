@@ -79,6 +79,8 @@ if (loadFile)
                 oPlayerData.itemUnlocks[i] = vCurrentUnlockedItemStatus;
             }
         }
+        oPlayerData.itemUnlocks[vCurrentSkinId] = true;
+        oPlayerData.itemUnlocks[vCurrentWeaponId] = true;
         
         //destroy the map
         ds_map_destroy(saveMap);
