@@ -28,7 +28,7 @@
             <string>event_inherited();
 image_speed = 1;
 image_angle = random( 360 );
-alarm[0] = 16;
+alarm[0] = array_length_1d( global.s33RainbowRadius );
 
 killRadius = global.s33RainbowRadius[0];
 step = 0;
@@ -136,7 +136,6 @@ isActive = true;
             <string>draw_set_blend_mode( bm_add );
 draw_self();
 draw_set_blend_mode( bm_normal );
-
 </string>
           </argument>
         </arguments>
