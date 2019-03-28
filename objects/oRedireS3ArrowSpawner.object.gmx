@@ -57,6 +57,10 @@ var arrow = instance_create( arrowX, -8, oRedireS3Arrow );
 arrow.direction = arrowDir;
 arrow.image_angle = arrowDir;
 arrow.speed = arrowSpeed;
+
+if( global.hardMode ) {
+    arrow.direction = 270;
+}
 </string>
           </argument>
         </arguments>

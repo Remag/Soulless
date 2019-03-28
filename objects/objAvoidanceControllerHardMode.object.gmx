@@ -106,15 +106,15 @@ angle = lerp(angle, 0, 0.1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 1 (0:00 - 0:23) Happy Intro
+            <string>///HARD Alg Segment 1 (0:00 - 0:23) Happy Intro
 if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
     if( t == 19 ) {
         instance_create( 0, 0, objAlgShaderDrawer );
         
         instance_create( 0, 0, oRedireS1TLCornerSpawner );
         instance_create( 800, 0, oRedireS1TRCornerSpawner );
-        instance_create( 0, 608, oRedireS1BLCornerSpawner );
-        instance_create( 800, 608, oRedireS1BRCornerSpawner );
+        instance_create( 0, 608-32, oRedireS1BLCornerSpawner );
+        instance_create( 800, 608-32, oRedireS1BRCornerSpawner );
     }
     
     var phaseT = t - 19;
@@ -201,7 +201,7 @@ if( t &gt;= 19 &amp;&amp; t &lt; 1165 &amp;&amp; instance_exists(objPlayer) ) {
     if( phaseT &gt;= 96 * 4 &amp;&amp; phaseT % 192 == 0 ) {
         with( objAlgSphere ) {
             if( !isSpeedReduced ) {
-                direction = random_range( 240, 300 );
+                direction = 270 + random_range( -10, 10 );
                 speed /= 2;
                 
                 var obj = instance_create( x, y, objAlgA1SphereEffect );
@@ -412,7 +412,8 @@ if( t &gt;= 1930 &amp;&amp; t &lt; 2705 &amp;&amp; instance_exists(objPlayer) ) 
     
     // Ceiling arrows.
     if( t == 1930 ) {
-        instance_create( 0, 0, oRedireS3ArrowSpawner );
+        a = instance_create( 0, 0, oRedireS3ArrowSpawner );
+        a.spawnPeriod = 2.0;
     }
     
     // Density increase before the slowdown.
@@ -498,23 +499,6 @@ if( t &gt;= 2705 &amp;&amp; t &lt; 3473 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     var phaseT = t - 2705;
-    if( phaseT % 96 == 0 ) {
-        var spawnX = choose( 0, 70 );
-        var spawnY = random_range( 400, 550 );
-        var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
-        obj.vspeed = -5;
-        obj.hspeed = random_range(3,6);
-        obj.speed = 8;
-        obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
-    } else if( phaseT % 96 == 48 ) {
-        var spawnX = 800 - choose( 0, 70 );
-        var spawnY = random_range( 400, 550 );
-        var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
-        obj.vspeed = -5;
-        obj.hspeed = -random_range(3,6);
-        obj.speed = 8;
-        obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
-    }
     
     if( phaseT &lt; 96 * 7 &amp;&amp; phaseT % 24 == 0 ) {
         var spawnX = choose( -27, 827 );
@@ -523,6 +507,24 @@ if( t &gt;= 2705 &amp;&amp; t &lt; 3473 &amp;&amp; instance_exists(objPlayer) ) 
         obj.direction = point_direction( spawnX, spawnY, 800 - spawnX, random_range( 0, 400 - spawnY ) );
         obj.speed = 8;
         obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
+
+        if( phaseT % 96 == 0 ) {
+            var spawnX = choose( 0, 70 );
+            var spawnY = random_range( 400, 550 );
+            var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
+            obj.vspeed = -5;
+            obj.hspeed = random_range(3,6);
+            obj.speed = 8;
+            obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
+        } else if( phaseT % 96 == 48 ) {
+            var spawnX = 800 - choose( 0, 70 );
+            var spawnY = random_range( 400, 550 );
+            var obj = instance_create( spawnX, spawnY, objAlgA6Spawner );
+            obj.vspeed = -5;
+            obj.hspeed = -random_range(3,6);
+            obj.speed = 8;
+            obj.image_blend = make_color_hsv( random( 255 ), 255, 255 );
+        }
     }
     
     if( phaseT % 96 == 95 ) {
@@ -572,7 +574,7 @@ if( t &gt;= 2705 &amp;&amp; t &lt; 3473 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 5 (1:09 - 1:25) Bitchin Bach
+            <string>///HARD Alg Segment 5 (1:09 - 1:25) Bitchin Bach
 if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -586,15 +588,15 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
         var initialAngle = random_range( 70, 110 );
         var spawnX = random_range( 50, 750 );
         segment5Color = random( 255 );
-        var spawnCount = 9;
+        var spawnCount = 7;
         if( phaseT &gt;= 96 * 4 ) {
-            spawnCount = 6;
+            spawnCount = 4;
         }
         repeat( spawnCount ) {
             var obj = instance_create( spawnX, 608, objAlgA5Sphere );
-            obj.speed = random_range( 10, 16 );
+            obj.speed = random_range( 10, 16 ) + 2;
             obj.maxSpeed = obj.speed;
-            obj.gravity = 0.15;
+            obj.gravity = 0.25;
             obj.direction = initialAngle + random_range( -10, 10 );
             var color = ( segment5Color + random_range( -10, 10 ) ) % 255;
             if( color &lt; 0 ) {
@@ -611,7 +613,10 @@ if( t &gt;= 3470 &amp;&amp; t &lt; 4240 &amp;&amp; instance_exists(objPlayer) ) 
         var spawnX = spawnCenter + random_range( -150, 150 );
         var spawnY = random_range( 50, 150 );
         var spawnAngle = scrTargetPlayer( spawnX, spawnY );
-        scrMakeCircle( spawnX, spawnY, spawnAngle, 10, 12, objAlgA5Kunai );
+        scrMakeCircle( spawnX, spawnY, spawnAngle, 10, 10, objAlgA5Kunai );
+        
+        scrMakeCircle( spawnX, spawnY, spawnAngle - 2, 10, 10, objAlgA5Kunai );
+        scrMakeCircle( spawnX, spawnY, spawnAngle + 2, 10, 10, objAlgA5Kunai );
     }
     
     if( t == 4239 ) {
@@ -1586,16 +1591,18 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
         seg11a_yy = random_range(64, 192);
         var a_image_index = irandom(2);
         
-        var a_dir = point_direction(seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y);
+        var a_dir = point_direction(seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y) + 22.5;
 
         for( i = 0; i &lt; 360; i+=45 ) {
-            for( j = 0; j &lt; 45; j+=3 ) {
+            for( j = 0; j &lt; 45; j+=5 ) {
                 a = instance_create(seg11a_xx, seg11a_yy, objArchBullet2);
                 a.direction = i + j + a_dir;
                 a.speed = 6;
-                a.alarm[0] = 10;
+                //a.alarm[0] = 10;
+                //a.alarm[2] = 24;
                 a.image_index = a_image_index;
-                if( j &gt; cardBorderIndex ) {
+                a.speed *= lerp(0.5, 1.5, abs(j - cardBorderIndex)/cardBorderIndex/2);
+                /*if( j &gt; cardBorderIndex ) {
                     if( t &lt; 8400 ) {
                         a.alarm[1] = 24;
                     } else {
@@ -1606,7 +1613,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                     a.image_index = 3;
                 } else {
                     a.alarm[2] = 24;
-                }
+                }*/
             }
         }
         
@@ -1632,15 +1639,16 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
             obj.rotationSpeed = effectsRotationSpeed;
         }
         
-        var a_dir = point_direction(800-seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y) + 11.25;
+        var a_dir = point_direction(800-seg11a_xx, seg11a_yy, objPlayer.x, objPlayer.y) + 22.5;
         for( i = 0; i &lt; 360; i+=45 ) {
-            for( j = 0; j &lt; 45; j+=3 ) {
+            for( j = 0; j &lt; 45; j+=5 ) {
                 a = instance_create(800-seg11a_xx, seg11a_yy, objArchBullet2);
                 a.direction = i + j + a_dir;
                 a.speed = 6;
-                a.alarm[0] = 10;
+                //a.alarm[0] = 10;
                 a.image_index = a_image_index;
-                if( j &gt; cardBorderIndex ) {
+                a.speed *= lerp(0.5, 1.5, abs(j - cardBorderIndex)/cardBorderIndex/2);
+                /*if( j &gt; cardBorderIndex ) {
                     if( t &lt; 8400 ) {
                         a.alarm[1] = 24;
                     } else {
@@ -1651,7 +1659,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
                     a.image_index = 3;
                 } else {
                     a.alarm[2] = 24;
-                }
+                }*/
             }
         }
         

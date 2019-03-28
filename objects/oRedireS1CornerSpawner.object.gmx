@@ -57,6 +57,10 @@ spawnPeriod = 50;
     obj.speed = random_range( 3, 6 );
     obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
     obj.isSpeedReduced = false;
+    
+    if( global.hardMode ) {
+        obj.speed = 8;
+    }
 }
 </string>
           </argument>

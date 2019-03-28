@@ -31,6 +31,8 @@ image_speed = 0;
 tag = 0;
 
 createdTime = 4;
+
+curve = 0;
 </string>
           </argument>
         </arguments>
@@ -194,6 +196,11 @@ if( createdTime &gt; 0 ) {
 if( image_index == 3 ) {
     var trail = instance_create( x, y, oRedireCardTrail );
     trail.image_angle = image_angle;
+}
+
+if( curve != 0 ) {
+    direction += curve;
+    image_angle = direction;
 }
 </string>
           </argument>
