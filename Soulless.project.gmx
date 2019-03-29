@@ -594,7 +594,7 @@
       <script>scripts\scrIsAvoidanceDowntime.gml</script>
       <script>scripts\scrGetTimeString.gml</script>
       <script>scripts\scrGetPbTimeString.gml</script>
-      <script>scripts\scrCreateScreenshot.gml</script>
+      <script>scripts\scrGetGateColor.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -821,6 +821,7 @@
       <object>objects\oMenuEffectController1</object>
       <object>objects\oMenuEffectSelector</object>
       <object>objects\oFragmentExplosion</object>
+      <object>objects\oMusicContainer</object>
       <objects name="TitleFragments">
         <object>objects\oTitleBase</object>
         <object>objects\oTitleFragment</object>
@@ -883,22 +884,25 @@
       <object>objects\oEntranceWarp</object>
       <object>objects\oPlayerData</object>
       <object>objects\oPlayerEntrance</object>
-      <object>objects\oFadeBlock</object>
       <object>objects\oCurrencyDisplayController</object>
       <object>objects\oCurrencyDisplayView</object>
       <object>objects\oBlackFadeIn</object>
       <object>objects\oMainAvoidanceController</object>
-      <object>objects\objBigWarp</object>
       <object>objects\oFadeOut</object>
       <object>objects\oFadeIn</object>
-      <object>objects\oMusicContainer</object>
       <object>objects\oGameOverController</object>
       <object>objects\oKidTeleportParticle</object>
-      <object>objects\oTournamentTimeCounter</object>
-      <object>objects\oTournamentTitle</object>
-      <object>objects\oTournamentTimeView</object>
+    </objects>
+    <objects name="PortalRoom">
+      <object>objects\oFadeBlock</object>
       <object>objects\oPortalRoomGradient</object>
-      <object>objects\oScreenshotTaker</object>
+      <object>objects\oTournamentTitle</object>
+      <object>objects\oTournamentTimeCounter</object>
+      <object>objects\oTournamentTimeView</object>
+      <object>objects\oProgressView</object>
+      <object>objects\oProgressLight</object>
+      <object>objects\oProgressLightDrawMechanism</object>
+      <object>objects\oProgressParticle</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

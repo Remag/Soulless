@@ -527,11 +527,12 @@ if( !instance_exists( oMusicContainer ) ) {
     instance_create( 0, 0, oMusicContainer );
 }
 
-if( !instance_exists( oScreenshotTaker ) ) {
-    instance_create( 0, 0, oScreenshotTaker );
+if( !shader_is_compiled( hsvShader ) ) {
+    show_message( "Shaders failed to compile! Make sure you have DirectX 9 installed." );
+    game_end();
+} else {
+    room_goto_next();
 }
-
-room_goto_next();
 </string>
           </argument>
         </arguments>
