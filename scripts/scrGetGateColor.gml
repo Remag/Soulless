@@ -10,7 +10,7 @@ switch( gate ) {
     case 4:
         return c_green;
     case 5:
-        return c_purple;
+        return make_color_rgb( 128, 0, 128 );
     default:
         return c_white;
 }

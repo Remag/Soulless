@@ -313,6 +313,7 @@
       <sprite>sprites\sprRedireDoubleBullet</sprite>
       <sprite>sprites\sprS23TrailBlue</sprite>
     </sprites>
+    <sprite>sprites\sprProgressParticle</sprite>
     <sprite>sprites\sprArrow</sprite>
     <sprite>sprites\sprWarning</sprite>
     <sprite>sprites\spriteBackground</sprite>
@@ -595,6 +596,8 @@
       <script>scripts\scrGetTimeString.gml</script>
       <script>scripts\scrGetPbTimeString.gml</script>
       <script>scripts\scrGetGateColor.gml</script>
+      <script>scripts\scrGetGateLightScale.gml</script>
+      <script>scripts\scrGetGateIntensity.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -618,6 +621,7 @@
       <script>scripts\scrCreateItemChangeParticles.gml</script>
       <script>scripts\scrSetCurrentSkin.gml</script>
       <script>scripts\scrSetCurrentWeapon.gml</script>
+      <script>scripts\scrUnlockAllItems.gml</script>
     </scripts>
     <scripts name="Skins">
       <scripts name="JumpEffects">
@@ -903,6 +907,7 @@
       <object>objects\oProgressLight</object>
       <object>objects\oProgressLightDrawMechanism</object>
       <object>objects\oProgressParticle</object>
+      <object>objects\oClearSnowSpawner</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

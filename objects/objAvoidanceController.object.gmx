@@ -7080,6 +7080,7 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
     }
     if( t == 37074 ) {
         global.gameClear = true;
+        scrUnlockAllItems();
         scrUpdatePersonalBest();
         if( global.TournamentMode ) {
             global.TournamentComplete = true;

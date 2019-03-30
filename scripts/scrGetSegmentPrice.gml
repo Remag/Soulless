@@ -1,7 +1,7 @@
 var gateId = argument0;
 var segmentId = argument1;
 
-if( segmentId == -1 ) {
+if( global.gameClear || segmentId == -1 ) {
     return 0;
 }
 
