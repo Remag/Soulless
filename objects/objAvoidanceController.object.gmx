@@ -6867,6 +6867,22 @@ if( t &gt;= 34670 &amp;&amp; t &lt; 35825 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( t == 34670 ) {
+        if( !instance_exists( objAlgA54CircleBounce ) ) {
+            var playerX = scrGetPlayerX();
+            var playerY = scrGetPlayerY();
+            for( var i = 0; i &lt; 83; i++ ) {
+                var spawnX = random_range( 32, 800 - 32 );
+                var spawnY = random_range( 32, 608 - 32 );
+                if( point_distance( spawnX, spawnY, playerX, playerY ) &gt; 40 ) {
+                    var obj = instance_create( spawnX, spawnY, objAlgA54CircleBounce );
+                    obj.image_xscale = 0.75;
+                    obj.image_yscale = 0.75;
+                    obj.image_blend = make_color_rgb( 0, 0, 0 );
+                } else {
+                    i--;
+                }
+            }
+        }
         with( objAlgA54CircleBounce ) {
             friction = -0.0075;
             speed = 0.01;
@@ -6949,6 +6965,28 @@ if( t &gt;= 35825 &amp;&amp; t &lt; 37075 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     if( t == 35825 ) {
+        if( !instance_exists( objAlgA55CircleWrap ) ) {
+            var playerX = scrGetPlayerX();
+            var playerY = scrGetPlayerY();
+            repeat( 83 ) {
+                var count = 1;
+                if( irandom( 2 ) == 0 ) {
+                    count = 2;
+                }
+                for( var i = 0; i &lt; count; i++ ) {
+                    var spawnX = random_range( 0, 800 );
+                    var spawnY = random_range( 0, 608 );
+                    if( point_distance( spawnX, spawnY, playerX, playerY ) &gt; 40 ) {
+                        var obj = instance_create( spawnX, spawnY, objAlgA55CircleWrap );
+                        obj.image_xscale = 0.75;
+                        obj.image_yscale = 0.75;
+                        obj.image_blend = make_color_rgb( 0, 0, 0 );
+                    } else {
+                        i--;
+                    }
+                }
+            }
+        }
         with( objAlgA55CircleWrap ) {
             speed = 0.01;
             direction = 90 + random_range( -30, 30 );
