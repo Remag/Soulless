@@ -52,7 +52,7 @@ if( global.hardMode ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Pre-intro.
+            <string>/// Pre-intro and outro handling.
 if( t == 0 ) {
     var fade = instance_create( 0, 0, oFadeIn );
     audio_sound_set_track_position( global.currentMusic, 0 );
@@ -60,6 +60,93 @@ if( t == 0 ) {
 }
 
 event_inherited();
+
+// Outro.
+if( t &gt; 36574 &amp;&amp; t &lt; 36550 + 72 ) {
+    with( objPlayer ) { 
+        vspeed = -1.5;
+        self.djump = 0;
+    }
+} else if( t &gt;= 36550 + 72 &amp;&amp; t &lt; 36550 + 96 * 2 + 24 ) {
+    var transitionProgress = ( t - 36550 - 72 ) / 144;
+    var visiblePlatformWidth = lerp( 32, 0, transitionProgress );
+    with( objGate6BlockHider ) {
+        self.platformWidth = visiblePlatformWidth;
+    }
+    var playerX = scrGetPlayerX();
+    var playerY = scrGetPlayerY();
+    
+    var viewX = lerp( 0, playerX - 100, transitionProgress );
+    var viewY = lerp( 0, playerY - 76, transitionProgress );
+    
+    var viewW = lerp( 800, 200, transitionProgress );
+    var viewH = lerp( 608, 152, transitionProgress );
+    
+    view_xview[0] = viewX;
+    view_yview[0] = viewY;
+    view_wview[0] = viewW;
+    view_hview[0] = viewH;
+    with( objPlayer ) { 
+        vspeed = -1.5;
+        self.djump = 0;
+    }
+} else if( t == 36550 + 96 * 2 + 24 ) {
+    with( objPlayer ) {
+        var outlineSprite = scrGetOutlineSprite( sprite_index );
+        mask_index = outlineSprite;
+        image_xscale *= xScale;
+    }
+    var playerX = scrGetPlayerX();
+    var playerY = scrGetPlayerY();
+    seg55ParticleList = ds_list_create();
+    seg55ParticleNumber = 0;
+    seg55StartY = playerY - 23;
+    seg55PlayerX = playerX;
+    seg55PlayerY = playerY;
+    for( var i = 0; i &lt; 32; i++ ) {
+        for( var j = 0; j &lt; 32; j += 0.5 ) {
+            var collisionX = i + playerX - 17;
+            var collisionY = j + playerY - 23;
+            if( collision_point( collisionX, collisionY, objPlayer, true, true ) ) {
+                var obj = instance_create( collisionX, collisionY, objParticle );
+                ds_list_add( seg55ParticleList, obj );
+                obj = instance_create( collisionX, collisionY, objParticle );
+                ds_list_add( seg55ParticleList, obj );
+            }
+        } 
+    }
+    with( objPlayer ) {
+        image_xscale /= xScale;
+        frozen = true;
+        visible = false;
+    }
+    ds_list_shuffle( seg55ParticleList );
+} else if( t &gt;= 36550 + 96 * 2 + 72 &amp;&amp; t &lt; 36550 + 96 * 3 + 72 ) {
+    var listSize = ds_list_size( seg55ParticleList );
+    var count = listSize / 95;
+    while( count &gt; 0 &amp;&amp; seg55ParticleNumber &lt; listSize ) {
+        with( seg55ParticleList[| seg55ParticleNumber] ) {
+            speed = 0.01;
+            friction = -0.025;
+            direction = point_direction( other.seg55PlayerX, other.seg55PlayerY, x, y ) + random_range( -45, 45 );
+        }
+        seg55ParticleNumber++;
+        count--;
+    }
+}
+if( t == 37074 ) {
+    global.gameClear = true;
+    scrUnlockAllItems();
+    scrUpdatePersonalBest();
+    if( global.TournamentMode ) {
+        global.TournamentComplete = true;
+        global.TournamentGameClear = true;
+        global.TournamentPb = global.TournamentTime;
+        scrSaveGame();
+    } 
+    
+    scrChangeRoom( rPortalRoom, 3 );  
+}
 
 if( instance_exists(objPlayer) ) {
     scrAdvanceT( global.currentMusic );
