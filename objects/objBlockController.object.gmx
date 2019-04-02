@@ -290,6 +290,7 @@ if( t &gt;= 0 &amp;&amp; t &lt; 6545 ) {
         }
     }
     if( !instance_exists( objGate5CornerBlock ) ) {
+        instance_create( 0, 0, objGate5BlockDrawer );
         instance_create( 0, 0, objGate5CornerBlock );
         instance_create( 768, 0, objGate5CornerBlock );
         instance_create( 0, 608 - 32, objGate5CornerBlock );

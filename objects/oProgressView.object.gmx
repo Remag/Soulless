@@ -87,6 +87,11 @@ for( var i = pbGate - 1; i &gt;= 1; i-- ) {
     }   
     particleRadius += 0.85 * particleRadiusDelta;
 }
+if( pbGate &gt; 1 ) {
+    var obj = instance_create( x, y, objSoulController );
+    obj.maxGate = pbGate - 1;
+}
+
 </string>
           </argument>
         </arguments>

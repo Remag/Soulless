@@ -88,23 +88,7 @@ frame++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( shader_is_compiled( sdrGate5Movement ) ) {
-    shader_set(sdrGate5Movement);
-    var iTimePos = shader_get_uniform( sdrGate5Movement, "iTime" );
-    var uvsPos = shader_get_uniform( sdrGate5Movement, "uvs" );
-    var uMarginPos = shader_get_uniform( sdrGate5Movement, "uMargin" );
-    var _uvs = sprite_get_uvs( sprite_index, image_index );
-    shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
-    shader_set_uniform_f( uMarginPos, 0.12, 0., 0.88, 1. );
-    //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );
-    shader_set_uniform_f( iTimePos, iTime );
-    //shader_set_uniform_f( iResolutionPos, iResolutionX, iResolutionY );
-    draw_self();
-    shader_reset();
-} else {
-    show_debug_message("Shader failed");
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
