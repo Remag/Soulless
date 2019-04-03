@@ -8,7 +8,7 @@ switch( gate ) {
     case 3:
         return 1.5;
     case 4:
-        return 2.75;
+        return 1.5;
     case 5:
         return 3.0;
     default:

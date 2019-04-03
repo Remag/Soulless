@@ -62,6 +62,9 @@ if( oProgressView.particleRadiusBonus == 0 ) {
 } else {
     currentRadius += oProgressView.particleRadiusBonus;
     currentRadius = max( currentRadius, 0 );
+    if( currentRadius == 0 ) {
+        instance_destroy();
+    }
 }
 
 x = centerX + lengthdir_x( currentRadius, currentDir );

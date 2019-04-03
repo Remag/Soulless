@@ -49,19 +49,87 @@ rotationBonusChange = 0.25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( step &gt; 100 &amp;&amp; step &lt; 500 ) {
+            <string>if( step == 0 ) {
+    buildUpAudio = audio_play_sound( sndBuildUp, 0, false ); 
+}
+
+if( step &gt; 150 &amp;&amp; step &lt; 500 ) {
     oProgressView.particleRotationBonus += rotationBonusChange;
 }
-if( step &gt; 100 &amp;&amp; step &lt; 150 ) {
+if( step &gt; 150 &amp;&amp; step &lt; 200 ) {
     rotationBonusChange += 0.01;
 }
 
 if( step &gt; 250 &amp;&amp; step &lt; 500 ) {
-    oProgressView.particleRadiusBonus -= 0.005;
+    oProgressView.particleRadiusBonus -= 0.007;
 }
 
+if( step == 400 ) {
+    soulX = objSoulController.x;
+    soulY = objSoulController.y;
+    var soul = instance_create( soulX, soulY, objSoul );
+    soul.depth = -1;
+    soul.image_angle = random( 360 );
+    with( objSoulController ) {
+        instance_destroy();
+    }
+}
+if( step == 450 ) {
+    var soul = instance_create( soulX, soulY, objSoul );
+    soul.depth = -1;
+    soul.image_angle = random( 360 );
+}
 
-if( step == 50 ) {
+if( step == 500 || step == 550 || step == 600 ) {
+    var soul = instance_create( soulX, soulY, objSoul );
+    soul.depth = -1;
+    soul.image_xscale = 2;
+    soul.image_yscale = 2;
+    soul.image_angle = random( 360 );
+}
+
+if( step &gt;= 640 &amp;&amp; step &lt; 650 ) {
+    with( objSoul ) {
+        image_xscale -= 0.2;
+        image_yscale -= 0.2;
+    }
+}
+
+if( step == 648 ) {
+    finalAmbiance = audio_play_sound( sndFinalAmbiance, 0, false );
+    audio_play_sound( sndExplosion, 0, false );
+    repeat( 300 ) {
+        var s = instance_create( oProgressView.x, oProgressView.y, oSoulFragment );
+        s.friction = random_range( 0.2, 0.3 );
+        s.speed = random_range( 5, 20 );
+        if( s.speed &lt; 10 ) {
+            s.speed = random_range( 5, 20 );
+        }
+        s.direction = random( 360 );
+        s.rotDelta = random_range( 0.2, 0.6 );
+        s.image_angle = random( 360 );
+        var scale = random_range( 0.1, 0.4 );
+        s.image_xscale = scale;
+        s.image_yscale = scale;
+        s.image_alpha = random_range( 0.2, 1 );
+        s.alphaMin = random_range( 0, 0.5 );
+        s.alphaDelta = random_range( 0.01, 0.02 );
+    }
+    var s = instance_create( oProgressView.x, oProgressView.y, oSoulFragment );
+    s.rotDelta = random_range( 0.2, 0.6 );
+    s.image_xscale = 0.45;
+    s.image_yscale = 0.45;
+    s.alphaMin = 0.5;
+    s.alphaDelta = 0.02;
+    s.rotDelta = 0.3;
+}
+
+if( step == 700 ) {
+    instance_create( oProgressView.x, oProgressView.y, oFinalBackdrop );
+}
+
+if( step == 1800 ) {
+    audio_stop_sound( finalAmbiance );
     room_goto( rCredits );
 }
 step++;

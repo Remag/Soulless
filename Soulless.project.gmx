@@ -160,6 +160,9 @@
     <sound>sound\sndBell7</sound>
     <sound>sound\sndBell8</sound>
     <sound>sound\sndBell9</sound>
+    <sound>sound\sndBuildUp</sound>
+    <sound>sound\sndExplosion</sound>
+    <sound>sound\sndFinalAmbiance</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -382,6 +385,8 @@
       <sprite>sprites\sprBigWarp</sprite>
       <sprite>sprites\sprGameOver</sprite>
       <sprite>sprites\sprSoulGate</sprite>
+      <sprite>sprites\sprSoulFragment</sprite>
+      <sprite>sprites\sprLargeSpotlight</sprite>
     </sprites>
     <sprites name="Skins">
       <sprites name="Ghost">
@@ -599,6 +604,7 @@
       <script>scripts\scrGetGateColor.gml</script>
       <script>scripts\scrGetGateLightScale.gml</script>
       <script>scripts\scrGetGateIntensity.gml</script>
+      <script>scripts\scrWriteDsValue.gml</script>
     </scripts>
     <scripts name="Practice">
       <script>scripts\scrTrySetSegment.gml</script>
@@ -913,6 +919,9 @@
       <object>objects\objSoulController</object>
       <object>objects\objSoul</object>
       <object>objects\oFinalCutscene</object>
+      <object>objects\oSoulFragment</object>
+      <object>objects\oFinalBackdrop</object>
+      <object>objects\oSoulFadeParticle</object>
     </objects>
     <objects name="PracticeRoom">
       <object>objects\oPracticeTitle</object>

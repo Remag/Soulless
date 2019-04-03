@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>if( !oPlayerData.showFinalCutscene &amp;&amp; global.gameClear ) {
     instance_create( 0, 0, oClearSnowSpawner );
+    scrWriteDsValue( 0 );
     instance_destroy();
     exit;
 }
@@ -93,8 +94,11 @@ if( pbGate &gt; 1 ) {
 }
 
 if( oPlayerData.showFinalCutscene ) {
+    scrWriteDsValue( 1 );
     instance_create( x, y, oFinalCutscene );
     oPlayerData.showFinalCutscene = false;
+} else {
+    scrWriteDsValue( 0 );
 }
 
 particleRotationBonus = 0;

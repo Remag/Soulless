@@ -8,7 +8,7 @@ switch( gate ) {
     case 3:
         return make_color_rgb( 0, 255, 255 );
     case 4:
-        return c_green;
+        return c_lime;
     case 5:
         return make_color_rgb( 128, 0, 128 );
     default:

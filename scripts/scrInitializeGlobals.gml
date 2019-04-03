@@ -111,4 +111,7 @@ global.s33RainbowRadius[17] = 43;
 global.s33RainbowRadius[18] = 38;
 global.s33RainbowRadius[19] = 32;
 
+global.currentAttemptNumber = 0;
+scrWriteDsValue( 0 );
+
 randomize();    //make sure the game starts with a random seed for RNG
