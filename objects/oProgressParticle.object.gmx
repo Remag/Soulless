@@ -51,11 +51,17 @@ currentRadius = point_distance( centerX, centerY, x, y );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currentDir += rotationSpeed / currentRadius;
+            <string>currentDir += rotationSpeed / currentRadius + sign( rotationSpeed ) * oProgressView.particleRotationBonus / currentRadius;
 currentRadius += radiusOffset;
-currentRadius = clamp( currentRadius, minRadius, maxRadius );
-if( currentRadius == minRadius || currentRadius == maxRadius ) {
-    radiusOffset = -radiusOffset;
+
+if( oProgressView.particleRadiusBonus == 0 ) {
+    currentRadius = clamp( currentRadius, minRadius, maxRadius );
+    if( currentRadius == minRadius || currentRadius == maxRadius ) {
+        radiusOffset = -radiusOffset;
+    }
+} else {
+    currentRadius += oProgressView.particleRadiusBonus;
+    currentRadius = max( currentRadius, 0 );
 }
 
 x = centerX + lengthdir_x( currentRadius, currentDir );

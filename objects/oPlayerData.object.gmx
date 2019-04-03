@@ -57,6 +57,8 @@ itemUnlocks[8] = 0;
 itemUnlocks[9] = 0;
 itemUnlocks[10] = 0;
 itemUnlocks[11] = 0;
+
+showFinalCutscene = false;
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( global.gameClear ) {
+            <string>if( !oPlayerData.showFinalCutscene &amp;&amp; global.gameClear ) {
     instance_create( 0, 0, oClearSnowSpawner );
     instance_destroy();
     exit;
@@ -92,6 +92,14 @@ if( pbGate &gt; 1 ) {
     obj.maxGate = pbGate - 1;
 }
 
+if( oPlayerData.showFinalCutscene ) {
+    instance_create( x, y, oFinalCutscene );
+    oPlayerData.showFinalCutscene = false;
+}
+
+particleRotationBonus = 0;
+particleRadiusBonus = 0;
+
 </string>
           </argument>
         </arguments>
@@ -116,15 +124,17 @@ if( pbGate &gt; 1 ) {
             <kind>1</kind>
             <string>draw_set_circle_precision( 128 );
 draw_set_color( c_gray );
-// Outer circle.
-draw_circle( x, y, outerRadius, true );
-// Inner circle.
-if( pbGate != 6 ) {
-    draw_circle( x, y, innerRadius, true );
+
+if( !global.gameClear ) {
+    // Outer circle.
+    draw_circle( x, y, outerRadius, true );
+    // Inner circle.
+    if( pbGate != 6 ) {
+        draw_circle( x, y, innerRadius, true );
+    }
+    // Soul circle.
+    draw_circle( x, y, soulCircleRadius, true );
 }
-// Soul circle.
-draw_circle( x, y, soulCircleRadius, true );
-// Soul.
 
 draw_set_color( c_white );
 draw_set_circle_precision( 24 );

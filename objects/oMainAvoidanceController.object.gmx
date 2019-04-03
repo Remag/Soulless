@@ -135,9 +135,12 @@ if( t &gt; 36574 &amp;&amp; t &lt; 36550 + 72 ) {
     }
 }
 if( t == 37074 ) {
-    global.gameClear = true;
-    scrUnlockAllItems();
-    scrUpdatePersonalBest();
+    if( !global.gameClear ) {
+        global.gameClear = true;
+        oPlayerData.showFinalCutscene = true;
+        scrUnlockAllItems();
+        scrUpdatePersonalBest();
+    }
     if( global.TournamentMode ) {
         global.TournamentComplete = true;
         global.TournamentGameClear = true;

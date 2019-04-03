@@ -7073,7 +7073,6 @@ if( t &gt;= 37075 ) {
     }
     
     if( t == 37075 ) {
-        
         global.pb = t;
         global.pb_segment = segment;
         scrSaveGame();
