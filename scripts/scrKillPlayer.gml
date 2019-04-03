@@ -1,5 +1,5 @@
 //kills the player
-if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
+if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath) && !instance_exists( oPracticeDummyKid ) )
 {
     if (global.gameStarted) //normal death
     {     
