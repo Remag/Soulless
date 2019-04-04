@@ -91,7 +91,7 @@ lineStartY = 200;
     line[0] = "Game created by:"
     line[1] = "Algeran";
     line[2] = "Redire";
-    line[3] = "Archie";
+    line[3] = "Arche";
 }
 
 if( step &gt; 150 &amp;&amp; step &lt; 250 ) {
