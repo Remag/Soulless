@@ -29,7 +29,7 @@
 draw_set_font( fNotifications );
 draw_set_halign( fa_left );
 
-draw_text( x, y, "v1.1T" );
+draw_text( x, y, "v1.0" );
 
 draw_set_halign( fa_center );
 draw_set_font( fDefault24 );

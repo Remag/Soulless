@@ -127,7 +127,7 @@ if( step &gt; 430 &amp;&amp; step &lt;= 480 ) {
 if( step == 550 ) {
     lineColor[1] = c_white;
     line[1] = "Tester:"
-    line[2] = "Sudalv";
+    line[2] = "SUDALV";
     lineAlpha[1] = 0;
     lineAlpha[2] = 0;
 }
