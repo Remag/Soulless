@@ -665,6 +665,8 @@ if( outlineValue == 0 ) {
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, ( 1 - outlineValue ) * image_alpha, false );
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue * image_alpha, true );
 }
+scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha );
+
 image_alpha = currentAlpha;
 </string>
           </argument>

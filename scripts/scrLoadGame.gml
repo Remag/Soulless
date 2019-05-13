@@ -72,6 +72,10 @@ if (loadFile)
         if( !is_undefined( vCurrentWeaponId ) ) {
             scrSetCurrentWeapon( vCurrentWeaponId );
         }
+        var vCurrentTrinketId = ds_map_find_value( saveMap, "currentTrinket" );
+        if( !is_undefined( vCurrentTrinketId ) ) {
+            scrSetCurrentTrinket( vCurrentTrinketId );
+        }
         var vItemCount = array_length_1d( oPlayerData.itemUnlocks );
         for( var i = 0; i < vItemCount; i++ ) {
             var vCurrentUnlockedItemStatus = ds_map_find_value( saveMap, "item" + string( i ) );
@@ -81,6 +85,10 @@ if (loadFile)
         }
         oPlayerData.itemUnlocks[vCurrentSkinId] = true;
         oPlayerData.itemUnlocks[vCurrentWeaponId] = true;
+        oPlayerData.itemUnlocks[vCurrentTrinketId] = true;
+        if( global.gameClear ) {
+            scrUnlockAllItems();
+        }
         
         //destroy the map
         ds_map_destroy(saveMap);

@@ -32,6 +32,7 @@ step = 0;
 
 weaponInfo = oPlayerData.currentWeapon;
 playerInfo = oPlayerData.currentSkin;
+trinketInfo = oPlayerData.currentTrinket;
 sprite_index = playerInfo.idleSprite;
 image_speed = playerInfo.idleAnimationSpeed;
 </string>
@@ -62,6 +63,9 @@ var section = oShopItemSelector.currentSection;
 var item = oShopItemSelector.currentItem;
 if( item == -1 ) {
     visible = false;
+    with( oLaserChargeController ) {
+        instance_destroy();
+    }
     exit;
 }
 
@@ -70,9 +74,14 @@ if( section == 0 ) {
     step = 0;
     playerInfo = oShopItemSelector.itemLists[0].itemInfo[item];
     weaponInfo = oPlayerData.currentWeapon;
+    trinketInfo = oPlayerData.currentTrinket;
     sprite_index = playerInfo.idleSprite;
     image_speed = playerInfo.idleAnimationSpeed;
+    with( oLaserChargeController ) {
+            instance_destroy();
+    }
 } else if( section == 1 ) {
+    trinketInfo = oPlayerData.currentTrinket;
     weaponInfo = oShopItemSelector.itemLists[1].itemInfo[item];
     var chameleonId = 10;
     var decoyId = 9;
@@ -109,6 +118,7 @@ if( section == 0 ) {
     step = 0;
     playerInfo = oPlayerData.currentSkin;
     weaponInfo = oPlayerData.currentWeapon;
+    trinketInfo = oShopItemSelector.itemLists[2].itemInfo[item];
     sprite_index = oPlayerData.currentSkin.idleSprite;
     image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
 }
@@ -138,6 +148,7 @@ if( section == 0 ) {
             <kind>1</kind>
             <string>draw_self();
 scrDrawWeapon( weaponInfo, playerInfo, 1, image_alpha, false );
+scrDrawTrinket( trinketInfo, 1, image_alpha );
 
 var section = oShopItemSelector.currentSection;
 var item = oShopItemSelector.currentItem;

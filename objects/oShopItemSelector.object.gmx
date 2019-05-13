@@ -37,12 +37,19 @@ for( var i = 0; i &lt; 6; i++ ) {
 }
 itemLists[1] = weaponList;
 
+var trinketList = instance_create( 0, 0, oShopItemList );
+for( var i = 0; i &lt; 6; i++ ) {
+    trinketList.itemInfo[i] = instance_create( 0, 0, scrGetTrinketInfoById( i + 12 ) );
+}
+itemLists[2] = trinketList;
+
 currentSection = oPlayerData.lastShopSection;
 currentItem = oPlayerData.lastShopItem;
 maxUnlockedItem = scrGetMaxUnlockedItem( currentSection );
 
 sectionNames[0] = "Characters";
 sectionNames[1] = "Weapons";
+sectionNames[2] = "Trinkets";
 
 isActive = true;
 

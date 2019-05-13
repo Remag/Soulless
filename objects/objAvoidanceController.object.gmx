@@ -1339,6 +1339,7 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     }
     
     if( t == 6545 ) {
+        scrRestorePlayerHp();
         segment9Angle = 0;
         var randomAngle = random( 360 );
         scrMakeCircle( 700, 100, randomAngle, 8, 2, objAlgA7Sphere );
@@ -2272,6 +2273,7 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
     var tPhase = ( t - 11540 );
     
     if( tPhase == 0 ) {
+        scrRestorePlayerHp();
         seg19SpawnXMin = 200;
         seg19SpawnXMax = 600;
         seg19SpawnYMin = 30;
@@ -3513,6 +3515,9 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         instance_create( 400, 304, objAlgShaderBackground );
     }
     var phaseT = t - 18545;
+    if( phaseT == 0 ) {
+        scrRestorePlayerHp();
+    }
     if( phaseT % 48 == 0 ) {
         with( objAlgA30Sphere ) {
             speed += friction * 48;
@@ -5674,6 +5679,7 @@ if( t &gt;= 26230 &amp;&amp; t &lt; 26605 &amp;&amp; instance_exists(objPlayer) 
     var phaseT = t - 26230 - 48;
     
     if( phaseT == 0 ) {
+        scrRestorePlayerHp();
         for( i = 0; i &lt; 360; i += 45 ) {
             a = instance_create(400, 200, objArchBullet25);
             a.dir = i;
