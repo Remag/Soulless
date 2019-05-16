@@ -11,7 +11,7 @@ if( trinketId == 12 ) {
 } else if( trinketId == 16 ) {
     return oGoldenBowInfo;
 }else if( trinketId == 17 ) {
-    return oNullTrinketInfo;
+    return oOutlineBowInfo;
 } else {
     return oNullTrinketInfo;
 }

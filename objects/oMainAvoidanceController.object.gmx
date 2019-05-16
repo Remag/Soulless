@@ -135,12 +135,13 @@ if( t &gt; 36574 &amp;&amp; t &lt; 36550 + 72 ) {
     }
 }
 if( t == 37074 ) {
-    if( !global.gameClear ) {
+    var currentTrinketType = scrGetCurrentTrinketType();
+    if( !global.gameClear &amp;&amp; currentTrinketType == 0 ) {
         global.gameClear = true;
         oPlayerData.showFinalCutscene = true;
         scrUnlockAllItems();
-        scrUpdatePersonalBest();
     }
+    scrUpdatePersonalBest();
     if( global.TournamentMode ) {
         global.TournamentComplete = true;
         global.TournamentGameClear = true;
@@ -148,7 +149,12 @@ if( t == 37074 ) {
         scrSaveGame();
     } 
     
-    scrChangeRoom( rPortalRoom, 3 );  
+    if( currentTrinketType == 0 ) {
+        scrChangeRoom( rPortalRoom, 3 );  
+    } else {
+        oPlayerData.lastFinalHitCount = scrGetCurrentHitCount();
+        scrChangeRoom( rTrinketClearRoom, 3 );
+    }
 }
 
 if( instance_exists(objPlayer) ) {

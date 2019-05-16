@@ -511,8 +511,9 @@
     <sprites name="Trinkets">
       <sprite>sprites\sprBow</sprite>
       <sprite>sprites\sprGreenBow</sprite>
-      <sprite>sprites\sprGoldBow</sprite>
       <sprite>sprites\sprSilverBow</sprite>
+      <sprite>sprites\sprGoldBow</sprite>
+      <sprite>sprites\sprOutlineBow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -696,8 +697,10 @@
     </scripts>
     <scripts name="Trinkets">
       <script>scripts\scrGetTrinketInfoById.gml</script>
-      <script>scripts\scrRestorePlayerHp.gml</script>
       <script>scripts\scrDrawTrinket.gml</script>
+      <script>scripts\scrGetCurrentTrinketType.gml</script>
+      <script>scripts\scrRestorePlayerHp.gml</script>
+      <script>scripts\scrGetCurrentHitCount.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -1042,6 +1045,7 @@
       <object>objects\oGoldenBowInfo</object>
       <object>objects\oGreenBowInfo</object>
       <object>objects\oTrinketInfo</object>
+      <object>objects\oOutlineBowInfo</object>
     </objects>
     <objects name="Shop">
       <object>objects\oShopTitle</object>
@@ -1332,6 +1336,7 @@
     <objects name="Credits">
       <object>objects\oCreditsCrawl</object>
       <object>objects\oFinalTitle</object>
+      <object>objects\oTrinketClearScreen</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -1346,6 +1351,7 @@
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTemplate</room>
     <room>rooms\rCredits</room>
+    <room>rooms\rTrinketClearRoom</room>
     <room>rooms\rPortalRoom</room>
     <room>rooms\rTournamentFinalRoom</room>
     <room>rooms\rPracticeChoiceRoom</room>
