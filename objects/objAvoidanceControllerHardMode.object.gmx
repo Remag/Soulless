@@ -6670,7 +6670,7 @@ if( t &gt;= 29680 &amp;&amp; t &lt; 30450 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 49 (10:09 - 10:24) Dark Solo B
+            <string>///HARD Alg Segment 49 (10:09 - 10:24) Dark Solo B
 if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -6717,6 +6717,18 @@ if( t &gt;= 30450 &amp;&amp; t &lt; 31215 &amp;&amp; instance_exists(objPlayer) 
                 segment50Variant = newVar;
                 scrA50Spawn( segment50Variant, 24, 0.5, color ); 
             }
+        }
+    }
+    
+    if( phaseT % 24 == 12 ) {
+        var offset = choose( 0, 25 );
+        var color = make_colour_hsv( random( 255 ), 255, 255 );
+        for( var i = 0; i &lt; 16; i++ ) {
+            var spawnX = i * 50 + offset;
+            var obj = instance_create( spawnX, 0, objAlgSphere );
+            obj.speed = 608 / 96;
+            obj.direction = 270;
+            obj.image_blend = color;
         }
     }
     
