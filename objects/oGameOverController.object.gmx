@@ -28,29 +28,25 @@
             <string>gameOverAlpha = 0;
 restartAlpha = 0;
 portalAlpha = 0;
-survivalPayoutAlpha = 0;
-pbPayoutAlpha = 0;
-gatePbPayoutAlpha = 0;
-
-attemptLength = 0;
-pbMark = false;
+durationAlpha = 0;
+payoutAlpha = 0;
 
 step = 0;
 payoutComplete = false;
 
-if( room == rAvoidanceMainRoom &amp;&amp; !global.TournamentMode ) {
-    var segment = objAvoidanceController.segment;
-    survivalPayout = scrGetTotalAttackReward( segment );
-    pbPayout = scrGetTotalPbReward( global.pb_segment, segment );
-    gatePbPayout = scrGetTotalGateReward( global.pb_segment, segment );
-} else {
-    survivalPayout = 0;
-    pbPayout = 0;
-    gatePbPayout = 0;
-}
-if( global.TournamentMode ) {
+if( room == rAvoidanceMainRoom ) {
+    if( !global.TournamentMode ) {
+        var segment = objAvoidanceController.segment;
+        survivalPayout = scrGetTotalAttackReward( segment ) + scrGetTotalPbReward( global.pb_segment, segment ) + scrGetTotalGateReward( global.pb_segment, segment );
+    } else {
+        survivalPayout = 0;
+    }
     attemptLength = objAvoidanceController.t;
     pbMark = attemptLength &gt; global.pb;
+} else {
+    survivalPayout = 0;
+    attemptLength = 0;
+    pbMark = false;
 }
 
 if( survivalPayout &gt; 0 || attemptLength &gt; 0 ) {
@@ -88,7 +84,7 @@ if( step &gt; 30 ) {
     gameOverAlpha = min( 1, gameOverAlpha + 0.1 );
 }
 if( step &gt; 40 ) {
-    survivalPayoutAlpha = min( survivalPayoutAlpha + 0.01, 1 );
+    durationAlpha = min( durationAlpha + 0.01, 1 );
 }
 if( step &gt; 50 &amp;&amp; room == rAvoidanceMainRoom &amp;&amp; !payoutComplete ) {
     // Reward the player and set pbs.
@@ -99,11 +95,7 @@ if( step &gt; 50 &amp;&amp; room == rAvoidanceMainRoom &amp;&amp; !payoutComplet
 }
 
 if( step &gt; 60 ) {
-    pbPayoutAlpha = min( pbPayoutAlpha + 0.01, 1 );
-}
-
-if( step &gt; 80 ) {
-    gatePbPayoutAlpha = min( gatePbPayoutAlpha + 0.01, 1 );
+    payoutAlpha = min( payoutAlpha + 0.01, 1 );
 }
 
 if( step &gt; returnTooltipDelay ) {
@@ -166,25 +158,11 @@ if( step &gt; returnTooltipDelay + 20 ) {
 
 draw_set_font( fNotifications );
 
-if( survivalPayout &gt; 0 ) {
-    var lineX = 455;
-    var lineY = gameOverY + 100;
-    draw_set_halign( fa_right );
-    draw_set_alpha( survivalPayoutAlpha );
-    draw_text( lineX, lineY, "Progress Reward:" ); 
-    draw_set_halign( fa_left );
-    var payoutString = string( survivalPayout );
-    draw_text( lineX + 25, lineY, payoutString );
-    var crystalScale = 0.5;
-    texture_set_interpolation( true );
-    draw_sprite_ext( sprSoulCrystal, 3, lineX + 30 + string_width( payoutString ), lineY - 8, crystalScale, crystalScale, 0, c_white, survivalPayoutAlpha );
-    texture_set_interpolation( false );
-}
 if( attemptLength &gt; 0 ) {
     var lineX = 397;
     var lineY = gameOverY + 100;
     draw_set_halign( fa_right );
-    draw_set_alpha( survivalPayoutAlpha );
+    draw_set_alpha( durationAlpha );
     if( pbMark ) {
         draw_set_color( c_yellow );
         draw_text( lineX, lineY, "New Best" ); 
@@ -197,33 +175,18 @@ if( attemptLength &gt; 0 ) {
     draw_set_color( c_white );
 }
 
-if( pbPayout &gt; 0 ) {
-    var lineX = 455;
+if( survivalPayout &gt; 0 ) {
+    var lineX = 397;
     var lineY = gameOverY + 150;
     draw_set_halign( fa_right );
-    draw_set_alpha( pbPayoutAlpha );
-    draw_text( lineX, lineY, "Personal Best:" ); 
+    draw_set_alpha( payoutAlpha );
+    draw_text( lineX, lineY, "Reward" ); 
     draw_set_halign( fa_left );
-    var payoutString = string( pbPayout );
+    var payoutString = string( survivalPayout );
     draw_text( lineX + 25, lineY, payoutString );
     var crystalScale = 0.5;
     texture_set_interpolation( true );
-    draw_sprite_ext( sprSoulCrystal, 3, lineX + 30 + string_width( payoutString ), lineY - 8, crystalScale, crystalScale, 0, c_white, pbPayoutAlpha );
-    texture_set_interpolation( false );
-}
-
-if( gatePbPayout &gt; 0 ) {
-    var lineX = 455;
-    var lineY = gameOverY + 200;
-    draw_set_halign( fa_right );
-    draw_set_alpha( pbPayoutAlpha );
-    draw_text( lineX, lineY, "Gate Clear:" ); 
-    draw_set_halign( fa_left );
-    var payoutString = string( gatePbPayout );
-    draw_text( lineX + 25, lineY, payoutString );
-    var crystalScale = 0.5;
-    texture_set_interpolation( true );
-    draw_sprite_ext( sprSoulCrystal, 3, lineX + 30 + string_width( payoutString ), lineY - 8, crystalScale, crystalScale, 0, c_white, pbPayoutAlpha );
+    draw_sprite_ext( sprSoulCrystal, 3, lineX + 30 + string_width( payoutString ), lineY - 8, crystalScale, crystalScale, 0, c_white, payoutAlpha );
     texture_set_interpolation( false );
 }
 
