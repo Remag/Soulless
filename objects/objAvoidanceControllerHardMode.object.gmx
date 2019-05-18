@@ -1726,7 +1726,7 @@ if( t &gt;= 7695 &amp;&amp; t &lt; 8465 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 12 (2:49 - 3:05) Robotic Bridge
+            <string>///HARD Arch. Segment 12 (2:49 - 3:05) Robotic Bridge
 if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1755,22 +1755,30 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
     if( t &lt; 9100 ) {
         arch_spd = random_range(5,15);
         arch_xx = 800-32;
+        //arch_yy = 304;
         arch_period = 1;
+        if( t &lt; 8657 ) {
+            s12_tt = (t - 8465)/(8657-8465);
+            arch_yy = lerp(304, 32, s12_tt);
+        } else if( t &gt; 8849 ) {
+            s12_tt = (t - 8849)/(9041-8849);
+            arch_yy = lerp(32, 304, s12_tt);                        
+        } else {
+            if( t &gt;= 9041 ) {
+                arch_yy = 304;
+            } else {
+                arch_yy = 32;            
+            }
+        }
         if( (t &gt; 8657 &amp;&amp; t &lt; 8849) || ( t &gt; 9041 &amp;&amp; t &lt; 9230 ) ) {
             arch_spd *= 0.5;
             arch_period = 2;
             if( t &lt; 8849 ) {
                 arch_xx = lerp(800-32, 32, (t - 8657)/(8858-8657));
-                with( objAlgA12LaserEffect ) {
-                    x = other.arch_xx;
-                }
             }
         }
         if( t &gt;= 8849 ) {
             arch_xx = 32;
-            with( objAlgA12LaserEffect ) {
-                x = other.arch_xx;
-            }
         }
         if( t == 8657 || t == 9041 ) {
             objAlgA12LaserEffect.rotationSpeed *= 0.5;
@@ -1785,13 +1793,17 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             }
         }
         if( t % arch_period == 0 || t % 5 == 0 ) {
-            a = instance_create(arch_xx, 32, objArchBullet1);
+            a = instance_create(arch_xx, arch_yy, objArchBullet1);
             a.direction = random_range(180, 360);
             a.speed = arch_spd;
             a.start_scale = random_range(0.25,1);
             a.image_xscale = a.start_scale;
             a.image_yscale = a.start_scale;
             a.image_index = irandom(2);
+        }
+        with( objAlgA12LaserEffect ) {
+            x = other.arch_xx;
+            y = other.arch_yy;
         }
     }
 
@@ -3230,7 +3242,7 @@ if( t &gt;= 14700 &amp;&amp; t &lt; 15850 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 25 (5:17 - 5:25) Victory Verse O
+            <string>///HARD Arch. Segment 25 (5:17 - 5:25) Victory Verse O
 if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 25;
     
@@ -3295,17 +3307,30 @@ if( t &gt;= 15850 &amp;&amp; t &lt; 16240 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arch. Segment 26 (5:25 - 5:40) Victory Verse X
+            <string>///HARD Arch. Segment 26 (5:25 - 5:40) Victory Verse X
 if( t &gt;= 16240 &amp;&amp; t &lt; 17010 &amp;&amp; instance_exists(objPlayer) ) {
     segment = 26;
     
     if( t % 96 == 16 &amp;&amp; t &lt; 16910 ) {
-        a = instance_create(400, 228, objArchBullet5);
-        a.direction = 0;
-        a.speed = 23;
-        a = instance_create(400, 228, objArchBullet5);
-        a.direction = 180;
-        a.speed = 23;
+        if( t%192 == 16 ) {
+            a = instance_create(400, 228, objArchBullet5);
+            a.direction = 30;
+            a.speed = 23;
+            a.angle = 270 + 30;
+            a = instance_create(400, 228, objArchBullet5);
+            a.direction = 180 + 30;
+            a.speed = 23;
+            a.angle = 270 + 30;
+        } else {
+            a = instance_create(400, 228, objArchBullet5);
+            a.direction = -30;
+            a.speed = 23;
+            a.angle = 270 - 30;
+            a = instance_create(400, 228, objArchBullet5);
+            a.direction = 180 - 30;
+            a.speed = 23;
+            a.angle = 270 - 30;
+        }
     }
     
     if( t &gt; 16917 &amp;&amp; t &lt; 16974 &amp;&amp; t%6 == 0 ) {

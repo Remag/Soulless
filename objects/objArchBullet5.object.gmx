@@ -35,6 +35,8 @@ image_speed = 0;
 rand = random(360);
 
 pat = choose(0,1);
+
+angle = 270;
 </string>
           </argument>
         </arguments>
@@ -61,7 +63,7 @@ pat = choose(0,1);
     a = instance_create(x, y, objArchBullet5_2);
     var maxRangeT = 1 - abs( 1 - x / 400 );
     var maxRange = lerp( 35, 20, maxRangeT );
-    a.direction = 270 + random_range(-maxRange, maxRange);
+    a.direction = angle + random_range(-maxRange, maxRange);
     a.image_angle = a.direction;
     a.special = 1;
     a.speed = random_range(4,5);
@@ -69,7 +71,7 @@ pat = choose(0,1);
 if( t % 4 == 1 ) {
     repeat(3) {
         a = instance_create(x, y, objArchBullet5_2);
-        a.direction = 270 + random_range(-40, 40);
+        a.direction = angle + random_range(-40, 40);
         a.image_angle = a.direction;
         a.speed = random_range(1,3);
     }
