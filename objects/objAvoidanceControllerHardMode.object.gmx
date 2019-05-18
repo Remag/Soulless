@@ -1395,7 +1395,7 @@ if( t &gt;= 5775 &amp;&amp; t &lt; 6545 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 9 (2:11 - 2:19) Throwback A
+            <string>///HARD Alg Segment 9 (2:11 - 2:19) Throwback A
 if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1408,6 +1408,15 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
         with( objAlgA7Sphere ) {
             curveSpeed = 3;
             image_blend = make_color_rgb( 255, 255, 0 );
+            type = 0;
+        }
+        scrMakeCircle( 100, 100, randomAngle, 8, 2, objAlgA7Sphere );
+        with( objAlgA7Sphere ) {
+            if( curveSpeed != 3 ) {
+                curveSpeed = -3;
+                image_blend = make_color_rgb( 0, 255, 0 );
+                type = 1;
+            }
         }
         for( var i = 0; i &lt; 4; i++ ) {
             var obj = instance_create( 700, 100, objAlgA12LaserEffect );
@@ -1416,23 +1425,47 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_blend = make_color_rgb( 255, 255, 0 );
             obj.rotationSpeed = -1.5;
             obj.hspeed = -1.5;
+            
+            var obj = instance_create( 100, 100, objAlgA12LaserEffect );
+            obj.image_angle = randomAngle;
+            obj.image_yscale = 0.5;
+            obj.image_blend = make_color_rgb( 0, 127, 0 );
+            obj.rotationSpeed = 1.5;
+            obj.hspeed = 1.5;
             randomAngle += 180 / 4;
         }
     }
     
     if( t % 5 == 0 ) {
         with( objAlgA7Sphere ) {
-            var obj = instance_create( x, y, objAlgSphere );
-            obj.image_blend = image_blend;
-            obj.direction = direction + other.segment9Angle;
-            obj.speed = 0.1;
-            obj.friction = -0.19;
+            if( type == 0 ) {
+                var obj = instance_create( x, y, objAlgSphere );
+                obj.image_blend = image_blend;
+                obj.direction = direction + other.segment9Angle;
+                obj.speed = 0.1;
+                obj.friction = -0.19;
+            }
         }
         segment9Angle += 12.5;
+    } 
+    if( t % 15 == 0 ) {
+        with( objAlgA7Sphere ) {
+            if( type != 0 ) {
+                var obj = instance_create( x, y, objAlgSphere );
+                obj.image_blend = image_blend;
+                obj.direction = direction + other.segment9Angle;
+                obj.speed = 0.1;
+                obj.friction = -0.15;
+            }
+        }
     }
     
     with( objAlgA7Sphere ) {
-        x -= 1.5;
+        if( type == 0 ) {
+            x -= 1.5;
+        } else {
+            x += 1.5;
+        }
     }
     if( t == 6870 ) {
         with( objAlgA7Sphere ) {
@@ -1755,8 +1788,9 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             a = instance_create(arch_xx, 32, objArchBullet1);
             a.direction = random_range(180, 360);
             a.speed = arch_spd;
-            a.image_xscale = random_range(0.25,1);
-            a.image_yscale = a.image_xscale;
+            a.start_scale = random_range(0.25,1);
+            a.image_xscale = a.start_scale;
+            a.image_yscale = a.start_scale;
             a.image_index = irandom(2);
         }
     }
@@ -1773,8 +1807,9 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
             a = instance_create(arch_xx, 32, objArchBullet1);
             a.direction = random_range(180, 360);
             a.speed = random_range(5,14);
-            a.image_xscale = random_range(0.25,1);
-            a.image_yscale = a.image_xscale;
+            a.start_scale = random_range(0.25,1);
+            a.image_xscale = a.start_scale;
+            a.image_yscale = a.start_scale;
             a.image_index = irandom(2);
         }
     }
@@ -1873,7 +1908,7 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 14 (3:12 - 3:20) Fatalism B
+            <string>///HARD Alg Segment 14 (3:12 - 3:20) Fatalism B
 if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1882,6 +1917,7 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
     if( t == 9613 ) {
         seg14CircleCount = 10;
         seg14CircleAngle = random( 360 );
+        seg14CircleCurve = choose( -1, 1 );
     }
     
     var phaseT = ( t - 9615 ) % 96;
@@ -1895,8 +1931,13 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         obj.image_yscale = scale;
     }
     
-    if( phaseT &gt;= 48 &amp;&amp; phaseT % 3 == 0 ) {
+    if( phaseT == 0 ) {
+        seg14CircleCurve *= -1;
+    } else if( phaseT &gt;= 48 &amp;&amp; phaseT % 3 == 0 ) {
         scrMakeCircle( 400, 100, seg14CircleAngle, seg14CircleCount, 10, objAlgA14Bullet ); 
+        with( objAlgA14Bullet ) {
+            self.curveSpeed = other.seg14CircleCurve;
+        }
         if( phaseT % 12 == 9 ) {
             seg14CircleCount += 10;
             seg14CircleAngle = random( 360 );
@@ -1961,7 +2002,7 @@ if( t &gt;= 9613 &amp;&amp; t &lt; 10000 &amp;&amp; instance_exists(objPlayer) )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 15 (3:20 - 3:28) Fatalism C
+            <string>///HARD Alg Segment 15 (3:20 - 3:28) Fatalism C
 if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1969,19 +2010,21 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
     
     if( t == 10000 ) {
         seg15SpawnOffset = choose( 0, 50 );
+        seg15SpawnAngle = choose( -15, 15 );
     }
     
     var tPhase = ( t - 10000 ) % 96;
     if( tPhase == 0 ) {
-        seg15SpawnOffset = abs( seg15SpawnOffset - 50 );
+        seg15SpawnOffset = abs( seg15SpawnOffset - 40 );
+        seg15SpawnAngle *= -1;
     }
     if( t &lt; 10380 &amp;&amp; tPhase &lt; 25 &amp;&amp; tPhase % 2 == 0 ) {
-        for( var i = 0; i &lt; 9; i++ ) {
+        for( var i = 0; i &lt; 11; i++ ) {
             var scale = random_range( 0.4, 1 ) * 8 / 15;
-            var spawnX = i * 100 + seg15SpawnOffset;
+            var spawnX = i * 80 + seg15SpawnOffset;
             var obj = instance_create( spawnX, 0, objAlgStarSlowing );
             obj.speed = 0.1;
-            obj.direction = 270 + random_range( -1, 1 );
+            obj.direction = 270 + random_range( -1, 1 ) + seg15SpawnAngle;
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.image_xscale = scale;
             obj.image_yscale = scale;
@@ -1991,7 +2034,7 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
     if( tPhase &gt;= 48 &amp;&amp; tPhase % 3 == 0 ) {
         repeat( 3 ) {
             var obj = instance_create( random( 800 ), 0, objAlgBullet );
-            obj.speed = random_range( 6, 10 );
+            obj.speed = random_range( 8, 12 );
             obj.direction = random_range( 185, 365 );
             obj.image_blend = make_colour_rgb( 255, 0, 0 );
         }
@@ -2007,6 +2050,16 @@ if( t &gt;= 10000 &amp;&amp; t &lt; 10380 &amp;&amp; instance_exists(objPlayer) 
         var obj = instance_create( 0, lerp( 608, 0, ( tPhase - 48 ) / 48 ), objAlgLaserBackEffect );
         obj.image_yscale = 1;
         obj.image_blend = make_colour_hsv( 100, 255, 255 );
+    }
+    
+    if( tPhase % 6 == 0 ) {
+        var scale = random_range( 0.4, 1 ) * 8 / 15;
+        var obj = instance_create( random( 800 ), 0, objAlgStarSlowing );
+        obj.speed = 0.1;
+        obj.direction = point_direction( obj.x, obj.y, random( 800 ), 608 );
+        obj.image_blend = make_colour_hsv( 0, 255, 255 );
+        obj.image_xscale = scale;
+        obj.image_yscale = scale;
     }
     
     segment = 15;
@@ -2356,7 +2409,7 @@ if( t &gt;= 11148 &amp;&amp; t &lt; 11530 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 19 (3:51 - 4:06) Machinations A
+            <string>///HARD Alg Segment 19 (3:51 - 4:06) Machinations A
 if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2369,7 +2422,7 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnXMax = 600;
         seg19SpawnYMin = 30;
         seg19SpawnYMax = 170;
-        seg19CircleCount = 40;
+        seg19CircleCount = 60;
         seg19SpawnColor = make_colour_hsv( 0, 255, 255 );
         with( objGate3ShaderBlock ) {
             image_blend = other.seg19SpawnColor;
@@ -2379,7 +2432,7 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnXMax = 50;
         seg19SpawnYMin = 0;
         seg19SpawnYMax = 200;
-        seg19CircleCount = 35;
+        seg19CircleCount = 55;
         seg19SpawnColor = make_colour_hsv( 125, 255, 255 );
         with( objAlgA19Knife ) {
             image_blend = other.seg19SpawnColor;
@@ -2392,7 +2445,7 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         seg19SpawnXMax = 800;
         seg19SpawnYMin = 0;
         seg19SpawnYMax = 200;
-        seg19CircleCount = 40;
+        seg19CircleCount = 45;
         seg19SpawnColor = make_colour_hsv( 43, 255, 255 );
         with( objAlgA19Knife ) {
             image_blend = other.seg19SpawnColor;
@@ -2422,9 +2475,12 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
             repeat( 2 ) {
                 var spawnX = random_range( seg19SpawnXMin, seg19SpawnXMax );
                 var spawnY = random_range( seg19SpawnYMin, seg19SpawnYMax );
-                var circle = scrMakeCircle( spawnX, spawnY, circlePhase + circleOffset, seg19CircleCount, 10, objAlgA19Knife ); 
+                var circle = scrMakeCircle( spawnX, spawnY, circlePhase + circleOffset, seg19CircleCount, 15, objAlgA19Knife ); 
                 for( var i = 0; i &lt; seg19CircleCount; i++ ) {
                     circle[i].image_blend = seg19SpawnColor;
+                    circle[i].activationDistance = 150;
+                    circle[i].speedMin = 4;
+                    circle[i].speedMax = 15;
                 }
                 var circleDelta = 360 / seg19CircleCount;
                 circleOffset += random_range( 3, circleDelta - 3 );
@@ -2450,6 +2506,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
                 var circle = scrMakeCircle( spawnX, spawnY, random( 360 ), 8, 10, objAlgA19Knife ); 
                 for( var i = 0; i &lt; 8; i++ ) {
                     circle[i].image_blend = seg19SpawnColor;
+                    circle[i].activationDistance = 150;
+                    circle[i].speedMin = 4;
+                    circle[i].speedMax = 15;
                 }
                 repeat( 11 ) {
                     var scale = random_range( 0.4, 1 );
@@ -2478,9 +2537,9 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
     // Effects.
     var colorHue = colour_get_hue( seg19SpawnColor );
     with( objAlgA19SquareEffect ) {
-        var radius = random_range( 180, 200 );
+        var radius = random_range( 140, 150 );
         if( tPhase &lt; 50 ) {
-            radius = random_range( lerp( 0, 180, tPhase / 50 ), lerp( 0, 200, tPhase / 50 ) );
+            radius = random_range( lerp( 0, 140, tPhase / 50 ), lerp( 0, 150, tPhase / 50 ) );
         }
         speed = 1;
         direction = random( 360 );
