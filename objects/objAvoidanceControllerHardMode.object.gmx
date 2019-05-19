@@ -1862,7 +1862,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 13 (3:05 - 3:12) Fatalism A
+            <string>///HARD Alg Segment 13 (3:05 - 3:12) Fatalism A
 if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -1870,10 +1870,11 @@ if( t &gt;= 9230 &amp;&amp; t &lt; 9613 &amp;&amp; instance_exists(objPlayer) ) 
     
     var phaseT = t - 9230;
     if( phaseT % 48 &lt; 24 &amp;&amp; phaseT % 2 == 0 ) {
-        repeat( 3 ) {
+        repeat( 4 ) {
             var scale = random_range( 0.4, 1 ) * 8 / 15;
             var obj = instance_create( random( 800 ), 0, objAlgStarSlowing );
             obj.speed = 0.1;
+            obj.speedMax = 25;
             obj.direction = point_direction( obj.x, obj.y, random_range( -620, 1420 ), 608 );
             obj.image_blend = make_colour_hsv( random( 255 ), 255, 255 );
             obj.image_xscale = scale;
@@ -2599,7 +2600,7 @@ if( t &gt;= 11540 &amp;&amp; t &lt; 12290 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 20 (4:06 - 4:13) Machinations B
+            <string>///HARD Alg Segment 20 (4:06 - 4:13) Machinations B
 if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2609,7 +2610,7 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
     if( t &lt; 12578 ) {
         if( tPhase == 0 ) {
             var offset = random_range( -20, 0 );
-            var line = scrMakeLine( offset, 0, 840 + offset, 0, 35, objAlgA20Sphere );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 70, objAlgA20Sphere );
             var lineSpeed = random_range( 10, 20 );
             if( t == 12290 ) {
                 lineSpeed = 10;
@@ -2617,8 +2618,10 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
             for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
                 line[i].speed = lineSpeed;
                 line[i].direction = 270;
+                line[i].minSpeed = 3;
+                line[i].maxSpeed = 15;
             }
-            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 70, objAlgA20SquareEffect );
             for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
                 line[i].speed = 608 / 20 - lineSpeed;
                 line[i].rotationSpeed = random_range( 30, 60 ) * choose( -1, 1 );
@@ -2630,17 +2633,17 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
     } else if( t &lt; 12670 ) {
         if( tPhase == 0 || tPhase == 24 || tPhase == 48 ) {
             var offset = random_range( -20, 0 );
-            var line = scrMakeLine( offset, 0, 840 + offset, 0, 30, objAlgA20Sphere );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 45, objAlgA20Sphere );
             var lineSpeed = lerp( 35, 20, tPhase / 62 ) * 5 / 6;
             for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
                 line[i].speed = lineSpeed;
                 line[i].direction = 270;
                 line[i].framePoint1 = 12;
                 line[i].framePoint2 = 24;
-                line[i].minSpeed = 3;
-                line[i].maxSpeed = 15;
+                line[i].minSpeed = 4;
+                line[i].maxSpeed = 20;
             }
-            line = scrMakeLine( offset, 608, 840 + offset, 608, 35, objAlgA20SquareEffect );
+            line = scrMakeLine( offset, 608, 840 + offset, 608, 45, objAlgA20SquareEffect );
             for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
                 line[i].speed = 608 / 12 - lineSpeed;
                 line[i].framePoint1 = 12;
@@ -2689,7 +2692,7 @@ if( t &gt;= 12290 &amp;&amp; t &lt; 12675 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 20B (4:13 - 4:21) Machinations B
+            <string>///HARD Alg Segment 20B (4:13 - 4:21) Machinations B
 if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -2699,7 +2702,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
     if( t &lt; 12963 ) {
         if( tPhase == 0 ) {
             var offset = random_range( -20, 0 );
-            var line = scrMakeLine( offset, 0, 840 + offset, 0, 25, objAlgA20Sphere );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 35, objAlgA20Sphere );
             var lineSpeed = random_range( 10, 20 );
             if( t == 12675 ) {
                 lineSpeed = 10;
@@ -2721,7 +2724,7 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
     } else if( t &lt; 13059 ) {
         if( tPhase == 0 || tPhase == 24 || tPhase == 48 ) {
             var offset = random_range( -20, 0 );
-            var line = scrMakeLine( offset, 0, 840 + offset, 0, 25, objAlgA20Sphere );
+            var line = scrMakeLine( offset, 0, 840 + offset, 0, 35, objAlgA20Sphere );
             var lineSpeed = lerp( 35, 20, tPhase / 62 ) * 5 / 6;
             for( var i = 0; i &lt; array_length_1d( line ); i++ ) {
                 line[i].speed = lineSpeed;
@@ -2744,7 +2747,8 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
     }
     
     if( ( t - 12675 ) % 2 == 0 ) {
-        var obj = instance_create( 400, 0, objAlgBullet );
+        var spawnX = lerp( 400, 0, ( t - 12675 ) / ( 13075 - 12675 ) );
+        var obj = instance_create( choose( spawnX, 800 - spawnX ), 0, objAlgBullet );
         obj.speed = random_range( 9, 10 );
         obj.direction = random_range( 180, 360 );
         obj.image_angle = obj.direction;
@@ -2783,33 +2787,48 @@ if( t &gt;= 12675 &amp;&amp; t &lt; 13075 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 21 (4:21 - 4:37) Reminiscence A &amp; B
+            <string>///HARD Alg Segment 21 (4:21 - 4:37) Reminiscence A &amp; B
 if( t &gt;= 13075 &amp;&amp; t &lt; 13840 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
     }
     
     var phaseT = ( t - 13075 );
-
+    var gravMin = 1.1;
+    var gravMax = 1.5;
     if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 0 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 0 ) ) {
         var obj = instance_create( -150, 32, objAlgA22Sphere );
         obj.hspeed = random_range( 1.5, 3 );
-        obj.gravity = 0.095;
+        obj.gravity = 0.095 * random_range( gravMin, gravMax );
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        
+        if( phaseT % 72 == 0 || phaseT % 93 == 0 ) {
+            obj = instance_create( -75, 64, objAlgA22Sphere );
+            obj.hspeed = random_range( 3, 6 );
+            obj.gravity = 0.095 * random_range( gravMin, gravMax );
+            obj.image_blend = make_colour_hsv( 135, 255, 255 );
+        }
         
         obj = instance_create( 0, 32, objAlgA22Sphere );
         obj.hspeed = random_range( 2, 10 );
-        obj.gravity = 0.095;
+        obj.gravity = 0.095 * random_range( gravMin, gravMax );
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
     } else if( ( phaseT &lt;= 96 * 4 &amp;&amp; phaseT % 24 == 12 ) || ( phaseT &gt; 96 * 4 &amp;&amp; phaseT % 31 == 15 ) ) {
         var obj = instance_create( 950, 32, objAlgA22Sphere );
         obj.hspeed = -random_range( 1.5, 3 );
-        obj.gravity = 0.095;
+        obj.gravity = 0.095 * random_range( gravMin, gravMax );
         obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        
+        if( phaseT % 72 == 12 || phaseT % 93 == 15 ) {
+            obj = instance_create( 875, 64, objAlgA22Sphere );
+            obj.hspeed = -random_range( 3, 6 );
+            obj.gravity = 0.095 * random_range( gravMin, gravMax );
+            obj.image_blend = make_colour_hsv( 192, 255, 255 );
+        }
         
         obj = instance_create( 800, 32, objAlgA22Sphere );
         obj.hspeed = -random_range( 2, 10 );
-        obj.gravity = 0.095;
+        obj.gravity = 0.095 * random_range( gravMin, gravMax );
         obj.image_blend = make_colour_hsv( 192, 255, 255 );
     }
     
@@ -3531,7 +3550,7 @@ if( t &gt;= 17010 &amp;&amp; t &lt; 17775 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 28 (5:55 - 6:11) Malevolence
+            <string>///HARD Alg Segment 28 (5:55 - 6:11) Malevolence
 if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3539,34 +3558,35 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
     if( t == 17775 ) {
         seg29Speed = random_range( 0.5, 29 );
     }
+    var buff = 1.2;
     var effectColorVal = random_range( 35, 60 );
     var scale = 0.85 * 15 / 18;
-    seg29Speed = ( seg29Speed + random_range( 6, 22 ) ) % 29 + 0.5;
+    seg29Speed = ( seg29Speed + random_range( 6, 22 ) / buff ) % ( 29 / buff ) + 0.5;
     if( t &lt; 17967 ) {
-        var obj = instance_create( 800, 608 - 32 - 96, objAlgA29Frag );
-        obj.speed = seg29Speed;
+        var obj = instance_create( 800, 608 - 32 - 32, objAlgA29Frag );
+        obj.speed = seg29Speed * buff;
         obj.direction = 90;
         obj.image_angle = obj.direction;
-        obj.dirInc = 2;
+        obj.dirInc = 2 * buff;
         obj.image_blend = make_colour_hsv( 192, 255, 255 );
         obj.image_xscale = scale;
         obj.image_yscale = scale;
     } else if( t &lt; 18159 ) {
-        var obj = instance_create( 0, 608 - 32 - 96, objAlgA29Frag );
-        obj.speed = seg29Speed;
+        var obj = instance_create( 0, 608 - 32 - 32, objAlgA29Frag );
+        obj.speed = seg29Speed * buff;
         obj.direction = 90;
         obj.image_angle = obj.direction;
-        obj.dirInc = -2;
+        obj.dirInc = -2 * buff;
         obj.image_blend = make_colour_hsv( 135, 255, 255 );
         obj.image_xscale = scale;
         obj.image_yscale = scale;
     }
     if( t &gt;= 18130 &amp;&amp; t &lt; 18351 &amp;&amp; t % 5 != 0 ) {
-        var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18159 ) / ( 18351 - 18159 ) );
+        var spawnY = lerp( 608 - 32 - 32, 608, ( t - 18159 ) / ( 18351 - 18159 ) );
         var spawnDir = 45;
-        var spawnFramePoint = 80;
+        var spawnFramePoint = floor( 80 / buff );
         var obj = instance_create( 800, spawnY, objAlgA29Frag );
-        obj.speed = seg29Speed;
+        obj.speed = seg29Speed * buff;
         obj.direction = spawnDir;
         obj.image_angle = obj.direction;
         obj.framePoint = spawnFramePoint;
@@ -3576,11 +3596,11 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         obj.image_yscale = scale;
     }
     if( t &gt;= 18330 &amp;&amp; t &lt; 18480 &amp;&amp; t % 5 != 0 ) {
-        var spawnY = lerp( 608 - 32 - 96, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
+        var spawnY = lerp( 608 - 32 - 32, 608, ( t - 18351 ) / ( 18480 - 18351 ) );
         var spawnDir = 135; 
-        var spawnFramePoint = 80;
+        var spawnFramePoint = floor( 80 / buff );
         var obj = instance_create( 0, spawnY, objAlgA29Frag );
-        obj.speed = seg29Speed;
+        obj.speed = seg29Speed * buff;
         obj.direction = spawnDir;
         obj.image_angle = obj.direction;
         obj.framePoint = spawnFramePoint;
@@ -3677,7 +3697,7 @@ if( t &gt;= 17775 &amp;&amp; t &lt; 18545 &amp;&amp; instance_exists(objPlayer) 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alg Segment 29 (6:11 - 6:34) Sickness A
+            <string>///HARD Alg Segment 29 (6:11 - 6:34) Sickness A
 if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) ) {
     if( !instance_exists( objAlgShaderDrawer ) ) {
         instance_create( 0, 0, objAlgShaderDrawer );
@@ -3706,18 +3726,22 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
             srcGate4BlockColor( color );
             var spawnX = random_range( 150, 650 );
             var spawnY = random( 150 );
-            repeat( 80 ) {
+            
+            //repeat( 100 ) {
+            var count = 90;
+            var randomAngle = random( 360 );
+            for( var i = 0; i &lt; count; i++ ) {
                 var obj = instance_create( spawnX, spawnY, objAlgA30Sphere );
                 //obj.image_xscale = 4.0;
                 //obj.image_yscale = 0.25;
                 obj.image_blend = color;
-                obj.direction = random( 360 );
+                obj.direction = randomAngle + i * 360 / count + random( 360 / count );
                 obj.image_angle = obj.direction;
                 if( phaseT &lt; 48 * 15 ) {
-                    obj.speed = random_range( 3, 12 );
+                    obj.speed = random_range( 2, 11 );
                     obj.friction = obj.speed / 96;
                 } else {
-                    obj.speed = random_range( 5, 16 );
+                    obj.speed = random_range( 3, 20 );
                     obj.friction = obj.speed / 96;
                     obj.friction *= 1.9;
                 }
@@ -3735,10 +3759,11 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         srcGate4BlockColor( seg30Color );
     }
     if( phaseT &gt;= 48 * 7 &amp;&amp; phaseT &lt; 48 * 7 + 48 ) {
+        var angleOffset = 10 * sin( ( phaseT - 48 * 7 ) * pi / 24 );
         var targetSpeed = lerp( 0.1, 15, ( phaseT - 48 * 7 ) / 48 );
         var obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
-        obj.direction = seg30Dir;
+        obj.direction = seg30Dir + angleOffset;
         obj.image_angle = obj.direction;
         obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
@@ -3746,7 +3771,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
-        obj.direction = seg30Dir + 25;
+        obj.direction = seg30Dir + 25 + angleOffset;
         obj.image_angle = obj.direction;
         obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
@@ -3754,7 +3779,7 @@ if( t &gt;= 18545 &amp;&amp; t &lt; 19697 &amp;&amp; instance_exists(objPlayer) 
         
         obj = instance_create( seg30Side, 0, objAlgRice );
         obj.image_blend = seg30Color;
-        obj.direction = seg30Dir - 25;
+        obj.direction = seg30Dir - 25 + angleOffset;
         obj.image_angle = obj.direction;
         obj.speed = targetSpeed;
         obj.image_xscale = 1.33;
