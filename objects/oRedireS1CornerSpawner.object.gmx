@@ -54,8 +54,10 @@ spawnPeriod = 50;
     var obj = instance_create( x, y, objAlgSphere );
     obj.image_index = irandom_range( 0, 2 );
     obj.shouldUseShader = false;
-    obj.speed = random_range( 3, 6 );
-    obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+    //obj.speed = random_range( 3, 6 );
+    obj.speed = random_range( 4, 5 );
+    //obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608 ) );
+    obj.direction = point_direction( obj.x, obj.y, random( 800 ), random( 608-32 ) );
     obj.isSpeedReduced = false;
     
     if( global.hardMode ) {
