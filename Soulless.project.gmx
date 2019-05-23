@@ -1216,6 +1216,7 @@
       <object>objects\objAlg</object>
       <object>objects\objAlg_NoKiller</object>
       <object>objects\objAlgSphere</object>
+      <object>objects\objAlgS1Sphere</object>
       <object>objects\objAlgRing</object>
       <object>objects\objAlgSphereGrad</object>
       <object>objects\objAlgSphereCurve</object>
