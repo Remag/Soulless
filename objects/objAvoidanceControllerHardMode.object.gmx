@@ -1770,7 +1770,7 @@ if( t &gt;= 8465 &amp;&amp; t &lt; 9250 &amp;&amp; instance_exists(objPlayer) ) 
                 arch_yy = 32;            
             }
         }
-        if( (t &gt; 8657 &amp;&amp; t &lt; 8849) || ( t &gt; 9041 &amp;&amp; t &lt; 9230 ) ) {
+        if( (t &gt;= 8657 &amp;&amp; t &lt; 8849) || ( t &gt;= 9041 &amp;&amp; t &lt; 9230 ) ) {
             arch_spd *= 0.5;
             arch_period = 2;
             if( t &lt; 8849 ) {
