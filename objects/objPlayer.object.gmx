@@ -43,12 +43,33 @@ sprite_index = oPlayerData.currentSkin.idleSprite;
 scrSetPlayerMask(); //set the player's hitbox
 
 outlineValue = 0;
-if( global.debugMode ) {
-    playerHP = global.debugStartHp;
-} else {
-    playerHP = 1;
+switch( scrGetCurrentTrinketType() ) {
+    case 1:
+        playerHP = 2;
+        break;
+    case 2:
+        playerHP = 2;
+        break;
+    case 3:
+        playerHP = 3;
+        break;
+    case 4:
+        playerHP = 3;
+        break;
+    case 5:
+        playerHP = 99999;
+        break;
+    default:
+        playerHP = 1;
+        break;
 }
+if( global.debugMode ) {
+    playerHP = max( playerHP, global.debugStartHp );
+}
+playerPrevHP = playerHP;
 invulFrames = 0;
+hitCount = 0;
+shieldAnimationFrame = 0;
 
 </string>
           </argument>
@@ -171,6 +192,11 @@ if (global.playerAnimationFix)
     invulFrames--;
 } else {
     invulFrames = 0;
+}
+if( shieldAnimationFrame &gt; 0 ) {
+    shieldAnimationFrame--;
+} else {
+    shieldAnimationFrame = 0;
 }
 //check left/right button presses
 var L = (scrButtonCheck(global.leftButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
@@ -637,13 +663,13 @@ if (global.grav == -1)      //need to draw the player a pixel off in the y-axis 
     drawY += 1;
 
 var currentAlpha = image_alpha;
-if( invulFrames &gt; 0 ) {
+if( invulFrames &gt; 0 &amp;&amp; scrGetCurrentTrinketType() == 5 ) {
     image_alpha /= 2;
     draw_set_color(c_white);
     draw_set_font(fDefault12);
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
-    draw_text( x, y - 20, string( playerHP ) );
+    draw_text( x, y - 20, string( hitCount ) );
 }
 if( outlineValue == 0 ) {    
     draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
@@ -666,6 +692,9 @@ if( outlineValue == 0 ) {
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue * image_alpha, true );
 }
 scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha );
+if( shieldAnimationFrame &gt; 0 ) {
+    scrDrawShield( oPlayerData.currentTrinket.shieldSprite, shieldAnimationFrame, playerHP, playerPrevHP, image_xscale * xScale, image_alpha );
+}
 
 image_alpha = currentAlpha;
 </string>

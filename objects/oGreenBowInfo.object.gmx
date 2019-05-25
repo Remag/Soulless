@@ -30,6 +30,7 @@ name = "Green Bow";
 description = "Gate shield";
 
 trinketSprite = sprGreenBow;
+shieldSprite = sprGreenShield;
 
 </string>
           </argument>

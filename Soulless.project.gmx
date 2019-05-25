@@ -514,6 +514,10 @@
       <sprite>sprites\sprSilverBow</sprite>
       <sprite>sprites\sprGoldBow</sprite>
       <sprite>sprites\sprOutlineBow</sprite>
+      <sprite>sprites\sprRedShield</sprite>
+      <sprite>sprites\sprGreenShield</sprite>
+      <sprite>sprites\sprSilverShield</sprite>
+      <sprite>sprites\sprGoldShield</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -698,6 +702,7 @@
     <scripts name="Trinkets">
       <script>scripts\scrGetTrinketInfoById.gml</script>
       <script>scripts\scrDrawTrinket.gml</script>
+      <script>scripts\scrDrawShield.gml</script>
       <script>scripts\scrGetCurrentTrinketType.gml</script>
       <script>scripts\scrRestorePlayerHp.gml</script>
       <script>scripts\scrGetCurrentHitCount.gml</script>

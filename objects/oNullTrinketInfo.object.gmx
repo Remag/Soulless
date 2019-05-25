@@ -30,6 +30,7 @@ name = "Nothing";
 description = "This one's for free";
 
 trinketSprite = -1;
+shieldSprite = -1;
 
 </string>
           </argument>

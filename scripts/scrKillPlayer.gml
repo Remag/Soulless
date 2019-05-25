@@ -8,8 +8,13 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath) && !
         with( objPlayer ) {
             if( invulFrames == 0 ) {
                 needKillPlayer = playerHP <= 1;
+                playerPrevHP = playerHP;
                 playerHP--;
-                invulFrames = 50;
+                hitCount++;
+                if( !needKillPlayer ) {
+                    shieldAnimationFrame = 30;
+                    invulFrames = 50;
+                }
                 wasHitRegistered = true;
             } else {
                 needKillPlayer = false;

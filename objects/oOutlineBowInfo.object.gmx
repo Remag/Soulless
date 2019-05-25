@@ -30,6 +30,7 @@ name = "Outline Bow";
 description = "Absolute shield";
 
 trinketSprite = sprOutlineBow;
+shieldSprite = -1;
 
 </string>
           </argument>
