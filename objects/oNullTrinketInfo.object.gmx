@@ -29,7 +29,9 @@
 name = "Nothing";
 description = "This one's for free";
 
-trinketSprite = -1;
+maxHp = 1;
+
+trinketHasSprite = false;
 shieldSprite = -1;
 
 </string>

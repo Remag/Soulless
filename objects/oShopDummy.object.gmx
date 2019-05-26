@@ -148,7 +148,7 @@ if( section == 0 ) {
             <kind>1</kind>
             <string>draw_self();
 scrDrawWeapon( weaponInfo, playerInfo, 1, image_alpha, false );
-scrDrawTrinket( trinketInfo, 1, image_alpha );
+scrDrawTrinket( trinketInfo, 1, image_alpha, trinketInfo.maxHp );
 
 var section = oShopItemSelector.currentSection;
 var item = oShopItemSelector.currentItem;

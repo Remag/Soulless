@@ -4,7 +4,7 @@ var newPbSegment = argument1;
 var result = 0;
 for( var i = prevPbSegment + 1; i <= newPbSegment; i++ ) {
     var segmentGate = scrGetSegmentGate( i );
-    result += scrGetGateSegmentReward( segmentGate ) * 5;
+    result += scrGetGateSegmentReward( segmentGate ) * 4;
 }
 
 return result;

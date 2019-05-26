@@ -29,7 +29,12 @@
 name = "Golden Bow";
 description = "Double gate shield";
 
-trinketSprite = sprGoldBow;
+maxHp = 3;
+
+trinketHasSprite = true;
+trinketSprites[3] = sprGoldBow;
+trinketSprites[2] = sprHalfGoldBow;
+trinketSprites[1] = sprEmptyGoldBow;
 shieldSprite = sprGoldShield;
 
 </string>

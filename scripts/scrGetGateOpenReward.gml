@@ -8,9 +8,9 @@ switch( gateId ) {
     case 3:
         return 5000;
     case 4:
-        return 15000;
+        return 10000;
     case 5:
-        return 30000;
+        return 20000;
     case 6:
         return 0;
     default:

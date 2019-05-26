@@ -29,7 +29,12 @@
 name = "Silver Bow";
 description = "Regenerating shield";
 
-trinketSprite = sprSilverBow;
+maxHp = 3;
+
+trinketHasSprite = true;
+trinketSprites[3] = sprSilverBow;
+trinketSprites[2] = sprHalfSilverBow;
+trinketSprites[1] = sprEmptySilverBow;
 shieldSprite = sprSilverShield;
 
 </string>

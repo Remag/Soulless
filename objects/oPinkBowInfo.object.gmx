@@ -29,7 +29,11 @@
 name = "Pink Bow";
 description = "Single shield";
 
-trinketSprite = sprBow;
+maxHp = 2;
+
+trinketHasSprite = true;
+trinketSprites[2] = sprBow;
+trinketSprites[1] = sprEmptyBow;
 shieldSprite = sprRedShield;
 
 </string>

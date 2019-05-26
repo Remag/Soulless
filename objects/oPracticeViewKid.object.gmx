@@ -130,7 +130,7 @@ if( moveLeft ) {
             <kind>1</kind>
             <string>draw_self();
 scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale, image_alpha, false );
-scrDrawTrinket( oPlayerData.currentTrinket, image_xscale, image_alpha );
+scrDrawTrinket( oPlayerData.currentTrinket, image_xscale, image_alpha, oPlayerData.currentTrinket.maxHp );
 </string>
           </argument>
         </arguments>

@@ -95,7 +95,7 @@ draw_text( 400, 270, trinketName + " Clear" );
 draw_set_alpha( hitCountAlpha );
 draw_set_font( fPracticeHint );
 var hitCount = oPlayerData.lastFinalHitCount;
-draw_text( 400, 310, "Hit Count: " + string( hitCount ) );
+draw_text( 400, 310, "Hit Count:  " + string( hitCount ) );
 
 draw_set_alpha( portalAlpha );
 draw_set_font( fNotifications );

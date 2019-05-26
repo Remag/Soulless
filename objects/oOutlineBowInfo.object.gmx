@@ -26,10 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>uniqueId = 17;
-name = "Outline Bow";
-description = "Absolute shield";
+name = "Absolute Bow";
+description = "Impenetrable shield";
 
-trinketSprite = sprOutlineBow;
+maxHp = 99999;
+
+trinketHasSprite = true;
+trinketSprites[3] = sprWhiteBow;
+trinketSprites[2] = sprWhiteBow;
+trinketSprites[1] = sprWhiteBow;
 shieldSprite = -1;
 
 </string>

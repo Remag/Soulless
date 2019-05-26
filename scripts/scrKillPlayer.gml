@@ -23,7 +23,7 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath) && !
         }
         
         if( !needKillPlayer && wasHitRegistered ) {
-            global.deathSound = audio_play_sound( sndGhostDeath, 0, false );
+            global.deathSound = audio_play_sound( sndShieldHit, 0, false );
         }  
          
         if( needKillPlayer ) {

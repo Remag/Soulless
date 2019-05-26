@@ -43,26 +43,8 @@ sprite_index = oPlayerData.currentSkin.idleSprite;
 scrSetPlayerMask(); //set the player's hitbox
 
 outlineValue = 0;
-switch( scrGetCurrentTrinketType() ) {
-    case 1:
-        playerHP = 2;
-        break;
-    case 2:
-        playerHP = 2;
-        break;
-    case 3:
-        playerHP = 3;
-        break;
-    case 4:
-        playerHP = 3;
-        break;
-    case 5:
-        playerHP = 99999;
-        break;
-    default:
-        playerHP = 1;
-        break;
-}
+playerHP = oPlayerData.currentTrinket.maxHp;
+
 if( global.debugMode ) {
     playerHP = max( playerHP, global.debugStartHp );
 }
@@ -664,12 +646,14 @@ if (global.grav == -1)      //need to draw the player a pixel off in the y-axis 
 
 var currentAlpha = image_alpha;
 if( invulFrames &gt; 0 &amp;&amp; scrGetCurrentTrinketType() == 5 ) {
-    image_alpha /= 2;
+    image_alpha = max( 0.5, 1 - invulFrames / 50 );
     draw_set_color(c_white);
-    draw_set_font(fDefault12);
+    draw_set_font(fNotifications);
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
+    draw_set_alpha( 1 - image_alpha );
     draw_text( x, y - 20, string( hitCount ) );
+    draw_set_alpha( 1 );
 }
 if( outlineValue == 0 ) {    
     draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
@@ -691,7 +675,7 @@ if( outlineValue == 0 ) {
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, ( 1 - outlineValue ) * image_alpha, false );
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue * image_alpha, true );
 }
-scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha );
+scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha, playerHP );
 if( shieldAnimationFrame &gt; 0 ) {
     scrDrawShield( oPlayerData.currentTrinket.shieldSprite, shieldAnimationFrame, playerHP, playerPrevHP, image_xscale * xScale, image_alpha );
 }

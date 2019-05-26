@@ -180,6 +180,7 @@
     <sound>sound\sndBuildUp</sound>
     <sound>sound\sndExplosion</sound>
     <sound>sound\sndFinalAmbiance</sound>
+    <sound>sound\sndShieldHit</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -510,10 +511,16 @@
     <sprite>sprites\sprEntranceGrad</sprite>
     <sprites name="Trinkets">
       <sprite>sprites\sprBow</sprite>
+      <sprite>sprites\sprEmptyBow</sprite>
       <sprite>sprites\sprGreenBow</sprite>
+      <sprite>sprites\sprEmptyGreenBow</sprite>
       <sprite>sprites\sprSilverBow</sprite>
+      <sprite>sprites\sprHalfSilverBow</sprite>
+      <sprite>sprites\sprEmptySilverBow</sprite>
       <sprite>sprites\sprGoldBow</sprite>
-      <sprite>sprites\sprOutlineBow</sprite>
+      <sprite>sprites\sprHalfGoldBow</sprite>
+      <sprite>sprites\sprEmptyGoldBow</sprite>
+      <sprite>sprites\sprWhiteBow</sprite>
       <sprite>sprites\sprRedShield</sprite>
       <sprite>sprites\sprGreenShield</sprite>
       <sprite>sprites\sprSilverShield</sprite>
@@ -1044,12 +1051,12 @@
       </objects>
     </objects>
     <objects name="Trinkets">
-      <object>objects\oNullTrinketInfo</object>
-      <object>objects\oSilverBowInfo</object>
-      <object>objects\oPinkBowInfo</object>
-      <object>objects\oGoldenBowInfo</object>
-      <object>objects\oGreenBowInfo</object>
       <object>objects\oTrinketInfo</object>
+      <object>objects\oNullTrinketInfo</object>
+      <object>objects\oPinkBowInfo</object>
+      <object>objects\oGreenBowInfo</object>
+      <object>objects\oSilverBowInfo</object>
+      <object>objects\oGoldenBowInfo</object>
       <object>objects\oOutlineBowInfo</object>
     </objects>
     <objects name="Shop">

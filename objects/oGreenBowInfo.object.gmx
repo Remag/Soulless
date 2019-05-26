@@ -29,7 +29,11 @@
 name = "Green Bow";
 description = "Gate shield";
 
-trinketSprite = sprGreenBow;
+maxHp = 2;
+
+trinketHasSprite = true;
+trinketSprites[2] = sprGreenBow;
+trinketSprites[1] = sprEmptyGreenBow;
 shieldSprite = sprGreenShield;
 
 </string>
