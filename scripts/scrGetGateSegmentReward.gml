@@ -2,7 +2,7 @@ var gateId = argument0;
 
 switch( gateId ) {
     case 1:
-        return 10;
+        return 20;
     case 2:
         return 50;
     case 3:
