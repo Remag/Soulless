@@ -9,7 +9,9 @@ payoutCount += scrGetTotalPbReward( pbSegment, segment );
 // Gate PB.
 payoutCount += scrGetTotalGateReward( pbSegment, segment );
 
-oPlayerData.currencyCount += payoutCount;
+if( scrGetCurrentTrinketType() != 5 ) {
+    oPlayerData.currencyCount += payoutCount;
+}
 
 // Set new pb segments.
 scrUpdatePersonalBest();

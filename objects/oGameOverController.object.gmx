@@ -37,7 +37,11 @@ payoutComplete = false;
 if( room == rAvoidanceMainRoom ) {
     if( !global.TournamentMode ) {
         var segment = objAvoidanceController.segment;
-        survivalPayout = scrGetTotalAttackReward( segment ) + scrGetTotalPbReward( global.pb_segment, segment ) + scrGetTotalGateReward( global.pb_segment, segment );
+        if( scrGetCurrentTrinketType() != 5 ) {
+            survivalPayout = scrGetTotalAttackReward( segment ) + scrGetTotalPbReward( global.pb_segment, segment ) + scrGetTotalGateReward( global.pb_segment, segment );
+        } else {
+            survivalPayout = 0;
+        }
     } else {
         survivalPayout = 0;
     }
