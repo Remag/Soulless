@@ -10,6 +10,14 @@ if( section == 0 ) {
     } else {
         return 4;
     }
+} else if( section == 2 ) {
+    if( pbGate < 6 ) {
+        return pbGate - 1;
+    } else if( global.hpGameClear ) {
+        return 5;
+    } else {
+        return 4;
+    }
 } else {
     return pbGate - 1;
 }

@@ -26,6 +26,7 @@ for( var i = 0; i < vItemCount; i++ ) {
 }
 
 ds_map_add( saveMap, "saveGameClear", global.gameClear);
+ds_map_add( saveMap, "saveHpGameClear", global.hpGameClear);
 
 //add md5 hash to verify saves and make them harder to hack
 ds_map_add( saveMap, "mapMd5", md5_string_unicode(json_encode(saveMap)+global.md5StrAdd) );

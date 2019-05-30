@@ -42,6 +42,10 @@ if (loadFile)
 
 
         global.gameClear = ds_map_find_value(saveMap,"saveGameClear");
+        global.hpGameClear = ds_map_find_value(saveMap,"saveHpGameClear");
+        if( is_undefined( global.hpGameClear ) ) {
+            global.hpGameClear = global.gameClear;
+        }
         
         //load md5 string from the save map
         var mapMd5 = ds_map_find_value(saveMap,"mapMd5");

@@ -52,7 +52,8 @@ playerPrevHP = playerHP;
 invulFrames = 0;
 hitCount = 0;
 shieldAnimationFrame = 0;
-
+drawBody = true;
+bowAlpha = 1;
 </string>
           </argument>
         </arguments>
@@ -250,7 +251,6 @@ else    //player is not moving
     sprite_index = oPlayerData.currentSkin.idleSprite;
     image_speed = oPlayerData.currentSkin.idleAnimationSpeed;
 }
-
 
 if (!onPlatform)    //check if standing on a platform
 {
@@ -655,12 +655,14 @@ if( invulFrames &gt; 0 &amp;&amp; scrGetCurrentTrinketType() == 5 ) {
     draw_text( x, y - 20, string( hitCount ) );
     draw_set_alpha( 1 );
 }
-if( outlineValue == 0 ) {    
-    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
-} else {
-    var outlineSprite = scrGetOutlineSprite( sprite_index );
-    draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, ( 1 - outlineValue ) * image_alpha );
-    draw_sprite_ext(outlineSprite,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, outlineValue * image_alpha );
+if( drawBody ) {
+    if( outlineValue == 0 ) {    
+        draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+    } else {
+        var outlineSprite = scrGetOutlineSprite( sprite_index );
+        draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, ( 1 - outlineValue ) * image_alpha );
+        draw_sprite_ext(outlineSprite,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend, outlineValue * image_alpha );
+    }
 }
 
 //draw the player's hitbox
@@ -675,7 +677,7 @@ if( outlineValue == 0 ) {
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, ( 1 - outlineValue ) * image_alpha, false );
     scrDrawWeapon( oPlayerData.currentWeapon, oPlayerData.currentSkin, image_xscale * xScale, outlineValue * image_alpha, true );
 }
-scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha, playerHP );
+scrDrawTrinket( oPlayerData.currentTrinket, image_xscale * xScale, image_alpha * bowAlpha, playerHP );
 if( shieldAnimationFrame &gt; 0 ) {
     scrDrawShield( oPlayerData.currentTrinket.shieldSprite, shieldAnimationFrame, playerHP, playerPrevHP, image_xscale * xScale, image_alpha );
 }

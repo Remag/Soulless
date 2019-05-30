@@ -28,6 +28,7 @@ for (var i = global.bossItemTotal-1; i >= 0; i--)
 }
 
 global.gameClear = false;
+global.hpGameClear = false;
 global.saveGameClear = false;
 
 for (var i = 99; i >= 0; i--)

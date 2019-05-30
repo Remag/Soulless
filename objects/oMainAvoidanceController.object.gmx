@@ -66,6 +66,7 @@ if( t &gt; 36574 &amp;&amp; t &lt; 36550 + 72 ) {
     with( objPlayer ) { 
         vspeed = -1.5;
         self.djump = 0;
+        bowAlpha -= 0.02;
     }
 } else if( t &gt;= 36550 + 72 &amp;&amp; t &lt; 36550 + 96 * 2 + 24 ) {
     var transitionProgress = ( t - 36550 - 72 ) / 144;
@@ -138,8 +139,12 @@ if( t == 37074 ) {
     var currentTrinketType = scrGetCurrentTrinketType();
     if( !global.gameClear &amp;&amp; currentTrinketType == 0 ) {
         global.gameClear = true;
+        global.hpGameClear = true;
         oPlayerData.showFinalCutscene = true;
         scrUnlockAllItems();
+    } 
+    if( currentTrinketType != 0 &amp;&amp; !global.hpGameClear ) {
+        global.hpGameClear = true;
     }
     scrUpdatePersonalBest();
     if( global.TournamentMode ) {
