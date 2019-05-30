@@ -15,11 +15,13 @@ if( room != rPracticeChoiceRoom ) {
             hpToRestore = 2;
             break;
     }
-    with( objPlayer ) {
-        playerPrevHP = playerHP;
-        playerHP = min( maxHP, playerHP + hpToRestore );
-        if( playerHP != playerPrevHP ) {
-            shieldAnimationFrame = 50;
+    if( hpToRestore > 0 ) {
+        with( objPlayer ) {
+            playerPrevHP = playerHP;
+            playerHP = min( maxHP, playerHP + hpToRestore );
+            if( playerHP != playerPrevHP ) {
+                shieldAnimationFrame = 50;
+            }
         }
     }
 }
