@@ -98,7 +98,13 @@ if( image_alpha &lt; maxAlpha * 2 || alphaStep &lt; 0 ) {
     shader_set(sdrDisco);
     var iTimePos = shader_get_uniform( sdrDisco, "iTime" );
     var uvsPos = shader_get_uniform( sdrDisco, "uvs" );
+    var uBallsCountPos = shader_get_uniform( sdrDisco, "uBallCount" );
         
+    if( global.isLowEffects ) {
+        shader_set_uniform_f( uBallsCountPos, 32 );
+    } else {
+        shader_set_uniform_f( uBallsCountPos, 128 );
+    }
     var _uvs = sprite_get_uvs( sprite_index, image_index );
     shader_set_uniform_f( uvsPos, _uvs[0], _uvs[1], 1/(_uvs[2]-_uvs[0]), 1/(_uvs[3]-_uvs[1]) );
     //var iResolutionPos = shader_get_uniform( backgroundShader, "iResolution" );

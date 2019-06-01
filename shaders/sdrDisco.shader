@@ -22,6 +22,7 @@ void main()
 
 //uniform vec2 iResolution;
 uniform float iTime;
+uniform float uBallCount;
 uniform vec4 uvs;
 
 varying vec2 v_vTexcoord;
@@ -95,7 +96,7 @@ void main()
     //
     vec3 tint = vec3(fract(a),1.,1.);
     //
-    const float nbc = 128.;
+    float nbc = uBallCount;
     float st = sin(T_20);
     vec2 c = vec2(0.,0.);
     vec3 col = vec3(0.,0.,0.);
