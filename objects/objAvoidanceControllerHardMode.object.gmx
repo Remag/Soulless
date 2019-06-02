@@ -1403,20 +1403,12 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
     
     if( t == 6545 ) {
         segment9Angle = 0;
+        segment9HSpeed = -3.5;
         var randomAngle = random( 360 );
-        scrMakeCircle( 700, 100, randomAngle, 8, 2, objAlgA7Sphere );
+        scrMakeCircle( 700, 100, randomAngle, 9, 2.3, objAlgA7Sphere );
         with( objAlgA7Sphere ) {
             curveSpeed = 3;
             image_blend = make_color_rgb( 255, 255, 0 );
-            type = 0;
-        }
-        scrMakeCircle( 100, 100, randomAngle, 8, 2, objAlgA7Sphere );
-        with( objAlgA7Sphere ) {
-            if( curveSpeed != 3 ) {
-                curveSpeed = -3;
-                image_blend = make_color_rgb( 0, 255, 0 );
-                type = 1;
-            }
         }
         for( var i = 0; i &lt; 4; i++ ) {
             var obj = instance_create( 700, 100, objAlgA12LaserEffect );
@@ -1424,47 +1416,31 @@ if( t &gt;= 6545 &amp;&amp; t &lt; 6925 &amp;&amp; instance_exists(objPlayer) ) 
             obj.image_yscale = 0.5;
             obj.image_blend = make_color_rgb( 255, 255, 0 );
             obj.rotationSpeed = -1.5;
-            obj.hspeed = -1.5;
-            
-            var obj = instance_create( 100, 100, objAlgA12LaserEffect );
-            obj.image_angle = randomAngle;
-            obj.image_yscale = 0.5;
-            obj.image_blend = make_color_rgb( 0, 127, 0 );
-            obj.rotationSpeed = 1.5;
-            obj.hspeed = 1.5;
+            obj.hspeed = segment9HSpeed;
             randomAngle += 180 / 4;
         }
     }
     
-    if( t % 5 == 0 ) {
+    if( t % 4 == 0 ) {
         with( objAlgA7Sphere ) {
-            if( type == 0 ) {
-                var obj = instance_create( x, y, objAlgSphere );
-                obj.image_blend = image_blend;
-                obj.direction = direction + other.segment9Angle;
-                obj.speed = 0.1;
-                obj.friction = -0.19;
-            }
+            var obj = instance_create( x, y, objAlgSphere );
+            obj.image_blend = image_blend;
+            obj.direction = direction + other.segment9Angle;
+            obj.speed = 0.1;
+            obj.friction = -0.19;
         }
         segment9Angle += 12.5;
-    } 
-    if( t % 15 == 0 ) {
-        with( objAlgA7Sphere ) {
-            if( type != 0 ) {
-                var obj = instance_create( x, y, objAlgSphere );
-                obj.image_blend = image_blend;
-                obj.direction = direction + other.segment9Angle;
-                obj.speed = 0.1;
-                obj.friction = -0.15;
-            }
-        }
     }
     
+    var phaseT = t - 6545;
+    var spheresMove = segment9HSpeed;
+    with( objAlgA12LaserEffect ) {
+        hspeed = spheresMove;
+    }
     with( objAlgA7Sphere ) {
-        if( type == 0 ) {
-            x -= 1.5;
-        } else {
-            x += 1.5;
+        x += spheresMove;
+        if( x &lt; 32 ) {
+            other.segment9HSpeed = 3.5;
         }
     }
     if( t == 6870 ) {
