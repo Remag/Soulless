@@ -109,6 +109,15 @@ bullet.speed = 8;
 bullet.image_xscale = scale;
 bullet.image_yscale = scale;
 bullet.image_blend = make_color_hsv( controller.currentHue, 255, 255 );
+
+if( global.hardMode ) {
+    var bullet = instance_create( x, y, oRedireS23Bullet );
+    bullet.direction = currentDir;
+    bullet.speed = 6;
+    bullet.image_xscale = scale;
+    bullet.image_yscale = scale;
+    bullet.image_blend = make_color_hsv( controller.currentHue, 255, 255 );
+}
 </string>
           </argument>
         </arguments>

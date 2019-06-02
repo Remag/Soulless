@@ -1351,6 +1351,7 @@
       <object>objects\oFinalTitle</object>
       <object>objects\oTrinketClearScreen</object>
     </objects>
+    <object>objects\objTourneyIndicator</object>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
