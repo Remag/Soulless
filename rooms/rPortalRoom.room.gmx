@@ -88,6 +88,7 @@
     <instance objName="oPortalRoomGradient" x="400" y="688" name="inst_0527479C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oProgressView" x="400" y="144" name="inst_217CEB9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oProgressLightDrawMechanism" x="-32" y="0" name="inst_7B195477" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTourneyIndicator" x="704" y="96" name="inst_4D30E383" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgAvoidTiles" x="480" y="384" w="32" h="32" xo="0" yo="0" id="10002820" name="inst_5995C031" depth="-12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
