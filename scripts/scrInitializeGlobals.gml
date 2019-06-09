@@ -80,6 +80,7 @@ global.playeralive = 0;
 
 global.pb = 0;
 global.pb_segment = 1;
+global.session_pb = 0;
 global.unlockEntirePractice = false;
 
 global.StartSegment = 0;

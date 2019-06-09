@@ -27,18 +27,20 @@
             <kind>1</kind>
             <string>surf = surface_create(256,256);
 
-color_back = make_color_rgb(190, 196, 200);
-color_front = make_color_rgb(19, 189, 157);
+color_back = make_color_rgb(255, 255, 255);//make_color_rgb(190, 196, 200);
+color_front = make_color_rgb( 0, 255, 50 );
+color_pb = make_color_rgb( 255, 220, 0 );
 
-radius_in = 48;
-radius_out = 56;
+radius_in = 57;
+radius_out = 63;
 thickness = 1.0;
 
 count = 32;
 
 progress = 0.45;
+isPersonalBest = false;
 
-image_alpha = 0.5;
+image_alpha = 0.6;
 
 segment_number = 49;
 </string>
@@ -86,7 +88,33 @@ segment_number = 49;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Debug only
+            <string>if( instance_exists( objAvoidanceController ) ) {
+    var pos = objAvoidanceController.t;
+    var absSegment = objAvoidanceController.segment;
+    var relSegment = absSegment;
+    var prevSegmentCount = 0;
+    var nextSegmentCount = 0;
+    var segGate = 6;
+    for( var i = 1; i &lt;= 6; i++ ) {
+        var segCount = scrGetGateSegmentCount( i );
+        nextSegmentCount += segCount;
+        if( relSegment &lt;= segCount ) {
+            segGate = i;
+            break;
+        }
+        prevSegmentCount += segCount;
+        relSegment -= segCount;
+    }
+    var minOffset = scrGetSegmentOffset( prevSegmentCount + 1 );
+    var maxOffset = scrGetSegmentOffset( nextSegmentCount + 1 );
+    //segment_number = absSegment;
+    //progress = relSegment / scrGetGateSegmentCount( segGate );  
+    segment_number = segGate;
+    progress = ( pos - minOffset ) / ( maxOffset - minOffset );
+    isPersonalBest = pos &gt;= global.session_pb;
+}
+
+//Debug only
 if( global.debugMode ) {
     if( keyboard_check_pressed(vk_numpad0) ) {
         radius_in = clamp(radius_in - 1, 0, radius_out - 1);
@@ -184,20 +212,32 @@ surface_set_target(surf);
             var xx = 128 + radius_in * sin(a_rad);
             var yy = 128 - radius_in * cos(a_rad);
             var a_deg = 90 - i / count * 360;
+            var frontColor;
+            if( isPersonalBest ) {
+                frontColor = color_pb;
+            } else {
+                frontColor = color_front;
+            }
             if( i &lt; floor(count * progress) ) {
-                var color = color_front;
+                var color = frontColor;
             } else if( i &lt; ceil(count * progress) ) {
-                var color = merge_colour(color_back, color_front, frac(count * progress));
+                var color = merge_colour(color_back, frontColor, frac(count * progress));
             } else {
                 var color = color_back;    
             }
             draw_sprite_ext(sprite_index, image_index, xx, yy, xx_scale, thickness, a_deg, color, 1.0);
         }
         
-        draw_set_font(fAttackNumber);
+        draw_set_font( fIndicatorNumber );
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
-        scrDrawTextOutline(128, 128, segment_number, c_black, c_white);
+        var gateColor;
+        if( isPersonalBest ) {
+            gateColor = color_pb;
+        } else {
+            gateColor = c_white;
+        }
+        scrDrawTextOutline(126, 128, segment_number, gateColor, c_black);
     
     texture_set_interpolation(global.smoothingMode);
 
@@ -206,6 +246,7 @@ surface_reset_target();
 draw_surface_ext(surf, x - 128, y - 128, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
 if( global.debugMode ) {
+    draw_set_font( fAttackNumber );
     scrDrawTextOutline(x, y + 128, "radius_in: " + string(radius_in), c_black, c_white);
     scrDrawTextOutline(x, y + 144, "radius_out: " + string(radius_out), c_black, c_white);
     scrDrawTextOutline(x, y + 160, "thickness: " + string(thickness), c_black, c_white);

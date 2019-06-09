@@ -7,3 +7,7 @@ if( global.pb < objAvoidanceController.t ) {
         scrSendPbResultsToServer();
     }
 }
+
+if( global.session_pb < objAvoidanceController.t ) {
+    global.session_pb = objAvoidanceController.t;    
+}
