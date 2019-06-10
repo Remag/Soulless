@@ -9,5 +9,6 @@ if( global.pb < objAvoidanceController.t ) {
 }
 
 if( global.session_pb < objAvoidanceController.t ) {
-    global.session_pb = objAvoidanceController.t;    
+    global.session_pb = objAvoidanceController.t;
+    global.session_pb_segment = objAvoidanceController.segment;
 }

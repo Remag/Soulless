@@ -112,6 +112,9 @@ segment_number = 49;
     segment_number = segGate;
     progress = ( pos - minOffset ) / ( maxOffset - minOffset );
     isPersonalBest = pos &gt;= global.session_pb;
+    
+    cur_segment = objAvoidanceController.segment;
+    pb_segment = max(objAvoidanceController.segment, global.session_pb_segment);
 }
 
 //Debug only
@@ -238,6 +241,9 @@ surface_set_target(surf);
             gateColor = c_white;
         }
         scrDrawTextOutline(126, 128, segment_number, gateColor, c_black);
+        
+        draw_set_font( fAttackNumber );
+        scrDrawTextOutline(126, 158, string(cur_segment) + "/" + string(pb_segment), gateColor, c_black);
     
     texture_set_interpolation(global.smoothingMode);
 
